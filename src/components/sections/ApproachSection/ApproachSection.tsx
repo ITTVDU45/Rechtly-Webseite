@@ -316,7 +316,7 @@ const ApproachSection: React.FC = () => {
           <div className="approach__image">
             <div className="approach__image-container">
               <Image 
-                src="/assets/images/Digital Legal Tech.png" 
+                src="/assets/images/innovation.webp" 
                 alt="Digital Legal Tech" 
                 width={960} 
                 height={640} 
