@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Zentraler Backend-Config-Adapter (stubs für Build/Client-Umgebung)
-import dotenv from 'dotenv';
-dotenv.config();
+
+// In Next.js App Router werden Umgebungsvariablen automatisch geladen,
+// daher ist dotenv nicht erforderlich
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 const config = {
   server: {
@@ -31,7 +34,8 @@ const config = {
   LOG_LEVEL: process.env.LOG_LEVEL || 'info'
 };
 
-let minioClient: any = {
+// Stub für MinIO-Client (wird nur verwendet, wenn minio installiert ist)
+const minioClient: any = {
   bucketExists: async () => false,
   makeBucket: async () => { throw new Error('MinIO not available'); },
   getObject: async () => { throw new Error('MinIO not available'); },
@@ -41,28 +45,8 @@ let minioClient: any = {
 
 const BUCKET_NAME = process.env.MINIO_BUCKET || null;
 
-// Try to dynamically load Minio in Node runtime; if present, initialize client.
-(async () => {
-  try {
-    const MinioMod = await import('minio');
-    const Minio = (MinioMod as any).Client ? MinioMod : MinioMod.default || MinioMod;
-    const getHostname = (url: string | undefined) => {
-      try { return url ? new URL(url).hostname : '' } catch { return url }
-    };
-    minioClient = new Minio.Client({
-      endPoint: getHostname(process.env.MINIO_ENDPOINT),
-      port: parseInt(process.env.MINIO_PORT || '9000'),
-      useSSL: process.env.MINIO_USE_SSL === 'true',
-      accessKey: process.env.MINIO_ROOT_USER,
-      secretKey: process.env.MINIO_ROOT_PASSWORD
-    });
-    if (minioClient && BUCKET_NAME) {
-      try { const exists = await minioClient.bucketExists(BUCKET_NAME); if (!exists) await minioClient.makeBucket(BUCKET_NAME); } catch (e) { console.warn('MinIO bucket init failed', e) }
-    }
-  } catch (e) {
-    // ignore: MinIO not installed in this environment
-  }
-})();
+// Wir entfernen den dynamischen Import von minio, da es nicht installiert ist
+// und für die Kontaktformularfunktion nicht benötigt wird
 
 export default config;
 export { minioClient, BUCKET_NAME };
