@@ -1,61 +1,81 @@
-import mongoose from 'mongoose';
-import { MongoClient, ServerApiVersion } from 'mongodb';
+// Stub für MongoDB-Verbindung
+// Diese Datei wird später mit echter MongoDB-Verbindung ersetzt
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://developer_db_user:TKrsQhD5FazKjiTO@rechtly-webseite.5cjxouj.mongodb.net/?retryWrites=true&w=majority&appName=Rechtly-webseite";
+import type { Collection, Db, MongoClient } from 'mongodb';
 
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
-}
-
-interface Connection {
-  isConnected?: number;
-}
-
-const connection: Connection = {};
-
-// Mongoose-Verbindung für Mongoose-basierte Operationen
-async function connectDB() {
-  if (connection.isConnected) {
-    return;
+// Dummy-MongoDB-Client für Vercel-Deployment
+class DummyMongoClient {
+  async connect(): Promise<DummyMongoClient> {
+    console.log('Dummy MongoDB client: connect() called');
+    return this;
   }
 
-  try {
-    const db = await mongoose.connect(MONGODB_URI);
-    connection.isConnected = db.connections[0].readyState;
-    console.log('MongoDB connected successfully with Mongoose');
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
-    throw error;
+  db(name: string): DummyDb {
+    console.log(`Dummy MongoDB client: db(${name}) called`);
+    return new DummyDb(name);
+  }
+
+  close(): void {
+    console.log('Dummy MongoDB client: close() called');
   }
 }
 
-// MongoDB Native Client für direkte MongoDB-Operationen
-export const mongoClient = new MongoClient(MONGODB_URI, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
+class DummyDb {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
   }
-});
 
-// Singleton-Verbindung für den MongoDB Native Client
-let clientPromise: Promise<MongoClient>;
-
-if (process.env.NODE_ENV === 'development') {
-  // In der Entwicklung verwenden wir eine globale Variable, um die Verbindung zu speichern
-  let globalWithMongo = global as typeof globalThis & {
-    _mongoClientPromise?: Promise<MongoClient>;
-  };
-
-  if (!globalWithMongo._mongoClientPromise) {
-    globalWithMongo._mongoClientPromise = mongoClient.connect();
+  collection(name: string): DummyCollection {
+    console.log(`Dummy MongoDB db: collection(${name}) called`);
+    return new DummyCollection(name);
   }
-  
-  clientPromise = globalWithMongo._mongoClientPromise;
-} else {
-  // In der Produktion erstellen wir eine neue Verbindung
-  clientPromise = mongoClient.connect();
 }
 
-export { clientPromise };
+class DummyCollection {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  async insertOne(doc: Record<string, unknown>): Promise<{ insertedId: string }> {
+    console.log(`Dummy MongoDB collection: insertOne() called with`, doc);
+    return { insertedId: `dummy-id-${Date.now()}` };
+  }
+
+  async findOne(query: Record<string, unknown>): Promise<null> {
+    console.log(`Dummy MongoDB collection: findOne() called with`, query);
+    return null;
+  }
+
+  async find(): Promise<{ toArray: () => Promise<[]> }> {
+    console.log(`Dummy MongoDB collection: find() called`);
+    return { toArray: async () => [] };
+  }
+
+  async updateOne(): Promise<{ modifiedCount: number }> {
+    console.log(`Dummy MongoDB collection: updateOne() called`);
+    return { modifiedCount: 0 };
+  }
+
+  async deleteOne(): Promise<{ deletedCount: number }> {
+    console.log(`Dummy MongoDB collection: deleteOne() called`);
+    return { deletedCount: 0 };
+  }
+}
+
+// Exportiere den Dummy-Client
+export const mongoClient = new DummyMongoClient();
+
+// Dummy-Promise für clientPromise
+export const clientPromise = Promise.resolve(mongoClient as unknown as MongoClient);
+
+// Dummy-Funktion für connectDB
+async function connectDB(): Promise<void> {
+  console.log('Dummy connectDB() called');
+}
+
+export default connectDB;
 export default connectDB;

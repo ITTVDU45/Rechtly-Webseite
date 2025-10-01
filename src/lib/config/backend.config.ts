@@ -1,7 +1,42 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // Zentraler Backend-Config-Adapter (stubs für Build/Client-Umgebung)
 
-const config = {
+interface EmailConfig {
+  host: string;
+  port: number;
+  secure: boolean;
+  auth: {
+    user: string;
+    pass: string;
+  };
+  from: string;
+}
+
+interface SupportConfig {
+  phone: string;
+  email: string;
+}
+
+interface DomainsConfig {
+  base: string;
+}
+
+interface ServerConfig {
+  port: number | string;
+  env: string;
+}
+
+interface AppConfig {
+  server: ServerConfig;
+  mongodb: { uri: string | undefined };
+  jwt: { secret: string | undefined; expiresIn: string };
+  email: EmailConfig;
+  support: SupportConfig;
+  domains: DomainsConfig;
+  FRONTEND_URL: string;
+  LOG_LEVEL: string;
+}
+
+const config: AppConfig = {
   server: {
     port: process.env.PORT || 5000,
     env: process.env.NODE_ENV || 'development'
@@ -9,12 +44,12 @@ const config = {
   mongodb: { uri: process.env.MONGODB_URI },
   jwt: { secret: process.env.JWT_SECRET, expiresIn: '24h' },
   email: {
-    host: process.env.SMTP_HOST || process.env.EMAIL_HOST,
+    host: process.env.SMTP_HOST || process.env.EMAIL_HOST || 'smtp.example.com',
     port: Number(process.env.SMTP_PORT || process.env.EMAIL_PORT) || 587,
     secure: process.env.SMTP_SECURE === 'true' || process.env.EMAIL_SECURE === 'true',
     auth: { 
-      user: process.env.SMTP_USER || process.env.EMAIL_USER, 
-      pass: process.env.SMTP_PASS || process.env.EMAIL_PASS 
+      user: process.env.SMTP_USER || process.env.EMAIL_USER || 'user@example.com', 
+      pass: process.env.SMTP_PASS || process.env.EMAIL_PASS || 'password' 
     },
     from: process.env.SMTP_FROM || process.env.EMAIL_FROM || 'noreply@rechtly.de'
   },
@@ -30,7 +65,15 @@ const config = {
 };
 
 // Einfacher Stub für MinIO-Client
-const minioClient = {
+interface MinioClientStub {
+  bucketExists: () => Promise<boolean>;
+  makeBucket: () => Promise<void>;
+  getObject: () => Promise<never>;
+  putObject: () => Promise<never>;
+  removeObject: () => Promise<never>;
+}
+
+const minioClient: MinioClientStub = {
   bucketExists: async () => false,
   makeBucket: async () => { throw new Error('MinIO not available'); },
   getObject: async () => { throw new Error('MinIO not available'); },
