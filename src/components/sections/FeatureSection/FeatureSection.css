@@ -86,7 +86,7 @@
 
 .feature__carousel-container {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   /* ensure carousel matches the section/container width */
   width: 100%;
   max-width: 800px;
@@ -137,24 +137,11 @@
 }
 
 .feature__carousel-track {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  overflow: visible;
+  display: none; /* Nicht mehr benötigt für Single-Card-Slider */
 }
 
 .feature__carousel-slide {
-  flex: 0 0 100%;
-  /* center the card inside the slide and prevent overlap */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  width: 100%; /* Ensure slide takes full width */
-  margin: 0 auto; /* Center the slide */
+  display: none; /* Nicht mehr benötigt für Single-Card-Slider */
 }
 
 .feature__card {
@@ -591,26 +578,29 @@
     border-radius: 14px;
     margin: 0 auto;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    overflow: hidden; /* Verstärken des overflow hidden für mobile */
+    overflow: visible; /* Für Single-Card-Slider sichtbar lassen */
   }
 
   .feature__carousel-track {
-    gap: 0;
-    width: 100%;
+    display: none; /* Nicht mehr benötigt für Single-Card-Slider */
   }
 
   .feature__carousel-slide {
-    padding: 0;
-    width: 100%;
-    margin: 0;
+    display: none; /* Nicht mehr benötigt für Single-Card-Slider */
   }
 
   .feature__carousel .feature__card {
     width: 100%;
     max-width: 95%;
     margin: 0 auto;
+    min-height: 450px;
     border-radius: 14px;
     box-sizing: border-box;
+  }
+
+  .feature__carousel .feature__card-image {
+    max-width: 250px;
+    height: 140px;
   }
 
   /* reduce heavy shadows on mobile to avoid visual bleed */
@@ -640,6 +630,12 @@
 
   .feature__carousel .feature__card {
     border-radius: 12px;
+    min-height: 420px;
+  }
+
+  .feature__carousel .feature__card-image {
+    max-width: 220px;
+    height: 120px;
   }
 
   .feature__card-image { 
@@ -763,8 +759,13 @@
       border-radius: 10px;
     }
     
+    .feature__carousel .feature__card {
+      min-height: 400px;
+    }
+
     .feature__card-image {
       height: 130px;
+      max-width: 200px;
     }
     
     .feature__card-content {

@@ -172,109 +172,227 @@ const FeatureSection: React.FC = () => {
 
           <div className={`feature__carousel ${isMobile ? 'active' : ''}`}>
             <div className="feature__carousel-container">
-              <div className="feature__carousel-controls">
-                <button 
-                  className="feature__carousel-button feature__carousel-button--prev" 
-                  onClick={prevSlide} 
-                  aria-label="Vorherige Karte"
+              <div 
+                className="feature__card-container"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                style={{ position: 'relative', padding: '20px 0' }}
+              >
+                {/* Eine einzelne Karte anzeigen */}
+                <motion.div 
+                  className="feature__card feature__card--active"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  key={`card-${currentSlide}`}
+                  style={{
+                    margin: '0 auto',
+                    width: '100%',
+                    maxWidth: isMobile ? '100%' : '95%',
+                    boxSizing: 'border-box',
+                    padding: isMobile ? '1.5rem' : '2rem',
+                    borderRadius: isMobile ? '14px' : '16px',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                    minHeight: isMobile ? '450px' : '500px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    backgroundColor: '#fff',
+                    transition: 'all 300ms ease-in-out',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => router.push('/anliegen-pruefen/bussgeld')}
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Bildpfad für aktuelle Karte bestimmen */}
+                  {(() => {
+                    const feature = features[currentSlide];
+                    const imageBase = '/assets/images/';
+                    let imagePath = '';
+                    
+                    // Spezifische Bilder für jede Karte
+                    if (feature.id === 1 || /Geschwindigkeit/i.test(feature.title)) imagePath = `${imageBase}Bußgeld.webp`;
+                    else if (/Rotlicht/i.test(feature.title)) imagePath = `${imageBase}Bußgeldbescheid-Bild.png`;
+                    else if (/Abstand/i.test(feature.title)) imagePath = `${imageBase}Bussgeld1.jpg`;
+                    else if (/Handy|Handyverstoß/i.test(feature.title)) imagePath = `${imageBase}Digitale Prozesse.png`;
+                    else if (/Unfall|Verkehrsunfall/i.test(feature.title)) imagePath = `${imageBase}Verkehrsunfall.png`;
+                    else if (/Alkohol|Drogen/i.test(feature.title)) imagePath = `${imageBase}Benefit2.jpg`;
+                    else imagePath = `${imageBase}Benefit1.jpg`;
+                    
+                    return (
+                      <>
+                        <div className="feature__card-image" style={{ 
+                          marginBottom: '1.5rem', 
+                          borderRadius: '12px', 
+                          overflow: 'hidden',
+                          width: '100%',
+                          maxWidth: '280px',
+                          height: '160px',
+                          margin: '0 auto 1.5rem auto'
+                        }}>
+                          <Image 
+                            src={imagePath} 
+                            alt={feature.title} 
+                            width={280} 
+                            height={160} 
+                            className="feature__card-img"
+                            sizes="(max-width: 768px) 100vw, 280px"
+                            style={{ 
+                              width: '100%', 
+                              height: '100%', 
+                              objectFit: 'cover',
+                              display: 'block' 
+                            }}
+                          />
+                        </div>
+                        <div className="feature__card-icon" style={{ marginBottom: '1rem', color: '#A3E635' }}>
+                          {feature.icon}
+                        </div>
+                        <h3 style={{ 
+                          fontSize: isMobile ? '1.3rem' : '1.5rem', 
+                          marginBottom: '1rem', 
+                          color: '#1B3A4B', 
+                          fontWeight: 600 
+                        }}>
+                          {feature.title}
+                        </h3>
+                        <p style={{ 
+                          fontSize: isMobile ? '0.95rem' : '1rem', 
+                          lineHeight: '1.6', 
+                          color: '#4A5568', 
+                          marginBottom: '1rem' 
+                        }}>
+                          {feature.description}
+                        </p>
+                        <div className="feature__card-arrow" style={{ color: '#A3E635' }}>
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                      </>
+                    );
+                  })()}
+                </motion.div>
+                
+                {/* Navigationspfeile */}
+                <button 
+                  onClick={prevSlide}
+                  className="slider-nav slider-nav--prev"
+                  aria-label="Vorherige Karte"
+                  style={{
+                    position: 'absolute',
+                    left: isMobile ? '-10px' : '-15px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    width: isMobile ? '36px' : '40px',
+                    height: isMobile ? '36px' : '40px',
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    border: 'none',
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                    zIndex: 10
+                  }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
                 <button 
-                  className="feature__carousel-button feature__carousel-button--next" 
-                  onClick={nextSlide} 
+                  onClick={nextSlide}
+                  className="slider-nav slider-nav--next"
                   aria-label="Nächste Karte"
+                  style={{
+                    position: 'absolute',
+                    right: isMobile ? '-10px' : '-15px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    width: isMobile ? '36px' : '40px',
+                    height: isMobile ? '36px' : '40px',
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    border: 'none',
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                    zIndex: 10
+                  }}
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
               </div>
+              
+              {/* Indikatoren */}
               <div 
-                className="feature__carousel-track" 
-                style={{ 
-                  transform: `translateX(-${currentSlide * 100}%)`,
-                  width: '100%',
-                  maxWidth: '100%',
-                  boxSizing: 'border-box'
-                }} 
-                onTouchStart={handleTouchStart} 
-                onTouchMove={handleTouchMove} 
-                onTouchEnd={handleTouchEnd}
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}
-              >
-                {features.map((feature, index) => {
-                  // Bildpfad für jede Karte bestimmen
-                  let imagePath = '';
-                  const imageBase = '/assets/images/';
-                  
-                  // Spezifische Bilder für jede Karte
-                  if (feature.id === 1 || /Geschwindigkeit/i.test(feature.title)) imagePath = `${imageBase}Geschwindigkeitsverstoß.jpg`;
-                  else if (/Rotlicht/i.test(feature.title)) imagePath = `${imageBase}Rotlichtverstoß.jpg`;
-                  else if (/Abstand/i.test(feature.title)) imagePath = `${imageBase}Abstandsverstoß.jpg`;
-                  else if (/Handy|Handyverstoß/i.test(feature.title)) imagePath = `${imageBase}Digitale Prozesse.png`;
-                  else if (/Unfall|Verkehrsunfall/i.test(feature.title)) imagePath = `${imageBase}Verkehrsunfall.png`;
-                  else if (/Alkohol|Drogen/i.test(feature.title)) imagePath = `${imageBase}Benefit2.jpg`;
-                  else imagePath = `${imageBase}Benefit1.jpg`;
-                  
-                  return (
-                    <div className="feature__carousel-slide" key={index}>
-                      <motion.div 
-                        className="feature__card" 
-                        initial={{ opacity: 0, y: 20 }} 
-                        animate={{ opacity: 1, y: 0 }} 
-                        transition={{ duration: 0.5 }} 
-                        onClick={() => router.push('/anliegen-pruefen/bussgeld')}
-                      >
-                        <div className="feature__card-image">
-                          <Image 
-                            src={imagePath} 
-                            alt={feature.title} 
-                            width={420} 
-                            height={240} 
-                            className="feature__card-img"
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                          />
-                          <div className="feature__card-overlay"></div>
-                        </div>
-                        <div className="feature__card-content">
-                          <div className="feature__card-icon">{feature.icon}</div>
-                          <h3>{feature.title}</h3>
-                          <p>{feature.description}</p>
-                          <div className="feature__card-arrow">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            
-            <div className="feature__carousel-progress">
-              <div 
-                className="feature__carousel-progress-bar" 
-                style={{ 
-                  width: `${(currentSlide + 1) / features.length * 100}%` 
+                className="slider-indicators"
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  marginTop: '20px'
                 }}
-              ></div>
-            </div>
-            
-            <div className="feature__carousel-indicators">
-              {features.map((_, index) => (
-                <button 
-                  key={index} 
-                  className={`feature__carousel-indicator ${currentSlide === index ? 'active' : ''}`} 
-                  onClick={() => goToSlide(index)}
-                  aria-label={`Gehe zu Karte ${index + 1}`}
-                />
-              ))}
+              >
+                {features.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setCurrentSlide(i);
+                      setIsPaused(true);
+                      setTimeout(() => setIsPaused(false), 5000);
+                    }}
+                    aria-label={`Gehe zu Karte ${i+1}`}
+                    className={`slider-indicator ${i === currentSlide ? 'slider-indicator--active' : ''}`}
+                    style={{
+                      width: i === currentSlide ? (isMobile ? '20px' : '24px') : (isMobile ? '6px' : '8px'),
+                      height: isMobile ? '6px' : '8px',
+                      borderRadius: '4px',
+                      backgroundColor: i === currentSlide ? '#A3E635' : '#ccc',
+                      border: 'none',
+                      padding: 0,
+                      cursor: 'pointer',
+                      transition: 'width 300ms ease'
+                    }}
+                  />
+                ))}
+              </div>
+              
+              {/* Auto-Scroll Indikator */}
+              {!isPaused && (
+                <div className="auto-scroll-indicator" style={{ 
+                  width: '100%', 
+                  maxWidth: '100px', 
+                  margin: '10px auto 0',
+                  height: '2px',
+                  backgroundColor: 'rgba(0,0,0,0.1)',
+                  borderRadius: '1px',
+                  overflow: 'hidden'
+                }}>
+                  <motion.div 
+                    className="auto-scroll-progress"
+                    initial={{ width: '0%' }}
+                    animate={{ width: '100%' }}
+                    key={`progress-${currentSlide}`}
+                    transition={{ 
+                      duration: 5, 
+                      ease: 'linear',
+                      repeat: 0
+                    }}
+                    style={{
+                      height: '100%',
+                      backgroundColor: '#A3E635',
+                      borderRadius: '1px'
+                    }}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
