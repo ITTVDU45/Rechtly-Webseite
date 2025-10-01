@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { mongoClient } from '@/lib/db/connection';
 
 // Validierungsschema für die Telefonnummer
 const phoneSchema = z.object({
@@ -27,12 +28,33 @@ export async function POST(request: NextRequest) {
 
     const { phone } = validationResult.data;
 
-    // Hier würde später die Weiterleitung an n8n erfolgen
+    // MongoDB-Verbindung herstellen und Daten speichern
+    try {
+      await mongoClient.connect();
+      const db = mongoClient.db("rechtly");
+      const collection = db.collection("callbacks");
+      
+      // Eintrag in MongoDB speichern
+      const result = await collection.insertOne({
+        phone,
+        timestamp: new Date(),
+        source: 'rechtly-website',
+        status: 'neu'
+      });
+      
+      console.log(`Callback in MongoDB gespeichert mit ID: ${result.insertedId}`);
+    } catch (dbError) {
+      console.error('MongoDB Fehler:', dbError);
+      // Wir loggen den Fehler, aber brechen nicht ab
+    } finally {
+      // Verbindung nicht schließen, da wir einen Connection Pool verwenden
+    }
+
+    // Weiterleitung an n8n Webhook
     const n8nWebhookUrl = process.env.N8N_WEBHOOK_URL;
     
     if (n8nWebhookUrl) {
       try {
-        // Weiterleitung an n8n (später implementieren)
         const response = await fetch(n8nWebhookUrl, {
           method: 'POST',
           headers: {
@@ -59,7 +81,7 @@ export async function POST(request: NextRequest) {
     // Erfolgreiche Antwort
     return NextResponse.json({
       success: true,
-      message: 'Telefonnummer erfolgreich empfangen',
+      message: 'Telefonnummer erfolgreich empfangen und gespeichert',
       data: {
         phone,
         timestamp: new Date().toISOString(),
