@@ -1,0 +1,133 @@
+.trust {
+  padding: 4rem 0; /* reduzierter oberer Abstand */
+  margin: 2rem 1rem; /* Abstand zu Hero und Seitenabstand */
+  background: #ffffff; /* wieder weißer Hintergrund */
+  border-radius: 32px; /* abgerundete Ecken */
+  overflow: hidden; /* Inhalte folgen der Rundung */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); /* dezenter Lift */
+}
+
+.trust__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.trust__subtitle {
+  text-align: center;
+  color: #6c757d;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* Press Logos */
+.trust__press {
+  margin-bottom: 4rem;
+}
+
+.trust__press-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.trust__press-logo {
+  height: 40px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.trust__press-logo:hover {
+  opacity: 1;
+}
+
+/* Success Stats */
+.trust__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.trust__stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.trust__stat-number {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1B3A4B;
+  background: linear-gradient(135deg, #1B3A4B 0%, #2C5364 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.trust__stat-label {
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+/* Ratings */
+.trust__ratings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.trust__rating-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.trust__rating-logo {
+  height: 32px;
+}
+
+.trust__rating-score {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.trust__rating-number {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #1B3A4B;
+}
+
+.trust__rating-stars {
+  color: #8B6B00; /* darker gold for contrast */
+  letter-spacing: 2px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.trust__rating-count {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+@media (max-width: 768px) {
+  .trust__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .trust__press-logos {
+    gap: 2rem;
+  }
+
+  .trust__press-logo {
+    height: 30px;
+  }
+} 

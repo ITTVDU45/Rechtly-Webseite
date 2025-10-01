@@ -1,0 +1,419 @@
+.bussgeld-page { background: linear-gradient(180deg, rgba(27,58,75,0.02), rgba(27,58,75,0.04)); color: #07222b; }
+.bussgeld-hero {
+  padding: 8rem 0 12rem; /* mehr Platz oben und deutlich länger nach unten */
+  min-height: 70vh; /* nimmt größere Bildschirmhöhe ein */
+  display: flex;
+  align-items: center; /* vertikal zentrieren des Inhalts */
+  text-align: center;
+  background: linear-gradient(135deg,#1b3a4b,#2c5364);
+  color: #fff;
+}
+.bussgeld-hero .container { max-width: 1100px; margin: 0 auto; }
+.bussgeld-hero h1 { font-size: 2.6rem; font-weight: 800; color: #fff; }
+.bussgeld-hero .sub { color: rgba(255,255,255,0.9); margin-top: 0.5rem; }
+.bussgeld-hero .cta-row { margin-top: 1.5rem; display:flex; gap:1rem; justify-content:center; }
+.btn { padding: .9rem 1.4rem; border-radius: 30px; cursor:pointer; }
+.btn.primary { background: linear-gradient(135deg,#C7E70C,#A3E635); color:#07222b; border:none; }
+.btn.secondary { background: transparent; color:#fff; border:1px solid rgba(255,255,255,0.18); }
+.trust-row { display:flex; gap:1rem; justify-content:center; margin-top:1rem; color:#fff; }
+.bussgeld-process, .bussgeld-usps, .bussgeld-categories, .bussgeld-testimonials, .bussgeld-partner, .bussgeld-faq { padding:4rem 0; }
+.container { max-width:1100px; margin:0 auto; padding:0 1rem; }
+.steps { display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:1rem; list-style:none; padding:0; }
+.usps-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:1rem; list-style:none; padding:0; }
+.categories-grid { display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; }
+.categories-grid .cat { padding:.8rem 1rem; background:#fff; color:#07222b; border-radius:12px; text-decoration:none; }
+.testimonials-grid { display:flex; gap:1rem; justify-content:center; }
+.testimonial { background:#fff; padding:1rem 1.25rem; border-radius:12px; }
+.partner-cta { text-align:center; margin-top:1rem; }
+.bussgeld-faq details { margin-bottom: .75rem; background:#fff; padding:1rem; border-radius:10px; }
+
+.bussgeld-partner.two-col { display:flex; gap:2rem; align-items:center; }
+.partner-left { flex:1; }
+.partner-right { flex:1; display:flex; justify-content:flex-end; }
+.bussgeld-partner .section-heading { text-align:center; max-width:1100px; margin:0 auto 1.25rem; }
+.partner-features { list-style:none; padding:0; margin:1rem 0; display:grid; gap:0.75rem; }
+.partner-features li { padding:0.9rem 1rem; border-radius:10px; box-shadow:0 6px 18px rgba(2,6,23,0.04); color:#07222b; }
+.partner-features li:nth-child(odd) { background: linear-gradient(135deg,#c7e70c,#a3e635); }
+.partner-features li:nth-child(even) { background: linear-gradient(135deg,#1b3a4b,#2c5364); color:#fff; }
+
+/* icon-tile animation */
+.partner-features li { transform: translateY(0); transition: transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s ease, background .36s ease; }
+.partner-features li:hover { transform: translateY(-6px) scale(1.01); box-shadow:0 18px 40px rgba(2,6,23,0.08); }
+
+/* staggered reveal */
+.partner-features li { opacity:0; transform: translateY(12px); }
+.partner-features li.revealed { opacity:1; transform: translateY(0); transition: opacity .45s ease, transform .45s ease; }
+.partner-ctas { display:flex; gap:0.75rem; margin-top:1rem; }
+.partner-right .partner-visual { position:relative; width:480px; max-width:100%; align-self:flex-start; overflow:hidden; margin-top: 0; }
+.partner-right img, .partner-right .partner-visual > span { display:block; }
+.partner-right img { width:100%; height:auto; max-width:100%; border-radius:12px; box-shadow:0 12px 40px rgba(2,6,23,0.08); transform:translateY(0); transition:transform .6s ease; object-fit:cover; }
+.partner-right .badge { position:absolute; right:12px; top:12px; background:linear-gradient(135deg,#C7E70C,#A3E635); color:#07222b; padding:0.5rem 0.9rem; border-radius:999px; font-weight:700; box-shadow:0 6px 18px rgba(2,6,23,0.08); }
+
+/* Heading & subtitle centered and larger, consistent with other sections */
+.bussgeld-partner .section-title { text-align: center; font-size: 2.6rem; line-height: 1.03; font-weight: 800; color: #1B3A4B; margin-bottom: 0.5rem; }
+.bussgeld-partner .section-subtitle { text-align: center; font-size: 1.15rem; color: #6c757d; max-width: 820px; margin: 0 auto 1.5rem; }
+
+@media (max-width: 1100px) {
+  .partner-right .partner-visual { width:420px; }
+}
+
+@media (max-width: 900px) {
+  .bussgeld-partner.two-col { flex-direction:column; text-align:center; }
+  .partner-left { order:2; }
+  .partner-right { order:1; }
+  .partner-right .partner-visual { width:90%; }
+}
+
+.bussgeld-tools .tools-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+.bussgeld-tools .tool-card { background:#fff; padding:1rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.06); text-align:left; }
+
+/* Override: show feature carousel in bussgeld categories on desktop to match FeatureSection layout (left slider, right image) */
+.bussgeld-categories .feature__carousel { display: flex; flex-direction: row; align-items: stretch; }
+.bussgeld-categories .feature__cards { display: none; }
+
+/* Make carousel slides sized appropriately for left column */
+.bussgeld-categories .feature__carousel-container {
+  overflow: visible !important; /* allow arrows to show outside the container */
+  max-width: 760px; /* larger container so card is not too thin */
+}
+
+/* ensure space above slider for controls */
+.bussgeld-categories .feature__carousel-container { padding-top: 48px; }
+
+/* Force left column width so only one card + peek shows and right image remains visible */
+/* layout for categories uses FeatureSection classes; no forced section__container grid here */
+
+.bussgeld-categories .feature__carousel-track {
+  height: auto;
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  transition: transform 0.45s cubic-bezier(.2,.9,.2,1);
+}
+
+.bussgeld-categories .feature__carousel-slide {
+  flex: 0 0 520px !important;
+  box-sizing: border-box;
+}
+.bussgeld-categories .feature__carousel-slide article,
+.bussgeld-categories .feature__card {
+  height: auto; /* let content define height similar to FeatureSection */
+}
+
+/* Force left column width on large screens so carousel has room and image stays visible */
+@media (min-width: 1024px) {
+  .bussgeld-categories .section__container {
+    grid-template-columns: 560px 1fr;
+    align-items: center;
+  }
+}
+
+/* Carousel buttons (arrows) */
+.bussgeld-categories .feature__carousel {
+  position: relative;
+}
+
+.bussgeld-categories .feature__carousel-controls {
+  position: absolute;
+  top: -28px; /* place controls above the carousel */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999; /* ensure controls are above cards */
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  pointer-events: auto;
+}
+
+/* left/right buttons positioned outside carousel to avoid overlap */
+.bussgeld-categories .feature__carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(27,58,75,0.9);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.16);
+  pointer-events: auto;
+  z-index: 10000; /* sit above everything */
+}
+
+.bussgeld-categories .feature__carousel-button.left { left: 0; right: auto; transform: translate(-120%, -50%); }
+.bussgeld-categories .feature__carousel-button.right { right: 0; left: auto; transform: translate(120%, -50%); }
+
+/* enlarge hit area on mobile */
+@media (max-width: 768px) {
+  .bussgeld-categories .feature__carousel-button { width:48px; height:48px; left:8px; right:8px; }
+  .bussgeld-categories .feature__carousel-button.left { left: 8px; }
+  .bussgeld-categories .feature__carousel-button.right { right: 8px; }
+}
+
+
+.bussgeld-categories .feature__carousel-slide article { width: 100%; }
+
+/* Place indicators visually under the carousel container (left column) */
+.bussgeld-categories .feature__carousel-container { position: relative; }
+.bussgeld-categories .feature__carousel-container + .feature__carousel-indicators {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(100% + 12px);
+  z-index: 5;
+}
+
+.bussgeld-costs .costs-grid { display:flex; gap:1rem; justify-content:center; }
+.bussgeld-costs .cost-box { background:#fff; padding:1rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.06); width:320px; }
+.bussgeld-costs .faq-snippet { margin-top:1rem; }
+
+/* Process stepper */
+.process-inner { max-width:1100px; margin:0 auto; padding:0 1rem; }
+.stepper { display:flex; gap:1rem; align-items:flex-start; justify-content:space-between; margin-top:1.5rem; }
+.step { background:transparent; flex:1; padding:1rem; border-radius:12px; transition:transform .22s ease, box-shadow .22s ease; text-align:left; }
+.step:hover { transform:translateY(-6px); box-shadow:0 12px 30px rgba(2,6,23,0.06); }
+.step-icon { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:0.75rem; background:linear-gradient(135deg,#C7E70C,#A3E635); color:#07222b; }
+.step-title { font-size:1.05rem; font-weight:700; margin-bottom:0.25rem; }
+.step-lead { color:#6c757d; font-weight:600; margin-bottom:0.5rem; }
+.step-desc { color:#495057; font-size:0.95rem; }
+.process-cta { text-align:center; margin-top:1.75rem; }
+.btn.large { padding:1rem 2rem; font-size:1.05rem; border-radius:999px; }
+.microcopy { margin-top:0.75rem; color:#6c757d; }
+
+@media (max-width: 900px) {
+  .stepper { display:flex; overflow-x:auto; padding-bottom:0.5rem; }
+  .step { min-width:260px; flex:0 0 auto; }
+}
+
+/* --- Feature micro-styles copied to bussgeld to match FeatureSection design --- */
+.feature {
+  padding: 4rem 2rem;
+  background: #ffffff;
+  border-radius: 40px;
+  margin: 2rem auto;
+  box-shadow: none;
+}
+
+.feature__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.feature__header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 1rem;
+}
+
+.feature__header h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  color: #1B3A4B;
+}
+
+.feature__description {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.feature__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.feature__image-wrapper {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.feature__image {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.feature__cards { display:flex; flex-direction:column; gap:2rem; }
+
+.feature__card {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature__card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 4px; height: 100%;
+  background: linear-gradient(135deg,#C7E70C 0%,#A3E635 100%);
+  opacity: 0; transition: opacity .3s ease;
+}
+
+.feature__card:hover { transform: translateY(-5px); background: linear-gradient(135deg,#fff 0%,#f8f9fa 100%); box-shadow:0 20px 40px rgba(0,0,0,0.1); border-color:transparent; }
+.feature__card:hover::before { opacity:1; }
+
+.feature__card-arrow { position:absolute; bottom:1.5rem; right:1.5rem; font-size:1.2rem; color:#A3E635; transition: transform .3s ease; }
+.feature__card:hover .feature__card-arrow { transform: translateX(5px); }
+
+.feature__card-icon { font-size:2rem; color:#1B3A4B; margin-bottom:1rem; display:flex; align-items:center; justify-content:center; }
+.feature__card h3 { font-size: clamp(1.2rem,2vw,1.4rem); margin-bottom:1rem; color:#1B3A4B; }
+.feature__card p { font-size: clamp(0.9rem,1.5vw,1.1rem); line-height:1.6; color:#4A5568; }
+
+.feature__carousel { width:100%; position:relative; display:flex; flex-direction:column; align-items:center; margin:2rem 0; overflow:hidden; }
+.feature__carousel-container { width:100%; max-width:100%; overflow:hidden; position:relative; }
+.feature__carousel-track { display:flex; transition: transform .5s ease; width:100%; }
+.feature__carousel-slide { min-width:100%; max-width:100%; display:flex; justify-content:center; box-sizing:border-box; padding:0 0.5rem; }
+.feature__carousel-indicators { display:flex; justify-content:center; margin-top:1.5rem; gap:.5rem; width:100%; }
+.feature__carousel-indicator { width:10px; height:10px; border-radius:50%; background:#ccc; cursor:pointer; transition:background-color .3s ease; }
+.feature__carousel-indicator.active { background:#A3E635; }
+.feature__carousel-controls { display:flex; justify-content:space-between; width:100%; position:absolute; top:50%; transform:translateY(-50%); z-index:1; padding:0 .5rem; box-sizing:border-box; }
+.feature__carousel-button { background-color: rgba(27,58,75,0.7); color:#fff; border:none; border-radius:50%; width:35px; height:35px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.2rem; font-weight:bold; box-shadow:0 4px 10px rgba(0,0,0,0.2); }
+.feature__carousel-button:hover { background-color: rgba(27,58,75,0.9); }
+
+@media (min-width:769px) { .feature__carousel { display:none; } }
+@media (max-width:768px) { .feature__cards { display:none; } .feature__carousel { display:flex; } .feature__card { width:90%; margin:0 auto; } }
+
+/* end feature copy */
+
+/* Bussgeld override: force carousel on desktop and center indicators under carousel */
+@media (min-width: 769px) {
+  .bussgeld-categories .feature__carousel { display: flex !important; }
+  .bussgeld-categories .feature__cards { display: none !important; }
+  .bussgeld-categories .feature__carousel-container { max-width: 600px; }
+  .bussgeld-categories .feature__carousel-slide { min-width: 520px; }
+  .bussgeld-categories .feature__carousel-indicators { justify-content: center; margin-top: 1rem; }
+}
+
+/* Ensure mobile keeps carousel behavior */
+@media (max-width: 768px) {
+  .bussgeld-categories .feature__cards { display: none !important; }
+  .bussgeld-categories .feature__carousel { display: flex !important; }
+}
+
+/* bussgeld overrides for carousel layout */
+.bussgeld-categories .feature__carousel { display: block; }
+
+.bussgeld-categories .feature__carousel-container {
+  overflow: visible !important; /* allow arrows to show outside */
+  padding-top: 12px; /* reduced top padding */
+}
+
+.bussgeld-categories .feature__carousel-track {
+  display: flex;
+  gap: 32px;
+  align-items: stretch;
+  transition: transform 0.45s cubic-bezier(.2,.9,.2,1);
+  will-change: transform;
+}
+
+.bussgeld-categories .feature__carousel-slide {
+  box-sizing: border-box;
+}
+
+/* Card styles */
+.bussgeld-categories .feature__card {
+  border-radius: 1rem;
+  padding: 1.25rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative; /* allow internal bottom-positioned elements */
+}
+.bussgeld-categories .feature__card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(2,6,23,0.12); }
+
+.bussgeld-categories .card--green { background: linear-gradient(135deg,#c7e70c 0%,#a3e635 100%); color: #07222b; }
+.bussgeld-categories .card--blue { background: linear-gradient(135deg,#123a48 0%,#1b5564 100%); color: #fff; }
+
+/* Improve typography and icon contrast on blue cards */
+.bussgeld-categories .card--blue .feature__card-title {
+  color: rgba(255,255,255,0.96);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+.bussgeld-categories .card--blue .feature__card-lead {
+  color: rgba(255,255,255,0.88);
+  opacity: 0.98;
+}
+.bussgeld-categories .card--blue .feature__cta {
+  color: rgba(255,255,255,0.95);
+}
+
+.bussgeld-categories .feature__card-icon { width: 44px; height: 44px; display:flex; align-items:center; justify-content:center; border-radius:8px; background: rgba(255,255,255,0.85); }
+.bussgeld-categories .card--blue .feature__card-icon { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.92); box-shadow: none; }
+
+/* Controls positioned at bottom of carousel so they visually sit near card corners */
+.bussgeld-categories .feature__carousel-controls {
+  position: absolute;
+  bottom: 8px; /* align with card bottom */
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 10000;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 12px;
+}
+
+.bussgeld-categories .feature__carousel-button {
+  pointer-events: auto;
+  background: rgba(255,255,255,0.98);
+  color: #07222b;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.12);
+  position: relative; /* keep inside controls area */
+  transform: none; /* clear vertical translate */
+}
+
+/* place left and right arrows near the inner edges of the visible card area */
+.bussgeld-categories .feature__carousel-button.left { margin-left: 8px; }
+.bussgeld-categories .feature__carousel-button.right { margin-right: 8px; }
+
+/* On wider screens move buttons slightly inward so they sit over card corners */
+@media (min-width: 1024px) {
+  .bussgeld-categories .feature__carousel-button.left { margin-left: 24px; }
+  .bussgeld-categories .feature__carousel-button.right { margin-right: 24px; }
+}
+
+/* reduce offset on smaller screens so they don't go off-canvas */
+@media (max-width: 1024px) {
+  .bussgeld-categories .feature__carousel-button.left { margin-left: 12px; }
+  .bussgeld-categories .feature__carousel-button.right { margin-right: 12px; }
+}
+
+@media (max-width: 768px) {
+  .bussgeld-categories .feature__image-wrapper { display: none; }
+  .bussgeld-categories .feature__carousel-slide { width: calc(100% - 48px); }
+  .bussgeld-categories .feature__carousel-button.left { margin-left: 8px; }
+  .bussgeld-categories .feature__carousel-button.right { margin-right: 8px; }
+}
+
+/* Indicators */
+.bussgeld-categories .feature__carousel-indicator { width:10px; height:10px; background:#e6edf2; border-radius:999px; opacity:0.6; }
+.bussgeld-categories .feature__carousel-indicator.active { background:#0f4c3a; opacity:1; }

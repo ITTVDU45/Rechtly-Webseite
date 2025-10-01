@@ -1,0 +1,11 @@
+.bussgeld-cases__inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.case-card { border-radius: 16px; background: #ffffff; box-shadow: 0 8px 24px rgba(2,6,23,0.06); padding: 1.25rem; }
+.case-icon { display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:10px; background:#f1f5f9; }
+.case-card .btn { margin-top: 0.5rem; }
+
+@media (max-width: 1024px) {
+  .bussgeld-cases__inner { padding: 0 1rem; }
+  .case-card { padding: 1rem; }
+}
+
+

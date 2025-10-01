@@ -1,0 +1,11 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout__main {
+  flex: 1;
+  margin-top: 80px; /* Header-Höhe */
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+} 

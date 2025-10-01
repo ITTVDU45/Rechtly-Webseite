@@ -1,0 +1,21 @@
+@import '../../../styles/common.css';
+.upload-handler { display:flex; align-items:center; gap:0.75rem; margin:1rem 0 }
+.file-input { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.upload-button {
+  display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 0.9rem; background:linear-gradient(135deg,#C7E70C 0%,#8BC34A 100%); color:#07222b; border-radius:10px; border:none; cursor:pointer; font-weight:600;
+}
+.camera-button { display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 0.9rem; background:#0f172a; color:#fff; border-radius:10px; border:none; cursor:pointer; font-weight:600 }
+.camera-modal { position:fixed; left:0; top:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.5); z-index:2000 }
+.camera-panel { background:#fff; padding:1rem; border-radius:8px; max-width:900px; width:100%; max-height:90vh; overflow:auto }
+.camera-view { width:100%; height:auto; background:#000 }
+.camera-controls { display:flex; gap:0.5rem; justify-content:center; margin-top:0.5rem }
+.camera-actions button { padding:0.5rem 0.85rem; border-radius:8px }
+.camera-error { display:flex; gap:0.75rem; align-items:center }
+.camera-error-text { color:#fde68a; background:#7f1d1d; padding:0.4rem 0.6rem; border-radius:6px }
+.choose-text { color:#ffffff }
+.upload-progress { background:#e6eef0; border-radius:8px; overflow:hidden; height:12px; margin-top:8px }
+.upload-progress-bar { background:linear-gradient(90deg,#84cc16,#65a30d); height:100%; transition:width 0.3s }
+.upload-progress-text { font-size:12px; padding:4px; color:#07222b }
+
+

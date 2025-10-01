@@ -1,0 +1,693 @@
+/* Mobile First Base Styles */
+.hero-wrapper {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow-x: hidden;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0; /* don't pull under nav */
+  padding-top: 120px; /* push content further below navigation */
+  padding-bottom: 120px; /* more space at bottom */
+  overflow: visible; /* allow dropdowns */
+  background: linear-gradient(135deg, rgba(27,58,75,0.85) 0%, rgba(44,83,100,0.65) 100%);
+  background-blend-mode: overlay;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%);
+  z-index: -1;
+}
+
+.hero__container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: auto;
+  height: auto;
+  box-sizing: border-box;
+  padding-top: 40px; /* push image down */
+  padding-bottom: 40px; /* space at bottom */
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  gap: 1.5rem;
+  padding: 6rem 1rem 2rem; /* increased top padding to create larger gap under nav */
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero__text {
+  max-width: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px; /* avoid overlapping nav */
+}
+
+.hero__text h1 {
+  font-size: 2.8rem;
+  color: rgba(255,255,255,0.98);
+  line-height: 1.02;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  width: 100%;
+  font-weight: 800; /* make headline thicker */
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 550ms ease, transform 550ms ease;
+}
+
+.hero__subtitle {
+  font-size: 1.8rem;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 3rem;
+  font-weight: 700; /* bolder subtitle */
+  text-align: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 650ms ease, transform 650ms ease;
+}
+
+.hero__title-animate.is-visible,
+.hero__subtitle-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero__title-line {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.hero__title-line:last-child {
+  margin-bottom: 0;
+}
+
+.hero__text .highlight {
+  color: #A3E635;
+  position: relative;
+  display: inline-block;
+}
+
+.hero__highlight-animated {
+  color: #A3E635;
+  position: relative;
+  display: inline-block;
+}
+
+.hero__highlight-animated::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  bottom: 0;
+  left: 0;
+  background-color: #A3E635;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.5s ease;
+  animation: underlineAnimation 2s infinite;
+}
+
+@keyframes underlineAnimation {
+  0% {
+    transform: scaleX(0);
+    transform-origin: bottom right;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: bottom right;
+  }
+}
+
+/* Neue Feature Cards */
+.hero__feature-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  margin: 3rem 0 4rem;
+  width: 100%;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  min-width: 0;
+  flex: 1 1 0;
+  box-shadow: 0 15px 35px rgba(2,6,23,0.15);
+  border: 1px solid rgba(255,255,255,0.12);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(2,6,23,0.18);
+}
+
+.feature-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.feature-card__content {
+  width: 100%;
+}
+
+.feature-card__title {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.feature-card__text {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* SVG Icon für Feature Cards */
+.hero__benefit-svg {
+  color: #A3E635;
+  width: 36px;
+  height: 36px;
+  opacity: 1;
+  margin-bottom: 1rem;
+}
+
+.hero__cta-button {
+  background: #A3E635;
+  color: #1B3A4B;
+  border: none;
+  padding: 1.25rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 320px;
+  margin: 2rem 0 3rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Karussell Styles */
+.hero__carousel {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.hero__carousel-container {
+  width: 100%;
+  /* allow larger carousel cards on small screens so text fits */
+  max-width: 460px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero__carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.hero__carousel-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hero__carousel-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.hero__carousel-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero__carousel-indicator.active {
+  background-color: #A3E635;
+}
+
+.hero__carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 460px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.hero__carousel-button {
+  background-color: rgba(27, 58, 75, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.hero__carousel-button:hover {
+  background-color: rgba(27, 58, 75, 0.9);
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .hero-wrapper {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+  .hero {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    margin-top: -40px;
+    padding: 0;
+    padding-top: 40px;
+    width: 100%;
+  }
+
+  .hero__container {
+    padding: 0;
+  }
+
+  .hero__text h1 {
+    font-size: 3.2rem;
+    text-align: center;
+  }
+
+  .hero__subtitle {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .hero__title-line {
+    font-size: 3.2rem;
+  }
+
+  .hero__benefits {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .hero__benefit-item {
+    width: calc(33.333% - 2rem);
+    min-width: 140px;
+    max-width: 180px;
+    height: 140px; /* fixed height on tablet */
+    margin-bottom: 0;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .hero__cta-button {
+    width: auto;
+  }
+}
+
+/* Ensure title always horizontally centered */
+.hero__text,
+.hero__title-line {
+  display: block;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero__text {
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__title-line { max-width: 980px; }
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 80vh;
+    margin: 0;
+    margin-top: -40px;
+    padding: 0;
+    padding-top: 40px;
+    width: 100%;
+    max-width: 100%;
+    /* restore hero background image */
+    background-image: url('/assets/images/Bannerbild.png');
+    background-size: cover;
+    background-position: center right;
+  }
+
+  .hero__container {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    min-height: 80vh;
+    padding: 0;
+    padding-top: 40px;
+  }
+
+  .hero__content {
+    text-align: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15rem 1rem 2rem; /* slightly larger top padding on desktop */
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero__text {
+    max-width: 980px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px; /* extra offset on desktop */
+  }
+
+  .hero__text h1 {
+    font-size: 4rem;
+    line-height: 1.05;
+  }
+
+  .hero__subtitle {
+    font-size: 2.6rem;
+  }
+
+  .hero__benefits {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 2rem;
+    justify-content: flex-start;
+    max-width: 100%;
+    margin: 2rem 0;
+    align-items: flex-start;
+  }
+
+  .hero__benefit-item {
+    width: calc(33.333% - 1.5rem);
+    /* larger cards on desktop so full text is visible */
+    min-width: 300px;
+    max-width: 460px;
+    text-align: left;
+    padding: 1.5rem;
+    height: auto; /* let content define height */
+    justify-content: flex-start;
+  }
+
+/* Removed duplicate rules - using main .hero__benefit-item rules above */
+
+/* smaller icon and spacing to avoid overlap */
+.hero__benefit-svg {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.75rem;
+  color: #07222b;
+}
+
+/* ensure all inner content sits above translucent backdrop */
+.hero__benefit-item > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* ensure icon and text don't overlap with hero background */
+.hero__benefit-icon {
+  z-index: 3;
+}
+
+  .hero__benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero__text h1 {
+    font-size: 3.8rem;
+  }
+  
+  .hero__content {
+    gap: 1.5rem;
+    
+  }
+}
+
+@media (max-width: 992px) {
+  .hero__text h1 {
+    font-size: 3.2rem;
+  }
+
+  .hero__subtitle {
+    font-size: 3rem;
+  }
+  
+  .hero__feature-cards {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__feature-cards {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .hero-wrapper {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+  .hero {
+    margin: 0;
+    margin-top: 60px;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    min-height: calc(80vh - 60px);
+  }
+
+  .hero__container {
+    padding: 0;
+    width: 100%;
+    margin: 0;
+  }
+
+  .hero__content {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .hero__text {
+    padding: 1rem 0;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .hero__text h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .hero__subtitle {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .hero__title-line {
+    font-size: 40px !important;
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+
+  /* Mobile card styles */
+  .feature-card {
+    width: 100%;
+    max-width: 320px;
+    margin-bottom: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  /* Removed duplicate rules - using main .hero__benefit-item rules above */
+}
+
+@media (max-width: 576px) {
+  .hero {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    margin-top: 60px;
+    padding: 0;
+  }
+
+  .hero__text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.4rem;
+  }
+
+  /* Small mobile card styles */
+  .feature-card {
+    width: 100%;
+    max-width: 280px;
+    padding: 1rem;
+  }
+
+  /* Removed duplicate rules - using main .hero__benefit-item rules above */
+
+  .hero__cta-button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .hero__benefit-icon {
+    font-size: 2rem;
+  }
+}
+
+/* Explicit subtitle sizing overrides requested */
+@media (max-width: 992px) {
+  .hero__subtitle {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__subtitle {
+    text-align: center;
+    font-size: 2.2rem;
+  }
+}
+
+.hero__content--left {
+  align-items: center !important;
+  text-align: center !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.hero__text--left {
+  text-align: center !important;
+  align-items: center !important;
+  padding-left: 0;
+}
+
+/* Desktop-Stile für linksbündige Klassen */
+@media (min-width: 769px) {
+  .hero__content--left {
+    align-items: flex-start !important;
+    text-align: left !important;
+    padding-left: 2.5rem;
+    padding-right: 1rem;
+  }
+
+  .hero__text--left {
+    text-align: left !important;
+    align-items: flex-start !important;
+    padding-left: 0;
+  }
+}

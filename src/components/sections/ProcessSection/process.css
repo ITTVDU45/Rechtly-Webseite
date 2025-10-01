@@ -1,0 +1,64 @@
+.process {
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #f7fbfb 0%, #ffffff 100%);
+  border-radius: 16px;
+  margin: 2rem 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  overflow: visible;
+  color: #07222b;
+}
+
+.process-inner { max-width:1100px; margin:0 auto; padding:0 1rem; }
+.stepper { display:flex; gap:1rem; align-items:flex-start; justify-content:space-between; margin-top:1.5rem; }
+.step { background:transparent; flex:1; padding:1rem; border-radius:12px; transition:transform .22s ease, box-shadow .22s ease; text-align:left; }
+.step { transform:translateY(0); box-shadow: 0 2px 6px rgba(2,6,23,0.04); background: linear-gradient(180deg, #ffffff, #fbfcfb); border:1px solid rgba(11,24,30,0.04); opacity:0.35; transform:translateY(8px); }
+.step.revealed { opacity:1; transform:translateY(0); transition: opacity .5s ease, transform .45s cubic-bezier(.2,.9,.2,1); box-shadow:0 18px 40px rgba(2,6,23,0.08); }
+.step-icon { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:0.75rem; background:linear-gradient(135deg,#C7E70C,#A3E635); color:#07222b; }
+.step-title { font-size:1.05rem; font-weight:700; margin-bottom:0.25rem; }
+.step-lead { color:#6c757d; font-weight:600; margin-bottom:0.5rem; }
+.step-desc { color:#495057; font-size:0.95rem; }
+.process-cta { text-align:center; margin-top:1.75rem; }
+.btn.large { padding:1rem 2rem; font-size:1.05rem; border-radius:999px; }
+.neon-cta { display:inline-flex; align-items:center; gap:0.75rem; padding:1rem 2rem; border-radius:14px; background:linear-gradient(135deg,#C7E70C 0%,#A3E635 100%); color:#07222b; font-weight:700; box-shadow:0 12px 30px rgba(167,230,40,0.12); border:none; }
+.neon-cta svg { transform:translateX(6px); }
+.microcopy { margin-top:0.75rem; color:#6c757d; }
+
+/* legacy ProcessSection styles (kept for compatibility) */
+.process__container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.process__header { text-align: center; margin-bottom: 2.5rem; }
+.process__header h2 { font-family: 'Poppins', sans-serif; font-size: 2.2rem; color: #07222b; margin-bottom: 0.75rem; }
+.process__header p { font-size: 1.05rem; color: #6c757d; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .stepper { display:flex; overflow-x:auto; padding-bottom:0.5rem; }
+  .step { min-width:260px; flex:0 0 auto; }
+}
+
+.step-card { display:flex; flex-direction:column; gap:0.5rem; align-items:flex-start; }
+.step-icon-large { width:72px; height:72px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#C7E70C,#A3E635); color:#07222b; font-size:1.5rem; }
+.step-card .step-title { font-size:1.1rem; font-weight:700; }
+.step-card .step-lead { color:#6c757d; font-weight:600; }
+.step-card .step-desc { color:#495057; }
+
+/* timeline styles */
+.stepper-wrapper { position:relative; }
+.process .timeline { position:absolute; left:4rem; right:4rem; top:22px; height:8px; pointer-events:none; z-index:10; }
+.process .timeline-line { position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); height:8px; background:linear-gradient(90deg, rgba(11,24,30,0.06), rgba(11,24,30,0.02)); border-radius:6px; z-index:1 }
+.process .timeline-progress { position:absolute; left:0; top:50%; transform:translateY(-50%); height:8px; width:0%; background:linear-gradient(90deg,#C7E70C 0%,#A3E635 100%); border-radius:6px; transition: width 600ms cubic-bezier(.2,.9,.2,1); box-shadow:0 8px 22px rgba(163,231,53,0.12); z-index:2 }
+.process .timeline-dots { position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); display:flex; justify-content:space-between; align-items:center; z-index:20 }
+.process .stepper-wrapper { padding-top:64px; }
+.process .timeline-dot { width:64px; height:64px; border-radius:999px; background:linear-gradient(135deg,#C7E70C 0%,#A3E635 100%); box-shadow:0 8px 30px rgba(2,6,23,0.06); border:4px solid rgba(11,24,30,0.06); transition: background .2s ease, transform .22s ease; display:flex; align-items:center; justify-content:center; z-index:22; overflow:visible; }
+.process .timeline-dot.revealed { transform: translateY(-2px) scale(1.04); box-shadow:0 10px 34px rgba(163,231,53,0.14); }
+.process .timeline-dot-label { font-size:1.15rem; font-weight:800; color:#07222b; line-height:1; display:block; }
+.timeline-dot.revealed .timeline-dot-label { color:#07222b !important; }
+
+@media (max-width: 900px) {
+  .timeline { left:2rem; right:2rem; top:18px; }
+  .stepper-wrapper { padding-top:54px; }
+  .timeline-dot { width:44px; height:44px; border-width:2px; }
+  .timeline-dot-label { font-size:1rem !important; }
+}
+
+/* progress width is driven by IntersectionObserver -> no demo class needed */
+
+

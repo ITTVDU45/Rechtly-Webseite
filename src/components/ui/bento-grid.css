@@ -1,0 +1,121 @@
+/* Bento-Grid mit Glasmorphismus-Effekt */
+
+.bento-grid {
+  --bento-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--bento-gap);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Glasmorphismus-Effekt für alle Karten */
+.bento-grid-item {
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 15px 35px rgba(2,6,23,0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  color: #ffffff;
+}
+
+.bento-grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(2,6,23,0.2);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Spezielle Styling für die Geschwindigkeitsverstoß-Karte */
+.bento-grid-item[data-feature-id="1"] {
+  background: rgba(255,255,255,0.15);
+}
+
+/* Hover-Effekt für alle Karten */
+.bento-grid-item:hover .bento-grid-item-title::after {
+  width: 100%;
+}
+
+.bento-grid-item-title {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.bento-grid-item-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #A3E635;
+  transition: width 0.3s ease;
+}
+
+.bento-grid-item-description {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Spezielle Styling für die Karten mit Bildern */
+.bento-grid-item-header {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.bento-grid-item-header img {
+  transition: transform 0.5s ease;
+}
+
+.bento-grid-item:hover .bento-grid-item-header img {
+  transform: scale(1.05);
+}
+
+/* Icon-Styling */
+.bento-grid-item-icon {
+  color: #A3E635;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+/* Hintergrund für die gesamte Feature-Sektion */
+.feature {
+  background: linear-gradient(135deg, #07222b 0%, #1B3A4B 100%);
+  color: #ffffff;
+}
+
+.feature__header h2 {
+  color: #ffffff;
+}
+
+.feature__description {
+  color: rgba(255,255,255,0.9);
+}
+
+/* Anpassungen für unterschiedliche Kartengrößen */
+.bento-grid-item.md\:col-span-2 {
+  grid-column: span 2;
+}
+
+.bento-grid-item.md\:row-span-2 {
+  grid-row: span 2;
+}
+
+@media (max-width: 767px) {
+  .bento-grid-item {
+    grid-column: span 2 !important;
+  }
+}

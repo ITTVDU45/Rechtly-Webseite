@@ -1,0 +1,172 @@
+
+
+## 🛠 Ziel & Ausrichtung
+
+Diese Seite soll potenzielle Gutachter überzeugen, mit Rechtly zusammenzuarbeiten, indem sie Vorteile, Prozesse, Automatisierung, KI-Unterstützung und betriebswirtschaftliche Perspektiven (z. B. Provision) klar darstellt. Der Fokus liegt auf: **Zentralisierung**, **Effizienz**, **Transparenz** und **Partnerschaftlichkeit**.
+
+---
+
+## 📄 Seitenstruktur / Sektionen
+
+1. Hero-Sektion
+2. Partnerschaft & Beispielrechnung / gestaffelte Provision
+3. Vorteile für Gutachter
+4. So funktioniert’s (Prozess)
+5. Vorteile mit KI & Automatisierung
+6. Zentrales System / Plattform-Umgebung
+7. FAQ
+8. CTA & Kontakt
+9. (Footer – evtl. gemeinsam mit Gesamtsite)
+
+---
+
+## 🔍 Detaillierte Inhalts- & Design-Roadmap
+
+### 1. **Hero-Sektion**
+
+| Element        | Inhalt / Textvorschlag                                                                                                        |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Titel**      | „Werde Partner‑Gutachter bei Rechtly“                                                                                         |
+| **Subtitel**   | „Effizient, digital & fair – übernehme Fälle direkt in deiner Region mit minimalem Aufwand.“                                  |
+| **CTA-Button** | „Jetzt Partner werden“ oder „Interesse anmelden“                                                                              |
+| **Visual**     | Bild von Werkstatt / Gutachter, vielleicht mit Tablet / Laptop in Händen, idealerweise Teamfoto oder stilisierte Illustration |
+
+**Designhinweise**
+
+* Vollbild oder Halb-Hero mit Overlay
+* Text auf der linken Seite, Bild rechts
+* CTA im Blickfeld
+* Farben: Markenfarben von Rechtly (Teal, Slate etc.)
+
+---
+
+### 2. **Partnerschaft & Beispielrechnung / Provision**
+
+Diese Sektion soll klar vermitteln, wie Gutachter entlohnt werden – idealerweise mit **Beispielrechnung**.
+
+| Teilbereich                               | Inhalt                                                                                                                                                                                                                                                                                                                     |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Partnerschaftsmodell**                  | Kurztext: „Als Partner erhältst du Fälle, kommunizierst zentral im System und bekommst gestaffelte Provisionen – je nach Fallgröße, Region & Schwierigkeitsgrad.“                                                                                                                                                          |
+| **Beispielrechnung / Provisionsstruktur** | Container mit Rechenbeispiel (z. B.):<br> • Fallwert: 2.000 €<br> • Grundprovision: 20 % = 400 €<br> • Bonus bei > 50 Fällen / Monat: +5 % usw.<br> • Anteil für Partneranwalt ggf. abgezogen – dein Nettobetrag sichtbar <br> • Fußnote: „Beispielrechnung – tatsächliche Beträge variieren je nach Partnervereinbarung.“ |
+| **Visual / Gestaltung**                   | Karten oder Boxen mit den Zahlen + Icon / Diagramm <br> Beispiel: Balkendiagramm, Tortendiagramm oder Vergleichsdiagramm <br> Abgesetzter Hintergrund (z. B. leichtes Grau)                                                                                                                                                |
+
+**Design**
+
+* Zwei Spalten: Links Text + Modell, rechts Beispiel-Container mit Zahlen
+* Karten oder Box mit `rounded-xl`, `shadow-md`
+* Icons für Provision, Wachstum, Geld, Diagramm
+
+---
+
+### 3. **Vorteile für Gutachter**
+
+Liste mit 4–6 Vorteilskarten:
+
+* 💼 **Mehr Aufträge** ohne aktives Akquirieren
+* ⏱ **Zeitersparnis** durch zentrale Fallverwaltung
+* 🔁 **Klare Kommunikation** mit Mandant & Anwalt im System
+* 📊 **Echtzeit-Statistiken & Analytics** über deine Performance
+* 🤖 **Automatisierte Zuordnung & Priorisierung**
+* 🔒 **Zuverlässige Abrechnung & Auszahlung**
+
+**Design**
+
+* Grid-Layout (z. B. 3 Spalten auf Desktop, 1 Spalte mobil)
+* Icons + kurzer Text
+* Hover-Effekte, leichte Animation
+* Einheitlicher Stil mit Markenfarben
+
+---
+
+### 4. **So funktioniert’s (Prozess)**
+
+Darstellung in 4–5 Schritten:
+
+1. **Fallzuteilung** – Rechtly weist dir passende Fälle zu
+2. **Kontakt & Vereinbarung** – Gutachter kontaktiert Mandant & Anwalt
+3. **Gutachten durchführen** – Vor-Ort oder digital
+4. **Ergebnis & Dokumentation** – Upload in Plattform + Übergabe
+5. **Abrechnung & Auszahlung** – Provision wird automatisch berechnet und ausgezahlt
+
+**Design**
+
+* Horizontaler Ablauf (Timeline) oder vertikale Steps
+* Icons bei jedem Schritt
+* Bei Hover Tooltip oder kurze Erklärung
+* Mobile Version: vertikal stacking
+
+---
+
+### 5. **Vorteile mit KI & Automatisierung**
+
+Dieser Abschnitt zeigt, wie KI / Automatisierung den Gutachter-Alltag erleichtert:
+
+* 🧠 **Automatische Fallanalyse** vor Zuweisung
+* 📈 **Prädiktive Bewertung** (Wahrscheinlichkeit erfolgreicher Fall)
+* ➕ **Intelligente Priorisierung** von Fällen
+* 🔔 **Automatisierte Benachrichtigungen & Statusupdates**
+* 📑 **Vorstrukturierte Berichtsvorlagen & Dokumentassistenz**
+
+**Design**
+
+* Karten oder horizontale Streifen mit Icon + Text
+* Leicht abgesetzter Hintergrund
+* Eventuell animierte Icons / Micro-Animations
+
+---
+
+### 6. **Zentrale Plattform / System-Umgebung**
+
+Darstellung, wie alles in einem System zusammenläuft:
+
+* **Dashboard**: Übersicht aller Fälle, Status, Einnahmen
+* **Kommunikationsbereich**: Chat / Messaging zwischen Mandant, Anwalt & Gutachter
+* **Statistiken & Analytics**: Graphen, KPIs, Performance-Dashboards
+* **Dokumentenverwaltung**: alles zentral abgelegt, Upload / Download
+* **Benachrichtigungen / Alerts**: Fristen, Updates, neue Fälle
+
+**Design**
+
+* Screenshot oder Mockups des Dashboard
+* Spaltenlayout: Bild / Mockup + Textbeschreibung
+* Hintergrund evtl. abgedunkelt, damit Dashboard hervortritt
+* UI-Elemente: Karten, Graphen, Liniencharts etc.
+
+---
+
+### 7. **FAQ**
+
+Thematisch & relevant:
+
+* Wie werde ich Partner-Gutachter?
+* Welche Voraussetzungen gelten?
+* Wie wird die Provision berechnet?
+* Wie und wann erfolgt die Auszahlung?
+* Wie funktioniert die Kommunikation mit Mandanten / Anwälten?
+* Welche Tools stehen mir zur Verfügung?
+* Kann ich selbst Fälle ablehnen?
+* Was passiert bei Streitfällen / Unklarheiten?
+
+**Design**
+
+* Akkordeon-Komponente
+* Klar getrennte Fragen & Antworten
+* ID-basierte Ankerlinks (z. B. `id="faq-provision"`)
+* Mobil optimiert
+
+---
+
+### 8. **CTA & Kontakt zur Partnerschaft**
+
+* **Titel**: `Jetzt Partner werden & durchstarten`
+* **CTA-Button**: „Interesse anmelden“ oder „Partneranfrage senden“
+* **Kurzer Zusatztext**: „Erfahre mehr über das Modell & individuelle Konditionen.“
+* Optional: kleines Formular (Name, E-Mail, Firmenname) oder Link zur Anfrage
+
+**Design**
+
+* Auffälliger Button
+* Farbkontrast
+* CTA zentriert oder prominent im Blickfeld
+
+---

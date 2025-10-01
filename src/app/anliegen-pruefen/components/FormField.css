@@ -1,0 +1,7 @@
+.form-field { margin-bottom: 1rem; display:flex; flex-direction:column; gap:0.5rem; }
+.form-field label { font-weight:600; color:#fff; }
+.form-field input { padding:0.6rem 0.75rem; border-radius:0.5rem; border:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.04); color:#fff; }
+.help-text { font-size:0.875rem; color:#cbd5e1; }
+.required { color:#A3E635; margin-left:0.25rem; }
+
+

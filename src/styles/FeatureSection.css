@@ -1,0 +1,14 @@
+.feature {
+  padding: 4rem 2rem;
+  background: #ffffff;
+  border-radius: 40px;
+  margin: 2rem auto;
+  max-width: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.feature__container { /* ... */ }
+
+/* (rest of original feature CSS kept) */
+
+

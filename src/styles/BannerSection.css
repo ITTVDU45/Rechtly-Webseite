@@ -1,0 +1,19 @@
+.banner {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: -70px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  overflow: hidden;
+}
+
+.banner__container { /* ... */ }
+
+/* (rest of original banner CSS kept) */
+
+

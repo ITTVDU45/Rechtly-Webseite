@@ -1,0 +1,55 @@
+
+
+## 🛠 Roadmap „Über uns“-Seite – Rechtly (Next.js Version)
+
+**Ziel:** Eine professionelle, vertrauenswürdige und ansprechende Über-uns-Seite, modular umgesetzt, modern im Design, mit klarer Markenidentität, die alle vorhandenen Sektionen abdeckt:
+
+* Hero Sektion
+* Unsere Mission und Vision
+* Vorteile mit Rechtly
+* Wer steht hinter Rechtly?
+* Unser Versprechen
+* FAQ
+* CTA
+
+---
+
+
+
+## 🔍 Inhalt & visuelle Darstellung je Komponente / Sektion
+
+| Komponente             | Titel / Überschrift                                                    | Inhalt / Textideen                                                                                                                                                                                                 | Visuelle Gestaltung / Layout                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **AboutHero**          | „Über Rechtly“ oder „Wir sind Rechtly – Ihre Partner im Verkehrsrecht“ | Kurz prägnant: Wer wir sind in einem Satz + Hauptversprechen („digital, schnell, transparent“)                                                                                                                     | Große Hero-Bild / Illustration, evtl. halbtransparenter Overlay, CTA-Button („Mehr erfahren“) – Bild rechts oder Hintergrundbild                         |
+| **AboutMissionVision** | Mission & Vision                                                       | Mission: Warum Rechtly existiert („zugängliches Verkehrsrecht für alle“ etc.)<br>Vision: Wohin wir wollen („Marktführer im Legal-Tech Verkehrsrecht“, „vollständige digitale Beratung“)                            | Zwei Spalten: links Text, rechts Illustration/Icons. Weißer Hintergrund, klare Typographie                                                               |
+| **AboutBenefits**  (NUTZE template )    | Vorteile mit Rechtly                                                   | 3‑5 Vorteile, z. B.:<br>‑ Vollständige digitale Abwicklung<br>‑ Kostenfrei für Geschädigte<br>‑ Expertenwissen aus Recht & Technik<br>‑ Transparente Prozesse & Statusverfolgung<br>‑ Schnelle Antworten / Support | Kartenlayout (Grid), Icons oben, kurze Texte, Hover-Effekte, leicht abgesetzter Hintergrund (leichtes Grau)                                              |
+| **AboutTeam**          | Wer steht hinter Rechtly?                                              | Fotos, Namen, Rollen (z. B. Gründer, Developer, Legal Expert, Produktverantwortlicher)<br>Kurztext: Erfahrung, Hintergrund, Werte                                                                                  | Team-Grid mit Bildern, runde oder rechteckige Frames, evtl. Animation beim Hover, evtl. kurze Zitate “Warum Rechtly” vom Gründer oder einem Teammitglied |
+| **AboutPromise**       | Unser Versprechen                                                      | Vertrauensversprechen: z. B. Datenschutz, faire Preise, klare Kommunikation, keine versteckten Kosten                                                                                                              | Icon-boxen oder Checkliste, evtl. Hintergrundfarbe abweichend, um Sektion hervorzuheben                                                                  |
+| **AboutFAQ**       (NUTZE TEMPLATE)    | Häufige Fragen                                                         | Fragen rund um Rechtly: „Wie funktioniert Rechtly?“, „Ist meine Anfrage vertraulich?“, „Wer sind unsere Partner?“, „Wie teuer ist der Service?“ etc.                                                               | Akkordeon-Layout, kompakt, mobile optimiert, klare Trennung zwischen Frage & Antwort                                                                     |
+| **AboutCTA**           | Call to Action                                                         | Einladung zum Handeln: „Jetzt Sofort-Einschätzung starten“, „Kontaktieren Sie uns“, evtl. Newsletter / Lead‑Formular                                                                                               | Große Button(s), zentrale Platzierung, vielleicht Bild oder Maskottchen, starker Farbkontrast, leicht animiert                                           |
+
+---
+
+## 🗓 Zeitplan / Roadmap für Umsetzung
+
+| Phase                                       | Dauer / Zieltermin | Aufgaben                                                                                                                                                                                                              |
+| ------------------------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Phase 1 — Planung & Content**             | 1 Woche            | • Texte für alle Sektionen entwerfen und intern absegnen<br>• Auswahl der Bilder & Icons (Teamfotos, Illustrationen)<br>• Farb- und Typografiecheck (aktuelle Brand-Guidelines in Tailwind etc.)                      |
+| **Phase 2 — Design & Mockup**               | 1 Woche            | • Designmockups jeder Sektion (Figma / Sketch / XD)<br>• Feedbackrunde zum Layout & Schriftgrößen / Responsivität                                                                                                     |
+| **Phase 3 — Komponenten-Setup in Next.js**  | 1 Woche            | • Komponentenstruktur wie oben umsetzen (AboutHero, MissionVision etc.)<br>• Placeholder-Bilder einsetzen<br>• Tailwind / CSS-Klassen definieren (Grids, Padding, Typography)                                         |
+| **Phase 4 — Content-Integration & Testing** | 1 Woche            | • Alle Texte & Bilder einpflegen<br>• Akkordeon-FAQ Funktion testen<br>• Responsivität prüfen (Mobil / Tablet / Desktop)<br>• Interne Review: Rechtschreibung, Tonfall, Markenstimme                                  |
+| **Phase 5 — Feinschliff & Launch**          | 3‑4 Tage           | • Performance & SEO Checks (Meta, Alt-Texte, Ladezeiten)<br>• Accessibility Prüfung (Kontrast, ARIA für Akkordeons etc.)<br>• CTA testen, Tracking & Analytics einrichten<br>• Veröffentlichung & Monitoring Feedback |
+
+---
+
+## 🎨 Design- & UX-Stil Hinweise
+
+* Konsistente Farben & Typographie wie bei der Umstellung: primäre Markenfarbe (z. B. Teal / Slate etc.), neutrale Hintergründe, klare Schriftfamilie
+* Weißflächen, großzügiges Padding, klare Abschnitte, ausreichend Abstand
+* Icons / Illustrationen: modern, flach oder minimalistisch, passend zur Brand
+* Hover- oder Mouseover-Effekte bei Teams / Benefits zur Auflockerung
+* Mobile-first Design: Abschnitte reihen sich untereinander, Menü / Navigation verfügbar
+
+
+
+[1]: https://www.orbitmedia.com/blog/about-page-best-practices-examples/?utm_source=chatgpt.com "How to make an About page (7 Best Practices plus 10 ..."

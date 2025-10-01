@@ -1,0 +1,80 @@
+"use client";
+import React from 'react';
+import Section from '../../../../src/components/ui/Section';
+import { useEffect, useLayoutEffect, useRef } from 'react';
+import Image from 'next/image';
+import '../bussgeld.css';
+import '../../../../src/components/ui/section.css';
+
+export default function Partner() {
+  const leftRef = useRef<HTMLDivElement | null>(null);
+  const visualRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll('.partner-features li')) as HTMLElement[];
+    els.forEach((el, i) => setTimeout(() => el.classList.add('revealed'), 120 * i));
+    return () => els.forEach((el) => el.classList.remove('revealed'));
+  }, []);
+
+  // Align visual exactly from first card top to last card bottom
+  useLayoutEffect(() => {
+    function alignVisual() {
+      if (!leftRef.current || !visualRef.current) return;
+      const first = leftRef.current.querySelector('.partner-features li:first-child') as HTMLElement | null;
+      const last = leftRef.current.querySelector('.partner-features li:last-child') as HTMLElement | null;
+      if (!first || !last) return;
+
+      const leftRect = leftRef.current.getBoundingClientRect();
+      const firstRect = first.getBoundingClientRect();
+      const lastRect = last.getBoundingClientRect();
+
+      const topOffset = Math.max(0, firstRect.top - leftRect.top);
+      const height = Math.max(0, lastRect.bottom - firstRect.top);
+
+      visualRef.current.style.marginTop = `${topOffset}px`;
+      visualRef.current.style.height = `${height}px`;
+    }
+
+    alignVisual();
+    window.addEventListener('resize', alignVisual);
+    return () => window.removeEventListener('resize', alignVisual);
+  }, []);
+  return (
+    <Section className="section--lg section--white">
+      {/* Heading spans both columns */}
+      <div className="section-heading">
+        <h2 className="section-title">Mehr Fälle. Weniger Aufwand. Partner von Rechtly werden.</h2>
+        <p className="section-subtitle">Profitieren Sie von einer digitalen Plattform, die Mandanten, Anwälte und Gutachter zusammenbringt – und erhalten Sie 50 € Provision pro erfolgreicher Vermittlung.</p>
+      </div>
+
+      <div className="bussgeld-partner two-col">
+        <div className="partner-left" ref={leftRef}>
+
+          <ul className="partner-features">
+            <li><strong>Automatisierte Fallzuweisung:</strong> Keine Zeit verlieren – wir bringen die passenden Fälle direkt zu Ihnen.</li>
+            <li><strong>Digitale Plattform:</strong> Alle Dokumente, Kommunikation und Statusmeldungen in einer Oberfläche.</li>
+            <li><strong>Transparenz & Kontrolle:</strong> Jeder Schritt nachvollziehbar, jederzeit einsehbar.</li>
+            <li><strong>Fairer Bonus:</strong> 50 € pro erfolgreicher Vermittlung.</li>
+          </ul>
+
+          <div className="partner-ctas">
+            <button className="btn primary">Jetzt Partner werden</button>
+            <button className="btn secondary">Mehr erfahren</button>
+          </div>
+
+          <p className="partner-note">Mehr Aufträge – weniger Aufwand. Werden Sie Teil des Rechtly-Partnernetzwerks.</p>
+        </div>
+
+        <div className="partner-right">
+          <div className="partner-visual" id="partnerVisual" ref={visualRef}>
+            {/* Partner mockup image from public assets */}
+            <Image src="/assets/images/kooperation mit KFZ.png" alt="Rechtly Partnerportal Mockup" width={560} height={360} style={{ borderRadius: 12 }} />
+            <div className="badge">50 € pro Fall</div>
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+

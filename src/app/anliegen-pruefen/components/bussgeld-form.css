@@ -1,0 +1,209 @@
+@import '../../../styles/common.css';
+
+.bussgeld-container { max-width:1200px; margin:0 auto; padding:2rem; min-height:100vh; background:#f8f9fa }
+.step-container { background: linear-gradient(135deg,#1B3A4B 0%,#2C5364 100%); padding:3rem 2rem 4rem; border-radius:30px; margin:4rem 2rem; box-shadow:0 20px 40px rgba(27,58,75,0.15); position:relative; overflow:hidden }
+.step-container h2 { color: #f8fafb; font-size: 1.6rem; font-weight: 800; margin-bottom: 1rem }
+.step-content { max-width:980px; margin:0 auto; z-index:1 }
+
+/* Ensure readable text colors inside dark step container */
+.step-container h3.question-title,
+.step-container .form-group label,
+.step-container .form-group .white-label,
+.step-container .field-hint,
+.step-container .upload-hint,
+.step-container .contact-vertical label,
+.step-container .date-input,
+.step-container input,
+.step-container textarea,
+.step-container .option-title {
+  color: #f8fafb !important;
+}
+
+.step-container input::placeholder,
+.step-container textarea::placeholder {
+  color: rgba(248,250,251,0.7) !important;
+}
+
+.progress-container{ display:flex; justify-content:center; margin-top: 0.75rem }
+.progress-bar{ width: min(980px,100%); background: #ffffff; height: 8px; border-radius: 999px; overflow:hidden }
+.progress{ height:100%; background: linear-gradient(135deg,#C7E70C 0%,#8BC34A 100%); width:0 }
+
+.bussgeld-hero {
+  /* Gradient like main marketing hero and spaced below the fixed CardNav */
+  background: linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%);
+  color: #ffffff;
+  /* increase top padding so header (fixed) does not overlap hero content */
+  padding: calc(100px + 2rem) 1rem 2rem; /* adjusted to header height */
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 0;
+}
+.bussgeld-hero-inner { max-width: 980px; margin: 0 auto; text-align: center }
+.bussgeld-hero h1 { margin: 0 0 0.5rem 0; font-size: 1.75rem; color: #f8fafb }
+.bussgeld-hero p { margin: 0 0 1rem 0; color: #dbeafe }
+.bussgeld-hero-cta { background: linear-gradient(135deg,#C7E70C 0%,#8BC34A 100%); color:#07222b; padding:0.5rem 1rem; border-radius:10px; border:none; cursor:pointer }
+.stepper-wrapper { display:flex; flex-direction:column; align-items:center; margin-top: 3rem; margin-bottom: 1rem }
+.step-header { display:flex; align-items:center; justify-content:center; gap:1rem; margin-bottom:0.75rem; width:100%; }
+.step-title { font-weight:700; color:#07222b; background:#fff; padding:0.5rem 0.75rem; border-radius:12px }
+.process-bar-container { margin: 1rem 0 1.5rem; width: min(980px,100%); margin-left: auto; margin-right: auto; display:flex; justify-content:center }
+.process-progress { display:flex; flex-direction:column; gap:0.5rem; }
+.steps-progress { display:flex; gap:0.5rem; align-items:center; }
+.step { width:34px; height:34px; min-width:34px; border-radius:999px; background:#e6eef0; display:flex; align-items:center; justify-content:center; color:#666; font-weight:600; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.03) }
+.step.active { background:linear-gradient(135deg,#C7E70C 0%,#8BC34A 100%); color:#07222b; transform:scale(1.06); box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.step.completed { background:linear-gradient(135deg,#A3E635 0%,#72B626 100%); color:#07222b }
+.connector { height:4px; width:60px; background:#eef2f7; border-radius:4px; margin:0 6px }
+.connector.completed { background: linear-gradient(135deg,#C7E70C 0%,#8BC34A 100%) }
+
+/* Removed Tailwind-derived selectors that caused parsing errors.
+   Step connector visuals are handled by .connector and .connector.completed above. */
+.step-number { font-size:0.9rem }
+.options-grid { display:grid; grid-template-columns:1fr; gap:1rem; margin:2rem 0 }
+.option-button { background:rgba(255,255,255,0.98); padding:1.2rem; border-radius:12px; border:none; cursor:pointer; display:flex; gap:1rem; align-items:center }
+.option-button.selected { box-shadow: 0 8px 28px rgba(2,6,23,0.08); transform: translateY(-2px); }
+.option-title { font-size: 1rem; color: #07222b }
+.question-title { font-size: 1.2rem; font-weight: 700; color: #f8fafb; margin-bottom: 1rem }
+.options-grid { display:grid; grid-template-columns: 1fr; gap:1rem; margin:2rem 0 }
+.option-button { background:rgba(255,255,255,0.98); padding:1.6rem 1.2rem; border-radius:12px; border:none; cursor:pointer; display:flex; gap:1rem; align-items:center }
+.option-button.selected { outline: none; background: linear-gradient(135deg,#A3E635 0%,#72B626 100%); color: #07222b; border: 1px solid rgba(7,34,43,0.06); }
+
+/* stronger visual for selected card contents */
+.option-button.selected .option-title { color: #07222b; font-weight: 700 }
+.option-button.selected .option-icon { background: #ffffff; color: #07222b }
+.option-icon{ font-size:1.6rem; background:#f0fdf4; width:44px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:8px }
+.stepper-wrapper .mx-2 { cursor: pointer }
+.stepper-wrapper .mx-2:focus { outline: none }
+.stepper-wrapper .mx-2:focus-visible { outline: none }
+.form-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin:1.2rem 0; background:rgba(255,255,255,0.95); padding:1.2rem; border-radius:12px }
+.form-group{ display:flex; flex-direction:column; gap:0.5rem }
+.contact-vertical { max-width:980px; background: rgba(255,255,255,0.95); padding:1.2rem; border-radius:12px; display:flex; flex-direction:column; gap:1rem }
+.contact-vertical .form-group input { min-height:48px }
+.contact-vertical label { color: #f8fafb; font-weight:600 }
+.grid-two-col { display:grid; grid-template-columns: 1fr 1fr; gap:1rem }
+.full-width { grid-column: 1 / -1 }
+
+/* Form controls styled like KFZ form */
+.form-group label { font-weight: 600; color: #0b3942 }
+.form-group input,
+.form-group select { padding: 0.6rem 0.75rem; border-radius: 8px; border: 1px solid rgba(2,6,23,0.06); background: #ffffff; color: #07222b }
+.form-group input { min-height: 44px; font-size: 15px }
+.form-group select { min-height: 44px; font-size: 15px; padding-right: 2.25rem }
+
+/* custom select arrow */
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath fill='%23072343' d='M6 7L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 7px;
+}
+.form-group input[type="number"] { appearance: textfield; -webkit-appearance: textfield; -moz-appearance: textfield }
+
+/* Radio groups */
+.radio-options { display:flex; gap:1rem; align-items:center }
+.radio-label { display:inline-flex; align-items:center; gap:0.75rem; color:#0b3942 }
+.radio-label input { margin-right:0.35rem }
+
+/* Radios: override generic input styles so they render correctly (no large padded boxes) */
+.form-group input[type="radio"], .form-group input[type="checkbox"] {
+  padding: 0;
+  min-height: auto;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  background: transparent;
+  border: none;
+  appearance: auto;
+  -webkit-appearance: radio;
+  -moz-appearance: radio;
+  accent-color: #07222b; /* modern browsers */
+}
+
+/* Ensure radio is vertically centered inside the label */
+.radio-label input { align-self: center }
+
+/* uploaded files list styling */
+.uploaded-files { display:flex; flex-direction:column; gap:0.5rem; margin-top:0.75rem }
+.uploaded-files .file-item { background:#fff; padding:0.5rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center }
+.uploaded-files .file-item span { color:#07222b; font-weight:600 }
+.uploaded-files .remove-file { background:none; border:none; color:#ef4444; cursor:pointer; font-size:1.1rem }
+
+/* make inputs full width inside form groups */
+.form-group input, .form-group select { width:100% }
+
+/* focus states and subtle inner shadow like KFZ form */
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  box-shadow: 0 4px 12px rgba(2,6,23,0.04);
+  border-color: rgba(7,34,43,0.12);
+}
+
+/* required star color consistent */
+.form-group .required { color: #A3E635; margin-left: 0.25rem }
+
+/* responsive: collapse to one column on small screens */
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr }
+}
+.navigation-buttons{ display:flex; justify-content:space-between; gap:1rem; margin-top:1rem }
+/* global back button style */
+.back-button{
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.95);
+  color: rgba(255,255,255,0.95);
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: background 160ms ease, color 160ms ease, transform 120ms ease;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+}
+.back-button:hover{ background: rgba(255,255,255,0.95); color: #07222b; transform: translateY(-2px); }
+.back-button:active{ transform: translateY(0); }
+
+/* specific stepper back button (subtle variant) */
+.stepper-back {
+  /* match main back-button style for visibility on dark hero */
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.95);
+  color: rgba(255,255,255,0.95);
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: background 160ms ease, color 160ms ease, transform 120ms ease;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+}
+.stepper-back:hover{ background: rgba(255,255,255,0.95); color: #07222b; transform: translateY(-2px); }
+.stepper-back:active{ transform: translateY(0); }
+.next-button{ 
+  background: linear-gradient(135deg,#C7E70C 0%,#8BC34A 100%);
+  color: #07222b;
+  padding:0.8rem 1.2rem;
+  border-radius:10rem;
+  font-weight:700;
+}
+.file-upload{ border:2px dashed #E2E8F0; padding:1rem; border-radius:10px }
+
+/* Upload step: make titles and helper text white on dark hero */
+.file-upload label { color: #f8fafb; font-weight:700; display:block; margin-bottom:0.5rem }
+.file-upload .upload-hint { color: #f8fafb; margin-top:0.75rem }
+.file-upload .uploaded-files .file-item span { color: #f8fafb }
+.file-upload .uploaded-files .file-item { background: transparent; border: 1px solid rgba(255,255,255,0.06) }
+
+/* make upload/camera buttons white text to match hero */
+.file-upload .upload-button { color: #fff }
+.file-upload .camera-button { color: #fff }
+
+/* stronger selectors for Stepper context to ensure white text */
+.step-container .file-upload label,
+.step-container .file-upload .upload-hint {
+  color: #f8fafb !important;
+}
+.step-container .file-upload .upload-button,
+.step-container .file-upload .camera-button,
+.step-container .file-upload .upload-progress-text {
+  color: #fff !important;
+}
+
+

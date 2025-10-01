@@ -1,0 +1,335 @@
+.feature {
+  padding: 4rem 2rem;
+  /* Hintergrund wird jetzt vom übergeordneten Container übernommen */
+  background: transparent;
+  border-radius: 0;
+  margin: 0 auto;
+  max-width: auto;
+  /* removed box-shadow to avoid nested card look */
+  box-shadow: none;
+  color: #ffffff;
+}
+
+.feature__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.feature__header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 1rem;
+}
+
+.feature__header h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.feature__description {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+}
+
+.feature__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.feature__image-wrapper {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.feature__image {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.feature__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Anpassungen für das neue Bento-Grid */
+.feature__cards .bento-grid {
+  gap: 1rem;
+}
+
+/* Spezielle Anpassung für Geschwindigkeitsverstoß-Karte */
+.feature__cards [data-feature-id="1"] {
+  grid-column: span 1 !important;
+}
+
+.feature__carousel {
+  margin-top: 2rem;
+  display: none;
+}
+
+.feature__carousel-container {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+.feature__carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  padding: 0 1rem;
+}
+
+.feature__carousel-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature__carousel-button:hover {
+  background: #A3E635;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(163, 230, 53, 0.3);
+  background: linear-gradient(135deg, #A3E635 0%, #C7E70C 100%);
+}
+
+.feature__carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.feature__carousel-slide {
+  flex: 0 0 100%;
+  padding: 0 1rem;
+}
+
+.feature__carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 2rem;
+}
+
+.feature__carousel-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.feature__carousel-indicator.active {
+  width: 30px;
+  border-radius: 10px;
+  background-color: #A3E635;
+}
+
+.prozess-section {
+  margin-top: 2.5rem;
+}
+
+.prozess-card-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.prozess-card {
+  /* Glasmorphismus-Effekt wie die Bento-Karten */
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  /* increase width to match ProcessSection card */
+  max-width: 1200px;
+  width: 100%;
+  box-shadow: 0 15px 35px rgba(2,6,23,0.15);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  gap: 1.25rem;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.prozess-steps-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+}
+
+.prozess-step {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background: transparent;
+  padding: 0.75rem 0.5rem;
+  border-radius: 12px;
+}
+
+.prozess-step-number {
+  font-weight: 700;
+  color: #A3E635; /* Grün für besseren Kontrast und Akzent */
+  font-size: 1.1rem;
+  min-width: 36px;
+}
+
+.prozess-step-icon {
+  min-width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #A3E635; /* Grün für besseren Kontrast und Akzent */
+}
+
+.prozess-step-title {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  color: #ffffff; /* Weiß für besseren Kontrast auf Glasmorphismus-Hintergrund */
+  font-weight: 600;
+}
+
+.prozess-step-desc {
+  margin: 0;
+  color: rgba(255,255,255,0.9); /* Leicht transparentes Weiß für bessere Lesbarkeit */
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.prozess-card-cta {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .prozess-steps-list {
+    grid-template-columns: 1fr;
+  }
+  .prozess-card {
+    padding: 1rem;
+  }
+}
+
+/* Prozess-Card CTA: Neongrün mit Glow-Effekt */
+.prozess-card .cta-button.primary.large,
+.prozess-card-cta .cta-button.primary.large {
+  background: linear-gradient(135deg, #a3e635 0%, #84cc16 100%);
+  color: #07222b; /* Dunkle Schrift auf hellem Hintergrund */
+  border: none;
+  box-shadow: 0 0 15px rgba(163, 230, 53, 0.5); /* Neongrüner Glow */
+  padding: 0.9rem 1.6rem; /* comfortable touch target */
+  border-radius: 12px; /* slightly rounded */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  font-weight: 700; /* Fetter für bessere Lesbarkeit */
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Subtiler Textshadow */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Prozess-Card CTA hover: Intensiverer Glow und Animation */
+.prozess-card .cta-button.primary.large:hover,
+.prozess-card-cta .cta-button.primary.large:hover {
+  background: linear-gradient(135deg, #bef264 0%, #a3e635 100%);
+  box-shadow: 0 0 20px rgba(163, 230, 53, 0.7); /* Stärkerer Glow */
+  transform: translateY(-2px);
+}
+
+/* Pulsierender Effekt für den Button */
+.prozess-card .cta-button.primary.large::after,
+.prozess-card-cta .cta-button.primary.large::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(163, 230, 53, 0.4) 0%, rgba(132, 204, 22, 0.4) 100%);
+  border-radius: 12px;
+  z-index: -1;
+  opacity: 0;
+  transform: scale(1.1);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.button-icon {
+  font-size: 1.3rem;
+}
+
+/* responsive media queries */
+@media (max-width: 992px) {
+  .feature__content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .feature__image-wrapper {
+    position: relative;
+    top: 0;
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .feature {
+    padding: 3rem 1.5rem;
+    margin: 1rem auto;
+    border-radius: 30px;
+  }
+  
+  .feature__header {
+    margin-bottom: 2.5rem;
+  }
+  
+  .feature__carousel {
+    display: block;
+  }
+  
+  .feature__cards {
+    display: none;
+  }
+}

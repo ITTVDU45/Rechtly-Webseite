@@ -1,0 +1,107 @@
+@import '../../../styles/common.css';
+
+.kfz-gutachten-container { max-width: 1200px; margin: 0 auto; padding: 2rem; min-height: 100vh; background: #f8f9fa; }
+.kfz-hero {
+  /* Gradient like main marketing hero and spaced below the fixed CardNav */
+  background: linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%);
+  color: #ffffff;
+  padding: calc(60px + 2rem) 1rem 2rem; /* leave room for CardNav (60px) */
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+.kfz-hero-inner { max-width: 980px; margin: 0 auto; text-align: center }
+.kfz-hero h1 { margin: 0 0 0.5rem 0; font-size: 1.75rem; color: #f8fafb }
+.kfz-hero p { margin: 0 0 1rem 0; color: #dbeafe }
+.kfz-hero-cta { background: linear-gradient(135deg,#C7E70C 0%,#8BC34A 100%); color:#07222b; padding:0.5rem 1rem; border-radius:10px; border:none; cursor:pointer }
+.step-container { background: linear-gradient(135deg,#1B3A4B 0%,#2C5364 100%); padding: 3rem 2rem 4rem; border-radius: 30px; margin: 4rem 2rem; box-shadow: 0 20px 40px rgba(27,58,75,0.15); color: white; }
+.options-container { display:flex; gap:1rem; }
+.option-button { background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); padding:1rem 1.25rem; border-radius:0.75rem; color:white; }
+.upload-container { margin:1rem 0 }
+.step-guidance { display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1rem }
+/* guide-text styles are inherited; empty rule removed to silence linter */
+.step-guidance .guide-text p { margin:0.25rem 0 0 0; color:#dbeafe }
+.step-guidance .guide-image { width:320px; max-width:100%; margin:0 auto }
+.step-guidance .guide-image img { width:100%; height:auto; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.18); display:block }
+.preview-grid { display:flex; gap:1rem; flex-wrap:wrap }
+.preview-container { position:relative }
+.image-preview { width:160px; height:100px; object-fit:cover; border-radius:8px }
+.remove-image-button { position:absolute; top:6px; right:6px; background:#fff; border-radius:50%; border:none; padding:0.2rem }
+.validation-message { background:#fff3cd; padding:0.75rem; border-radius:8px; margin:1rem 0 }
+.navigation-buttons { display:flex; justify-content:space-between; margin-top:1rem }
+.action-button { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 1.25rem; min-width: 140px; border-radius: 12px; font-weight: 700; white-space: nowrap; }
+.back-button { background: #ffffff; color: #1b3a4b; border: none; box-shadow: 0 2px 0 rgba(0,0,0,0.06); }
+.next-button { 
+  background: linear-gradient(135deg,#C7E70C 0%,#8BC34A 100%);
+  color: #07222b;
+  box-shadow: 0 8px 20px rgba(6,30,28,0.12);
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  border: none;
+  min-width: 120px;
+  display: inline-block;
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+.next-button:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(6,30,28,0.14); }
+.next-button:active { transform: translateY(0); box-shadow: 0 6px 14px rgba(6,30,28,0.12); }
+.next-button:focus { outline: 3px solid rgba(199,231,12,0.18); outline-offset: 2px; }
+
+/* enforce same fixed width so both buttons match visually */
+.action-button.equal-width { min-width: 140px; width: 140px; }
+.file-item { display:flex; justify-content:space-between; align-items:center; padding:0.5rem; background:#f8f9fa; border-radius:6px; margin-bottom:0.5rem }
+.remove-file-button { background:none; border:none; color:#ef4444; cursor:pointer }
+.file-item span { color: #07222b; font-weight: 600 }
+
+.stepper-wrapper { display:flex; flex-direction:column; align-items:center; }
+.step-header { display:flex; align-items:center; justify-content:center; gap:1rem; margin-bottom:0.75rem; width:100%; }
+.step-title { font-weight:700; color:#07222b; background:#fff; padding:0.5rem 0.75rem; border-radius:12px }
+
+/* Card title styling */
+.step-container h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 1.5rem 0;
+  color: #f1f5f9;
+}
+
+/* spacing between card content and action buttons */
+.nav-actions { display:flex; align-items:center; justify-content:flex-start; gap:1rem; margin-top:2rem }
+
+.grid-two-col { display:grid; grid-template-columns: 1fr 1fr; gap:1rem }
+.grid-three-col { display:grid; grid-template-columns: 1fr 120px 1fr; gap:1rem }
+.contact-form .form-field { margin-bottom: 0.75rem }
+
+.process-bar-container { margin: 0.5rem 0 1rem; width: min(980px,100%); margin-left: auto; margin-right: auto; display:flex; justify-content:center }
+.step-content { width: min(980px,100%); }
+.progress-container{ display:flex; justify-content:center; margin-top: 0.75rem }
+.progress-bar{ width: min(980px,100%); background: #eef2f7; height: 8px; border-radius: 999px; overflow:hidden }
+.progress{ height:100%; background: linear-gradient(135deg,#C7E70C 0%,#8BC34A 100%); width:0 }
+.step-container { width:100%; }
+.process-progress { display:flex; flex-direction:column; gap:0.5rem; }
+.steps-progress { display:flex; gap:0.5rem; align-items:center; }
+.step { width:34px; height:34px; min-width:34px; border-radius:999px; background:#e6eef0; display:flex; align-items:center; justify-content:center; color:#666; font-weight:600; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.03) }
+.step.active { background:linear-gradient(135deg,#C7E70C 0%,#8BC34A 100%); color:#07222b; transform:scale(1.06); box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.step.completed { background:linear-gradient(135deg,#A3E635 0%,#72B626 100%); color:#07222b }
+.step-number { font-size:0.9rem }
+.progress-text { font-size:0.9rem; color:#475569 }
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .kfz-hero { padding: calc(60px + 1rem) 0.5rem 1.5rem; }
+  .kfz-hero-inner { padding: 0 1rem }
+
+  .process-bar-container { width: 100%; padding: 0 1rem }
+  .step-content { width: 100%; padding: 0 1rem }
+  .step-container { margin: 0 auto 1.5rem; padding: 1.5rem; border-radius: 18px }
+
+  .options-container { flex-direction: column; gap: 0.75rem; align-items: stretch }
+  .option-button { width: 100%; text-align: left }
+
+  .nav-actions { justify-content: center; gap: 0.75rem }
+  .back-button, .next-button { min-width: 40%; }
+
+  .step-header { margin-bottom: 0.5rem }
+}
+
+
+

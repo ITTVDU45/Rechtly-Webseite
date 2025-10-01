@@ -1,0 +1,13 @@
+.animated-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
+}
+
+.animated-card:hover {
+  box-shadow: 0 15px 35px rgba(163, 230, 53, 0.15);
+} 

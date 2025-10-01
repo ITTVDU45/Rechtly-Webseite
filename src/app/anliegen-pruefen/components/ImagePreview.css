@@ -1,0 +1,29 @@
+.image-preview-wrapper { position: relative; display: inline-block; }
+.image-preview { width:100%; height:120px; object-fit:cover; border-radius:0.5rem; }
+.remove-image-button { position:absolute; top:8px; right:8px; background:rgba(255,255,255,0.95); color:#ef4444; border:none; border-radius:999px; width:28px; height:28px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+.preview-title { font-size:0.9rem; margin-bottom:0.5rem; color:#fff; }
+
+.image-preview-container{display:flex;flex-direction:column;gap:0.5rem}
+.image-preview-header{display:flex;justify-content:space-between;align-items:center}
+.image-title{font-weight:600}
+.delete-button{background:#fff;border-radius:6px;padding:0.2rem 0.5rem;border:1px solid #ef4444;cursor:pointer;color:#ef4444}
+.delete-button svg { color: #ef4444; fill: #ef4444 }
+
+/* high-specificity overrides: some parent containers set color: white; force red X */
+.step-container .delete-button,
+.step-container .remove-image-button,
+.image-preview-container .delete-button,
+.image-preview-wrapper .remove-image-button {
+  color: #ef4444 !important;
+  background: rgba(255,255,255,0.95) !important;
+}
+.step-container .delete-button svg,
+.step-container .remove-image-button svg,
+.image-preview-container .delete-button svg {
+  fill: #ef4444 !important;
+  stroke: #ef4444 !important;
+}
+.image-wrapper{overflow:hidden;border-radius:8px}
+.preview-image{width:100%;height:auto;display:block}
+
+

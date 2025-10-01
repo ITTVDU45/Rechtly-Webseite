@@ -1,0 +1,327 @@
+.magic-bento {
+  --glow-color: rgba(132,0,255,0.18);
+  --spot-radius: 300px;
+  position: relative;
+}
+
+.magic-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem; /* Reduzierter Abstand zwischen den Karten */
+  /* allow rows to grow with content so text never overlaps; base min height set */
+  grid-auto-rows: minmax(140px, auto); /* Reduzierte Reihenhöhe von 180px auf 140px */
+  grid-auto-flow: dense; /* allow dense packing like Masonry/Bento */
+}
+
+.magic-card {
+  border: none;
+  border-radius: 16px;
+  padding: 0; /* padding handled by inner */
+  box-shadow: none; /* remove inner shadow to avoid double box */
+  display: block; /* make card block to fill wrapper */
+  text-align: left;
+  cursor: pointer;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 0; /* let grid rows control height and allow content to grow */
+  background: transparent; /* wrapper provides white panel */
+  color: #07222b; /* dark blue text */
+  height: 100%; /* Stellt sicher, dass die Karte die volle Höhe einnimmt */
+  width: 100%; /* Stellt sicher, dass die Karte die volle Breite einnimmt */
+}
+
+/* ElectricBorder wrapper tweak to avoid double rounding overflow */
+.magic-border-outer {
+  display: block; /* wrapper is grid item */
+  width: 100%;
+  border-radius: 16px;
+  padding: 0; /* ElectricBorder renders its own glow layers */
+  background: #ffffff; /* make wrapper the white panel */
+  transition: all 0.3s ease;
+  border: none;
+  height: 100%; /* Stellt sicher, dass die Karte die volle Höhe einnimmt */
+}
+
+/* If a card has media, make the panel image-first with overlay */
+.magic-border-outer.with-media {
+  /* keep wrapper neutral but allow image to be visible edge-to-edge */
+  background: transparent;
+}
+
+.magic-border-outer > button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: inherit;
+  background-clip: padding-box;
+  background: transparent;
+}
+
+.magic-card--lead .magic-card-inner {
+  padding-left: 1.25rem;
+}
+
+.magic-card {
+  /* Ensure inner card doesn't create visual double-shadow on hover */
+  transition: none;
+}
+
+/* apply hover lift and shadow to the wrapper so the whole panel (with glow) moves
+   as a single unit and does not create a separate inner floating card */
+.magic-border-outer {
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.magic-border-outer:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+/* Kein grüner Rahmen mehr, nur verbesserte Schatten */
+.magic-card--lead .magic-border-outer:hover,
+.magic-grid > div:nth-child(3n) .magic-border-outer:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.magic-card-inner {
+  z-index: 2;
+  padding: 1.25rem 1.5rem;
+  box-sizing: border-box;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  position: relative;
+}
+
+/* when media present, reduce inner padding to make image visible */
+.magic-border-outer.with-media .magic-card-inner {
+  padding: 0.75rem 1rem 1rem 1rem;
+  position: relative;
+}
+
+.magic-card--lead .magic-border-outer.with-media::after,
+.magic-grid > div:nth-child(3n) .magic-border-outer.with-media::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #A3E635, #C7E70C);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.magic-card--lead .magic-border-outer.with-media:hover::after,
+.magic-grid > div:nth-child(3n) .magic-border-outer.with-media:hover::after {
+  transform: scaleX(1);
+}
+
+/* subtle CTA arrow positioned bottom-right inside each card */
+.magic-card-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+  color: #1B3A4B;
+}
+
+/* Grüner CTA-Button nur für Lead-Karte und jede dritte Karte */
+.magic-card--lead .magic-card-cta,
+.magic-grid > div:nth-child(3n) .magic-card-cta {
+  background: rgba(163, 230, 53, 0.9);
+  color: #fff;
+}
+
+.magic-card-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+}
+
+/* Hover-Effekt für CTA-Button in Lead-Karte und jeder dritten Karte */
+.magic-card--lead .magic-card-cta:hover,
+.magic-grid > div:nth-child(3n) .magic-card-cta:hover {
+  background: #A3E635;
+}
+
+/* Hover-Effekt für CTA-Button in anderen Karten */
+.magic-card:not(.magic-card--lead):not(:nth-child(3n)) .magic-card-cta:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.magic-card-media {
+  position: relative;
+  width: 100%;
+  height: 160px; /* fixed preview height for better visibility */
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 0 0.75rem 0;
+}
+
+/* Spezielle Anpassung für Geschwindigkeitsverstoß-Karte (erste Karte) */
+.magic-card--lead .magic-card-media {
+  height: 140px; /* Weiter reduziert von 200px auf 140px */
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+  margin: -1.25rem -1.5rem 1rem -1.5rem;
+  width: calc(100% + 3rem);
+}
+
+/* reduce inner shadow and make edges softer */
+.magic-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.02);
+  pointer-events: none;
+}
+
+.magic-card-title { 
+  color: #07222b; 
+  position: relative;
+  display: inline-block;
+}
+
+.magic-card--lead .magic-card-title::after,
+.magic-grid > div:nth-child(3n) .magic-card-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #A3E635;
+  transition: width 0.3s ease;
+}
+
+.magic-card--lead .magic-border-outer:hover .magic-card-title::after,
+.magic-grid > div:nth-child(3n) .magic-border-outer:hover .magic-card-title::after {
+  width: 100%;
+}
+
+/* Für andere Karten einen subtileren Effekt */
+.magic-card:not(.magic-card--lead):not(:nth-child(3n)) .magic-card-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 30px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: width 0.3s ease;
+}
+
+.magic-card:not(.magic-card--lead):not(:nth-child(3n)) .magic-border-outer:hover .magic-card-title::after {
+  width: 60px;
+}
+
+.magic-card-desc { color: #2C3845; }
+
+/* ensure image containers show properly when using next/image with fill */
+.magic-card-media > img,
+.magic-card-media > span,
+.magic-card-media > div {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.magic-card-title {
+  margin: 6px 0 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.magic-card-desc {
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.magic-card::after {
+  content: '';
+  position: absolute;
+  left: var(--glow-x, 50%);
+  top: var(--glow-y, 50%);
+  width: var(--spot-radius, 300px);
+  height: var(--spot-radius, 300px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--glow-color) 0%, transparent 60%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* size modifiers (spans on 6-col grid) */
+.magic-card--small { grid-column: span 2; grid-row: span 1; }
+.magic-card--medium { grid-column: span 3; grid-row: span 2; }
+.magic-card--large { grid-column: span 4; grid-row: span 3; }
+
+/* lead card: large image on the left spanning more rows and columns */
+.magic-card--lead { 
+  grid-column: 1 / span 2; /* Weiter reduziert von 3 auf 2 Spalten */
+  grid-row: 1 / span 1; /* Weiter reduziert von 2 auf 1 Reihe */
+}
+
+/* Angepasstes Padding für die Lead-Karte */
+.magic-card--lead .magic-card-inner { 
+  padding: 0 1rem 1rem 1rem; /* Reduziertes Padding */
+  position: relative;
+  z-index: 2;
+}
+
+/* Card highlight effects */
+.magic-card--lead .with-media::before,
+.magic-grid > div:nth-child(3n) .with-media::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 50px 50px 0;
+  border-color: transparent #A3E635 transparent transparent;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.magic-card--lead .with-media:hover::before,
+.magic-grid > div:nth-child(3n) .with-media:hover::before {
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .magic-grid { grid-template-columns: repeat(4, 1fr); gap: 0.75rem; } /* Noch kleinerer Abstand */
+  .magic-card--small { grid-column: span 2; }
+  .magic-card--medium { grid-column: span 2; }
+  .magic-card--large { grid-column: span 4; }
+  .magic-card--lead { grid-column: 1 / span 2; grid-row: 1 / span 1; } /* Anpassung für Lead-Karte auf mittleren Bildschirmen */
+  .magic-card-media { height: 120px; } /* Kleinere Bilder */
+  .magic-card--lead .magic-card-media { height: 140px; } /* Anpassung für Lead-Karte auf mittleren Bildschirmen */
+}
+
+@media (max-width: 640px) {
+  .magic-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; } /* Noch kleinerer Abstand */
+  .magic-card--small, .magic-card--medium, .magic-card--large { grid-column: span 2; }
+  .magic-card--lead { grid-column: 1 / span 2; grid-row: 1 / span 1; } /* Anpassung für Lead-Karte auf kleinen Bildschirmen */
+  .magic-card-media { height: 100px; } /* Noch kleinere Bilder */
+  .magic-card--lead .magic-card-media { height: 120px; } /* Anpassung für Lead-Karte auf kleinen Bildschirmen */
+}

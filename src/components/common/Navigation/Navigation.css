@@ -1,0 +1,64 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--primary-color);
+  padding: 1rem 2rem;
+}
+
+.navigation__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem; /* Mehr Abstand zwischen den Elementen */
+}
+
+.navigation__menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navigation__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto; /* Zusätzliche Sicherheit für die Positionierung */
+}
+
+/* Grundsätzlich das Burger-Menü ausblenden */
+.mobile-menu-button {
+  display: none;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .mobile-menu-button {
+    display: block; /* Nur auf Mobile anzeigen */
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .navigation__menu {
+    display: none; /* Hauptmenü auf Mobile ausblenden */
+  }
+
+  .navigation__container {
+    padding: 0 1rem;
+  }
+
+  .navigation__actions {
+    gap: 0.5rem;
+  }
+}
+
+.submenu-title::after {
+  content: none !important;
+} 

@@ -1,0 +1,257 @@
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  background: #ffffff;
+  margin: 3rem 1rem 1rem; /* increased top spacing to separate from previous section */
+  padding: 4rem 0; /* similar vertical spacing as TrustSection */
+  box-sizing: border-box;
+  border-radius: 32px; /* rounded corners */
+  overflow: hidden; /* ensure contents follow round */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.banner__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem; /* match TrustSection container padding */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.banner__content {
+  display: flex;
+  align-items: left;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  gap: 2rem;
+}
+
+.banner__text {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+/* remove dark pseudo background behind text */
+.banner__text::before {
+  display: none;
+}
+
+.banner__text h1 {
+  font-size: 3.5rem;
+  color: #1B3A4B; /* dark title base color */
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.banner__subtitle {
+  font-size: 2rem;
+  color: #495057;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+.banner__title-line {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.banner__title-line:last-child {
+  margin-bottom: 0;
+}
+
+.banner__text .highlight {
+  color: #1B3A4B;
+  position: relative;
+  display: inline-block;
+}
+
+/* new gradient highlight style applied to BannerSection.tsx class banner__highlight */
+.banner__highlight {
+  background: linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.banner__benefits {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.banner__benefit-item {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  padding: 1rem;
+  text-align: left;
+  flex: 1;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  border: 0;
+}
+
+.banner__benefit-item:hover {
+  border-color: #A3E635;
+}
+
+.banner__benefit-icon {
+  font-size: 2rem;
+  color: #1B3A4B;
+  margin-right: 0.75rem;
+}
+
+.banner__benefit-item h3 {
+  font-size: 1.1rem;
+  color: #1B3A4B;
+  margin-bottom: 0.25rem;
+}
+
+.banner__benefit-item p {
+  font-size: 0.98rem;
+  color: #6c757d;
+}
+
+.banner__cta-button {
+  background: linear-gradient(135deg, #C7E70C 0%, #A3E635 100%);
+  color: #07222b !important;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: none; /* remove shadow so text contrast is clearer */
+}
+
+.banner__cta-button:hover {
+  background: linear-gradient(135deg, #C7E70C 0%, #A3E635 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(163, 230, 53, 0.12);
+}
+
+.banner__image-wrapper {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 45%;
+}
+
+.banner__image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 1200px) {
+  .banner__text h1 {
+    font-size: 3rem;
+  }
+  
+  .banner__content {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .banner__text h1 {
+    font-size: 2.5rem;
+  }
+
+  .banner__subtitle {
+    font-size: 1.8rem;
+  }
+
+  .banner__benefits li {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    margin-top: 60px; /* Angepasste Höhe für mobile Navigation */
+    height: auto;
+    min-height: calc(100vh - 60px);
+  }
+
+  .banner__container {
+    padding-top: 0;
+    min-height: 100vh;
+    padding-bottom: 2rem;
+  }
+
+  .banner__content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .banner__text {
+    padding: 2rem 1rem;
+    max-width: 100%;
+  }
+
+  .banner__text h1 {
+    font-size: 2.5rem;
+  }
+
+  .banner__subtitle {
+    font-size: 1.5rem;
+  }
+
+  .banner__benefits {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .banner__text::before {
+    left: -50%;
+    width: 200%;
+    border-radius: 0 0 50% 50%;
+    transform: translateY(-30%);
+  }
+
+  .banner__benefit-item {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .banner__image-wrapper {
+    max-width: 80%;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .banner__text h1 {
+    font-size: 2rem;
+  }
+
+  .banner__subtitle {
+    font-size: 1.5rem;
+  }
+
+  .banner__benefits li {
+    font-size: 1rem;
+  }
+
+  .banner__cta-button {
+    width: 100%;
+    padding: 1rem;
+  }
+} 

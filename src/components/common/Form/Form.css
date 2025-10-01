@@ -1,0 +1,136 @@
+.form__group {
+  position: relative;
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+/* Input Container */
+.form__input-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  max-width: 100%;
+}
+
+/* Input Styling */
+.form__input,
+.form__textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: #1B3A4B;
+  background: white;
+  border: 1px solid rgba(27, 58, 75, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+.form__input:focus,
+.form__textarea:focus {
+  outline: none;
+  border-color: #A3E635;
+  box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.1);
+}
+
+.form__textarea {
+  min-height: 100px;
+  resize: vertical;
+  max-width: 100%;
+}
+
+/* Label Styling */
+.form__label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #1B3A4B;
+  font-size: 0.9rem;
+}
+
+/* Error Styling */
+.form__error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.form__input.error,
+.form__textarea.error {
+  border-color: #dc3545;
+}
+
+/* Checkbox/Radio Styling */
+.form__checkbox-group,
+.form__radio-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.form__checkbox,
+.form__radio {
+  width: 18px;
+  height: 18px;
+  accent-color: #A3E635;
+}
+
+/* Full Width Fields */
+.form__group.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .form__input-container {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .form__input-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .form__group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form__input,
+  .form__textarea {
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .form__label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Optional: Floating Labels */
+.form__group.floating {
+  position: relative;
+}
+
+.form__group.floating .form__label {
+  position: absolute;
+  top: 50%;
+  left: 1.25rem;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  background: white;
+  padding: 0 0.5rem;
+}
+
+.form__group.floating .form__input:focus ~ .form__label,
+.form__group.floating .form__input:not(:placeholder-shown) ~ .form__label {
+  top: 0;
+  font-size: 0.875rem;
+  color: #A3E635;
+} 
