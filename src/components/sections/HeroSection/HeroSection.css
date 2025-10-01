@@ -619,6 +619,8 @@ html, body {
     margin: 0;
     margin-top: 60px;
     padding: 0;
+    min-height: auto;
+    padding-bottom: 60px;
   }
 
   .hero__text h1 {
@@ -627,6 +629,7 @@ html, body {
 
   .hero__subtitle {
     font-size: 1.4rem;
+    margin-bottom: 2rem;
   }
 
   /* Small mobile card styles */
@@ -636,12 +639,25 @@ html, body {
     padding: 1rem;
   }
 
-  /* Removed duplicate rules - using main .hero__benefit-item rules above */
+  .hero__carousel {
+    margin: 1.5rem 0;
+  }
+
+  .hero__carousel-container {
+    max-width: 300px;
+  }
+
+  .hero__carousel-button {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
 
   .hero__cta-button {
     width: 100%;
     padding: 0.8rem;
     font-size: 1rem;
+    margin: 1.5rem 0;
   }
 
   .hero__benefit-icon {

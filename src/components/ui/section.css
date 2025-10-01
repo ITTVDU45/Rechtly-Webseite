@@ -30,8 +30,39 @@
 }
 
 @media (max-width: 768px) {
-  .section-card .section-title { font-size: 2rem; }
-  .section-card .section-subtitle { font-size: 1rem; }
+  .section-card { 
+    padding: 2rem 1rem; 
+    margin: 1.5rem 0;
+    border-radius: 12px;
+  }
+  .section-card .section-title { 
+    font-size: 2rem; 
+    margin-bottom: 0.75rem;
+  }
+  .section-card .section-subtitle { 
+    font-size: 1rem; 
+    margin-bottom: 1.25rem;
+  }
+  .section__container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-card { 
+    padding: 1.5rem 0.75rem; 
+    margin: 1rem 0;
+    border-radius: 10px;
+  }
+  .section-card .section-title { 
+    font-size: 1.75rem; 
+  }
+  .section-card .section-subtitle { 
+    font-size: 0.95rem; 
+  }
+  .section__container {
+    padding: 0 0.75rem;
+  }
 }
 
 

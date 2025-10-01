@@ -1,11 +1,108 @@
-.bussgeld-cases__inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-.case-card { border-radius: 16px; background: #ffffff; box-shadow: 0 8px 24px rgba(2,6,23,0.06); padding: 1.25rem; }
-.case-icon { display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:10px; background:#f1f5f9; }
-.case-card .btn { margin-top: 0.5rem; }
-
-@media (max-width: 1024px) {
-  .bussgeld-cases__inner { padding: 0 1rem; }
-  .case-card { padding: 1rem; }
+.bussgeld-cases__inner { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 2rem; 
 }
 
+.case-card { 
+  border-radius: 16px; 
+  background: #ffffff; 
+  box-shadow: 0 8px 24px rgba(2,6,23,0.06); 
+  padding: 1.25rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(2,6,23,0.1);
+}
+
+.case-icon { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 44px; 
+  height: 44px; 
+  border-radius: 10px; 
+  background: #f1f5f9; 
+}
+
+.case-card .btn { 
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.case-card .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(163, 230, 53, 0.3);
+}
+
+@media (max-width: 1024px) {
+  .bussgeld-cases__inner { 
+    padding: 0 1.5rem; 
+  }
+  
+  .case-card { 
+    padding: 1.1rem; 
+  }
+}
+
+@media (max-width: 768px) {
+  .bussgeld-cases__inner { 
+    padding: 0 1rem; 
+  }
+  
+  .case-card { 
+    padding: 1rem; 
+  }
+  
+  .case-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .case-card .btn {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .bussgeld-cases__inner { 
+    padding: 0 0.75rem; 
+  }
+  
+  .case-card { 
+    padding: 0.9rem; 
+    border-radius: 12px;
+  }
+  
+  .case-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+  
+  .case-card h4 {
+    font-size: 1rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  
+  .case-card p {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .case-card .btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+  }
+}
 

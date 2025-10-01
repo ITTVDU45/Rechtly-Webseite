@@ -24,8 +24,21 @@ const TrustSection: React.FC = () => {
           <p className="trust__subtitle">Bekannt aus</p>
           <div className="trust__press-logos">
             {pressLogos.map((press) => (
-              <motion.div key={press.id} whileHover={{ scale: 1.05 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                <Image src={press.logo} alt={press.name} className="trust__press-logo" width={140} height={36} />
+              <motion.div 
+                key={press.id} 
+                whileHover={{ scale: 1.05 }} 
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }}
+              >
+                <Image 
+                  src={press.logo} 
+                  alt={press.name} 
+                  className="trust__press-logo" 
+                  width={140} 
+                  height={36} 
+                  sizes="(max-width: 400px) 100px, (max-width: 768px) 120px, 140px"
+                />
               </motion.div>
             ))}
           </div>

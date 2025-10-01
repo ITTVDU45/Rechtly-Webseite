@@ -77,12 +77,28 @@
 .feature__carousel {
   margin-top: 2rem;
   display: none;
+  width: 100%;
+}
+
+.feature__carousel.active {
+  display: block !important;
 }
 
 .feature__carousel-container {
   position: relative;
   overflow: hidden;
-  padding: 2rem 0;
+  /* ensure carousel matches the section/container width */
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  /* Prevent overflow on mobile */
+  overflow-x: hidden;
 }
 
 .feature__carousel-controls {
@@ -92,8 +108,9 @@
   width: 100%;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 2;
+  z-index: 10;
   padding: 0 1rem;
+  pointer-events: none;
 }
 
 .feature__carousel-button {
@@ -106,13 +123,14 @@
   background: rgba(255, 255, 255, 0.9);
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
+  pointer-events: auto;
 }
 
 .feature__carousel-button:hover {
   background: #A3E635;
-  color: white;
+  color: #07222b;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(163, 230, 53, 0.3);
   background: linear-gradient(135deg, #A3E635 0%, #C7E70C 100%);
@@ -121,33 +139,166 @@
 .feature__carousel-track {
   display: flex;
   transition: transform 0.5s ease;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
 }
 
 .feature__carousel-slide {
   flex: 0 0 100%;
-  padding: 0 1rem;
+  /* center the card inside the slide and prevent overlap */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%; /* Ensure slide takes full width */
+  margin: 0 auto; /* Center the slide */
+}
+
+.feature__card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
+  /* Make the card width fit within the slide and centered */
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+.feature__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(163, 230, 53, 0.5);
+}
+
+.feature__card-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.feature__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.feature__card:hover .feature__card-img {
+  transform: scale(1.05);
+}
+
+.feature__card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(7, 34, 43, 0.2), rgba(7, 34, 43, 0.7));
+}
+
+.feature__card-content {
+  padding: 1.5rem;
+  position: relative;
+}
+
+.feature__card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(163, 230, 53, 0.2), rgba(199, 231, 12, 0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: #A3E635;
+  box-shadow: 0 4px 12px rgba(163, 230, 53, 0.2);
+}
+
+.feature__card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.feature__card p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.feature__card-arrow {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #A3E635, #C7E70C);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #07222b;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(163, 230, 53, 0.3);
+}
+
+.feature__card:hover .feature__card-arrow {
+  transform: translateX(5px);
+  box-shadow: 0 6px 16px rgba(163, 230, 53, 0.4);
+}
+
+.feature__carousel-progress {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  margin: 1.5rem 0 0.5rem;
+  overflow: hidden;
+}
+
+.feature__carousel-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #A3E635 0%, #C7E70C 100%);
+  border-radius: 2px;
+  transition: width 0.3s ease;
 }
 
 .feature__carousel-indicators {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .feature__carousel-indicator {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #d1d5db;
+  background-color: rgba(255, 255, 255, 0.3);
   cursor: pointer;
   transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+  outline: none;
 }
 
 .feature__carousel-indicator.active {
   width: 30px;
   border-radius: 10px;
-  background-color: #A3E635;
+  background: linear-gradient(90deg, #A3E635 0%, #C7E70C 100%);
 }
 
 .prozess-section {
@@ -325,11 +476,349 @@
     margin-bottom: 2.5rem;
   }
   
-  .feature__carousel {
-    display: block;
+  .feature__header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .feature__description {
+    font-size: 1rem;
   }
   
   .feature__cards {
     display: none;
+  }
+  
+  .feature__carousel-container {
+    padding: 0;
+    border-radius: 14px;
+  }
+  
+  .feature__carousel-button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .feature__carousel-button svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .feature__card-image {
+    height: 160px;
+  }
+  
+  .feature__card-content {
+    padding: 1.25rem;
+  }
+  
+  .feature__card-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .feature__card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .feature__card p {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .feature__card-arrow {
+    width: 32px;
+    height: 32px;
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+  
+  .feature__carousel-progress {
+    height: 3px;
+    margin: 1.25rem 0 0.5rem;
+  }
+  
+  .feature__carousel-indicator {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .feature__carousel-indicator.active {
+    width: 24px;
+  }
+  
+  .prozess-card {
+    padding: 1.25rem;
+  }
+  
+  .prozess-steps-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .prozess-step {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .prozess-step-title {
+    font-size: 0.95rem;
+  }
+  
+  .prozess-step-desc {
+    font-size: 0.9rem;
+  }
+  
+  .prozess-card-cta .cta-button.primary.large {
+    padding: 0.8rem 1.4rem;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+}
+
+/* Mobile optimizations similar to ServiceSection and ApproachSection */
+@media (max-width: 768px) {
+  .feature__carousel {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .feature__carousel-container {
+    max-width: 90%;
+    width: 90%;
+    border-radius: 14px;
+    margin: 0 auto;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* Verstärken des overflow hidden für mobile */
+  }
+
+  .feature__carousel-track {
+    gap: 0;
+    width: 100%;
+  }
+
+  .feature__carousel-slide {
+    padding: 0;
+    width: 100%;
+    margin: 0;
+  }
+
+  .feature__carousel .feature__card {
+    width: 100%;
+    max-width: 95%;
+    margin: 0 auto;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+
+  /* reduce heavy shadows on mobile to avoid visual bleed */
+  .feature__carousel .feature__card {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  }
+
+  /* ensure controls sit inside the rounded container */
+  .feature__carousel-controls {
+    padding: 0 0.5rem;
+    z-index: 20;
+  }
+  
+  .feature__carousel-button {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
+@media (max-width: 576px) {
+  .feature__carousel-container {
+    max-width: 90%;
+    width: 90%;
+    border-radius: 12px;
+    margin: 0 auto;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  .feature__carousel .feature__card {
+    border-radius: 12px;
+  }
+
+  .feature__card-image { 
+    height: 140px; 
+  }
+  
+  .feature__card-content { 
+    padding: 1rem; 
+  }
+  
+  .feature__carousel-button {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .feature {
+    padding: 2.5rem 1rem;
+    margin: 0.75rem auto;
+    border-radius: 24px;
+  }
+  
+  /* Zusätzliche Anpassungen für kleine Bildschirme */
+  .feature__carousel-container {
+    max-width: 90%;
+    width: 90%;
+  }
+  
+  .feature__header {
+    margin-bottom: 2rem;
+  }
+  
+  .feature__header h2 {
+    font-size: 1.6rem;
+  }
+  
+  .feature__description {
+    font-size: 0.95rem;
+  }
+  
+  .feature__carousel-container {
+    border-radius: 12px;
+  }
+  
+  .feature__carousel-controls {
+    padding: 0 0.75rem;
+  }
+  
+  .feature__carousel-button {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .feature__carousel-button svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .feature__card-image {
+    height: 140px;
+  }
+  
+  .feature__card-content {
+    padding: 1rem;
+  }
+  
+  .feature__card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+  }
+  
+  .feature__card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feature__card p {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  
+  .feature__card-arrow {
+    width: 28px;
+    height: 28px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  .feature__card-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .feature__carousel-progress {
+    height: 2.5px;
+    margin: 1rem 0 0.5rem;
+  }
+  
+  .feature__carousel-indicators {
+    gap: 8px;
+  }
+  
+  .feature__carousel-indicator {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .feature__carousel-indicator.active {
+    width: 20px;
+  }
+  
+  /* Anpassungen für sehr kleine Bildschirme */
+  @media (max-width: 400px) {
+    .feature__carousel-container {
+      max-width: 98%;
+      width: 98%;
+      border-radius: 10px;
+    }
+    
+    .feature__card-image {
+      height: 130px;
+    }
+    
+    .feature__card-content {
+      padding: 0.85rem;
+    }
+    
+    .feature__carousel-button {
+      width: 28px;
+      height: 28px;
+    }
+    
+    .feature__carousel-button svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+  
+  .prozess-section {
+    margin-top: 2rem;
+  }
+  
+  .prozess-card {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+  
+  .prozess-step {
+    padding: 0.4rem 0.2rem;
+  }
+  
+  .prozess-step-number {
+    font-size: 1rem;
+    min-width: 30px;
+  }
+  
+  .prozess-step-icon {
+    min-width: 30px;
+  }
+  
+  .prozess-step-title {
+    font-size: 0.9rem;
+  }
+  
+  .prozess-step-desc {
+    font-size: 0.85rem;
+  }
+  
+  .prozess-card-cta .cta-button.primary.large {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+  
+  .button-icon {
+    font-size: 1.1rem;
   }
 }

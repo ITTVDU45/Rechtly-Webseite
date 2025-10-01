@@ -150,9 +150,14 @@ export default function Stepper({
             </div>
           </div>
 
-          <div className="stepper grid-flow-col gap-4 grid md:grid-cols-3">
+          <div className="stepper grid-flow-col gap-4 sm:gap-3 xs:gap-2 grid md:grid-cols-3">
             {stepsArray.map((child, i) => (
-              <div key={i} ref={(el: HTMLDivElement | null) => { stepEls.current[i] = el; }} className="step">
+              <div 
+                key={i} 
+                ref={(el: HTMLDivElement | null) => { stepEls.current[i] = el; }} 
+                className="step"
+                data-step-index={i+1}
+              >
                 {child}
               </div>
             ))}

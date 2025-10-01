@@ -203,8 +203,18 @@
 }
 
 @media (max-width: 768px) {
-  .expertise {
-    padding: 2rem 1rem;
+  .expertise-section {
+    padding: 3rem 1.5rem;
+    border-radius: 24px;
+    margin: 1.5rem auto;
+  }
+  
+  .expertise__container {
+    padding: 0 1rem;
+  }
+
+  .expertise__header {
+    margin-bottom: 2.5rem;
   }
 
   .expertise__header h2 {
@@ -221,38 +231,142 @@
 
   .expertise__image {
     margin-top: 2rem;
+    order: 2;
+  }
+  
+  .expertise__slider {
+    order: 1;
   }
 
   .expertise__button-group {
     flex-direction: column;
+    gap: 0.75rem;
   }
 
   .expertise__button {
     width: 100%;
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .expertise__cta {
+    margin-top: 3rem;
+  }
+  
+  .advantage-card--active {
+    min-height: 260px;
+    padding: 1.75rem;
+  }
+  
+  .slider-nav {
+    width: 36px !important;
+    height: 36px !important;
   }
 }
 
 @media (max-width: 576px) {
+  .expertise-section {
+    padding: 2.5rem 1.25rem;
+    border-radius: 20px;
+    margin: 1rem auto;
+  }
+  
+  .expertise__container {
+    padding: 0 0.75rem;
+  }
+  
+  .expertise__header {
+    margin-bottom: 2rem;
+  }
+
   .expertise__header h2 {
     font-size: 1.8rem;
   }
+  
+  .expertise__intro {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
 
-  .advantage-card {
-    height: auto;
+  .advantage-card--active {
+    min-height: 240px;
     padding: 1.5rem;
   }
 
   .advantage-card h3 {
     font-size: 1.2rem;
+    margin: 1rem 0 0.5rem;
   }
 
   .advantage-card p {
     font-size: 0.9rem;
+    line-height: 1.5;
   }
 
   .advantage-card__icon {
     width: 60px;
     height: 60px;
     font-size: 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .expertise__button {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.95rem;
+    border-radius: 24px;
+  }
+  
+  .slider-nav {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  
+  .slider-nav--prev {
+    left: -10px !important;
+  }
+  
+  .slider-nav--next {
+    right: -10px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .expertise-section {
+    padding: 2rem 1rem;
+    border-radius: 16px;
+  }
+  
+  .expertise__header h2 {
+    font-size: 1.6rem;
+  }
+  
+  .expertise__intro {
+    font-size: 0.9rem;
+  }
+  
+  .advantage-card--active {
+    min-height: 220px;
+    padding: 1.25rem;
+  }
+  
+  .advantage-card h3 {
+    font-size: 1.1rem;
+    margin: 0.75rem 0 0.4rem;
+  }
+  
+  .advantage-card p {
+    font-size: 0.85rem;
+  }
+  
+  .advantage-card__icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+    border-radius: 14px;
+  }
+  
+  .expertise__button {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.9rem;
+    border-radius: 20px;
   }
 }

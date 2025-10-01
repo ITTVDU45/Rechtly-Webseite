@@ -45,15 +45,31 @@ const FAQTemplate: React.FC<Props> = ({ items, title = 'Häufig gestellte Fragen
 
           <div className="faq__list">
             {items.map((faq) => (
-              <motion.div key={faq.id} className={`faq__item ${activeId === faq.id ? 'active' : ''}`} initial={false}>
-                <motion.button className="faq__question" onClick={() => setActiveId(activeId === faq.id ? null : faq.id)}>
+              <motion.div 
+                key={faq.id} 
+                className={`faq__item ${activeId === faq.id ? 'active' : ''}`} 
+                initial={false}
+              >
+                <motion.button 
+                  className="faq__question" 
+                  onClick={() => setActiveId(activeId === faq.id ? null : faq.id)}
+                  aria-expanded={activeId === faq.id}
+                  aria-controls={`faq-answer-${faq.id}`}
+                >
                   {faq.question}
                   <span className="faq__icon">{activeId === faq.id ? '−' : '+'}</span>
                 </motion.button>
 
                 <AnimatePresence initial={false}>
                   {activeId === faq.id && (
-                    <motion.div className="faq__answer" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: 'easeInOut' }}>
+                    <motion.div 
+                      id={`faq-answer-${faq.id}`}
+                      className="faq__answer" 
+                      initial={{ height: 0, opacity: 0 }} 
+                      animate={{ height: 'auto', opacity: 1 }} 
+                      exit={{ height: 0, opacity: 0 }} 
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    >
                       <p>{faq.answer}</p>
                     </motion.div>
                   )}
@@ -64,7 +80,12 @@ const FAQTemplate: React.FC<Props> = ({ items, title = 'Häufig gestellte Fragen
 
           <div className="faq__cta">
             <p>Noch Fragen? Wir sind für Sie da!</p>
-            <button className="faq__button" onClick={() => router.push('/faq')}>Weitere Fragen und Kundensupport</button>
+            <button 
+              className="faq__button" 
+              onClick={() => router.push('/faq')}
+            >
+              Weitere Fragen und Kundensupport
+            </button>
           </div>
         </div>
       </section>

@@ -78,4 +78,3 @@ async function connectDB(): Promise<void> {
 }
 
 export default connectDB;
-export default connectDB;

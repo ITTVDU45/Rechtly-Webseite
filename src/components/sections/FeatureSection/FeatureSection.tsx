@@ -57,19 +57,48 @@ const FeatureSection: React.FC = () => {
   const router = useRouter();
 
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const [isMobile, setIsMobile] = useState<boolean>(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [touchStart, setTouchStart] = useState<number>(0);
   const [touchEnd, setTouchEnd] = useState<number>(0);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    // Initialisierung und Aktualisierung des isMobile-Status beim Laden und Resize
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+    };
+    
+    // Verzögerte Initialisierung, um Hydration-Fehler zu vermeiden
+    const timer = setTimeout(() => {
+      handleResize();
+      // Event-Listener für Resize erst nach der Hydration hinzufügen
+      window.addEventListener('resize', handleResize);
+    }, 0);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
-  const nextSlide = () => setCurrentSlide(prev => (prev === features.length - 1 ? 0 : prev + 1));
-  const prevSlide = () => setCurrentSlide(prev => (prev === 0 ? features.length - 1 : prev - 1));
-  const goToSlide = (index: number) => setCurrentSlide(index);
+  const nextSlide = () => {
+    setCurrentSlide(prev => (prev === features.length - 1 ? 0 : prev + 1));
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 5000);
+  };
+  
+  const prevSlide = () => {
+    setCurrentSlide(prev => (prev === 0 ? features.length - 1 : prev - 1));
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 5000);
+  };
+  
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 5000);
+  };
 
   const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.targetTouches[0].clientX);
   const handleTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX);
@@ -79,11 +108,13 @@ const FeatureSection: React.FC = () => {
   };
 
   useEffect(() => {
-    if (isMobile) {
+    if (isMobile && !isPaused) {
       const interval = setInterval(nextSlide, 5000);
       return () => clearInterval(interval);
     }
-  }, [isMobile, currentSlide]);
+    // Leere Rückgabefunktion, wenn nicht mobil oder pausiert
+    return () => {};
+  }, [isMobile, currentSlide, isPaused]);
 
   return (
     <section className="feature" ref={containerRef}>
@@ -139,28 +170,110 @@ const FeatureSection: React.FC = () => {
             })()}
           </div>
 
-          <div className="feature__carousel">
+          <div className={`feature__carousel ${isMobile ? 'active' : ''}`}>
             <div className="feature__carousel-container">
               <div className="feature__carousel-controls">
-                <button className="feature__carousel-button" onClick={prevSlide} aria-label="Vorherige Karte">&#10094;</button>
-                <button className="feature__carousel-button" onClick={nextSlide} aria-label="Nächste Karte">&#10095;</button>
+                <button 
+                  className="feature__carousel-button feature__carousel-button--prev" 
+                  onClick={prevSlide} 
+                  aria-label="Vorherige Karte"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                <button 
+                  className="feature__carousel-button feature__carousel-button--next" 
+                  onClick={nextSlide} 
+                  aria-label="Nächste Karte"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
               </div>
-              <div className="feature__carousel-track" style={{ transform: `translateX(-${currentSlide * 100}%)` }} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
-                {features.map((feature, index) => (
-                  <div className="feature__carousel-slide" key={index}>
-                    <motion.div className="feature__card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} onClick={() => router.push('/anliegen-pruefen/bussgeld')}>
-                      <div className="feature__card-icon">{feature.icon}</div>
-                      <h3>{feature.title}</h3>
-                      <p>{feature.description}</p>
-                      <div className="feature__card-arrow">→</div>
-                    </motion.div>
-                  </div>
-                ))}
+              <div 
+                className="feature__carousel-track" 
+                style={{ 
+                  transform: `translateX(-${currentSlide * 100}%)`,
+                  width: '100%',
+                  maxWidth: '100%',
+                  boxSizing: 'border-box'
+                }} 
+                onTouchStart={handleTouchStart} 
+                onTouchMove={handleTouchMove} 
+                onTouchEnd={handleTouchEnd}
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+              >
+                {features.map((feature, index) => {
+                  // Bildpfad für jede Karte bestimmen
+                  let imagePath = '';
+                  const imageBase = '/assets/images/';
+                  
+                  // Spezifische Bilder für jede Karte
+                  if (feature.id === 1 || /Geschwindigkeit/i.test(feature.title)) imagePath = `${imageBase}Geschwindigkeitsverstoß.jpg`;
+                  else if (/Rotlicht/i.test(feature.title)) imagePath = `${imageBase}Rotlichtverstoß.jpg`;
+                  else if (/Abstand/i.test(feature.title)) imagePath = `${imageBase}Abstandsverstoß.jpg`;
+                  else if (/Handy|Handyverstoß/i.test(feature.title)) imagePath = `${imageBase}Digitale Prozesse.png`;
+                  else if (/Unfall|Verkehrsunfall/i.test(feature.title)) imagePath = `${imageBase}Verkehrsunfall.png`;
+                  else if (/Alkohol|Drogen/i.test(feature.title)) imagePath = `${imageBase}Benefit2.jpg`;
+                  else imagePath = `${imageBase}Benefit1.jpg`;
+                  
+                  return (
+                    <div className="feature__carousel-slide" key={index}>
+                      <motion.div 
+                        className="feature__card" 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.5 }} 
+                        onClick={() => router.push('/anliegen-pruefen/bussgeld')}
+                      >
+                        <div className="feature__card-image">
+                          <Image 
+                            src={imagePath} 
+                            alt={feature.title} 
+                            width={420} 
+                            height={240} 
+                            className="feature__card-img"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                          />
+                          <div className="feature__card-overlay"></div>
+                        </div>
+                        <div className="feature__card-content">
+                          <div className="feature__card-icon">{feature.icon}</div>
+                          <h3>{feature.title}</h3>
+                          <p>{feature.description}</p>
+                          <div className="feature__card-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
+            
+            <div className="feature__carousel-progress">
+              <div 
+                className="feature__carousel-progress-bar" 
+                style={{ 
+                  width: `${(currentSlide + 1) / features.length * 100}%` 
+                }}
+              ></div>
+            </div>
+            
             <div className="feature__carousel-indicators">
               {features.map((_, index) => (
-                <div key={index} className={`feature__carousel-indicator ${currentSlide === index ? 'active' : ''}`} onClick={() => goToSlide(index)} aria-label={`Gehe zu Karte ${index + 1}`} />
+                <button 
+                  key={index} 
+                  className={`feature__carousel-indicator ${currentSlide === index ? 'active' : ''}`} 
+                  onClick={() => goToSlide(index)}
+                  aria-label={`Gehe zu Karte ${index + 1}`}
+                />
               ))}
             </div>
           </div>
@@ -204,5 +317,6 @@ const FeatureSection: React.FC = () => {
 };
 
 export default FeatureSection;
+
 
 
