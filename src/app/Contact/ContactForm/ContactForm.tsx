@@ -10,7 +10,7 @@ export default function ContactForm(): JSX.Element {
   const [address, setAddress] = useState('');
   const [message, setMessage] = useState('');
   const [acceptDSGVO, setAcceptDSGVO] = useState(false);
-  const [status, setStatus] = useState<null | 'success' | 'error'>(null);
+  const [status, setStatus] = useState<null | 'success' | 'error' | 'loading'>(null);
   const [errorMessage, setErrorMessage] = useState('');
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -67,21 +67,42 @@ export default function ContactForm(): JSX.Element {
     }
 
     // Formular absenden
-    setStatus(null);
+    setStatus('loading');
     try {
-      // Hier würde normalerweise der API-Call stehen
-      await new Promise((r) => setTimeout(r, 700));
-      setStatus('success');
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phone,
+          address,
+          message,
+          recaptchaToken: recaptchaValue
+        }),
+      });
+
+      const data = await response.json();
       
-      // Formular zurücksetzen
-      setFirstName('');
-      setLastName('');
-      setEmail('');
-      setPhone('');
-      setAddress('');
-      setMessage('');
-      setAcceptDSGVO(false);
-      recaptchaRef.current?.reset();
+      if (data.success) {
+        setStatus('success');
+        
+        // Formular zurücksetzen
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPhone('');
+        setAddress('');
+        setMessage('');
+        setAcceptDSGVO(false);
+        recaptchaRef.current?.reset();
+      } else {
+        setStatus('error');
+        setErrorMessage(data.error || 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.');
+      }
     } catch (error) {
       setStatus('error');
       setErrorMessage('Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.');
@@ -100,6 +121,7 @@ export default function ContactForm(): JSX.Element {
             placeholder="Vorname *" 
             className="w-full border rounded-md px-3 py-2" 
             required 
+            disabled={status === 'loading'}
           />
           <input 
             value={lastName} 
@@ -107,6 +129,7 @@ export default function ContactForm(): JSX.Element {
             placeholder="Nachname *" 
             className="w-full border rounded-md px-3 py-2" 
             required 
+            disabled={status === 'loading'}
           />
           <input 
             value={email} 
@@ -115,18 +138,21 @@ export default function ContactForm(): JSX.Element {
             type="email"
             className="w-full border rounded-md px-3 py-2" 
             required 
+            disabled={status === 'loading'}
           />
           <input 
             value={phone} 
             onChange={(e) => setPhone(e.target.value)} 
             placeholder="Telefonnummer" 
             className="w-full border rounded-md px-3 py-2" 
+            disabled={status === 'loading'}
           />
           <input 
             value={address} 
             onChange={(e) => setAddress(e.target.value)} 
             placeholder="Adresse" 
             className="w-full border rounded-md px-3 py-2 md:col-span-2" 
+            disabled={status === 'loading'}
           />
           <textarea 
             value={message} 
@@ -134,6 +160,7 @@ export default function ContactForm(): JSX.Element {
             placeholder="Deine Nachricht *" 
             className="w-full border rounded-md px-3 py-2 min-h-[140px] md:col-span-2" 
             required 
+            disabled={status === 'loading'}
           />
         </div>
 
@@ -145,6 +172,7 @@ export default function ContactForm(): JSX.Element {
               checked={acceptDSGVO}
               onChange={(e) => setAcceptDSGVO(e.target.checked)}
               className="mt-1 mr-3"
+              disabled={status === 'loading'}
             />
             <label htmlFor="dsgvo" className="text-sm text-slate-600">
               Ich habe die <a href="/datenschutz" className="text-blue-600 hover:underline">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Daten zur Bearbeitung meiner Anfrage verwendet werden. *
@@ -163,8 +191,9 @@ export default function ContactForm(): JSX.Element {
         <div className="mt-4 flex flex-col md:flex-row items-start md:items-center gap-4">
           <button
             type="submit"
-            className="rounded-xl py-3 px-6 transition-all duration-300 shadow-sm"
+            className={`rounded-xl py-3 px-6 transition-all duration-300 shadow-sm ${status === 'loading' ? 'opacity-70 cursor-not-allowed' : ''}`}
             style={{ background: 'linear-gradient(135deg, #c7e70c 0%, #a3e635 100%)' }}
+            disabled={status === 'loading'}
           >
             <span
               style={{
@@ -175,11 +204,19 @@ export default function ContactForm(): JSX.Element {
                 display: 'inline-block'
               }}
             >
-              Senden
+              {status === 'loading' ? 'Wird gesendet...' : 'Senden'}
             </span>
           </button>
-          {status === 'success' && <div className="text-green-600">Deine Nachricht wurde erfolgreich versendet.</div>}
-          {status === 'error' && <div className="text-red-600">{errorMessage || 'Bitte überprüfe deine Eingaben.'}</div>}
+          {status === 'success' && (
+            <div className="text-green-600 bg-green-50 px-4 py-2 rounded-md border border-green-200">
+              Deine Nachricht wurde erfolgreich versendet. Wir werden uns zeitnah bei dir melden.
+            </div>
+          )}
+          {status === 'error' && (
+            <div className="text-red-600 bg-red-50 px-4 py-2 rounded-md border border-red-200">
+              {errorMessage || 'Bitte überprüfe deine Eingaben.'}
+            </div>
+          )}
         </div>
         
         <div className="mt-4 text-xs text-slate-500">
