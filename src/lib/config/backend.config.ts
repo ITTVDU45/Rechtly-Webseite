@@ -1,11 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Zentraler Backend-Config-Adapter (stubs für Build/Client-Umgebung)
 
-// In Next.js App Router werden Umgebungsvariablen automatisch geladen,
-// daher ist dotenv nicht erforderlich
-// import dotenv from 'dotenv';
-// dotenv.config();
-
 const config = {
   server: {
     port: process.env.PORT || 5000,
@@ -34,8 +29,8 @@ const config = {
   LOG_LEVEL: process.env.LOG_LEVEL || 'info'
 };
 
-// Stub für MinIO-Client (wird nur verwendet, wenn minio installiert ist)
-const minioClient: any = {
+// Einfacher Stub für MinIO-Client
+const minioClient = {
   bucketExists: async () => false,
   makeBucket: async () => { throw new Error('MinIO not available'); },
   getObject: async () => { throw new Error('MinIO not available'); },
@@ -44,9 +39,6 @@ const minioClient: any = {
 };
 
 const BUCKET_NAME = process.env.MINIO_BUCKET || null;
-
-// Wir entfernen den dynamischen Import von minio, da es nicht installiert ist
-// und für die Kontaktformularfunktion nicht benötigt wird
 
 export default config;
 export { minioClient, BUCKET_NAME };
