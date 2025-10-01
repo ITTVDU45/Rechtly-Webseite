@@ -3,6 +3,7 @@ import './HeroSection/HeroSection.css';
 
 import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 interface BenefitItem {
   icon: React.ReactNode;
@@ -82,8 +83,47 @@ const HeroSection: React.FC = () => {
 
   return (
     <div className="hero-wrapper">
-      <section className="hero">
-        <div className="hero__container">
+      <section className="hero-with-bg" style={{ 
+          position: 'relative',
+          width: '100%',
+          minHeight: '70vh',
+          overflow: 'hidden',
+          maxHeight: '80vh'
+        }}>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 0,
+          overflow: 'hidden'
+        }}>
+          <Image 
+            src="/assets/images/Bannerbild.png"
+            alt="Rechtly Hero Background"
+            fill
+            sizes="100vw"
+            style={{ 
+              objectFit: 'cover', 
+              objectPosition: 'center center',
+              width: '100%',
+              height: '100%'
+            }}
+            priority
+            className="hero-background-image"
+          />
+        </div>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'linear-gradient(135deg, rgba(27,58,75,0.85) 0%, rgba(44,83,100,0.65) 100%)',
+          zIndex: 1
+        }}></div>
+        <div className="hero__container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="hero__content">
             <div className="hero__text">
               <h1>

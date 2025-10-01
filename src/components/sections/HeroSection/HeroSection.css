@@ -25,6 +25,11 @@
   overflow: visible; /* allow dropdowns */
   background: linear-gradient(135deg, rgba(27,58,75,0.85) 0%, rgba(44,83,100,0.65) 100%);
   background-blend-mode: overlay;
+  /* Mobile background image */
+  background-image: url('/assets/images/Bannerbild.png') !important;
+  background-size: cover !important;
+  background-position: 20% center !important;
+  background-repeat: no-repeat !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,8 +75,8 @@ html, body {
   text-align: center;
   position: relative;
   width: 100%;
-  gap: 1.5rem;
-  padding: 6rem 1rem 2rem; /* increased top padding to create larger gap under nav */
+  gap: 1rem; /* Reduziert von 1.5rem auf 1rem */
+  padding: 3rem 1rem 1.5rem; /* Reduziert von 6rem auf 3rem oben und 2rem auf 1.5rem unten */
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
@@ -102,7 +107,7 @@ html, body {
 .hero__subtitle {
   font-size: 1.8rem;
   color: rgba(255,255,255,0.95);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem; /* Reduziert von 3rem auf 2rem */
   font-weight: 700; /* bolder subtitle */
   text-align: center;
   opacity: 0;
@@ -245,13 +250,13 @@ html, body {
   background: #A3E635;
   color: #1B3A4B;
   border: none;
-  padding: 1.25rem 2.5rem;
+  padding: 1rem 0rem; /* Reduziert von 1.25rem auf 1rem */
   font-size: 1.2rem;
   font-weight: 600;
   border-radius: 30px;
   width: 100%;
   max-width: 320px;
-  margin: 2rem 0 3rem;
+  margin: 0rem 0 0rem; /* Reduziert von 2rem 0 3rem auf 1.5rem 0 2rem */
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
@@ -348,9 +353,10 @@ html, body {
   }
 
   .hero {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: url('/assets/images/Bannerbild.png') !important;
+    background-position: 20% center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
     margin: 0;
     margin-top: -40px;
     padding: 0;
@@ -426,9 +432,10 @@ html, body {
     width: 100%;
     max-width: 100%;
     /* restore hero background image */
-    background-image: url('/assets/images/Bannerbild.png');
-    background-size: cover;
-    background-position: center right;
+    background-image: url('/assets/images/Bannerbild.png') !important;
+    background-size: cover !important;
+    background-position: 20% center !important;
+    background-repeat: no-repeat !important;
   }
 
   .hero__container {
@@ -557,12 +564,30 @@ html, body {
   }
 
   .hero {
+    background-image: url('/assets/images/Bannerbild.png') !important;
+    background-size: cover !important;
+    background-position: 10% center !important;
+    background-repeat: no-repeat !important;
     margin: 0;
     margin-top: 60px;
     padding: 0;
     width: 100%;
     height: auto;
-    min-height: calc(80vh - 60px);
+    min-height: calc(100vh - 60px);
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Dunklerer Overlay für bessere Lesbarkeit auf mobilen Geräten */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(27,58,75,0.85) 0%, rgba(44,83,100,0.65) 100%);
+    z-index: 0;
   }
 
   .hero__container {
@@ -576,12 +601,16 @@ html, body {
     align-items: center;
     padding: 1rem;
     width: 100%;
+    position: relative;
+    z-index: 2;
   }
 
   .hero__text {
     padding: 1rem 0;
     max-width: 100%;
     align-items: center;
+    position: relative;
+    z-index: 2;
   }
 
   .hero__text h1 {
@@ -614,13 +643,22 @@ html, body {
 
 @media (max-width: 576px) {
   .hero {
+    background-image: url('/assets/images/Bannerbild.png') !important;
+    background-size: cover !important;
+    background-position: 5% center !important;
+    background-repeat: no-repeat !important;
     width: 100%;
     max-width: 100%;
     margin: 0;
     margin-top: 60px;
     padding: 0;
-    min-height: auto;
+    min-height: calc(100vh - 120px);
     padding-bottom: 60px;
+  }
+  
+  /* Noch dunklerer Overlay für sehr kleine Bildschirme */
+  .hero::before {
+    background: linear-gradient(135deg, rgba(27,58,75,0.9) 0%, rgba(44,83,100,0.7) 100%);
   }
 
   .hero__text h1 {
@@ -690,6 +728,69 @@ html, body {
   text-align: center !important;
   align-items: center !important;
   padding-left: 0;
+}
+
+/* Hero Bild responsive Anpassungen */
+.hero-background-image {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.hero-with-bg {
+  min-height: 70vh; /* Von 100vh auf 70vh reduziert */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px; /* Abstand vom oberen Rand hinzufügen */
+  padding-bottom: 40px; /* Abstand vom unteren Rand hinzufügen */
+}
+
+/* Größere Bildschirme - Standard-Zentrierung */
+@media (min-width: 1201px) {
+  .hero-background-image {
+    object-position: center center !important;
+  }
+}
+
+/* Mittlere Bildschirme - leichte Anpassung */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .hero-background-image {
+    object-position: center center !important;
+  }
+}
+
+/* Tablet */
+@media (min-width: 577px) and (max-width: 768px) {
+  .hero-background-image {
+    object-position: 40% center !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .hero-background-image {
+    object-position: 30% center !important;
+  }
+  
+  .hero-with-bg {
+    min-height: 60vh; /* Deutlich kleiner auf mobilen Geräten */
+    padding-top: 60px;
+  }
+}
+
+/* Sehr kleine Bildschirme */
+@media (max-width: 400px) {
+  .hero-background-image {
+    object-position: 35% center !important;
+  }
+  
+  .hero-with-bg {
+    min-height: 50vh; /* Noch deutlich kleiner auf sehr kleinen Bildschirmen */
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
 }
 
 /* Desktop-Stile für linksbündige Klassen */
