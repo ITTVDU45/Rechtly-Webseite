@@ -9,11 +9,11 @@ export async function GET(request: Request) {
   try {
     // SMTP-Konfiguration aus der Umgebung auslesen
     const smtpConfig = {
-      host: process.env.EMAIL_HOST || 'nicht konfiguriert',
-      port: process.env.EMAIL_PORT || 'nicht konfiguriert',
-      secure: process.env.EMAIL_SECURE || 'nicht konfiguriert',
-      user: process.env.EMAIL_USER || 'nicht konfiguriert',
-      from: process.env.EMAIL_FROM || 'nicht konfiguriert'
+      host: process.env.SMTP_HOST || process.env.EMAIL_HOST || 'nicht konfiguriert',
+      port: process.env.SMTP_PORT || process.env.EMAIL_PORT || 'nicht konfiguriert',
+      secure: process.env.SMTP_SECURE || process.env.EMAIL_SECURE || 'nicht konfiguriert',
+      user: process.env.SMTP_USER || process.env.EMAIL_USER || 'nicht konfiguriert',
+      from: process.env.SMTP_FROM || process.env.EMAIL_FROM || 'nicht konfiguriert'
     };
     
     // Test-E-Mail senden
@@ -33,7 +33,7 @@ export async function GET(request: Request) {
       smtpConfig: {
         ...smtpConfig,
         // Passwort aus Sicherheitsgründen nicht zurückgeben
-        pass: process.env.EMAIL_PASS ? '********' : 'nicht konfiguriert'
+        pass: (process.env.SMTP_PASS || process.env.EMAIL_PASS) ? '********' : 'nicht konfiguriert'
       },
       emailInfo: info,
       recipient
@@ -46,13 +46,13 @@ export async function GET(request: Request) {
       message: "Fehler beim Senden der Test-E-Mail",
       error: error.message,
       smtpConfig: {
-        host: process.env.EMAIL_HOST || 'nicht konfiguriert',
-        port: process.env.EMAIL_PORT || 'nicht konfiguriert',
-        secure: process.env.EMAIL_SECURE || 'nicht konfiguriert',
-        user: process.env.EMAIL_USER || 'nicht konfiguriert',
-        from: process.env.EMAIL_FROM || 'nicht konfiguriert',
+        host: process.env.SMTP_HOST || process.env.EMAIL_HOST || 'nicht konfiguriert',
+        port: process.env.SMTP_PORT || process.env.EMAIL_PORT || 'nicht konfiguriert',
+        secure: process.env.SMTP_SECURE || process.env.EMAIL_SECURE || 'nicht konfiguriert',
+        user: process.env.SMTP_USER || process.env.EMAIL_USER || 'nicht konfiguriert',
+        from: process.env.SMTP_FROM || process.env.EMAIL_FROM || 'nicht konfiguriert',
         // Passwort aus Sicherheitsgründen nicht zurückgeben
-        pass: process.env.EMAIL_PASS ? '********' : 'nicht konfiguriert'
+        pass: (process.env.SMTP_PASS || process.env.EMAIL_PASS) ? '********' : 'nicht konfiguriert'
       }
     }, { status: 500 });
   }

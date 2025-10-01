@@ -11,15 +11,18 @@ const config = {
   mongodb: { uri: process.env.MONGODB_URI },
   jwt: { secret: process.env.JWT_SECRET, expiresIn: '24h' },
   email: {
-    host: process.env.EMAIL_HOST,
-    port: Number(process.env.EMAIL_PORT),
-    secure: process.env.EMAIL_SECURE === 'true',
-    auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
-    from: process.env.EMAIL_FROM || 'noreply@rechtly.de'
+    host: process.env.SMTP_HOST || process.env.EMAIL_HOST,
+    port: Number(process.env.SMTP_PORT || process.env.EMAIL_PORT) || 587,
+    secure: process.env.SMTP_SECURE === 'true' || process.env.EMAIL_SECURE === 'true',
+    auth: { 
+      user: process.env.SMTP_USER || process.env.EMAIL_USER, 
+      pass: process.env.SMTP_PASS || process.env.EMAIL_PASS 
+    },
+    from: process.env.SMTP_FROM || process.env.EMAIL_FROM || 'noreply@rechtly.de'
   },
   support: {
     phone: process.env.SUPPORT_PHONE || '+49 123 456789',
-    email: process.env.SUPPORT_EMAIL || 'anfragen@rechtly.de'
+    email: process.env.ADMIN_EMAIL || process.env.SUPPORT_EMAIL || 'info@rechtly.de'
   },
   domains: {
     base: process.env.NODE_ENV === 'production' ? 'https://rechtly.de' : 'http://localhost:3000'
@@ -63,9 +66,3 @@ const BUCKET_NAME = process.env.MINIO_BUCKET || null;
 
 export default config;
 export { minioClient, BUCKET_NAME };
-
-
-
-
-
-
