@@ -62,9 +62,24 @@ export async function POST(request: Request) {
       // Wir loggen den Fehler, fahren aber fort
     }
 
-    // E-Mail an den Support senden
+    // Direkt mit Nodemailer senden, ohne emailService
     try {
-      await emailService.sendMail({
+      const nodemailer = require('nodemailer');
+      
+      // Transporter erstellen
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || 'smtp.office365.com',
+        port: Number(process.env.SMTP_PORT || 587),
+        secure: process.env.SMTP_SECURE === 'true' || false,
+        auth: {
+          user: process.env.SMTP_USER || 'noreply@rechtly.de',
+          pass: process.env.SMTP_PASS || 'B^230659779465oq'
+        }
+      });
+      
+      // E-Mail an Support senden
+      await transporter.sendMail({
+        from: 'noreply@rechtly.de',
         to: 'support@rechtly.de',
         subject: 'Neue Kontaktanfrage über die Webseite',
         html: `
@@ -78,14 +93,9 @@ export async function POST(request: Request) {
           <p><small>Diese Anfrage wurde am ${new Date().toLocaleDateString('de-DE')} um ${new Date().toLocaleTimeString('de-DE')} über das Kontaktformular der Webseite gesendet.</small></p>
         `
       });
-    } catch (emailError) {
-      console.error('Fehler beim Senden der Support-E-Mail:', emailError);
-      // Wir loggen den Fehler, fahren aber fort
-    }
-
-    // Bestätigungsmail an den Absender senden
-    try {
-      await emailService.sendMail({
+      
+      // Bestätigungsmail an den Absender senden
+      await transporter.sendMail({
         from: 'noreply@rechtly.de',
         to: email,
         subject: 'Deine Anfrage bei Rechtly',
@@ -102,8 +112,10 @@ export async function POST(request: Request) {
           <p><small>Dies ist eine automatisch generierte E-Mail. Bitte antworte nicht auf diese Nachricht.</small></p>
         `
       });
+      
+      console.log('E-Mails erfolgreich gesendet');
     } catch (emailError) {
-      console.error('Fehler beim Senden der Bestätigungs-E-Mail:', emailError);
+      console.error('Fehler beim Senden der E-Mails:', emailError);
       // Wir loggen den Fehler, fahren aber fort
     }
 
