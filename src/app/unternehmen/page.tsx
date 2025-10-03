@@ -52,7 +52,7 @@ export default function UnternehmenPage() {
       <Section className="py-12 section--white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="w-full overflow-hidden mb-8 rounded-xl">
-            <Image src="/assets/images/vision.png" alt="Unsere Mission und Vision" width={2400} height={420} className="w-full h-auto object-cover rounded-xl" priority />
+            <Image src="/assets/images/Rechtly Bild mit Logo.png" alt="Unsere Mission und Vision" width={2400} height={420} className="w-full h-auto object-cover rounded-xl" priority />
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -80,20 +80,20 @@ export default function UnternehmenPage() {
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="section-title">Unser Team</h2>
           <div className="mt-8 flex flex-col md:flex-row md:justify-center gap-6">
-            <div className="p-6 rounded-2xl bg-white shadow-sm w-full md:w-80">
+            <div className="p-6 rounded-2xl bg-white shadow-sm w-full md:w-80 flex flex-col items-center text-center">
               <div className="h-24 w-24 rounded-full bg-slate-100 mb-4" />
-              <h4 className="font-semibold">Dr. Anna Müller</h4>
-              <div className="text-sm text-slate-600">Rechtsanwältin, Head of Legal</div>
+              <h4 className="font-semibold text-xl text-[#1B3A4B]">Zeynel Kara</h4>
+              <div className="text-sm text-slate-600">CEO, Head of Legal</div>
             </div>
-            <div className="p-6 rounded-2xl bg-white shadow-sm w-full md:w-80">
+            <div className="p-6 rounded-2xl bg-white shadow-sm w-full md:w-80 flex flex-col items-center text-center">
               <div className="h-24 w-24 rounded-full bg-slate-100 mb-4" />
-              <h4 className="font-semibold">Maximilian Bauer</h4>
-              <div className="text-sm text-slate-600">Produkt & Operations</div>
+              <h4 className="font-semibold text-xl text-[#1B3A4B]">Tolgahan Vardar</h4>
+              <div className="text-sm text-slate-600">CTO, Head of Engineering</div>
             </div>
-            <div className="p-6 rounded-2xl bg-white shadow-sm w-full md:w-80">
+            <div className="p-6 rounded-2xl bg-white shadow-sm w-full md:w-80 flex flex-col items-center text-center">
               <div className="h-24 w-24 rounded-full bg-slate-100 mb-4" />
-              <h4 className="font-semibold">Lea Schulz</h4>
-              <div className="text-sm text-slate-600">Engineering</div>
+              <h4 className="font-semibold text-xl text-[#1B3A4B]">Hüseyin Dirim</h4>
+              <div className="text-sm text-slate-600">COO, Head of Operations</div>
             </div>
           </div>
         </div>
