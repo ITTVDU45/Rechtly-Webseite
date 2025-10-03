@@ -456,9 +456,10 @@
     max-width: 100%;
   }
   
-  .services__carousel .service-card__image {
-    height: 150px;
-  }
+.services__carousel .service-card__image {
+  height: auto;
+  min-height: 220px;
+}
   
   .services__carousel-controls {
     padding: 0 0.75rem;
@@ -530,9 +531,10 @@
     border-radius: 10px;
   }
   
-  .services__carousel .service-card__image {
-    height: 130px;
-  }
+.services__carousel .service-card__image {
+  height: auto;
+  min-height: 200px;
+}
   
   .services__carousel-controls {
     padding: 0 0.5rem;
@@ -681,8 +683,17 @@
 
 .services__carousel .service-card__image {
   border-radius: 16px 16px 0 0;
+  height: auto;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .services__carousel .service-card__image img {
   border-radius: 16px 16px 0 0;
+  object-fit: contain !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
 }

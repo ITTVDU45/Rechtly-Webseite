@@ -20,7 +20,7 @@ const services: Service[] = [
   {
     id: 1,
     title: 'KFZ-Gutachten',
-    image: '/assets/images/KFZ GUTACHTER.png',
+    image: '/assets/images/Rechtly Bild KFZ GUTACHTEN.png',
     description: 'Professionelle Begutachtung Ihres Fahrzeugs nach einem Unfall',
     benefits: ['Unabhängige Schadensermittlung', 'Detaillierte Dokumentation', 'Faire Wertermittlung', 'Schnelle Bearbeitung'],
     buttonText: 'Kostenlose Einschätzung',
@@ -29,7 +29,7 @@ const services: Service[] = [
   {
     id: 2,
     title: 'Bußgeldverfahren',
-    image: '/assets/images/Bußgeldbescheid-Bild.png',
+    image: '/assets/images/Rechtly Bild Blitzer.png',
     description: 'Kompetente Unterstützung bei Verkehrsordnungswidrigkeiten',
     benefits: ['Prüfung des Bußgeldbescheids', 'Einspruch wenn sinnvoll', 'Vertretung vor Gericht', 'Punktereduzierung möglich'],
     buttonText: 'Kostenlose Einschätzung',
@@ -38,7 +38,7 @@ const services: Service[] = [
   {
     id: 3,
     title: 'Unfallabwicklung',
-    image: '/assets/images/Unfallabwicklung-Bild.png',
+    image: '/assets/images/Rechtly Bild Unfall.png',
     description: 'Professionelle Betreuung nach einem Verkehrsunfall',
     benefits: ['Komplette Schadenabwicklung', 'Durchsetzung aller Ansprüche', 'Verhandlung mit Versicherungen', 'Persönliche Betreuung'],
     buttonText: 'Kostenlose Einschätzung',
@@ -97,7 +97,22 @@ const ServiceSection: React.FC = () => {
         <div className="services__grid">
           {services.map((service, index) => (
             <motion.div key={service.id} className="service-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.2 }}>
-              <div className="service-card__image"><Image src={service.image} alt={service.title} loading="lazy" width={420} height={280} /></div>
+              <div className="service-card__image">
+                <Image 
+                  src={service.image} 
+                  alt={service.title} 
+                  loading="lazy" 
+                  width={420} 
+                  height={280} 
+                  style={{ 
+                    objectFit: 'contain', 
+                    width: '100%', 
+                    height: 'auto', 
+                    maxHeight: 'none',
+                    borderRadius: '12px'
+                  }}
+                />
+              </div>
               <div className="service-card__content">
                 <h3 className="service-card__title">{service.title}</h3>
                 <p className="service-card__description">{service.description}</p>
@@ -150,6 +165,13 @@ const ServiceSection: React.FC = () => {
                         width={420} 
                         height={280}
                         sizes="(max-width: 768px) 100vw, 33vw"
+                        style={{ 
+                          objectFit: 'contain', 
+                          width: '100%', 
+                          height: 'auto', 
+                          maxHeight: 'none',
+                          borderRadius: '12px'
+                        }}
                       />
                     </div>
                     <div className="service-card__content">
