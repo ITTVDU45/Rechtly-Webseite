@@ -1,6 +1,7 @@
 import React from 'react';
 import Section from '@/components/ui/Section';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function PortalStatus() {
   return (
@@ -15,6 +16,20 @@ export default function PortalStatus() {
             <li className="flex items-start gap-3"><span className="text-teal-600">✔</span><span>Nachrichten & Updates</span></li>
             <li className="flex items-start gap-3"><span className="text-teal-600">✔</span><span>Bearbeitungsstatus & Ansprechpartner</span></li>
           </ul>
+          
+          <div className="mt-8">
+            <Link href="/anliegen-pruefen">
+              <button 
+                className="px-6 py-3 rounded-xl font-medium text-[#07222b] shadow-lg transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-1"
+                style={{ 
+                  background: 'linear-gradient(135deg, #A3E635 0%, #84CC16 100%)',
+                  border: 'none'
+                }}
+              >
+                Unfall jetzt melden
+              </button>
+            </Link>
+          </div>
         </div>
 
         <div className="w-full">
