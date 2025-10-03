@@ -1,6 +1,6 @@
 import Hero from './components/Hero';
 import CTASection from './components/CTASection';
-import ProcessTemplate, { ProcessStep } from '@/components/sections/ProcessSection/ProcessTemplate';
+import PartnerProcessTemplate, { ProcessStep } from './components/PartnerProcessTemplate';
 import PartnerList from '@/app/partner/components/PartnerList';
 import FAQTemplate from '@/components/sections/FAQSection/FAQTemplate';
 import './partner.css';
@@ -23,7 +23,7 @@ export default function PartnerPage() {
       <CTASection />
 
       <section className="process-with-image">
-        <ProcessTemplate
+        <PartnerProcessTemplate
           title="Wie ist der Ablauf?"
           steps={steps}
           topImage={<img src="/assets/images/Persönliche digitale Assistentin.png" alt="Partner Ablauf" />}
