@@ -19,9 +19,20 @@ type Props = {
   steps: ProcessStep[];
   /** optional node rendered directly under the heading and subtitle (e.g. an image) */
   topImage?: React.ReactNode;
+  /** optional custom button text */
+  buttonText?: string;
+  /** optional custom button microcopy text */
+  buttonMicrocopy?: string;
 };
 
-export default function ProcessTemplate({ title, subtitle, steps, topImage }: Props) {
+export default function ProcessTemplate({ 
+  title, 
+  subtitle, 
+  steps, 
+  topImage,
+  buttonText = "Jetzt starten – kostenfrei",
+  buttonMicrocopy = "Unverbindlich. Ersteinschätzung in wenigen Minuten."
+}: Props) {
   const [currentStep, setCurrentStep] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [autoScrollPaused, setAutoScrollPaused] = useState(false);
@@ -189,13 +200,13 @@ export default function ProcessTemplate({ title, subtitle, steps, topImage }: Pr
         </div>
 
         <div className="process-cta">
-          <button className="btn primary neon-cta" aria-label="Jetzt starten – kostenfrei">
-            <span>Jetzt starten – kostenfrei</span>
+          <button className="btn primary neon-cta" aria-label={buttonText}>
+            <span>{buttonText}</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden className="cta-icon">
               <path d="M5 12h14M13 5l7 7-7 7" stroke="#07222b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
-          <div className="microcopy">Unverbindlich. Ersteinschätzung in wenigen Minuten.</div>
+          <div className="microcopy">{buttonMicrocopy}</div>
         </div>
       </div>
     </Section>

@@ -8,6 +8,8 @@ export default function PartnerProcess() {
       subtitle="Einfacher Ablauf für Gutachter-Partner" 
       steps={steps}
       topImage={<img src="/assets/images/Persönliche digitale Assistentin.png" alt="Partner Prozess" />}
+      buttonText="Jetzt Partner werden"
+      buttonMicrocopy="Unverbindlich. Provision für jeden vermittelten Fall."
     />
   );
 }
