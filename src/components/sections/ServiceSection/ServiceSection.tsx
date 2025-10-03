@@ -165,13 +165,13 @@ const ServiceSection: React.FC = () => {
                         width={420} 
                         height={280}
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        style={{ 
-                          objectFit: 'contain', 
-                          width: '90%', 
-                          height: 'auto', 
-                          maxHeight: '180px',
-                          borderRadius: '12px'
-                        }}
+                  style={{ 
+                    objectFit: 'contain', 
+                    width: '90%', 
+                    height: 'auto', 
+                    maxHeight: '380px',
+                    borderRadius: '20px'
+                  }}
                       />
                     </div>
                     <div className="service-card__content">
