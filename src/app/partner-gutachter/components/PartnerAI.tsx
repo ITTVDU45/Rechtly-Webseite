@@ -66,7 +66,7 @@ export default function PartnerAI() {
     <Section className="py-16 bg-gradient-to-br from-[#1b3a4b] to-[#2c5364] text-white partner-ai-section">
       <div className="max-w-6xl mx-auto">
         <h2 className="section-title text-center text-white mb-10">Unsere KI-Unterstützung für Gutachter</h2>
-        <p className="text-center text-white/90 max-w-3xl mx-auto mb-12">
+        <p className="text-center text-white/90 max-w-3xl mx-auto mb-12 section-subtitle">
           Nutze unsere KI-Tools, um deine Arbeit zu optimieren, Zeit zu sparen und die Qualität deiner Gutachten zu verbessern.
         </p>
         
@@ -78,6 +78,16 @@ export default function PartnerAI() {
         {/* Mobile: Carousel */}
         <div className="mobile-only-carousel">
           <AICardCarousel items={AI_ITEMS} />
+        </div>
+        
+        {/* CTA Button */}
+        <div className="text-center mt-8 md:mt-12">
+          <a 
+            href="#partner-cta" 
+            className="ai-cta-button"
+          >
+            Jetzt Partner werden
+          </a>
         </div>
       </div>
     </Section>

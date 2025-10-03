@@ -16,6 +16,26 @@
   margin: 0 auto;
 }
 
+/* CTA Button */
+.ai-cta-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+  margin-top: 2rem;
+  background: linear-gradient(135deg, #c7e70c 0%, #a3e635 100%);
+  color: #1b3a4b;
+  border: none;
+  cursor: pointer;
+}
+
+.ai-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 @media (min-width: 768px) {
   .mobile-only-carousel {
     display: none;
@@ -25,5 +45,13 @@
 @media (max-width: 767px) {
   .desktop-only-grid {
     display: none;
+  }
+  
+  .partner-ai-section h2.section-title {
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .partner-ai-section p.section-subtitle {
+    margin-bottom: 1.5rem !important;
   }
 }
