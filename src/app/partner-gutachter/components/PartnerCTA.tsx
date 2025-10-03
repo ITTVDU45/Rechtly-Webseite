@@ -13,7 +13,22 @@ export default function PartnerCTA() {
           <input className="w-full rounded-md p-3 mb-3" placeholder="Name" />
           <input className="w-full rounded-md p-3 mb-3" placeholder="E-Mail" />
           <input className="w-full rounded-md p-3 mb-3" placeholder="Unternehmen / Praxis" />
-          <button className="w-full rounded-full py-3 font-semibold" style={{ background: 'linear-gradient(135deg,#FACC15 0%,#C7E70C 100%)', color: '#07222b' }}>Partneranfrage senden</button>
+          <button 
+            className="w-full rounded-xl py-3 font-semibold transition-all duration-300 shadow-sm" 
+            style={{ background: 'linear-gradient(135deg, #c7e70c 0%, #a3e635 100%)' }}
+          >
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+                display: 'inline-block'
+              }}
+            >
+              Partneranfrage senden
+            </span>
+          </button>
         </form>
       </div>
     </Section>
