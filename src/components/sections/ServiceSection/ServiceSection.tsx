@@ -167,9 +167,9 @@ const ServiceSection: React.FC = () => {
                         sizes="(max-width: 768px) 100vw, 33vw"
                         style={{ 
                           objectFit: 'contain', 
-                          width: '100%', 
+                          width: '90%', 
                           height: 'auto', 
-                          maxHeight: 'none',
+                          maxHeight: '180px',
                           borderRadius: '12px'
                         }}
                       />

@@ -458,7 +458,7 @@
   
 .services__carousel .service-card__image {
   height: auto;
-  min-height: 220px;
+  min-height: 180px;
 }
   
   .services__carousel-controls {
@@ -533,7 +533,7 @@
   
 .services__carousel .service-card__image {
   height: auto;
-  min-height: 200px;
+  min-height: 160px;
 }
   
   .services__carousel-controls {
@@ -682,18 +682,19 @@
 }
 
 .services__carousel .service-card__image {
-  border-radius: 16px 16px 0 0;
+  border-radius: 16px 16px 16px 16px;
   height: auto;
-  min-height: 220px;
+  min-height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .services__carousel .service-card__image img {
-  border-radius: 16px 16px 0 0;
+  border-radius: 16px 16px 16px 16px;
   object-fit: contain !important;
-  width: 100% !important;
+  width: 90% !important;
   height: auto !important;
-  max-height: none !important;
+  max-height: 380px !important;
 }
