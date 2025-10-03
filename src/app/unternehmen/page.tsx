@@ -6,6 +6,8 @@ import FAQTemplate from '@/components/sections/FAQSection/FAQTemplate';
 import SharedCTA from '@/components/sections/CTASection/CTASection';
 import AboutTechService from '@/app/ueber-uns/components/AboutTechService';
 import AboutHumanTech from '@/app/ueber-uns/components/AboutHumanTech';
+import TeamSlider from './components/TeamSlider';
+import './TeamSlider.css';
 
 export const metadata = {
   title: 'Über uns — Rechtly',
@@ -25,6 +27,12 @@ const faqs = [
   { id: 1, question: 'Wer steht hinter Rechtly?', answer: 'Rechtly ist ein Team aus Verkehrsrechtsanwälten, Produktmanagern und Entwickler:innen, die digitale Rechtsdienstleistungen bauen.' },
   { id: 2, question: 'Ist meine Anfrage vertraulich?', answer: 'Ja — wir verarbeiten Daten DSGVO-konform und speichern personenbezogene Daten nur wenn nötig.' },
   { id: 3, question: 'Wie schnell erhalte ich eine Antwort?', answer: 'Bei einfachen Anfragen in der Regel innerhalb weniger Werktage; dringende Fälle priorisieren wir.' }
+];
+
+const teamMembers = [
+  { name: 'Zeynel Kara', title: 'CEO, Head of Legal' },
+  { name: 'Tolgahan Vardar', title: 'CTO, Head of Engineering' },
+  { name: 'Hüseyin Dirim', title: 'COO, Head of Operations' }
 ];
 
 export default function UnternehmenPage() {
@@ -68,18 +76,26 @@ export default function UnternehmenPage() {
         </div>
       </Section>
 
+
       {/* About sections from /ueber-uns */}
       <AboutTechService />
-      <AboutHumanTech />
-
       {/* Benefits (use template) */}
       <BenefitTemplate items={benefits} />
+      <AboutHumanTech />
+
 
       {/* Team */}
       <Section className="py-12 section--white">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="section-title">Unser Team</h2>
-          <div className="mt-8 flex flex-col md:flex-row md:justify-center gap-6">
+          
+          {/* Mobile Slider */}
+          <div className="mt-8">
+            <TeamSlider members={teamMembers} />
+          </div>
+          
+          {/* Desktop Layout */}
+          <div className="mt-8 flex flex-col md:flex-row md:justify-center gap-6 team-desktop">
             <div className="p-6 rounded-2xl bg-white shadow-sm w-full md:w-80 flex flex-col items-center text-center">
               <div className="h-24 w-24 rounded-full bg-slate-100 mb-4" />
               <h4 className="font-semibold text-xl text-[#1B3A4B]">Zeynel Kara</h4>
@@ -113,5 +129,3 @@ export default function UnternehmenPage() {
     </main>
   );
 }
-
-

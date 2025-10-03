@@ -1,0 +1,90 @@
+.team-slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
+.team-slider {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  width: 100%;
+}
+
+.team-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 0.5rem;
+}
+
+.team-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.team-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.team-nav-button {
+  background-color: rgba(27, 58, 75, 0.1);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.team-nav-button:hover {
+  background-color: rgba(27, 58, 75, 0.2);
+}
+
+.team-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.team-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.team-indicator.active {
+  background-color: #A3E635;
+  width: 24px;
+  border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+  .team-slider-container {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .team-desktop {
+    display: none;
+  }
+}
