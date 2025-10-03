@@ -1,0 +1,83 @@
+/* Mobile Optimierungen für PartnerHero */
+.partner-hero-section {
+  overflow-x: hidden;
+}
+
+.partner-hero-container {
+  max-width: 100%;
+}
+
+.partner-hero-card {
+  backdrop-filter: blur(10px);
+}
+
+.partner-hero-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.partner-hero-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.partner-hero-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.partner-hero-button-text {
+  background: linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Mobile Anpassungen */
+@media (max-width: 767px) {
+  .partner-hero-section {
+    padding-top: 6rem !important;
+    padding-bottom: 4rem !important;
+    min-height: auto !important;
+  }
+  
+  .partner-hero-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .partner-hero-card {
+    padding: 1.25rem !important;
+    gap: 1.5rem !important;
+  }
+  
+  .partner-hero-title {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .partner-hero-subtitle {
+    font-size: 1rem !important;
+    margin-top: 0.75rem !important;
+  }
+  
+  .partner-hero-image {
+    max-height: 200px !important;
+    margin-top: 1rem;
+  }
+  
+  .partner-hero-image img {
+    min-height: 180px !important;
+  }
+  
+  .partner-hero-button-container {
+    margin-top: 1.25rem !important;
+  }
+}
