@@ -1,7 +1,8 @@
 "use client";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Section from '@/components/ui/Section';
 import MagicBento, { BentoItem } from '@/components/ui/MagicBento';
+import AICardCarousel from './AICardCarousel';
 import './PartnerAI.css';
 
 const AI_ITEMS: BentoItem[] = [
@@ -38,6 +39,29 @@ const AI_ITEMS: BentoItem[] = [
 ];
 
 export default function PartnerAI() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Mobile detection - nur auf Client-Seite ausführen
+  useEffect(() => {
+    // Vermeidung von Hydration-Fehlern durch Verzögerung der Client-Seiten-Logik
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+    
+    // Initial check - verzögert ausführen, um Hydration-Fehler zu vermeiden
+    const timer = setTimeout(() => {
+      checkMobile();
+      // Event-Listener erst nach der Hydration hinzufügen
+      window.addEventListener('resize', checkMobile);
+    }, 0);
+    
+    // Clean up
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
   return (
     <Section className="py-16 bg-gradient-to-br from-[#1b3a4b] to-[#2c5364] text-white partner-ai-section">
       <div className="max-w-6xl mx-auto">
@@ -46,7 +70,15 @@ export default function PartnerAI() {
           Nutze unsere KI-Tools, um deine Arbeit zu optimieren, Zeit zu sparen und die Qualität deiner Gutachten zu verbessern.
         </p>
         
-        <MagicBento items={AI_ITEMS} />
+        {/* Desktop: BentoGrid */}
+        <div className="desktop-only-grid">
+          <MagicBento items={AI_ITEMS} />
+        </div>
+        
+        {/* Mobile: Carousel */}
+        <div className="mobile-only-carousel">
+          <AICardCarousel items={AI_ITEMS} />
+        </div>
       </div>
     </Section>
   );

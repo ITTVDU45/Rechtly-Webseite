@@ -8,3 +8,22 @@
   border-color: rgba(255, 255, 255, 0.3) !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
 }
+
+/* Mobile Carousel Anpassungen */
+.ai-carousel {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .mobile-only-carousel {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .desktop-only-grid {
+    display: none;
+  }
+}
