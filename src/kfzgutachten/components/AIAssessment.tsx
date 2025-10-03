@@ -29,8 +29,9 @@ export default function AIAssessment() {
           <div className="mt-8 flex justify-center">
             <button 
               onClick={() => router.push('/anliegen-pruefen/verkehrsunfall')}
-              className="flex items-center gap-2 px-10 py-4 text-lg font-bold text-[#1B3A4B] bg-[#c7e70c] rounded-full transition-all duration-300 hover:translate-y-[-2px]"
+              className="flex items-center gap-2 px-10 py-4 text-lg font-bold text-[#1B3A4B] rounded-full transition-all duration-300 hover:translate-y-[-2px]"
               style={{ 
+                background: 'linear-gradient(135deg, #c7e70c, #a3e635)',
                 boxShadow: '0 0 15px rgba(199, 231, 12, 0.4)',
                 position: 'relative'
               }}
