@@ -275,19 +275,20 @@ export default function Categories() {
           <p className="section-subtitle">Schnelle Einschätzung: Wähle das Thema, das zu deinem Anliegen passt.</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
             {/* Neue Slider-Komponente im ApproachSection-Stil */}
             <SliderTrack categories={categories} router={router} />
           </div>
 
-          <div className="hidden md:flex items-center justify-center">
+          <div className="flex items-center justify-center">
             <div className="w-full max-w-md rounded-3xl overflow-hidden">
               <Image 
-                src="/assets/images/Was ist Rechtly.png" 
+                src="/assets/images/typische bußgeldfaelle.png" 
                 alt="Typische Bußgeldfälle" 
                 width={640} 
                 height={480} 
+                priority
                 className="object-cover" 
                 style={{
                   width: '100%',
