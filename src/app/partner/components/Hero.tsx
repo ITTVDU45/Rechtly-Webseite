@@ -27,7 +27,7 @@ export default function Hero() {
 
                 <label className="flex items-center gap-2 text-sm mb-4"><input type="checkbox" required className="h-4 w-4" /> <span>Ich stimme der Verarbeitung meiner Daten zu.</span></label>
 
-                <button type="submit" className="w-full rounded-full py-3 font-semibold" style={{ background: 'linear-gradient(135deg, rgb(199, 231, 12) 0%, rgb(139, 195, 74) 100%)', color: '#07222b' }}>Beitreten</button>
+                <button type="submit" className="w-full rounded-full py-3 font-semibold" style={{ background: 'linear-gradient(135deg, rgb(199, 231, 12) 0%, rgb(139, 195, 74) 100%)', color: '#07222b' }}>Jetzt Partner werden</button>
               </div>
             </form>
           </div>
