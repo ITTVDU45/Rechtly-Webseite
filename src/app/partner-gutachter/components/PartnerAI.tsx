@@ -2,6 +2,7 @@
 import React from 'react';
 import Section from '@/components/ui/Section';
 import MagicBento, { BentoItem } from '@/components/ui/MagicBento';
+import './PartnerAI.css';
 
 const AI_ITEMS: BentoItem[] = [
   {
@@ -38,7 +39,7 @@ const AI_ITEMS: BentoItem[] = [
 
 export default function PartnerAI() {
   return (
-    <Section className="py-16 bg-gradient-to-br from-[#1b3a4b] to-[#2c5364] text-white">
+    <Section className="py-16 bg-gradient-to-br from-[#1b3a4b] to-[#2c5364] text-white partner-ai-section">
       <div className="max-w-6xl mx-auto">
         <h2 className="section-title text-center text-white mb-10">Unsere KI-Unterstützung für Gutachter</h2>
         <p className="text-center text-white/90 max-w-3xl mx-auto mb-12">

@@ -1,0 +1,10 @@
+/* Anpassungen für die PartnerAI BentoGrid-Karten */
+.partner-ai-section .group\/bento {
+  background: linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.partner-ai-section .group\/bento:hover {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
