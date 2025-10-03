@@ -99,13 +99,7 @@ export default function UnternehmenPage() {
         </div>
       </Section>
 
-      {/* Promise */}
-      <Section className="py-12">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="section-title">Unser Versprechen</h2>
-          <p className="mt-4 text-slate-700">Datenschutz, Transparenz und faire Preise — unser Versprechen an jede:n Kund:in.</p>
-        </div>
-      </Section>
+      {/* "Unser Versprechen" Sektion entfernt auf Wunsch */}
 
       {/* FAQ (use template) */}
       <Section className="py-16 section--white">
