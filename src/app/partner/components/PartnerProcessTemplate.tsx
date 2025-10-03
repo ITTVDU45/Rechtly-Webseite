@@ -189,7 +189,21 @@ export default function PartnerProcessTemplate({ title, subtitle, steps, topImag
         </div>
 
         <div className="process-cta">
-          <button className="btn primary neon-cta" aria-label="Jetzt Partner werden">
+          <button 
+            className="btn primary neon-cta" 
+            aria-label="Jetzt Partner werden"
+            onClick={() => {
+              const partnerForm = document.getElementById('partner-form');
+              if (partnerForm) {
+                partnerForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Fokus auf das erste Formularfeld setzen
+                setTimeout(() => {
+                  const nameInput = document.getElementById('name');
+                  if (nameInput) nameInput.focus();
+                }, 800);
+              }
+            }}
+          >
             <span>Jetzt Partner werden</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden className="cta-icon">
               <path d="M5 12h14M13 5l7 7-7 7" stroke="#07222b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />

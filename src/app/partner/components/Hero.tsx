@@ -13,7 +13,7 @@ export default function Hero() {
         
         <div className="partner-hero__inner w-full">
           <div className="partner-hero__copy text-white">
-            <form className="partner-form" onSubmit={(e) => { e.preventDefault(); alert('Danke — Anfrage gesendet'); }}>
+            <form id="partner-form" className="partner-form" onSubmit={(e) => { e.preventDefault(); alert('Danke — Anfrage gesendet'); }}>
               <div className="partner-form__card w-full md:w-[420px] bg-white rounded-2xl p-6 shadow-lg text-[#07222b]">
                 <div className="mb-3">
                   <label htmlFor="name" className="text-sm font-medium">Name</label>
