@@ -5,6 +5,7 @@ import PartnerProcess from './components/PartnerProcess';
 import PartnerAI from './components/PartnerAI';
 import PartnerPlatform from './components/PartnerPlatform';
 import PartnerFAQ from './components/PartnerFAQ';
+import InfoBrochureForm from './components/InfoBrochureForm';
 import PartnerCTA from './components/PartnerCTA';
 import Footer from './components/Footer';
 
@@ -22,6 +23,7 @@ export default function PartnerGutachterPage() {
       <PartnerProcess />
       <PartnerAI />
       <PartnerPlatform />
+      <InfoBrochureForm />
       <PartnerFAQ />
       <PartnerCTA />
       <Footer />

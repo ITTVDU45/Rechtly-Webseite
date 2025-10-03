@@ -17,18 +17,38 @@ export default function PartnerProvision() {
 
           <div className="p-6 rounded-xl shadow-md bg-white">
             <h3 className="font-semibold">Grundprovision</h3>
-            <div className="mt-4 text-2xl font-bold">20%</div>
+            <div className="mt-4 text-2xl font-bold">bis zu 20%</div>
             <div className="text-sm mt-2 text-slate-600">= 500 €</div>
           </div>
 
           <div className="p-6 rounded-xl shadow-md bg-white">
-            <h3 className="font-semibold">Bonus</h3>
-            <div className="mt-4 text-2xl font-bold">+5% bei &gt;50 Fällen</div>
+            <h3 className="font-semibold">Bonussystem</h3>
+            <div className="mt-4 text-2xl font-bold">+5%, +7% oder +10% bei zusätzlichen Fällen möglich.</div>
             <div className="text-sm mt-2 text-slate-600">Zusätzliche Vergütung</div>
           </div>
         </div>
 
         <p className="mt-6 text-sm text-slate-500">Beispielwerte, tatsächliche Beträge variieren je nach Vereinbarung.</p>
+        
+        <div className="mt-10">
+          <a 
+            href="#infobroschure" 
+            className="inline-block rounded-xl py-3 px-6 transition-all duration-300 shadow-sm"
+            style={{ background: 'linear-gradient(135deg, #c7e70c 0%, #a3e635 100%)' }}
+          >
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+                display: 'inline-block'
+              }}
+            >
+              Infobroschüre anfordern
+            </span>
+          </a>
+        </div>
       </div>
     </Section>
   );
