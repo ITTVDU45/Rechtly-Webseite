@@ -99,7 +99,7 @@ export default function AIAssessment() {
           {/* Right: image/illustration (larger) */}
           <div className="w-full md:w-1/2 flex items-center justify-center">
             <div className="w-full max-w-2xl rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 to-white shadow">
-              <Image src="/assets/images/vision.png" alt="KI Analyse" width={860} height={420} className="object-cover w-full h-full" />
+              <Image src="/assets/images/Rechtly anspruchsleistung.png" alt="KI Analyse" width={860} height={420} className="object-cover w-full h-full" />
             </div>
           </div>
         </div>

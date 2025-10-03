@@ -20,7 +20,7 @@ export default function Beispielrechnung() {
         {/* Visual above the cards */}
         <div className="w-full flex justify-center mb-8">
           <div className="w-full max-w-4xl rounded-2xl overflow-hidden bg-white shadow">
-            <img src="/assets/images/Verkehrsunfallhero.png" alt="Auto mit Seitenschaden" className="w-full h-auto object-contain" />
+            <img src="/assets/images/KFZ GUTACHTER.png" alt="Auto mit Seitenschaden" className="w-full h-auto object-contain" />
           </div>
         </div>
 

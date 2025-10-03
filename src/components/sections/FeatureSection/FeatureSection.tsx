@@ -265,8 +265,25 @@ const FeatureSection: React.FC = () => {
                         }}>
                           {feature.description}
                         </p>
-                        <div className="feature__card-arrow" style={{ color: '#A3E635' }}>
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <div className="feature__card-arrow" style={{ 
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '8px',
+                          backgroundColor: '#A3E635',
+                          color: '#1B3A4B',
+                          padding: '12px 20px',
+                          borderRadius: '8px',
+                          fontSize: isMobile ? '0.9rem' : '1rem',
+                          fontWeight: '600',
+                          marginTop: '1rem',
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease',
+                          boxShadow: '0 4px 12px rgba(163, 230, 53, 0.3)',
+                          border: '2px solid #1B3A4B'
+                        }}>
+                          <span>Anliegen prüfen</span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                         </div>

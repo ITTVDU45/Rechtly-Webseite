@@ -18,15 +18,12 @@ export default function PartnerGutachterPage() {
   return (
     <main className="bg-white text-slate-800">
       <PartnerHero />
+      <PartnerProcess />
       <PartnerProvision />
       <PartnerBenefits />
-      <PartnerProcess />
       <PartnerAI />
-      <PartnerPlatform />
       <InfoBrochureForm />
       <PartnerFAQ />
-      <PartnerCTA />
-      <Footer />
     </main>
   );
 }

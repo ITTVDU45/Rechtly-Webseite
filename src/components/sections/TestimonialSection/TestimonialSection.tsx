@@ -266,7 +266,7 @@ export default function TestimonialSection(): JSX.Element {
 
         <div className="mt-16 sm:mt-12 xs:mt-8 text-center">
           <p className="text-lg sm:text-base xs:text-sm text-gray-600 mb-6 sm:mb-4 xs:mb-3">Werden auch Sie Teil unserer zufriedenen Kundengemeinschaft</p>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-3 xs:gap-2 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-3 xs:gap-2 justify-center items-center">
             <Badge variant="secondary" className="px-6 py-3 sm:px-5 sm:py-2.5 xs:px-4 xs:py-2 text-base sm:text-sm xs:text-xs testimonial-badge">📞 0800-123-4567</Badge>
             <Badge variant="secondary" className="px-6 py-3 sm:px-5 sm:py-2.5 xs:px-4 xs:py-2 text-base sm:text-sm xs:text-xs testimonial-badge">✉️ info@rechtly.de</Badge>
           </div>

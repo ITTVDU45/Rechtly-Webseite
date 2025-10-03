@@ -54,7 +54,7 @@ const CTASection: React.FC = () => {
             whileTap={{ scale: 0.97 }}
             onClick={() => router.push('/partner')}
           >
-            Mehr entdecken
+            Jetzt Partner werden
           </motion.button>
         </div>
 
@@ -66,11 +66,11 @@ const CTASection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Image
-            src="/assets/images/AnwälteCTA.png"
+            src="/assets/images/Rechtly Partnerprogramm.png"
             alt="Partner Visual"
             className="cta__image rounded-full object-cover"
-            width={540}
-            height={360}
+            width={640}
+            height={460}
           />
         </motion.div>
 

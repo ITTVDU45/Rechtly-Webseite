@@ -284,7 +284,7 @@ export default function Categories() {
           <div className="flex items-center justify-center">
             <div className="w-full max-w-md rounded-3xl overflow-hidden">
               <Image 
-                src="/assets/images/typische bußgeldfaelle.png" 
+                src="/assets/images/Typische Bussgeldfaelleneu.png" 
                 alt="Typische Bußgeldfälle" 
                 width={640} 
                 height={480} 

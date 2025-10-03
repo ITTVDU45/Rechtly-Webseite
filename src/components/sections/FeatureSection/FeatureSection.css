@@ -1,8 +1,6 @@
 .feature {
   padding: 4rem 2rem;
-  /* Hintergrund wird jetzt vom übergeordneten Container übernommen */
-  background: transparent;
-  border-radius: 0;
+  /* background: linear-gradient(135deg, #07222b 0%, #1b3a4b 100%); */
   margin: 0 auto;
   max-width: auto;
   /* removed box-shadow to avoid nested card look */
@@ -145,12 +143,12 @@
 .feature__card {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
   position: relative;
   z-index: 2;
   /* Make the card width fit within the slide and centered */
@@ -161,9 +159,9 @@
 }
 
 .feature__card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-  border-color: rgba(163, 230, 53, 0.5);
+  transform: translateY(-2px);
+  box-shadow: none;
+  border: none;
 }
 
 .feature__card-image {
@@ -225,24 +223,32 @@
 }
 
 .feature__card-arrow {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #A3E635, #C7E70C);
+  position: relative;
+  bottom: auto;
+  right: auto;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  background: #A3E635;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #07222b;
+  gap: 8px;
+  color: #1B3A4B;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(163, 230, 53, 0.3);
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid #1B3A4B;
 }
 
 .feature__card:hover .feature__card-arrow {
-  transform: translateX(5px);
+  transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(163, 230, 53, 0.4);
+  background: #C7E70C;
+  border: 2px solid #1B3A4B;
 }
 
 .feature__carousel-progress {
@@ -379,7 +385,7 @@
   border: none;
   box-shadow: 0 0 15px rgba(163, 230, 53, 0.5); /* Neongrüner Glow */
   padding: 0.9rem 1.6rem; /* comfortable touch target */
-  border-radius: 12px; /* slightly rounded */
+  border-radius: 12px; /* Abgerundete Ecken */
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -398,6 +404,7 @@
   background: linear-gradient(135deg, #bef264 0%, #a3e635 100%);
   box-shadow: 0 0 20px rgba(163, 230, 53, 0.7); /* Stärkerer Glow */
   transform: translateY(-2px);
+  border-radius: 12px;
 }
 
 /* Pulsierender Effekt für den Button */
@@ -415,6 +422,7 @@
   opacity: 0;
   transform: scale(1.1);
   animation: pulse 2s infinite;
+  border-radius: 8px;
 }
 
 @keyframes pulse {
@@ -475,7 +483,7 @@
   
   .feature__carousel-container {
     padding: 0;
-    border-radius: 14px;
+    border-radius: 0;
   }
   
   .feature__carousel-button {
@@ -499,7 +507,7 @@
   .feature__card-icon {
     width: 45px;
     height: 45px;
-    border-radius: 10px;
+    border-radius: 0;
     margin-bottom: 0.75rem;
   }
   
@@ -514,10 +522,8 @@
   }
   
   .feature__card-arrow {
-    width: 32px;
-    height: 32px;
-    bottom: 1.25rem;
-    right: 1.25rem;
+    padding: 10px 16px;
+    font-size: 0.9rem;
   }
   
   .feature__carousel-progress {
@@ -559,6 +565,7 @@
     padding: 0.8rem 1.4rem;
     font-size: 0.95rem;
     width: 100%;
+    border-radius: 12px;
   }
 }
 
@@ -573,7 +580,7 @@
   .feature__carousel-container {
     max-width: 90%;
     width: 90%;
-    border-radius: 14px;
+    border-radius: 0;
     margin: 0 auto;
     box-shadow: none;
     overflow: visible; /* Für Single-Card-Slider sichtbar lassen */
@@ -592,7 +599,7 @@
     max-width: 95%;
     margin: 0 auto;
     min-height: 450px;
-    border-radius: 14px;
+    border-radius: 0;
     box-sizing: border-box;
   }
 
@@ -621,13 +628,13 @@
   .feature__carousel-container {
     max-width: 90%;
     width: 90%;
-    border-radius: 12px;
+    border-radius: 0;
     margin: 0 auto;
     box-shadow: none;
   }
 
   .feature__carousel .feature__card {
-    border-radius: 12px;
+    border-radius: 0;
     min-height: 420px;
   }
 
@@ -654,7 +661,6 @@
   .feature {
     padding: 2.5rem 1rem;
     margin: 0.75rem auto;
-    border-radius: 24px;
   }
   
   /* Zusätzliche Anpassungen für kleine Bildschirme */
@@ -676,7 +682,7 @@
   }
   
   .feature__carousel-container {
-    border-radius: 12px;
+    border-radius: 0;
   }
   
   .feature__carousel-controls {
@@ -704,7 +710,7 @@
   .feature__card-icon {
     width: 40px;
     height: 40px;
-    border-radius: 8px;
+    border-radius: 0;
     margin-bottom: 0.6rem;
   }
   
@@ -720,15 +726,13 @@
   }
   
   .feature__card-arrow {
-    width: 28px;
-    height: 28px;
-    bottom: 1rem;
-    right: 1rem;
+    padding: 8px 14px;
+    font-size: 0.85rem;
   }
   
   .feature__card-arrow svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
   
   .feature__carousel-progress {
@@ -754,7 +758,7 @@
     .feature__carousel-container {
       max-width: 98%;
       width: 98%;
-      border-radius: 10px;
+      border-radius: 0;
     }
     
     .feature__carousel .feature__card {
@@ -787,7 +791,7 @@
   
   .prozess-card {
     padding: 1rem;
-    border-radius: 14px;
+    border-radius: 0;
   }
   
   .prozess-step {
@@ -814,7 +818,7 @@
   .prozess-card-cta .cta-button.primary.large {
     padding: 0.7rem 1.2rem;
     font-size: 0.9rem;
-    border-radius: 10px;
+    border-radius: 8px;
   }
   
   .button-icon {

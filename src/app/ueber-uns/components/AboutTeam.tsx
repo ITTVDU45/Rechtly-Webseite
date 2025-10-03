@@ -3,12 +3,9 @@ import Section from '@/components/ui/Section';
 import Image from 'next/image';
 
 const team = [
-  { name: 'Anna Müller', role: 'CEO' },
-  { name: 'Max Schmidt', role: 'CTO' },
-  { name: 'Laura Becker', role: 'Head of Legal' },
-  { name: 'Jonas Fischer', role: 'Lead Engineer' },
-  { name: 'Maya Klein', role: 'Product' },
-  { name: 'Peter Wolf', role: 'Customer Success' }
+  { name: 'Zeynel Kara', role: 'CEO' },
+  { name: 'Tolgahan Vardar', role: 'CTO' },
+  { name: 'Hüseyin Dirim', role: 'COO' }
 ];
 
 export default function AboutTeam() {

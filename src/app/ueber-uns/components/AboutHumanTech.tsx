@@ -8,7 +8,7 @@ export default function AboutHumanTech() {
       <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <div className="rounded-2xl overflow-hidden shadow">
-            <Image src="/assets/images/vision.png" alt="Tech & Legal" width={720} height={420} className="object-cover w-full h-full" />
+            <Image src="/assets/images/innovation.webp" alt="Tech & Legal" width={720} height={420} className="object-cover w-full h-full" />
           </div>
         </div>
         <div>

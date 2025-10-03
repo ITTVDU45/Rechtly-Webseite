@@ -20,7 +20,7 @@ export default function ContactInfoCards(): JSX.Element {
 
       <Card icon={<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="iconGradMail" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#1b3a4b"/><stop offset="100%" stopColor="#2c5364"/></linearGradient></defs><path d="M3 8l9 6 9-6" stroke="url(#iconGradMail)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>} title="E-Mail">
         <a
-          href="mailto:kontakt@rechtly.de"
+          href="mailto:support@rechtly.de"
           aria-label="E-Mail an Rechtly"
           className="inline-block rounded-xl px-6 py-3 shadow-sm transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg"
           style={{ background: 'linear-gradient(135deg, #c7e70c 0%, #a3e635 100%)' }}

@@ -13,7 +13,7 @@ const services: Card[] = [
   { title: 'Gutachter', desc: 'Beauftragung eines unabhängigen KFZ-Gutachters zur genauen Kalkulation der Schadenshöhe – bezahlt von der gegnerischen Versicherung.', img: '/assets/images/Was ist Rechtly.png' },
   { title: 'Totalschaden', desc: 'Bei einem wirtschaftlichen Totalschaden haben Sie Anspruch auf die volle Erstattung des Wiederbeschaffungswerts Ihres Fahrzeugs.', img: '/assets/images/Unfallabwicklung-Bild.png' },
   { title: 'Schmerzensgeld', desc: 'Bei Personenschäden steht Ihnen eine angemessene Entschädigung für erlittene Schmerzen und Beeinträchtigungen zu.', img: '/assets/images/Rechtsberatung.png' },
-  { title: 'Wertminderung', desc: 'Ausgleich für den Wertverlust Ihres Fahrzeugs nach einem Unfall, auch wenn es fachgerecht repariert wurde.', img: '/assets/images/vision.png' },
+  { title: 'Wertminderung', desc: 'Ausgleich für den Wertverlust Ihres Fahrzeugs nach einem Unfall, auch wenn es fachgerecht repariert wurde.', img: '/assets/images/Rechtly anspruchsleistung.png' },
   { title: 'Werkstattwahl', desc: 'Sie haben das Recht, selbst zu entscheiden, in welcher Werkstatt Ihr Fahrzeug repariert werden soll – ohne Einschränkungen durch die Versicherung.', img: '/assets/images/Automatisierte Kundengewinnung.png' },
   { title: 'Fiktive Abrechnung', desc: 'Sie können zwischen einer Reparatur oder der Auszahlung des Schadens wählen – die Entscheidung liegt bei Ihnen.', img: '/assets/images/Was ist Rechtly.png' }
 ];
@@ -176,6 +176,29 @@ function SliderTrack({ cards }: { cards: Card[] }) {
 }
 
 export default function Anspruchsleistungen() {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Mobile detection - nur auf Client-Seite ausführen
+  useEffect(() => {
+    // Vermeidung von Hydration-Fehlern durch Verzögerung der Client-Seiten-Logik
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Initial check - verzögert ausführen, um Hydration-Fehler zu vermeiden
+    const timer = setTimeout(() => {
+      checkMobile();
+      // Event-Listener erst nach der Hydration hinzufügen
+      window.addEventListener('resize', checkMobile);
+    }, 0);
+    
+    // Clean up
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+  
   return (
     <Section className="anspruch-section">
       <div className="anspruch__container">
@@ -184,16 +207,50 @@ export default function Anspruchsleistungen() {
           <p className="anspruch__intro">Leistungen, die Sie in Anspruch nehmen können</p>
         </div>
 
-        <div className="anspruch__layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center' }}>
+        <div 
+          className="anspruch__layout" 
+          style={{ 
+            display: 'grid', 
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', 
+            gap: '2rem', 
+            alignItems: 'center' 
+          }}
+        >
+          {/* Mobile: Bild oben, Desktop: Bild rechts */}
+          {isMobile && (
+            <div className="anspruch__image" style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+              <div style={{ width: '100%', maxWidth: 640, borderRadius: 16, overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
+                <Image 
+                  src="/assets/images/Rechtly anspruchsleistung.png" 
+                  alt="Anspruchsleistungen" 
+                  width={960} 
+                  height={640} 
+                  priority={true}
+                  style={{ width: '100%', height: 'auto', display: 'block' }} 
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Slider - immer vorhanden */}
           <div className="anspruch__slider" style={{ width: '100%' }}>
             <SliderTrack cards={services} />
           </div>
 
-          <div className="anspruch__image" style={{ display: 'flex', justifyContent: 'center' }}>
-            <div style={{ width: '100%', maxWidth: 640, borderRadius: 16, overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
-              <Image src="/assets/images/Unfallabwicklung-Bild.png" alt="Anspruchsleistungen" width={960} height={640} style={{ width: '100%', height: 'auto', display: 'block' }} />
+          {/* Desktop: Bild rechts */}
+          {!isMobile && (
+            <div className="anspruch__image" style={{ display: 'flex', justifyContent: 'center' }}>
+              <div style={{ width: '100%', maxWidth: 640, borderRadius: 16, overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
+                <Image 
+                  src="/assets/images/Rechtly anspruchsleistung.png" 
+                  alt="Anspruchsleistungen" 
+                  width={960} 
+                  height={640} 
+                  style={{ width: '100%', height: 'auto', display: 'block' }} 
+                />
+              </div>
             </div>
-          </div>
+          )}2
         </div>
 
         <div className="anspruch__cta">
