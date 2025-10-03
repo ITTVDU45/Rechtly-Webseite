@@ -20,7 +20,6 @@ export default function VerkehrsunfallPage() {
       <UnfallVorteile />
       <Anspruchsleistungen />
       <PortalStatus />
-      <Ersatzleistungen />
       <FAQSection />
       <CTASection />
     </main>

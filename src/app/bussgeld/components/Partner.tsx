@@ -68,7 +68,21 @@ export default function Partner() {
         <div className="partner-right">
           <div className="partner-visual" id="partnerVisual" ref={visualRef}>
             {/* Partner mockup image from public assets */}
-            <Image src="/assets/images/kooperation mit KFZ.png" alt="Rechtly Partnerportal Mockup" width={560} height={360} style={{ borderRadius: 12 }} />
+            <Image 
+              src="/assets/images/kooperation mit KFZ.png" 
+              alt="Rechtly Partnerportal Mockup" 
+              width={560} 
+              height={360} 
+              priority={true}
+              loading="eager"
+              style={{ 
+                borderRadius: 12,
+                maxWidth: '100%',
+                height: 'auto',
+                objectFit: 'cover'
+              }} 
+              sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 560px"
+            />
             <div className="badge">50 € pro Fall</div>
           </div>
         </div>
@@ -76,5 +90,3 @@ export default function Partner() {
     </Section>
   );
 }
-
-
