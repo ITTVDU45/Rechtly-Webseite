@@ -4,14 +4,16 @@ import HeroSection from "@/components/sections/HeroSection/HeroSection";
 import ServiceSection from "@/components/sections/ServiceSection/ServiceSection";
 import BenefitSection from "@/components/sections/BenefitSection/BenefitSection";
 import ProcessSection from "@/components/sections/ProcessSection/ProcessSection";
-import ExpertiseSection from "@/components/sections/ExpertiseSection/ExpertiseSection";
+// ExpertiseSection ausgeblendet
+// import ExpertiseSection from "@/components/sections/ExpertiseSection/ExpertiseSection";
 import FeatureSection from "@/components/sections/FeatureSection/FeatureSection";
 import ApproachSection from "@/components/sections/ApproachSection/ApproachSection";
 import CTASection from "@/components/sections/CTASection/CTASection";
 import TestimonialSection from "@/components/sections/TestimonialSection/TestimonialSection";
 import PricingSection from "@/components/sections/PricingSection/PricingSection";
 import FAQSection from "@/components/sections/FAQSection/FAQSection";
-import BannerSection from "@/components/sections/BannerSection/BannerSection";
+// BannerSection ausgeblendet
+// import BannerSection from "@/components/sections/BannerSection/BannerSection";
 // ToolsSection ausgeblendet
 // import ToolsSection from '@/components/sections/ToolsSection';
 
@@ -25,9 +27,7 @@ export default function Home() {
       <BenefitSection />
       {/* ToolsSection ausgeblendet */}
 
-      <div className="py-16 bg-white rounded-[32px] mx-4 my-8 overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
-        <ExpertiseSection />
-      </div>
+      {/* ExpertiseSection entfernt */}
 
       <div className="py-16 bg-gradient-to-br from-[#07222b] to-[#1b3a4b] rounded-[32px] mx-4 my-8 overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.15)]">
         <FeatureSection />
@@ -40,7 +40,7 @@ export default function Home() {
       <TestimonialSection />
       <PricingSection />
       <FAQSection />
-      <BannerSection />
+      {/* BannerSection ausgeblendet */}
     </main>
   );
 }
