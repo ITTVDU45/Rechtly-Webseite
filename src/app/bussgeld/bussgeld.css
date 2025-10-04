@@ -193,7 +193,7 @@
 /* --- Feature micro-styles copied to bussgeld to match FeatureSection design --- */
 .feature {
   padding: 4rem 2rem;
-  background: #ffffff;
+  background: transparent; /* removed white background to inherit page container */
   border-radius: 40px;
   margin: 2rem auto;
   box-shadow: none;
