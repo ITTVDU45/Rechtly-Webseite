@@ -1,12 +1,10 @@
 .feature {
   padding: 4rem 2rem;
   /* Hintergrundfarbe wird in page.tsx definiert */
-  background: transparent;
   margin: 0 auto;
   max-width: auto;
   /* removed box-shadow to avoid nested card look */
   box-shadow: none;
-  color: #ffffff;
 }
 
 .feature__container {
