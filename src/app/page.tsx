@@ -12,6 +12,7 @@ import CTASection from "@/components/sections/CTASection/CTASection";
 import TestimonialSection from "@/components/sections/TestimonialSection/TestimonialSection";
 import PricingSection from "@/components/sections/PricingSection/PricingSection";
 import FAQSection from "@/components/sections/FAQSection/FAQSection";
+import Partner from "./bussgeld/components/Partner";
 // BannerSection ausgeblendet
 // import BannerSection from "@/components/sections/BannerSection/BannerSection";
 // ToolsSection ausgeblendet
@@ -37,6 +38,7 @@ export default function Home() {
         <ApproachSection />
       </div>
       <CTASection />
+      <Partner />
       <TestimonialSection />
       <PricingSection />
       <FAQSection />
