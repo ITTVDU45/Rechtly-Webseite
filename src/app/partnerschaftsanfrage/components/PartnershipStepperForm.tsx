@@ -38,7 +38,7 @@ const initialFormData: FormData = {
   employeeCount: '',
   location: '',
   website: '',
-  partnershipType: '',
+  partnershipType: 'referral',
   expectedVolume: '',
   experience: '',
   goals: '',
@@ -93,7 +93,7 @@ export default function PartnershipStepperForm() {
         if (!formData.website.trim()) newErrors.website = 'Website ist erforderlich';
         break;
       case 3:
-        if (!formData.partnershipType.trim()) newErrors.partnershipType = 'Art der Partnerschaft ist erforderlich';
+        // Partnership type is now fixed, no validation needed
         break;
       case 4:
         if (!formData.consent) newErrors.consent = 'Sie müssen der Datenverarbeitung zustimmen';
@@ -322,34 +322,15 @@ export default function PartnershipStepperForm() {
             <div className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Art der Partnerschaft *
+                  Art der Partnerschaft
                 </label>
-                <select
-                  required
-                  value={formData.partnershipType}
-                  onChange={(e) => handleInputChange('partnershipType', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent bg-white shadow-sm hover:border-gray-400 transition-colors duration-200 appearance-none cursor-pointer ${
-                    errors.partnershipType 
-                      ? 'border-red-500 focus:ring-red-500' 
-                      : 'border-gray-300 focus:ring-blue-500'
-                  }`}
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
-                    backgroundPosition: 'right 12px center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: '16px 16px',
-                    paddingRight: '40px'
-                  }}
-                >
-                  <option value="">Bitte wählen</option>
-                  <option value="referral">Empfehlungspartnerschaft</option>
-                  <option value="reseller">Wiederverkäufer</option>
-                  <option value="integration">Technische Integration</option>
-                  <option value="strategic">Strategische Partnerschaft</option>
-                </select>
-                {errors.partnershipType && (
-                  <p className="mt-1 text-sm text-red-600">{errors.partnershipType}</p>
-                )}
+                <input
+                  type="text"
+                  value="Empfehlungspartnerschaft"
+                  disabled
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-600"
+                />
+                <p className="mt-1 text-sm text-gray-500">Nur für KFZ-Gutachter geeignet</p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
