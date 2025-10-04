@@ -15,17 +15,23 @@ type TeamSliderProps = {
 export default function TeamSlider({ members }: TeamSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Mount detection für SSR
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Auto-rotation der Karten
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || !mounted) return;
     
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % members.length);
     }, 5000); // 5 Sekunden pro Karte
     
     return () => clearInterval(interval);
-  }, [members.length, isPaused]);
+  }, [members.length, isPaused, mounted]);
   
   // Nächste/vorherige Karte anzeigen
   const nextSlide = () => {
@@ -99,7 +105,7 @@ export default function TeamSlider({ members }: TeamSliderProps) {
       </div>
 
       {/* Auto-Scroll Indikator */}
-      {!isPaused && (
+      {!isPaused && mounted && (
         <div className="auto-scroll-indicator" style={{ 
           width: '100%', 
           maxWidth: '100px', 
@@ -113,10 +119,11 @@ export default function TeamSlider({ members }: TeamSliderProps) {
             className="auto-scroll-progress"
             style={{
               height: '100%',
-              width: `${(Date.now() % 5000) / 50}%`,
+              width: '0%',
               backgroundColor: '#A3E635',
               borderRadius: '1px',
-              transition: 'width 0.1s linear'
+              transition: 'width 5s linear',
+              animation: 'progress 5s linear infinite'
             }}
           />
         </div>
