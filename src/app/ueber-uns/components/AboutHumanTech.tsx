@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function AboutHumanTech() {
   return (
-    <Section className="py-12 bg-slate-50">
+    <Section className="py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <div className="rounded-2xl overflow-hidden shadow">
