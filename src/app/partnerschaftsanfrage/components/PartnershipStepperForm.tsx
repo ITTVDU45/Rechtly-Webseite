@@ -334,7 +334,7 @@ export default function PartnershipStepperForm() {
   };
 
   return (
-    <Section className="py-16 bg-white">
+    <Section className="py-16" style={{ background: 'white' }}>
       <div className="max-w-4xl mx-auto px-4">
         {/* Stepper Navigation */}
         <div className="mb-12">
@@ -377,7 +377,7 @@ export default function PartnershipStepperForm() {
         </div>
 
         {/* Form Content */}
-        <div className="section-card rounded-2xl px-4 md:px-8 py-16 bg-white">
+        <div className="rounded-2xl px-4 md:px-8 py-16 bg-white shadow-lg" style={{ background: 'white' }}>
           <form onSubmit={handleSubmit}>
             {renderStepContent()}
             
