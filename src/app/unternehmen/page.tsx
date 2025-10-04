@@ -46,7 +46,7 @@ export default function UnternehmenPage() {
           <p className="mt-4 text-lg text-white/90">Digitale, schnelle und sichere Lösungen für Fragen rund um Bußgeld, Punkte und Gutachten.</p>
           <div className="mt-8">
             <a
-              href="#contact"
+              href="/kontakt"
               className="inline-block rounded-2xl px-6 py-3 font-semibold"
               style={{ background: 'linear-gradient(135deg, #c7e70c 0%, #a3e635 100%)', color: '#07222b' }}
             >
