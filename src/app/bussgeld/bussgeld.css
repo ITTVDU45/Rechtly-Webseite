@@ -214,7 +214,7 @@
 .feature__header h2 {
   font-size: clamp(2rem, 4vw, 2.5rem);
   margin-bottom: 1rem;
-  color: #1B3A4B;
+  color: #ffffff;
 }
 
 .feature__description {
