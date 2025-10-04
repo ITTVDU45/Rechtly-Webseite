@@ -3,7 +3,7 @@ import Section from '@/components/ui/Section';
 
 export default function PartnershipHero() {
   return (
-    <Section className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white">
+    <Section className="py-20 text-white" style={{ background: 'linear-gradient(135deg, rgb(27, 58, 75) 0%, rgb(44, 83, 100) 100%)' }}>
       <div className="max-w-4xl mx-auto text-center px-4">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
           Werden Sie unser Partner

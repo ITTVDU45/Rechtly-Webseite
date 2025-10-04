@@ -334,7 +334,7 @@ export default function PartnershipStepperForm() {
   };
 
   return (
-    <Section className="py-16 bg-gray-50">
+    <Section className="py-16 bg-white">
       <div className="max-w-4xl mx-auto px-4">
         {/* Stepper Navigation */}
         <div className="mb-12">
