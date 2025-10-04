@@ -34,7 +34,7 @@ const initialFormData: FormData = {
   email: '',
   phone: '',
   company: '',
-  businessType: '',
+  businessType: 'gutachter',
   employeeCount: '',
   location: '',
   website: '',
@@ -89,8 +89,8 @@ export default function PartnershipStepperForm() {
         if (!formData.company.trim()) newErrors.company = 'Unternehmen ist erforderlich';
         break;
       case 2:
-        if (!formData.businessType.trim()) newErrors.businessType = 'Art des Unternehmens ist erforderlich';
         if (!formData.location.trim()) newErrors.location = 'Standort ist erforderlich';
+        if (!formData.website.trim()) newErrors.website = 'Website ist erforderlich';
         break;
       case 3:
         if (!formData.partnershipType.trim()) newErrors.partnershipType = 'Art der Partnerschaft ist erforderlich';
@@ -238,29 +238,15 @@ export default function PartnershipStepperForm() {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Art des Unternehmens *
+                  Art des Unternehmens
                 </label>
-                <select
-                  required
-                  value={formData.businessType}
-                  onChange={(e) => handleInputChange('businessType', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
-                    errors.businessType 
-                      ? 'border-red-500 focus:ring-red-500' 
-                      : 'border-gray-300 focus:ring-blue-500'
-                  }`}
-                >
-                  <option value="">Bitte wählen</option>
-                  <option value="kanzlei">Rechtsanwaltskanzlei</option>
-                  <option value="gutachter">KFZ-Gutachter</option>
-                  <option value="versicherung">Versicherung</option>
-                  <option value="autohaus">Autohaus</option>
-                  <option value="werkstatt">Werkstatt</option>
-                  <option value="sonstiges">Sonstiges</option>
-                </select>
-                {errors.businessType && (
-                  <p className="mt-1 text-sm text-red-600">{errors.businessType}</p>
-                )}
+                <input
+                  type="text"
+                  value="KFZ-Gutachter"
+                  disabled
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-600"
+                />
+                <p className="mt-1 text-sm text-gray-500">Nur für KFZ-Gutachter verfügbar</p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -269,7 +255,14 @@ export default function PartnershipStepperForm() {
                 <select
                   value={formData.employeeCount}
                   onChange={(e) => handleInputChange('employeeCount', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white shadow-sm hover:border-gray-400 transition-colors duration-200 appearance-none cursor-pointer"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 12px center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '16px 16px',
+                    paddingRight: '40px'
+                  }}
                 >
                   <option value="">Bitte wählen</option>
                   <option value="1-5">1-5 Mitarbeiter</option>
@@ -300,15 +293,23 @@ export default function PartnershipStepperForm() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Website
+                  Website *
                 </label>
                 <input
                   type="url"
+                  required
                   value={formData.website}
                   onChange={(e) => handleInputChange('website', e.target.value)}
                   placeholder="https://..."
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                    errors.website 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
                 />
+                {errors.website && (
+                  <p className="mt-1 text-sm text-red-600">{errors.website}</p>
+                )}
               </div>
             </div>
           </div>
@@ -327,11 +328,18 @@ export default function PartnershipStepperForm() {
                   required
                   value={formData.partnershipType}
                   onChange={(e) => handleInputChange('partnershipType', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent bg-white shadow-sm hover:border-gray-400 transition-colors duration-200 appearance-none cursor-pointer ${
                     errors.partnershipType 
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
                   }`}
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 12px center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '16px 16px',
+                    paddingRight: '40px'
+                  }}
                 >
                   <option value="">Bitte wählen</option>
                   <option value="referral">Empfehlungspartnerschaft</option>
@@ -350,7 +358,14 @@ export default function PartnershipStepperForm() {
                 <select
                   value={formData.expectedVolume}
                   onChange={(e) => handleInputChange('expectedVolume', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white shadow-sm hover:border-gray-400 transition-colors duration-200 appearance-none cursor-pointer"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 12px center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '16px 16px',
+                    paddingRight: '40px'
+                  }}
                 >
                   <option value="">Bitte wählen</option>
                   <option value="1-10">1-10 Fälle</option>
@@ -366,7 +381,14 @@ export default function PartnershipStepperForm() {
                 <select
                   value={formData.experience}
                   onChange={(e) => handleInputChange('experience', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white shadow-sm hover:border-gray-400 transition-colors duration-200 appearance-none cursor-pointer"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 12px center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '16px 16px',
+                    paddingRight: '40px'
+                  }}
                 >
                   <option value="">Bitte wählen</option>
                   <option value="beginner">Einsteiger</option>
