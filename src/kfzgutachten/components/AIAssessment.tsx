@@ -28,7 +28,7 @@ export default function AIAssessment() {
           {/* CTA Button */}
           <div className="mt-8 flex justify-center">
             <button 
-              onClick={() => router.push('/anliegen-pruefen/verkehrsunfall')}
+              onClick={() => router.push('/anliegen-pruefen')}
               className="flex items-center gap-2 px-10 py-4 text-lg font-bold text-[#1B3A4B] rounded-full transition-all duration-300 hover:translate-y-[-2px]"
               style={{ 
                 background: 'linear-gradient(135deg, #c7e70c, #a3e635)',
