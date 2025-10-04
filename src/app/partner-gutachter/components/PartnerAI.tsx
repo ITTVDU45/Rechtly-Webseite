@@ -83,7 +83,7 @@ export default function PartnerAI() {
         {/* CTA Button */}
         <div className="text-center mt-8 md:mt-12">
           <a 
-            href="#partner-cta" 
+            href="/partnerschaftsanfrage" 
             className="ai-cta-button"
           >
             Jetzt Partner werden

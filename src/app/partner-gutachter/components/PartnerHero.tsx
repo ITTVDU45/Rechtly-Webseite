@@ -48,7 +48,7 @@ export default function PartnerHero() {
             </p>
             <div className="mt-6 partner-hero-button-container">
               <a
-                href="#partner-cta"
+                href="/partnerschaftsanfrage"
                 className="partner-hero-button"
                 style={{ background: 'linear-gradient(135deg, #c7e70c 0%, #a3e635 100%)' }}
               >
