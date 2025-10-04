@@ -8,8 +8,8 @@ const Footer: React.FC = () => {
     <Section as="footer" style={{ background: 'linear-gradient(135deg, #123a48 0%, #1b5564 100%)' }} className="mt-16 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
-          <div>
-            <Image src="/assets/images/Logo Weiß.png" alt="Rechtly" width={160} height={48} className="h-10 mb-4 object-contain" />
+          <div className="md:text-left text-center">
+            <Image src="/assets/images/Logo Weiß.png" alt="Rechtly" width={160} height={48} className="h-10 mb-4 object-contain mx-auto md:mx-0" />
             <p className="text-sm text-white/80">&copy; {new Date().getFullYear()} Rechtly. Alle Rechte vorbehalten.</p>
           </div>
 
@@ -36,9 +36,9 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div>
+          <div className="md:text-left text-center">
             <h4 className="font-semibold mb-4">Anliegen prüfen</h4>
-            <div className="mb-3">
+            <div className="mb-3 flex justify-center md:justify-start">
               <a href="/anliegen-pruefen" className="inline-block rounded-xl py-2 px-4 shadow-sm transition-all duration-200" style={{ background: 'linear-gradient(135deg, #c7e70c 0%, #a3e635 100%)' }}>
                 <span style={{ background: 'linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', display: 'inline-block' }}>
                   Anliegen prüfen
