@@ -9,15 +9,10 @@ export default function Hero() {
         <h1>Bußgeldbescheid erhalten? Wir prüfen kostenlos & digital.</h1>
         <p className="sub">In 3 Minuten hochladen – Einschätzung vom Anwalt, Status live verfolgen, alles in einer Plattform.</p>
         <div className="cta-row">
-          <button className="btn primary" onClick={() => window.scrollTo({ top: 800, behavior: 'smooth' })}>Bußgeld jetzt kostenlos prüfen</button>
-          <a href="#prozess" className="btn secondary">So funktioniert’s</a>
+          <button className="btn primary" onClick={() => window.location.href = '/anliegen-pruefen'}>Bußgeld jetzt kostenlos prüfen</button>
+          <button className="btn secondary" onClick={() => window.scrollTo({ top: 800, behavior: 'smooth' })}>So funktioniert's</button>
         </div>
 
-        <div className="trust-row">
-          <div className="trust-item">⭐ 4.8 (Google)</div>
-          <div className="trust-item">DSGVO‑konform</div>
-          <div className="trust-item">Keine Kostenrisiken bei RSV</div>
-        </div>
 
         <p className="micro">Kostenlose Ersteinschätzung. 50 € Vermittlungsbonus für Partner.</p>
       </div>
