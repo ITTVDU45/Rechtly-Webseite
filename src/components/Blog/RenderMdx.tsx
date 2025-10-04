@@ -1,0 +1,56 @@
+import { marked } from 'marked';
+import { Blog } from "../../.velite/generated";
+
+interface RenderMdxProps {
+  blog: Blog;
+}
+
+export default function RenderMdx({ blog }: RenderMdxProps) {
+  // Konfiguriere marked für bessere HTML-Ausgabe
+  marked.setOptions({
+    breaks: true,
+    gfm: true,
+  });
+
+  const htmlContent = blog.content ? marked(blog.content) : '';
+
+  return (
+    <div className="col-span-12 lg:col-span-8">
+      <article className="prose prose-xl max-w-none dark:prose-invert">
+        <div className="font-in leading-relaxed">
+          {blog.content ? (
+            <div 
+              className="prose prose-xl max-w-none dark:prose-invert
+                         prose-headings:text-gray-900 dark:prose-headings:text-gray-100
+                         prose-headings:font-bold prose-headings:tracking-tight
+                         prose-h1:text-4xl prose-h1:mb-8 prose-h1:mt-12
+                         prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-10 prose-h2:border-b prose-h2:border-gray-200 prose-h2:pb-2
+                         prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8
+                         prose-h4:text-xl prose-h4:mb-3 prose-h4:mt-6
+                         prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-8 prose-p:mb-6 prose-p:text-lg
+                         prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:font-medium prose-a:no-underline hover:prose-a:underline
+                         prose-strong:text-gray-900 dark:prose-strong:text-gray-100 prose-strong:font-bold
+                         prose-ul:text-gray-700 dark:prose-ul:text-gray-300 prose-ul:my-6 prose-ul:space-y-2
+                         prose-ol:text-gray-700 dark:prose-ol:text-gray-300 prose-ol:my-6 prose-ol:space-y-2
+                         prose-li:text-gray-700 dark:prose-li:text-gray-300 prose-li:leading-7 prose-li:text-lg
+                         prose-table:text-gray-700 dark:prose-table:text-gray-300 prose-table:my-8 prose-table:border-collapse
+                         prose-th:text-gray-900 dark:prose-th:text-gray-100 prose-th:bg-gray-50 dark:prose-th:bg-gray-800 prose-th:font-semibold prose-th:p-4 prose-th:border prose-th:border-gray-300 dark:prose-th:border-gray-600
+                         prose-td:text-gray-700 dark:prose-td:text-gray-300 prose-td:p-4 prose-td:border prose-td:border-gray-300 dark:prose-td:border-gray-600
+                         prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:my-6
+                         prose-code:text-red-600 dark:prose-code:text-red-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono
+                         prose-pre:bg-gray-900 dark:prose-pre:bg-gray-800 prose-pre:text-gray-100 prose-pre:p-6 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-8
+                         prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8 prose-img:mx-auto
+                         prose-hr:border-gray-300 dark:prose-hr:border-gray-600 prose-hr:my-12"
+              dangerouslySetInnerHTML={{ __html: htmlContent }}
+            />
+          ) : (
+            <div>
+              <h2>Artikel wird geladen...</h2>
+              <p>Der Inhalt für diesen Artikel wird gerade vorbereitet.</p>
+            </div>
+          )}
+        </div>
+      </article>
+    </div>
+  );
+}

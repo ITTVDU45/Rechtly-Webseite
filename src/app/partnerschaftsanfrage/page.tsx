@@ -8,7 +8,6 @@ export default function PartnershipRequestPage() {
     <div className="min-h-screen">
       <PartnershipHero />
       <PartnershipStepperForm />
-      <Footer />
     </div>
   );
 }

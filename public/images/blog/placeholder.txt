@@ -1,0 +1,11 @@
+# Blog-Bilder Platzhalter
+
+Diese Dateien sollten durch echte Blog-Bilder ersetzt werden:
+
+- bussgeld.jpg (800x600)
+- verkehrsunfall.jpg (800x600) 
+- kfz-gutachten.jpg (800x600)
+- ki-telefonie.jpg (800x600)
+- rechtsschutz.jpg (800x600)
+
+Für die Entwicklung können Sie beliebige Bilder mit den entsprechenden Namen hier platzieren.

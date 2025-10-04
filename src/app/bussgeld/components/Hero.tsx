@@ -14,7 +14,7 @@ export default function Hero() {
         </div>
 
 
-        <p className="micro">Kostenlose Ersteinschätzung. 50 € Vermittlungsbonus für Partner.</p>
+        
       </div>
     </section>
   );

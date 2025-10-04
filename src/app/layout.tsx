@@ -58,12 +58,12 @@ export default function RootLayout({
               ]
             },
             {
-              label: 'News & Ratgeber',
+              label: 'Blog & Ratgeber',
               bgColor: '#ffffff',
               textColor: '#07222b',
               links: [
-                { label: 'Alle Artikel', ariaLabel: 'News', href: '/news' },
-                { label: 'Ratgeber', ariaLabel: 'Ratgeber', href: '/ratgeber' }
+                { label: 'Alle Artikel', ariaLabel: 'Blog', href: '/blogundratgeber' },
+                { label: 'Kategorien', ariaLabel: 'Kategorien', href: '/blogundratgeber/categories/all' }
               ]
             },
             {

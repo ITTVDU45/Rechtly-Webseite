@@ -1,6 +1,6 @@
 .feature {
   padding: 4rem 2rem;
-  background: #ffffff;
+  background: transparent; /* removed white background to inherit page container */
   border-radius: 40px;
   margin: 2rem auto;
   max-width: auto;

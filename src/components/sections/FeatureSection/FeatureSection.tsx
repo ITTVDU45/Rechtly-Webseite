@@ -246,7 +246,7 @@ const FeatureSection: React.FC = () => {
           <div className="feature__image">
             <div className="feature__image-container">
               <Image 
-                src="/assets/images/Rechtly Bild KFZ GUTACHTEN.png" 
+                src="/assets/images/Typische Bussgeldfaelleneu.png" 
                 alt="Rechtly Digitale Plattform" 
                 width={960} 
                 height={640} 

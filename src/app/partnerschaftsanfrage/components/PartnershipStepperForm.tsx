@@ -50,6 +50,7 @@ export default function PartnershipStepperForm() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const steps = [
     { id: 1, title: 'Kontaktdaten', description: 'Ihre persönlichen Informationen' },
@@ -93,7 +94,7 @@ export default function PartnershipStepperForm() {
         if (!formData.website.trim()) newErrors.website = 'Website ist erforderlich';
         break;
       case 3:
-        // Partnership type is now fixed, no validation needed
+        if (!formData.expectedVolume.trim()) newErrors.expectedVolume = 'Erwartetes Volumen ist erforderlich';
         break;
       case 4:
         if (!formData.consent) newErrors.consent = 'Sie müssen der Datenverarbeitung zustimmen';
@@ -121,7 +122,7 @@ export default function PartnershipStepperForm() {
     if (validateStep(4)) {
       // Hier würde die Formular-Daten verarbeitet werden
       console.log('Formular abgesendet:', formData);
-      alert('Vielen Dank für Ihre Partnerschaftsanfrage! Wir melden uns zeitnah bei Ihnen.');
+      setIsSubmitted(true);
     }
   };
 
@@ -141,7 +142,7 @@ export default function PartnershipStepperForm() {
                   required
                   value={formData.firstName}
                   onChange={(e) => handleInputChange('firstName', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent text-gray-900 ${
                     errors.firstName 
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
@@ -160,7 +161,7 @@ export default function PartnershipStepperForm() {
                   required
                   value={formData.lastName}
                   onChange={(e) => handleInputChange('lastName', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent text-gray-900 ${
                     errors.lastName 
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
@@ -179,7 +180,7 @@ export default function PartnershipStepperForm() {
                   required
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent text-gray-900 ${
                     errors.email 
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
@@ -198,7 +199,7 @@ export default function PartnershipStepperForm() {
                   required
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent text-gray-900 ${
                     errors.phone 
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
@@ -218,7 +219,7 @@ export default function PartnershipStepperForm() {
                 required
                 value={formData.company}
                 onChange={(e) => handleInputChange('company', e.target.value)}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent text-gray-900 ${
                   errors.company 
                     ? 'border-red-500 focus:ring-red-500' 
                     : 'border-gray-300 focus:ring-blue-500'
@@ -281,7 +282,7 @@ export default function PartnershipStepperForm() {
                   value={formData.location}
                   onChange={(e) => handleInputChange('location', e.target.value)}
                   placeholder="Stadt, Bundesland"
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent text-gray-900 ${
                     errors.location 
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
@@ -301,7 +302,7 @@ export default function PartnershipStepperForm() {
                   value={formData.website}
                   onChange={(e) => handleInputChange('website', e.target.value)}
                   placeholder="https://..."
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent text-gray-900 ${
                     errors.website 
                       ? 'border-red-500 focus:ring-red-500' 
                       : 'border-gray-300 focus:ring-blue-500'
@@ -334,12 +335,17 @@ export default function PartnershipStepperForm() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Erwartetes Volumen (Fälle/Monat)
+                  Erwartetes Volumen (Fälle/Monat) *
                 </label>
                 <select
+                  required
                   value={formData.expectedVolume}
                   onChange={(e) => handleInputChange('expectedVolume', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white shadow-sm hover:border-gray-400 transition-colors duration-200 appearance-none cursor-pointer"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent bg-white shadow-sm hover:border-gray-400 transition-colors duration-200 appearance-none cursor-pointer ${
+                    errors.expectedVolume 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
                     backgroundPosition: 'right 12px center',
@@ -354,6 +360,9 @@ export default function PartnershipStepperForm() {
                   <option value="51-100">51-100 Fälle</option>
                   <option value="100+">100+ Fälle</option>
                 </select>
+                {errors.expectedVolume && (
+                  <p className="mt-1 text-sm text-red-600">{errors.expectedVolume}</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -386,7 +395,7 @@ export default function PartnershipStepperForm() {
                   onChange={(e) => handleInputChange('goals', e.target.value)}
                   rows={4}
                   placeholder="Beschreiben Sie kurz Ihre Ziele und Erwartungen..."
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                 />
               </div>
             </div>
@@ -406,7 +415,7 @@ export default function PartnershipStepperForm() {
                 onChange={(e) => handleInputChange('message', e.target.value)}
                 rows={6}
                 placeholder="Haben Sie noch weitere Fragen oder möchten Sie uns etwas mitteilen?"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
               />
             </div>
             <div className="flex items-start space-x-3">
@@ -440,6 +449,80 @@ export default function PartnershipStepperForm() {
         return null;
     }
   };
+
+  if (isSubmitted) {
+    return (
+      <Section className="py-16" style={{ background: 'white' }}>
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+            <div className="mb-6">
+              <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                Partnerschaftsanfrage erfolgreich abgesendet!
+              </h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Vielen Dank für Ihr Interesse an einer Partnerschaft mit Rechtly.
+              </p>
+            </div>
+            
+            <div className="bg-blue-50 rounded-lg p-6 mb-6">
+              <h3 className="text-xl font-semibold text-blue-900 mb-3">Was passiert als nächstes?</h3>
+              <div className="space-y-3 text-left">
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-white text-sm font-bold">1</span>
+                  </div>
+                  <p className="text-blue-800">Sie erhalten eine Bestätigungs-E-Mail an <strong>{formData.email}</strong></p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-white text-sm font-bold">2</span>
+                  </div>
+                  <p className="text-blue-800">Unser Team prüft Ihre Anfrage innerhalb von 24 Stunden</p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-white text-sm font-bold">3</span>
+                  </div>
+                  <p className="text-blue-800">Wir kontaktieren Sie telefonisch für ein persönliches Gespräch</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h4 className="font-semibold text-gray-900 mb-2">Ihre Anfrage im Überblick:</h4>
+              <div className="text-sm text-gray-600 space-y-1">
+                <p><strong>Name:</strong> {formData.firstName} {formData.lastName}</p>
+                <p><strong>Unternehmen:</strong> {formData.company}</p>
+                <p><strong>Standort:</strong> {formData.location}</p>
+                <p><strong>Partnerschaft:</strong> Empfehlungspartnerschaft für KFZ-Gutachter</p>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <button
+                onClick={() => window.location.href = '/'}
+                className="px-8 py-3 text-white rounded-lg font-medium transition-colors"
+                style={{ background: 'linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%)' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #B8D60A 0%, #7BA842 100%)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%)';
+                }}
+              >
+                Zurück zur Startseite
+              </button>
+            </div>
+          </div>
+        </div>
+      </Section>
+    );
+  }
 
   return (
     <Section className="py-16" style={{ background: 'white' }}>
