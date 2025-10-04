@@ -64,12 +64,16 @@
 
 /* Anpassungen für das neue Bento-Grid */
 .feature__cards .bento-grid {
-  gap: 1rem;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
 }
 
-/* Spezielle Anpassung für Geschwindigkeitsverstoß-Karte */
-.feature__cards [data-feature-id="1"] {
-  grid-column: span 1 !important;
+/* Desktop-Anpassungen für das Bento-Grid */
+@media (min-width: 768px) {
+  .feature__cards .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .feature__carousel {

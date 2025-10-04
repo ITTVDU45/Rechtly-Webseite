@@ -50,31 +50,11 @@ export default function MagicBento({ items }: Props) {
         // Bestimme die Klasse basierend auf dem Item
         let className = "";
         
-        // Geschwindigkeitsverstoß-Karte kleiner darstellen
-        if (item.id === 1 || (item.title && item.title.includes("Geschwindigkeit"))) {
-          className = "md:col-span-1";
-        } 
-        // Rotlicht und Abstand nebeneinander
-        else if (item.id === 2 || (item.title && item.title.includes("Rotlicht"))) {
-          className = "md:col-span-1";
-        }
-        else if (item.id === 3 || (item.title && item.title.includes("Abstand"))) {
-          className = "md:col-span-1";
-        }
-        // Handy und Alkohol größer
-        else if (item.id === 4 || (item.title && item.title.includes("Handy"))) {
-          className = "md:col-span-2";
-        }
-        else if (item.id === 5 || (item.title && item.title.includes("Alkohol") || item.title && item.title.includes("Drogen"))) {
-          className = "md:col-span-1";
-        }
-        // Verkehrsunfall größer
-        else if (item.id === 6 || (item.title && item.title.includes("Verkehrsunfall") || item.title && item.title.includes("Unfall"))) {
-          className = "md:col-span-2";
-        }
-        // Fallback
-        else {
-          className = i % 3 === 0 ? "md:col-span-2" : "md:col-span-1";
+        // Gleichmäßige Verteilung in 3 Spalten für Desktop
+        if (i % 3 === 0) {
+          className = "md:col-span-2"; // Erste Karte in jeder Reihe nimmt 2 Spalten ein
+        } else {
+          className = "md:col-span-1"; // Alle anderen Karten nehmen 1 Spalte ein
         }
         
         return (

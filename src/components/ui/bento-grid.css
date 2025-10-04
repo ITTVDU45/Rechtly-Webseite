@@ -14,6 +14,17 @@
   }
 }
 
+/* Spezielle Anpassungen für FeatureSection */
+.feature__cards .bento-grid {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .feature__cards .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* Glasmorphismus-Effekt für alle Karten */
 .bento-grid-item {
   border-radius: 16px;
