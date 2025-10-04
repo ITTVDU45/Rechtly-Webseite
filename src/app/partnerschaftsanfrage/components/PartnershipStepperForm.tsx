@@ -344,9 +344,10 @@ export default function PartnershipStepperForm() {
                 <div
                   className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
                     currentStep >= step.id
-                      ? 'bg-blue-600 border-blue-600 text-white'
+                      ? 'text-white border-transparent'
                       : 'bg-white border-gray-300 text-gray-400'
                   }`}
+                  style={currentStep >= step.id ? { background: 'linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%)' } : {}}
                 >
                   {currentStep > step.id ? (
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -359,8 +360,9 @@ export default function PartnershipStepperForm() {
                 {index < steps.length - 1 && (
                   <div
                     className={`flex-1 h-0.5 mx-4 ${
-                      currentStep > step.id ? 'bg-blue-600' : 'bg-gray-300'
+                      currentStep > step.id ? '' : 'bg-gray-300'
                     }`}
+                    style={currentStep > step.id ? { background: 'linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%)' } : {}}
                   />
                 )}
               </div>
@@ -400,14 +402,28 @@ export default function PartnershipStepperForm() {
                 <button
                   type="button"
                   onClick={nextStep}
-                  className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                  className="px-6 py-3 text-white rounded-lg font-medium transition-colors"
+                  style={{ background: 'linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, #B8D60A 0%, #7BA842 100%)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%)';
+                  }}
                 >
                   Weiter
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
+                  className="px-6 py-3 text-white rounded-lg font-medium transition-colors"
+                  style={{ background: 'linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, #B8D60A 0%, #7BA842 100%)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%)';
+                  }}
                 >
                   Partnerschaftsanfrage absenden
                 </button>
