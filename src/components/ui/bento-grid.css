@@ -102,9 +102,8 @@
   opacity: 0.9;
 }
 
-/* Hintergrund für die gesamte Feature-Sektion */
+/* Hintergrund für die gesamte Feature-Sektion wird in page.tsx definiert */
 .feature {
-  background: linear-gradient(135deg, #07222b 0%, #1B3A4B 100%);
   color: #ffffff;
 }
 

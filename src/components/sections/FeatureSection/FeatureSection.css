@@ -1,6 +1,7 @@
 .feature {
   padding: 4rem 2rem;
-  /* background: linear-gradient(135deg, #07222b 0%, #1b3a4b 100%); */
+  /* Hintergrundfarbe wird in page.tsx definiert */
+  background: transparent;
   margin: 0 auto;
   max-width: auto;
   /* removed box-shadow to avoid nested card look */
