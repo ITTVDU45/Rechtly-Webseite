@@ -58,8 +58,18 @@ export default function Partner() {
           </ul>
 
           <div className="partner-ctas">
-            <button className="btn primary">Jetzt Partner werden</button>
-            <button className="btn secondary">Mehr erfahren</button>
+            <button 
+              className="btn primary"
+              onClick={() => window.location.href = '/partner-gutachter'}
+            >
+              Jetzt Partner werden
+            </button>
+            <button 
+              className="btn secondary"
+              onClick={() => window.location.href = '/partner-gutachter'}
+            >
+              Mehr erfahren
+            </button>
           </div>
 
           <p className="partner-note">Mehr Aufträge – weniger Aufwand. Werden Sie Teil des Rechtly-Partnernetzwerks.</p>

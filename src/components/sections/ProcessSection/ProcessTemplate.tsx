@@ -200,7 +200,11 @@ export default function ProcessTemplate({
         </div>
 
         <div className="process-cta">
-          <button className="btn primary neon-cta" aria-label={buttonText}>
+          <button 
+            className="btn primary neon-cta" 
+            aria-label={buttonText}
+            onClick={() => window.location.href = '/anliegen-pruefen'}
+          >
             <span>{buttonText}</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden className="cta-icon">
               <path d="M5 12h14M13 5l7 7-7 7" stroke="#07222b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
