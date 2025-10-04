@@ -16,13 +16,13 @@ type Category = {
 };
 
 const categories: Category[] = [
-  { id: 1, title: 'Geschwindigkeit', lead: 'Viele Bußgeldbescheide entstehen durch einfache Tempolimits. Ob 21 km/h zu viel oder über 70 km/h – bei Fahrverbot und Punkten helfen wir sofort weiter.', href: '/bussgeld/geschwindigkeit', icon: <Zap size={24} /> },
-  { id: 2, title: 'Rotlichtverstoß', lead: 'Ein Rotlichtverstoß kann teuer werden – vor allem bei qualifizierten Verstößen. Wir prüfen Messung und Beweislage.', href: '/bussgeld/rotlicht', icon: <Clock size={24} /> },
-  { id: 3, title: 'Abstand', lead: 'Moderne Messsysteme werten Fahrverhalten sekundengenau aus. Nicht immer korrekt. Wir helfen bei Bußgeld, Punkten oder Fahrverbot.', href: '/bussgeld/abstand', icon: <Ruler size={24} /> },
-  { id: 4, title: 'Handy am Steuer', lead: 'Schon der kurze Blick aufs Display kann teuer werden. Wir prüfen, ob die Kontrolle rechtlich einwandfrei war.', href: '/bussgeld/handy', icon: <Smartphone size={24} /> },
-  { id: 5, title: 'Parken & Halten', lead: 'Egal ob Halteverbot oder Feuerwehrzufahrt – Bußgelder sind schnell verteilt. Wir sagen, ob Einspruch lohnt.', href: '/bussgeld/park', icon: <MapPin size={24} /> },
-  { id: 6, title: 'Alkohol / Drogen', lead: 'Verfahren mit Alkohol oder Drogen führen oft zu Fahrverbot und MPU. Wir prüfen Ihre Rechte und zeigen Auswege.', href: '/bussgeld/alkohol', icon: <Coffee size={24} /> },
-  { id: 7, title: 'Verkehrsunfall', lead: 'Auch bei Unfällen können Bußgelder drohen – etwa wegen Fahrlässigkeit oder fehlender Abstand. Wir helfen bei der Einschätzung.', href: '/bussgeld/unfall', icon: <ZapOff size={24} /> }
+  { id: 1, title: 'Geschwindigkeit', lead: 'Viele Bußgeldbescheide entstehen durch einfache Tempolimits. Ob 21 km/h zu viel oder über 70 km/h – bei Fahrverbot und Punkten helfen wir sofort weiter.', href: '/anliegen-pruefen/bussgeld', icon: <Zap size={24} /> },
+  { id: 2, title: 'Rotlichtverstoß', lead: 'Ein Rotlichtverstoß kann teuer werden – vor allem bei qualifizierten Verstößen. Wir prüfen Messung und Beweislage.', href: '/anliegen-pruefen/bussgeld', icon: <Clock size={24} /> },
+  { id: 3, title: 'Abstand', lead: 'Moderne Messsysteme werten Fahrverhalten sekundengenau aus. Nicht immer korrekt. Wir helfen bei Bußgeld, Punkten oder Fahrverbot.', href: '/anliegen-pruefen/bussgeld', icon: <Ruler size={24} /> },
+  { id: 4, title: 'Handy am Steuer', lead: 'Schon der kurze Blick aufs Display kann teuer werden. Wir prüfen, ob die Kontrolle rechtlich einwandfrei war.', href: '/anliegen-pruefen/bussgeld', icon: <Smartphone size={24} /> },
+  { id: 5, title: 'Parken & Halten', lead: 'Egal ob Halteverbot oder Feuerwehrzufahrt – Bußgelder sind schnell verteilt. Wir sagen, ob Einspruch lohnt.', href: '/anliegen-pruefen/bussgeld', icon: <MapPin size={24} /> },
+  { id: 6, title: 'Alkohol / Drogen', lead: 'Verfahren mit Alkohol oder Drogen führen oft zu Fahrverbot und MPU. Wir prüfen Ihre Rechte und zeigen Auswege.', href: '/anliegen-pruefen/bussgeld', icon: <Coffee size={24} /> },
+  { id: 7, title: 'Verkehrsunfall', lead: 'Auch bei Unfällen können Bußgelder drohen – etwa wegen Fahrlässigkeit oder fehlender Abstand. Wir helfen bei der Einschätzung.', href: '/anliegen-pruefen/verkehrsunfall', icon: <ZapOff size={24} /> }
 ];
 
 // Slider-Komponente im ApproachSection-Stil
