@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import './Anspruchsleistungen.css';
@@ -177,6 +178,7 @@ function SliderTrack({ cards }: { cards: Card[] }) {
 
 export default function Anspruchsleistungen() {
   const [isMobile, setIsMobile] = useState(false);
+  const router = useRouter();
   
   // Mobile detection - nur auf Client-Seite ausführen
   useEffect(() => {
@@ -255,7 +257,12 @@ export default function Anspruchsleistungen() {
 
         <div className="anspruch__cta">
           <div className="anspruch__button-group">
-            <button className="anspruch__button">Unfall melden</button>
+            <button 
+              className="anspruch__button"
+              onClick={() => router.push('/anliegen-pruefen/verkehrsunfall')}
+            >
+              Unfall melden
+            </button>
           </div>
         </div>
       </div>
