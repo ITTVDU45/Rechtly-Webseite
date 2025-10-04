@@ -59,9 +59,18 @@
 
 @media (max-width: 900px) {
   .bussgeld-partner.two-col { flex-direction:column; text-align:center; }
-  .partner-left { order:2; }
+  .partner-left { order:2; margin-top: 1rem; }
   .partner-right { order:1; }
   .partner-right .partner-visual { width:90%; }
+  .partner-ctas { justify-content: center; }
+}
+
+@media (max-width: 768px) {
+  .bussgeld-partner.two-col { flex-direction:column; text-align:center; }
+  .partner-left { order:2; margin-top: -16rem; }
+  .partner-right { order:1; }
+  .partner-right .partner-visual { width:90%; }
+  .partner-ctas { justify-content: center; }
 }
 
 .bussgeld-tools .tools-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
