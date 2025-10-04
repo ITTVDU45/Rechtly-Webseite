@@ -33,268 +33,191 @@
   color: rgba(255,255,255,0.9);
 }
 
-.feature__content {
+/* Neues Layout mit zwei Spalten (Slider links, Bild rechts) */
+.feature__layout {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 4rem;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
 }
 
-.feature__image-wrapper {
-  position: sticky;
-  top: 100px;
-  height: fit-content;
-}
-
+/* Bild-Container auf der rechten Seite */
 .feature__image {
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.feature__cards {
+.feature__image-container {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Slider auf der linken Seite */
+.feature__slider {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  justify-content: center;
+}
+
+/* Slider-Komponente */
+.feature-slider {
   width: 100%;
-  margin-bottom: 2rem;
-}
-
-/* Anpassungen für das neue Bento-Grid */
-.feature__cards .bento-grid {
-  gap: 1.5rem;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-/* Desktop-Anpassungen für das Bento-Grid */
-@media (min-width: 768px) {
-  .feature__cards .bento-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.feature__carousel {
-  margin-top: 2rem;
-  display: none;
-  width: 100%;
-}
-
-.feature__carousel.active {
-  display: block !important;
-}
-
-.feature__carousel-container {
   position: relative;
-  overflow: visible;
-  /* ensure carousel matches the section/container width */
-  width: 100%;
-  max-width: 800px;
+}
+
+.feature-card-container {
+  position: relative;
+  padding: 20px 0;
+}
+
+.feature-card {
   margin: 0 auto;
-  padding: 0;
+  width: 100%;
+  max-width: 95%;
   box-sizing: border-box;
+  padding: 2rem;
   border-radius: 16px;
-  background: transparent;
-  /* Prevent overflow on mobile */
-  overflow-x: hidden;
-}
-
-.feature__carousel-controls {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  min-height: 400px;
   display: flex;
-  justify-content: space-between;
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  padding: 0 1rem;
-  pointer-events: none;
-}
-
-.feature__carousel-button {
-  width: 40px;
-  height: 40px;
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: none;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-  pointer-events: auto;
-}
-
-.feature__carousel-button:hover {
-  background: #A3E635;
-  color: #07222b;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(163, 230, 53, 0.3);
-  background: linear-gradient(135deg, #A3E635 0%, #C7E70C 100%);
-}
-
-.feature__carousel-track {
-  display: none; /* Nicht mehr benötigt für Single-Card-Slider */
-}
-
-.feature__carousel-slide {
-  display: none; /* Nicht mehr benötigt für Single-Card-Slider */
-}
-
-.feature__card {
-  background: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border-radius: 0;
-  overflow: hidden;
-  box-shadow: none;
+  transition: all 300ms ease-in-out;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  position: relative;
-  z-index: 2;
-  /* Make the card width fit within the slide and centered */
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-  box-sizing: border-box; /* Ensure padding is included in width calculation */
+  color: #ffffff;
 }
 
-.feature__card:hover {
-  transform: translateY(-2px);
-  box-shadow: none;
-  border: none;
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
-.feature__card-image {
-  position: relative;
-  height: 180px;
-  overflow: hidden;
-}
-
-.feature__card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.feature__card:hover .feature__card-img {
-  transform: scale(1.05);
-}
-
-.feature__card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(7, 34, 43, 0.2), rgba(7, 34, 43, 0.7));
-}
-
-.feature__card-content {
-  padding: 1.5rem;
-  position: relative;
-}
-
-.feature__card-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(163, 230, 53, 0.2), rgba(199, 231, 12, 0.2));
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.feature-card__icon {
   margin-bottom: 1rem;
   color: #A3E635;
-  box-shadow: 0 4px 12px rgba(163, 230, 53, 0.2);
+  font-size: 2rem;
 }
 
-.feature__card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
+.feature-card__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   color: #ffffff;
   font-weight: 600;
 }
 
-.feature__card p {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.95rem;
-  line-height: 1.5;
+.feature-card__description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1.5rem;
 }
 
-.feature__card-arrow {
-  position: relative;
-  bottom: auto;
-  right: auto;
-  width: auto;
-  height: auto;
-  border-radius: 8px;
-  background: #A3E635;
+.feature-card__cta {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  background-color: #A3E635;
   color: #1B3A4B;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(163, 230, 53, 0.3);
   padding: 12px 20px;
+  border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
+  margin-top: auto;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(163, 230, 53, 0.3);
   border: 2px solid #1B3A4B;
 }
 
-.feature__card:hover .feature__card-arrow {
+.feature-card__cta:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(163, 230, 53, 0.4);
   background: #C7E70C;
-  border: 2px solid #1B3A4B;
 }
 
-.feature__carousel-progress {
+/* Navigation buttons */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.slider-nav:hover {
+  background: #A3E635;
+  color: #1B3A4B;
+}
+
+.slider-nav--prev {
+  left: -15px;
+}
+
+.slider-nav--next {
+  right: -15px;
+}
+
+/* Indicators */
+.slider-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.slider-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: #ccc;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: width 300ms ease;
+}
+
+.slider-indicator--active {
+  width: 24px;
+  background: #A3E635;
+}
+
+/* Auto-scroll indicator */
+.auto-scroll-indicator {
   width: 100%;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
-  margin: 1.5rem 0 0.5rem;
+  max-width: 100px;
+  margin: 10px auto 0;
+  height: 2px;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 1px;
   overflow: hidden;
 }
 
-.feature__carousel-progress-bar {
+.auto-scroll-progress {
   height: 100%;
-  background: linear-gradient(90deg, #A3E635 0%, #C7E70C 100%);
-  border-radius: 2px;
-  transition: width 0.3s ease;
+  background-color: #A3E635;
+  border-radius: 1px;
 }
 
-.feature__carousel-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 1rem;
-}
-
-.feature__carousel-indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  padding: 0;
-  outline: none;
-}
-
-.feature__carousel-indicator.active {
-  width: 30px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #A3E635 0%, #C7E70C 100%);
-}
-
+/* Prozess-Sektion */
 .prozess-section {
   margin-top: 2.5rem;
 }
@@ -305,12 +228,10 @@
 }
 
 .prozess-card {
-  /* Glasmorphismus-Effekt wie die Bento-Karten */
   background: rgba(255,255,255,0.18);
   backdrop-filter: blur(12px);
   border-radius: 16px;
   padding: 1.5rem;
-  /* increase width to match ProcessSection card */
   max-width: 1200px;
   width: 100%;
   box-shadow: 0 15px 35px rgba(2,6,23,0.15);
@@ -338,7 +259,7 @@
 
 .prozess-step-number {
   font-weight: 700;
-  color: #A3E635; /* Grün für besseren Kontrast und Akzent */
+  color: #A3E635;
   font-size: 1.1rem;
   min-width: 36px;
 }
@@ -348,19 +269,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #A3E635; /* Grün für besseren Kontrast und Akzent */
+  color: #A3E635;
 }
 
 .prozess-step-title {
   margin: 0 0 0.25rem 0;
   font-size: 1rem;
-  color: #ffffff; /* Weiß für besseren Kontrast auf Glasmorphismus-Hintergrund */
+  color: #ffffff;
   font-weight: 600;
 }
 
 .prozess-step-desc {
   margin: 0;
-  color: rgba(255,255,255,0.9); /* Leicht transparentes Weiß für bessere Lesbarkeit */
+  color: rgba(255,255,255,0.9);
   font-size: 0.95rem;
   line-height: 1.4;
 }
@@ -371,92 +292,46 @@
   justify-content: center;
 }
 
-@media (max-width: 768px) {
-  .prozess-steps-list {
-    grid-template-columns: 1fr;
-  }
-  .prozess-card {
-    padding: 1rem;
-  }
-}
-
-/* Prozess-Card CTA: Neongrün mit Glow-Effekt */
+/* Prozess-Card CTA */
 .prozess-card .cta-button.primary.large,
 .prozess-card-cta .cta-button.primary.large {
   background: linear-gradient(135deg, #a3e635 0%, #84cc16 100%);
-  color: #07222b; /* Dunkle Schrift auf hellem Hintergrund */
+  color: #07222b;
   border: none;
-  box-shadow: 0 0 15px rgba(163, 230, 53, 0.5); /* Neongrüner Glow */
-  padding: 0.9rem 1.6rem; /* comfortable touch target */
-  border-radius: 12px; /* Abgerundete Ecken */
+  box-shadow: 0 0 15px rgba(163, 230, 53, 0.5);
+  padding: 0.9rem 1.6rem;
+  border-radius: 12px;
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   font-size: 1rem;
-  font-weight: 700; /* Fetter für bessere Lesbarkeit */
+  font-weight: 700;
   transition: all 0.3s ease;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Subtiler Textshadow */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
   position: relative;
   overflow: hidden;
   z-index: 1;
 }
 
-/* Prozess-Card CTA hover: Intensiverer Glow und Animation */
 .prozess-card .cta-button.primary.large:hover,
 .prozess-card-cta .cta-button.primary.large:hover {
   background: linear-gradient(135deg, #bef264 0%, #a3e635 100%);
-  box-shadow: 0 0 20px rgba(163, 230, 53, 0.7); /* Stärkerer Glow */
+  box-shadow: 0 0 20px rgba(163, 230, 53, 0.7);
   transform: translateY(-2px);
-  border-radius: 12px;
-}
-
-/* Pulsierender Effekt für den Button */
-.prozess-card .cta-button.primary.large::after,
-.prozess-card-cta .cta-button.primary.large::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(163, 230, 53, 0.4) 0%, rgba(132, 204, 22, 0.4) 100%);
-  border-radius: 12px;
-  z-index: -1;
-  opacity: 0;
-  transform: scale(1.1);
-  animation: pulse 2s infinite;
-  border-radius: 8px;
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 0;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.3;
-    transform: scale(1.1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
 }
 
 .button-icon {
   font-size: 1.3rem;
 }
 
-/* responsive media queries */
+/* Responsive Anpassungen */
 @media (max-width: 992px) {
-  .feature__content {
+  .feature__layout {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
   
-  .feature__image-wrapper {
-    position: relative;
-    top: 0;
+  .feature__image {
     order: -1;
   }
 }
@@ -480,76 +355,52 @@
     font-size: 1rem;
   }
   
-  .feature__cards {
-    display: none;
+  .feature-card {
+    min-height: 350px;
+    padding: 1.5rem;
   }
   
-  .feature__carousel-container {
-    padding: 0;
-    border-radius: 0;
+  .feature-card__title {
+    font-size: 1.3rem;
   }
   
-  .feature__carousel-button {
-    width: 36px;
-    height: 36px;
+  .feature-card__description {
+    font-size: 0.95rem;
   }
   
-  .feature__carousel-button svg {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .feature__card-image {
-    height: 160px;
-  }
-  
-  .feature__card-content {
-    padding: 1.25rem;
-  }
-  
-  .feature__card-icon {
-    width: 45px;
-    height: 45px;
-    border-radius: 0;
-    margin-bottom: 0.75rem;
-  }
-  
-  .feature__card h3 {
-    font-size: 1.15rem;
-    margin-bottom: 0.6rem;
-  }
-  
-  .feature__card p {
-    font-size: 0.9rem;
-    margin-bottom: 1.25rem;
-  }
-  
-  .feature__card-arrow {
+  .feature-card__cta {
     padding: 10px 16px;
     font-size: 0.9rem;
   }
   
-  .feature__carousel-progress {
-    height: 3px;
-    margin: 1.25rem 0 0.5rem;
+  .slider-nav {
+    width: 36px;
+    height: 36px;
   }
   
-  .feature__carousel-indicator {
-    width: 8px;
-    height: 8px;
+  .slider-nav--prev {
+    left: -10px;
   }
   
-  .feature__carousel-indicator.active {
-    width: 24px;
+  .slider-nav--next {
+    right: -10px;
   }
   
-  .prozess-card {
-    padding: 1.25rem;
+  .slider-indicator {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .slider-indicator--active {
+    width: 20px;
   }
   
   .prozess-steps-list {
     grid-template-columns: 1fr;
-    gap: 1rem;
+  }
+  
+  .prozess-card {
+    padding: 1.25rem;
   }
   
   .prozess-step {
@@ -568,95 +419,6 @@
     padding: 0.8rem 1.4rem;
     font-size: 0.95rem;
     width: 100%;
-    border-radius: 12px;
-  }
-}
-
-/* Mobile optimizations similar to ServiceSection and ApproachSection */
-@media (max-width: 768px) {
-  .feature__carousel {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-  }
-  
-  .feature__carousel-container {
-    max-width: 90%;
-    width: 90%;
-    border-radius: 0;
-    margin: 0 auto;
-    box-shadow: none;
-    overflow: visible; /* Für Single-Card-Slider sichtbar lassen */
-  }
-
-  .feature__carousel-track {
-    display: none; /* Nicht mehr benötigt für Single-Card-Slider */
-  }
-
-  .feature__carousel-slide {
-    display: none; /* Nicht mehr benötigt für Single-Card-Slider */
-  }
-
-  .feature__carousel .feature__card {
-    width: 100%;
-    max-width: 95%;
-    margin: 0 auto;
-    min-height: 450px;
-    border-radius: 0;
-    box-sizing: border-box;
-  }
-
-  .feature__carousel .feature__card-image {
-    max-width: 250px;
-    height: 140px;
-  }
-
-  /* reduce heavy shadows on mobile to avoid visual bleed */
-  .feature__carousel .feature__card {
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  }
-
-  /* ensure controls sit inside the rounded container */
-  .feature__carousel-controls {
-    padding: 0 0.5rem;
-    z-index: 20;
-  }
-  
-  .feature__carousel-button {
-    background: rgba(255, 255, 255, 0.9);
-  }
-}
-
-@media (max-width: 576px) {
-  .feature__carousel-container {
-    max-width: 90%;
-    width: 90%;
-    border-radius: 0;
-    margin: 0 auto;
-    box-shadow: none;
-  }
-
-  .feature__carousel .feature__card {
-    border-radius: 0;
-    min-height: 420px;
-  }
-
-  .feature__carousel .feature__card-image {
-    max-width: 220px;
-    height: 120px;
-  }
-
-  .feature__card-image { 
-    height: 140px; 
-  }
-  
-  .feature__card-content { 
-    padding: 1rem; 
-  }
-  
-  .feature__carousel-button {
-    width: 32px;
-    height: 32px;
   }
 }
 
@@ -664,12 +426,6 @@
   .feature {
     padding: 2.5rem 1rem;
     margin: 0.75rem auto;
-  }
-  
-  /* Zusätzliche Anpassungen für kleine Bildschirme */
-  .feature__carousel-container {
-    max-width: 90%;
-    width: 90%;
   }
   
   .feature__header {
@@ -684,117 +440,32 @@
     font-size: 0.95rem;
   }
   
-  .feature__carousel-container {
-    border-radius: 0;
+  .feature-card {
+    min-height: 320px;
+    padding: 1.25rem;
   }
   
-  .feature__carousel-controls {
-    padding: 0 0.75rem;
+  .feature-card__title {
+    font-size: 1.2rem;
   }
   
-  .feature__carousel-button {
-    width: 32px;
-    height: 32px;
+  .feature-card__description {
+    font-size: 0.9rem;
   }
   
-  .feature__carousel-button svg {
-    width: 16px;
-    height: 16px;
-  }
-  
-  .feature__card-image {
-    height: 140px;
-  }
-  
-  .feature__card-content {
-    padding: 1rem;
-  }
-  
-  .feature__card-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 0;
-    margin-bottom: 0.6rem;
-  }
-  
-  .feature__card h3 {
-    font-size: 1.05rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .feature__card p {
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-    line-height: 1.4;
-  }
-  
-  .feature__card-arrow {
+  .feature-card__cta {
     padding: 8px 14px;
     font-size: 0.85rem;
   }
   
-  .feature__card-arrow svg {
-    width: 14px;
-    height: 14px;
-  }
-  
-  .feature__carousel-progress {
-    height: 2.5px;
-    margin: 1rem 0 0.5rem;
-  }
-  
-  .feature__carousel-indicators {
-    gap: 8px;
-  }
-  
-  .feature__carousel-indicator {
-    width: 8px;
-    height: 8px;
-  }
-  
-  .feature__carousel-indicator.active {
-    width: 20px;
-  }
-  
-  /* Anpassungen für sehr kleine Bildschirme */
-  @media (max-width: 400px) {
-    .feature__carousel-container {
-      max-width: 98%;
-      width: 98%;
-      border-radius: 0;
-    }
-    
-    .feature__carousel .feature__card {
-      min-height: 400px;
-    }
-
-    .feature__card-image {
-      height: 130px;
-      max-width: 200px;
-    }
-    
-    .feature__card-content {
-      padding: 0.85rem;
-    }
-    
-    .feature__carousel-button {
-      width: 28px;
-      height: 28px;
-    }
-    
-    .feature__carousel-button svg {
-      width: 14px;
-      height: 14px;
-    }
-  }
-  
-  .prozess-section {
-    margin-top: 2rem;
+  .slider-nav {
+    width: 32px;
+    height: 32px;
   }
   
   .prozess-card {
     padding: 1rem;
-    border-radius: 0;
+    border-radius: 12px;
   }
   
   .prozess-step {
