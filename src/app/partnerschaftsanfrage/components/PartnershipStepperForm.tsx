@@ -377,7 +377,7 @@ export default function PartnershipStepperForm() {
         </div>
 
         {/* Form Content */}
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="section-card rounded-2xl px-4 md:px-8 py-16 bg-white">
           <form onSubmit={handleSubmit}>
             {renderStepContent()}
             
