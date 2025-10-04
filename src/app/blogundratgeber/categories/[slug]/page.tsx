@@ -125,8 +125,8 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
           </p>
         </div>
 
-        {/* Bottom Gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent" />
+            {/* Bottom Gradient */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent" />
       </section>
 
       {/* Main Content */}

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Blog } from "../../.velite/generated";
+import { Blog } from "../../../.velite/generated";
 
 interface HomeCoverSectionProps {
   blogs: Blog[];
@@ -65,7 +65,7 @@ export default function HomeCoverSection({ blogs }: HomeCoverSectionProps) {
               <div className="absolute inset-0 flex items-center justify-center z-20">
                 <div className="text-center text-white max-w-4xl mx-auto px-4">
                   <div className="flex flex-wrap justify-center gap-2 mb-4">
-                    {blog.tags.slice(0, 2).map((tag) => (
+                        {blog.tags.slice(0, 2).map((tag: string) => (
                       <span
                         key={tag}
                         className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-sm rounded-full border border-white/30"

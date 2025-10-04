@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Blog } from "../../.velite/generated";
+import { Blog } from "../../../.velite/generated";
 import BlogSearch from "./BlogSearch";
 
 interface RecentPostsProps {
@@ -38,7 +38,7 @@ export default function RecentPosts({ blogs }: RecentPostsProps) {
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-4 left-4">
-                  {blog.tags.slice(0, 1).map((tag) => (
+                  {blog.tags.slice(0, 1).map((tag: string) => (
                     <span
                       key={tag}
                       className="px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-800 text-xs font-medium rounded-full border border-white/20"

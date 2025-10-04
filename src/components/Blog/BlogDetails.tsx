@@ -1,4 +1,4 @@
-import { Blog } from "../../.velite/generated";
+import { Blog } from "../../../.velite/generated";
 
 interface BlogDetailsProps {
   blog: Blog;

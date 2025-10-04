@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Blog } from "../../.velite/generated";
+import { Blog } from "../../../.velite/generated";
 import { slug as slugify } from "github-slugger";
 
 type Props = { 
@@ -23,16 +23,16 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
   // Extract all unique tags and categories
   const allTags = useMemo(() => {
     const tags = new Set<string>();
-    blogs.forEach(blog => {
-      blog.tags.forEach(tag => tags.add(tag));
+    blogs.forEach((blog: Blog) => {
+      blog.tags.forEach((tag: string) => tags.add(tag));
     });
     return Array.from(tags).sort();
   }, [blogs]);
 
   const allCategories = useMemo(() => {
     const categories = new Set<string>();
-    blogs.forEach(blog => {
-      blog.tags.forEach(tag => categories.add(slugify(tag)));
+    blogs.forEach((blog: Blog) => {
+      blog.tags.forEach((tag: string) => categories.add(slugify(tag)));
     });
     return Array.from(categories).sort();
   }, [blogs]);
@@ -83,21 +83,21 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
     const suggestions: Array<{ type: 'title' | 'tag' | 'category', text: string, slug?: string }> = [];
 
     // Add matching titles
-    blogs.forEach(blog => {
+    blogs.forEach((blog: Blog) => {
       if (blog.title.toLowerCase().includes(query)) {
         suggestions.push({ type: 'title', text: blog.title, slug: blog.slug });
       }
     });
 
     // Add matching tags
-    allTags.forEach(tag => {
+    allTags.forEach((tag: string) => {
       if (tag.toLowerCase().includes(query)) {
         suggestions.push({ type: 'tag', text: tag });
       }
     });
 
     // Add matching categories
-    allCategories.forEach(category => {
+    allCategories.forEach((category: string) => {
       if (category.toLowerCase().includes(query)) {
         suggestions.push({ type: 'category', text: category });
       }
@@ -272,7 +272,7 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
           <div>
             <h3 className="text-lg font-semibold mb-3 text-gray-900">Tags</h3>
             <div className="flex flex-wrap gap-2">
-              {allTags.map(tag => (
+              {allTags.map((tag: string) => (
                 <button
                   key={tag}
                   onClick={() => handleTagToggle(tag)}
@@ -292,7 +292,7 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
           <div>
             <h3 className="text-lg font-semibold mb-3 text-gray-900">Kategorien</h3>
             <div className="flex flex-wrap gap-2">
-              {allCategories.map(category => (
+              {allCategories.map((category: string) => (
                 <button
                   key={category}
                   onClick={() => handleCategoryToggle(category)}

@@ -57,16 +57,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+interface TocItem {
+  title: string;
+  url: string;
+  items?: TocItem[];
+}
+
 interface TableOfContentsItemProps {
-  item: {
-    title: string;
-    url: string;
-    items: Array<{
-      title: string;
-      url: string;
-      items?: any[];
-    }>;
-  };
+  item: TocItem;
   level?: "two" | "three";
 }
 
@@ -83,9 +81,9 @@ function TableOfContentsItem({ item, level = "two" }: TableOfContentsItemProps) 
                   flex items-center justify-start"
       >
         {level === "three" && (
-          <span className="flex w-1 h-1 rounded-full bg-dark mr-2">&nbsp;</span>
+          <span className="flex w-1 h-1 rounded-full bg-gray-900 mr-2">&nbsp;</span>
         )}
-        <span className="hover:underline">{item.title}</span>
+          <span className="hover:underline text-gray-900">{item.title}</span>
       </a>
       {item.items && item.items.length > 0 && (
         <ul className="mt-1">
@@ -200,7 +198,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <article>
-        <div className="mb-8 text-center relative w-full h-[90vh] bg-dark">
+        <div className="mb-8 text-center relative w-full h-[90vh] bg-gray-900">
           {/* Back Button */}
           <div className="absolute top-20 left-6 z-20">
             <Link
@@ -231,7 +229,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               {blog.title}
             </h1>
           </div>
-          <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60 dark:bg-dark/40" />
+              <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-gray-900/60" />
           <Image
             src={blog.image.src}
             placeholder="blur"
@@ -249,7 +247,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <div className="grid grid-cols-12 gap-y-8 lg:gap-8 sxl:gap-16 mt-8 px-5 md:px-10">
           <div className="col-span-12 lg:col-span-4">
             <details
-              className="border-[1px] border-solid border-dark dark:border-light text-dark dark:text-light rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto"
+              className="border-[1px] border-solid border-gray-300 text-gray-900 rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto"
               open
             >
               <summary className="text-lg font-semibold capitalize cursor-pointer">

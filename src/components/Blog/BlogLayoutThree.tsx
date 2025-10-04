@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Blog } from "../../.velite/generated";
+import { Blog } from "../../../.velite/generated";
 
 interface BlogLayoutThreeProps {
   blog: Blog;

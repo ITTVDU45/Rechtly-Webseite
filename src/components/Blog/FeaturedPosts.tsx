@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Blog } from "../../.velite/generated";
+import { Blog } from "../../../.velite/generated";
 
 interface FeaturedPostsProps {
   blogs: Blog[];
@@ -28,7 +28,7 @@ export default function FeaturedPosts({ blogs }: FeaturedPostsProps) {
                 />
                 <div className="absolute top-4 left-4">
                   <div className="flex flex-wrap gap-2">
-                    {blog.tags.slice(0, 2).map((tag) => (
+                        {blog.tags.slice(0, 2).map((tag: string) => (
                       <span
                         key={tag}
                         className="px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-800 text-xs font-medium rounded-full border border-white/20"
