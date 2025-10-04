@@ -17,8 +17,6 @@ const Footer: React.FC = () => {
             <h4 className="font-semibold mb-4">Leistungen</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href="/bussgeld" className="text-white/90 hover:underline">Bußgeld</Link></li>
-              <li><Link href="/bussgeldrechner" className="text-white/90 hover:underline">Bußgeldrechner</Link></li>
-              <li><Link href="/punkteabfrage" className="text-white/90 hover:underline">Punktabfrage</Link></li>
               <li><Link href="/kfz-gutachten" className="text-white/90 hover:underline">KFZ‑Gutachten</Link></li>
               <li><Link href="/partner" className="text-white/90 hover:underline">Partner</Link></li>
               <li><Link href="/partner-gutachter" className="text-white/90 hover:underline">Für Gutachter</Link></li>
