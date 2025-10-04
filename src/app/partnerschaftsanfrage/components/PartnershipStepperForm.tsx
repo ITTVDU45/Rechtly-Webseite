@@ -49,6 +49,7 @@ const initialFormData: FormData = {
 export default function PartnershipStepperForm() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [errors, setErrors] = useState<Partial<FormData>>({});
 
   const steps = [
     { id: 1, title: 'Kontaktdaten', description: 'Ihre persönlichen Informationen' },
@@ -62,10 +63,49 @@ export default function PartnershipStepperForm() {
       ...prev,
       [field]: value
     }));
+    
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({
+        ...prev,
+        [field]: undefined
+      }));
+    }
+  };
+
+  const validateStep = (step: number): boolean => {
+    const newErrors: Partial<FormData> = {};
+
+    switch (step) {
+      case 1:
+        if (!formData.firstName.trim()) newErrors.firstName = 'Vorname ist erforderlich';
+        if (!formData.lastName.trim()) newErrors.lastName = 'Nachname ist erforderlich';
+        if (!formData.email.trim()) {
+          newErrors.email = 'E-Mail ist erforderlich';
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+          newErrors.email = 'Bitte geben Sie eine gültige E-Mail-Adresse ein';
+        }
+        if (!formData.phone.trim()) newErrors.phone = 'Telefonnummer ist erforderlich';
+        if (!formData.company.trim()) newErrors.company = 'Unternehmen ist erforderlich';
+        break;
+      case 2:
+        if (!formData.businessType.trim()) newErrors.businessType = 'Art des Unternehmens ist erforderlich';
+        if (!formData.location.trim()) newErrors.location = 'Standort ist erforderlich';
+        break;
+      case 3:
+        if (!formData.partnershipType.trim()) newErrors.partnershipType = 'Art der Partnerschaft ist erforderlich';
+        break;
+      case 4:
+        if (!formData.consent) newErrors.consent = 'Sie müssen der Datenverarbeitung zustimmen';
+        break;
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const nextStep = () => {
-    if (currentStep < 4) {
+    if (validateStep(currentStep) && currentStep < 4) {
       setCurrentStep(currentStep + 1);
     }
   };
@@ -78,9 +118,11 @@ export default function PartnershipStepperForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Hier würde die Formular-Daten verarbeitet werden
-    console.log('Formular abgesendet:', formData);
-    alert('Vielen Dank für Ihre Partnerschaftsanfrage! Wir melden uns zeitnah bei Ihnen.');
+    if (validateStep(4)) {
+      // Hier würde die Formular-Daten verarbeitet werden
+      console.log('Formular abgesendet:', formData);
+      alert('Vielen Dank für Ihre Partnerschaftsanfrage! Wir melden uns zeitnah bei Ihnen.');
+    }
   };
 
   const renderStepContent = () => {
@@ -99,8 +141,15 @@ export default function PartnershipStepperForm() {
                   required
                   value={formData.firstName}
                   onChange={(e) => handleInputChange('firstName', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                    errors.firstName 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
                 />
+                {errors.firstName && (
+                  <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -111,8 +160,15 @@ export default function PartnershipStepperForm() {
                   required
                   value={formData.lastName}
                   onChange={(e) => handleInputChange('lastName', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                    errors.lastName 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
                 />
+                {errors.lastName && (
+                  <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -123,8 +179,15 @@ export default function PartnershipStepperForm() {
                   required
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                    errors.email 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
                 />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -135,8 +198,15 @@ export default function PartnershipStepperForm() {
                   required
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                    errors.phone 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
                 />
+                {errors.phone && (
+                  <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+                )}
               </div>
             </div>
             <div>
@@ -148,8 +218,15 @@ export default function PartnershipStepperForm() {
                 required
                 value={formData.company}
                 onChange={(e) => handleInputChange('company', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                  errors.company 
+                    ? 'border-red-500 focus:ring-red-500' 
+                    : 'border-gray-300 focus:ring-blue-500'
+                }`}
               />
+              {errors.company && (
+                <p className="mt-1 text-sm text-red-600">{errors.company}</p>
+              )}
             </div>
           </div>
         );
@@ -167,7 +244,11 @@ export default function PartnershipStepperForm() {
                   required
                   value={formData.businessType}
                   onChange={(e) => handleInputChange('businessType', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                    errors.businessType 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
                 >
                   <option value="">Bitte wählen</option>
                   <option value="kanzlei">Rechtsanwaltskanzlei</option>
@@ -177,6 +258,9 @@ export default function PartnershipStepperForm() {
                   <option value="werkstatt">Werkstatt</option>
                   <option value="sonstiges">Sonstiges</option>
                 </select>
+                {errors.businessType && (
+                  <p className="mt-1 text-sm text-red-600">{errors.businessType}</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -204,8 +288,15 @@ export default function PartnershipStepperForm() {
                   value={formData.location}
                   onChange={(e) => handleInputChange('location', e.target.value)}
                   placeholder="Stadt, Bundesland"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                    errors.location 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
                 />
+                {errors.location && (
+                  <p className="mt-1 text-sm text-red-600">{errors.location}</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -236,7 +327,11 @@ export default function PartnershipStepperForm() {
                   required
                   value={formData.partnershipType}
                   onChange={(e) => handleInputChange('partnershipType', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent ${
+                    errors.partnershipType 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 focus:ring-blue-500'
+                  }`}
                 >
                   <option value="">Bitte wählen</option>
                   <option value="referral">Empfehlungspartnerschaft</option>
@@ -244,6 +339,9 @@ export default function PartnershipStepperForm() {
                   <option value="integration">Technische Integration</option>
                   <option value="strategic">Strategische Partnerschaft</option>
                 </select>
+                {errors.partnershipType && (
+                  <p className="mt-1 text-sm text-red-600">{errors.partnershipType}</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -315,7 +413,11 @@ export default function PartnershipStepperForm() {
                 required
                 checked={formData.consent}
                 onChange={(e) => handleInputChange('consent', e.target.checked)}
-                className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                className={`mt-1 h-4 w-4 focus:ring-2 border-gray-300 rounded ${
+                  errors.consent 
+                    ? 'border-red-500 focus:ring-red-500' 
+                    : 'text-blue-600 focus:ring-blue-500'
+                }`}
               />
               <label htmlFor="consent" className="text-sm text-gray-700">
                 Ich stimme der Verarbeitung meiner Daten gemäß der{' '}
@@ -325,6 +427,9 @@ export default function PartnershipStepperForm() {
                 zu und möchte über Partnerschaftsmöglichkeiten informiert werden. *
               </label>
             </div>
+            {errors.consent && (
+              <p className="mt-1 text-sm text-red-600">{errors.consent}</p>
+            )}
           </div>
         );
 
@@ -342,7 +447,7 @@ export default function PartnershipStepperForm() {
             {steps.map((step, index) => (
               <div key={step.id} className="flex items-center">
                 <div
-                  className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
+                  className={`relative flex items-center justify-center w-10 h-10 rounded-full border-2 ${
                     currentStep >= step.id
                       ? 'text-white border-transparent'
                       : 'bg-white border-gray-300 text-gray-400'
@@ -354,7 +459,9 @@ export default function PartnershipStepperForm() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   ) : (
-                    step.id
+                    <span className="absolute inset-0 flex items-center justify-center font-semibold">
+                      {step.id}
+                    </span>
                   )}
                 </div>
                 {index < steps.length - 1 && (
