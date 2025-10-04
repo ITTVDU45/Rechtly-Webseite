@@ -11,9 +11,10 @@ export default function ImpressumPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-[#1B3A4B] to-[#2C5364] text-white py-16">
-        <div className="container mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Impressum</h1>
+      <section className="bg-gradient-to-b from-[#1B3A4B] to-[#2C5364] text-white py-24 md:py-32">
+        <div className="container mx-auto text-center px-4">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">Impressum</h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#a3e635] to-[#c7e70c] mx-auto mb-6"></div>
         </div>
       </section>
 
