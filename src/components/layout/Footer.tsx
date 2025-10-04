@@ -34,6 +34,7 @@ const Footer: React.FC = () => {
               <li><Link href="/faq" className="text-white/90 hover:underline">FAQ</Link></li>
               <li><Link href="/legal/impressum" className="text-white/90 hover:underline">Impressum</Link></li>
               <li><Link href="/legal/datenschutz" className="text-white/90 hover:underline">Datenschutz</Link></li>
+              <li><Link href="/legal/agb" className="text-white/90 hover:underline">AGB</Link></li>
             </ul>
           </div>
 
