@@ -312,6 +312,18 @@ export default async function BlogPage({ params }: BlogPageProps) {
                   heading={"Podcast Rechtly — Verkehrsunfall"}
                   subheading={"Weiterführende Gespräche und Experten-Interviews zum Thema Verkehrsunfall"}
                 />
+              ) : blog.slug === 'bussgeld-rotlichtverstoss' || blog.slug === 'bussgeld-bei-rotlichtverstossen-was-sie-wissen-mussen' ? (
+                <PodcastWidget
+                  episodes={[
+                    {
+                      src: '/assets/audio/Rotlichtverstoß_in_Deutschland__Die_1-Sekunden-Falle__Strafen_u.mp3',
+                      title: 'Rotlichtverstöße: Strafen, Messfehler & Einspruchswege',
+                      subtitle: 'Kurzüberblick zu Bußgeldern, Messfehlern und wie Sie Einspruch einlegen',
+                    },
+                  ]}
+                  heading={"Podcast Rechtly — Bußgeld & Rotlicht"}
+                  subheading={"Experten sprechen über Bußgelder, Messfehler und Einspruchsmöglichkeiten"}
+                />
               ) : (
                 <PodcastWidget />
               )}
