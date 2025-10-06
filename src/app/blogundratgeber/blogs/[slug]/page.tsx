@@ -299,8 +299,22 @@ export default async function BlogPage({ params }: BlogPageProps) {
             {/* Podcast Widget removed from sidebar - moved above article content */}
           </div>
           <div className="col-span-12 lg:col-span-8">
-            <div className="mb-6">
-              <PodcastWidget />
+          <div className="mb-6">
+              {blog.slug === 'verkehrsunfall-sofortmassnahmen-und-schadensregulierung' ? (
+                <PodcastWidget
+                  episodes={[
+                    {
+                      src: '/assets/audio/Verkehrsunfall_in_Deutschland__Sofortmaßnahmen__Fahrerflucht_un.mp3',
+                      title: 'Verkehrsunfall: Sofortmaßnahmen & Schadensregulierung',
+                      subtitle: 'Kurzüberblick zu Sofortmaßnahmen, Fahrerflucht und Schadensregulierung',
+                    },
+                  ]}
+                  heading={"Podcast Rechtly — Verkehrsunfall"}
+                  subheading={"Weiterführende Gespräche und Experten-Interviews zum Thema Verkehrsunfall"}
+                />
+              ) : (
+                <PodcastWidget />
+              )}
             </div>
             <RenderMdx blog={blog} />
           </div>

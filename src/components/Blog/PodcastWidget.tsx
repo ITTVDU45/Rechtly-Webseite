@@ -11,9 +11,11 @@ interface Episode {
 
 interface PodcastWidgetProps {
   episodes?: Episode[];
+  heading?: string;
+  subheading?: string;
 }
 
-export default function PodcastWidget({ episodes }: PodcastWidgetProps) {
+export default function PodcastWidget({ episodes, heading, subheading }: PodcastWidgetProps) {
   const defaultEpisodes: Episode[] = [
     {
       src: "/assets/audio/KFZ-Gutachten_nach_Unfall__Ihre_Rechte__die_Bagatellgrenze_und_.mp3",
@@ -23,6 +25,9 @@ export default function PodcastWidget({ episodes }: PodcastWidgetProps) {
   ];
 
   const list = episodes && episodes.length > 0 ? episodes : defaultEpisodes;
+
+  const widgetHeading = heading || 'Hören Sie unseren Podcast';
+  const widgetSub = subheading || 'Weiterführende Gespräche zum Thema dieses Artikels - Dieser Artikel wurde mit Unterstützung von NotebookLM (Google) und redaktionell durch das Rechtly-Team überarbeitet.';
 
   return (
     <aside className="mt-6">
@@ -34,7 +39,7 @@ export default function PodcastWidget({ episodes }: PodcastWidgetProps) {
           </div>
           <div>
             <h4 className="text-lg font-semibold text-white">Hören Sie unseren Podcast</h4>
-            <p className="text-sm text-gray-200">Weiterführende Gespräche zum Thema dieses Artikels</p>
+            <p className="text-sm text-gray-200">Weiterführende Gespräche zum Thema dieses Artikels - Dieser Artikel wurde mit Unterstützung von NotebookLM (Google) und redaktionell durch das Rechtly-Team überarbeitet.</p>
           </div>
         </div>
 
