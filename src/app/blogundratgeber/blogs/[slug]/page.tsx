@@ -218,13 +218,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
           </div>
 
           <div className="w-full z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Tag
-              name={blog.tags[0]}
-              link={`/blogundratgeber/categories/${slugify(blog.tags[0])}`}
-              className="px-6 text-sm py-2"
-            />
+            <span className="inline-block py-2 px-6 text-sm text-white border border-white/30 bg-white/20 rounded-full capitalize font-semibold hover:scale-105 transition-all ease duration-200">
+              #{blog.tags[0]}
+            </span>
             <h1
-              className="inline-block mt-6 font-semibold capitalize text-light text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6"
+              className="inline-block mt-6 font-semibold capitalize text-white text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6"
             >
               {blog.title}
             </h1>
@@ -245,9 +243,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <BlogDetails blog={blog} slug={slug} />
 
         <div className="grid grid-cols-12 gap-y-8 lg:gap-8 sxl:gap-16 mt-8 px-5 md:px-10">
-          <div className="col-span-12 lg:col-span-4">
+          <div className="col-span-12 lg:col-span-4 lg:sticky lg:top-6 lg:self-start lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto">
             <details
-              className="border-[1px] border-solid border-gray-300 text-gray-900 rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto"
+              className="border-[1px] border-solid border-gray-300 text-gray-900 rounded-lg p-4 z-20"
               open
             >
               <summary className="text-lg font-semibold capitalize cursor-pointer">
@@ -261,6 +259,41 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 )}
               </ul>
             </details>
+            
+            {/* CTA Section */}
+            <div className="mt-1">
+              <div className="rounded-lg p-4 shadow-md" style={{background: 'linear-gradient(135deg, rgb(199, 231, 12) 0%, rgb(163, 230, 53) 100%)'}}>
+                <div className="text-center">
+                  <div className="mb-2">
+                    <Image
+                      src="/assets/images/Typische Bussgeldfaelleneu.png"
+                      alt="Typische Bußgeldfälle"
+                      width={120}
+                      height={90}
+                      className="mx-auto rounded-md shadow-sm"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1">
+                    {blog.tags.includes('Bußgeld') ? 'Haben Sie ein Bußgeld erhalten?' :
+                     blog.tags.includes('Verkehrsunfall') ? 'Unfall gehabt?' :
+                     blog.tags.includes('KFZ-Gutachten') ? 'KFZ GUTACHTEN GESUCHT?' :
+                     'Haben Sie ein Anliegen?'}
+                  </h3>
+                  <p className="text-xs text-gray-700 mb-2">
+                    Lassen Sie uns Ihr Anliegen prüfen und Ihre Rechte durchsetzen.
+                  </p>
+                  <a
+                    href="/anliegen-pruefen"
+                    className="inline-flex items-center justify-center gap-1 px-4 py-2 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-50 transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md text-sm"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Jetzt Anliegen prüfen
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
           <RenderMdx blog={blog} />
         </div>

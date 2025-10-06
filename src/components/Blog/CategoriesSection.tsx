@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Blog } from "../../.velite/generated";
+import { Blog } from "../../../.velite/generated";
 import { slug as slugify } from "github-slugger";
 
 interface CategoriesSectionProps {
@@ -16,11 +16,12 @@ interface CategoryData {
 }
 
 export default function CategoriesSection({ blogs }: CategoriesSectionProps) {
-  // Extract unique categories from blogs
+  // Only consider published blogs and extract unique categories from them
+  const publishedBlogs = blogs.filter((b) => b.isPublished !== false);
   const categoriesMap = new Map<string, CategoryData>();
-  
-  blogs.forEach((blog) => {
-    blog.tags.forEach((tag) => {
+
+  publishedBlogs.forEach((blog: Blog) => {
+    (blog.tags || []).forEach((tag: string) => {
       const slugified = slugify(tag);
       if (!categoriesMap.has(slugified)) {
         categoriesMap.set(slugified, {
@@ -39,7 +40,10 @@ export default function CategoriesSection({ blogs }: CategoriesSectionProps) {
     });
   });
 
-  const categories = Array.from(categoriesMap.values()).sort((a, b) => b.count - a.count);
+  // Only show categories that actually have at least one article
+  const categories = Array.from(categoriesMap.values())
+    .filter((c) => c.count > 0)
+    .sort((a, b) => b.count - a.count);
 
   return (
     <section className="w-full mx-auto py-16 px-4 bg-gray-50">

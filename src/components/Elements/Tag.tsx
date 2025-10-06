@@ -7,8 +7,11 @@ interface TagProps {
 }
 
 export default function Tag({ link, name, className }: TagProps) {
+  // Default classes that can be overridden by className prop
+  const defaultClasses = "inline-block py-2 sm:py-3 px-6 sm:px-10 bg-dark text-light rounded-full capitalize font-semibold border-2 border-solid border-light hover:scale-105 transition-all ease duration-200 text-sm sm:text-base";
+  
   const content = (
-    <span className={`inline-block py-2 sm:py-3 px-6 sm:px-10 bg-dark text-light rounded-full capitalize font-semibold border-2 border-solid border-light hover:scale-105 transition-all ease duration-200 text-sm sm:text-base ${className}`}>
+    <span className={className ? `${defaultClasses} ${className}` : defaultClasses}>
       #{name}
     </span>
   );

@@ -12,17 +12,23 @@ interface HomeCoverSectionProps {
 export default function HomeCoverSection({ blogs }: HomeCoverSectionProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Mount effect to prevent hydration issues
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Auto-play functionality
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying || !isMounted) return;
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % blogs.length);
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, [blogs.length, isAutoPlaying]);
+  }, [blogs.length, isAutoPlaying, isMounted]);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -41,6 +47,19 @@ export default function HomeCoverSection({ blogs }: HomeCoverSectionProps) {
 
   if (!blogs || blogs.length === 0) {
     return null;
+  }
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!isMounted) {
+    return (
+      <section className="w-full mx-auto relative">
+        <div className="relative overflow-hidden">
+          <div className="w-full h-[70vh] bg-gray-200 animate-pulse flex items-center justify-center">
+            <div className="text-gray-500">Lade Blog-Artikel...</div>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   return (

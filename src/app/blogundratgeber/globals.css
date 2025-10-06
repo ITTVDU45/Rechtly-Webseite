@@ -6,6 +6,27 @@ html{
     scroll-behavior: smooth;
 }
 
+/* Scroll offset for anchor links to account for fixed header */
+.scroll-mt-20 {
+    scroll-margin-top: 5rem;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure white background for blog pages */
+html, body {
+    background-color: white !important;
+}
+
 :root{
     /* Brand gradients provided by user */
     --grad-accent: linear-gradient(135deg, #c7e70c 0%, #a3e635 100%);

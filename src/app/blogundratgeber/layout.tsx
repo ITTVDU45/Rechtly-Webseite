@@ -1,20 +1,11 @@
 import "./globals.css";
-import { cx } from "@/utils";
-import { Inter, Manrope } from "next/font/google";
+import { Inter } from "next/font/google";
 import siteMetadata from "@/utils/siteMetaData";
 import Script from "next/script";
 import { ReactNode } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
-  display: "swap",
-  variable: "--font-in",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-mr",
 });
 
 export const metadata = {
@@ -60,16 +51,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="de">
       <body
-        className={cx(
-          inter.variable,
-          manrope.variable,
-          "font-mr bg-light dark:bg-dark"
-        )}
+        className={inter.className}
       >
-        <Script id="theme-switcher" strategy="beforeInteractive">
-          {`if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark')
-  } else {
+        <Script id="theme-switcher" strategy="afterInteractive">
+          {`try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    }
+  } catch (e) {
+    // Fallback: no dark mode if localStorage is not available
     document.documentElement.classList.remove('dark')
   }`}
         </Script>

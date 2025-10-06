@@ -1,5 +1,5 @@
 import { blogs as allBlogs, Blog } from "../../../../../.velite/generated";
-import BlogLayoutThree from "@/components/Blog/BlogLayoutThree";
+import Image from "next/image";
 import Categories from "@/components/Blog/Categories";
 import { slug as slugify } from "github-slugger";
 import Link from "next/link";
@@ -133,10 +133,49 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
       <div className="relative z-10 px-5 sm:px-10 md:px-24 sxl:px-32 py-12">
         <Categories categories={allCategories} currentSlug={slug} />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-16 mt-5 sm:mt-10 md:mt-24 sxl:mt-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 mt-5 sm:mt-10 md:mt-24 sxl:mt-32">
           {blogs.map((blog: Blog, index: number) => (
-            <article key={index} className="col-span-1 row-span-1 relative">
-              <BlogLayoutThree blog={blog} />
+            <article key={index} className="bg-white rounded-xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-hidden border border-gray-100">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={blog.image.src}
+                  alt={blog.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                <div className="absolute top-4 left-4">
+                  {blog.tags.slice(0, 1).map((tag: string) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-800 text-xs font-medium rounded-full border border-white/20"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-3 line-clamp-2 text-gray-900">
+                  {blog.title}
+                </h3>
+                <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+                  {blog.description}
+                </p>
+                <Link
+                  href={`/blogundratgeber/blogs/${blog.slug}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 hover:scale-105"
+                  style={{
+                    background: 'linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%)',
+                    color: 'white'
+                  }}
+                >
+                  Weiterlesen
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
             </article>
           ))}
         </div>

@@ -6,8 +6,47 @@ interface RenderMdxProps {
 }
 
 export default function RenderMdx({ blog }: RenderMdxProps) {
-  // Konfiguriere marked für bessere HTML-Ausgabe
+  // Erstelle eine Funktion zum Generieren von IDs aus Überschriften
+  // Diese Funktion muss mit den bestehenden TOC-URLs kompatibel sein
+  const generateId = (text: any): string => {
+    // Stelle sicher, dass text ein String ist
+    const textString = typeof text === 'string' ? text : String(text || '');
+    
+    return textString
+      .toLowerCase()
+      .replace(/&/g, '--') // Ersetze & mit doppelten Bindestrichen (wie TOC)
+      .replace(/[^\w\s-ßäöü]/g, '') // Entferne Sonderzeichen, aber behalte ß und Umlaute
+      .replace(/\s+/g, '-') // Ersetze Leerzeichen mit Bindestrichen
+      .replace(/--+/g, '--') // Behalte doppelte Bindestriche bei, entferne nur mehrfache
+      .replace(/^-+|-+$/g, '') // Entferne führende und nachfolgende Bindestriche
+      .trim();
+  };
+
+  // Erweitere marked um automatische ID-Generierung
+  const renderer = new marked.Renderer();
+  
+  renderer.heading = function({ tokens, depth }: { tokens: any[], depth: number }) {
+    // Extrahiere den Text aus den Tokens
+    const text = tokens.map(token => {
+      if (typeof token === 'string') {
+        return token;
+      } else if (token && typeof token.text === 'string') {
+        return token.text;
+      } else if (token && token.raw) {
+        return token.raw;
+      } else if (token && token.type === 'text') {
+        return token.text || '';
+      }
+      return '';
+    }).join('');
+    
+    const id = generateId(text);
+    return `<h${depth} id="${id}" class="scroll-mt-20">${text}</h${depth}>`;
+  };
+
+  // Konfiguriere marked für bessere HTML-Ausgabe mit automatischen IDs
   marked.setOptions({
+    renderer: renderer,
     breaks: true,
     gfm: true,
   });
