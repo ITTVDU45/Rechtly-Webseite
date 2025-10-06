@@ -658,7 +658,7 @@ code {
 /* Tablet Styles */
 @media (min-width: 768px) {
   .hero {
-    background-image: url('/assets/images/Bannerbild.png');
+    background-image: url('/assets/images/Bannerbildneu.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

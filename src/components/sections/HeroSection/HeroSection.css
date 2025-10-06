@@ -20,13 +20,13 @@
   padding: 0;
   box-sizing: border-box;
   margin-top: 0; /* don't pull under nav */
-  padding-top: 120px; /* push content further below navigation */
-  padding-bottom: 120px; /* more space at bottom */
+  padding-top: 60px; /* push content further below navigation (reduced for mobile) */
+  padding-bottom: 40px; /* more space at bottom (reduced for mobile) */
   overflow: visible; /* allow dropdowns */
   background: linear-gradient(135deg, rgba(27,58,75,0.85) 0%, rgba(44,83,100,0.65) 100%);
   background-blend-mode: overlay;
   /* Mobile background image */
-  background-image: url('/assets/images/Bannerbild.png') !important;
+  background-image: url('/assets/images/Bannerbildneu.png') !important;
   background-size: cover !important;
   background-position: 20% center !important;
   background-repeat: no-repeat !important;
@@ -65,8 +65,8 @@ html, body {
   min-height: auto;
   height: auto;
   box-sizing: border-box;
-  padding-top: 40px; /* push image down */
-  padding-bottom: 40px; /* space at bottom */
+  padding-top: 20px; /* push image down (reduced) */
+  padding-bottom: 20px; /* space at bottom (reduced) */
 }
 
 .hero__content {
@@ -353,7 +353,7 @@ html, body {
   }
 
   .hero {
-    background-image: url('/assets/images/Bannerbild.png') !important;
+    background-image: url('/assets/images/Bannerbildneu.png') !important;
     background-position: 20% center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
@@ -432,7 +432,7 @@ html, body {
     width: 100%;
     max-width: 100%;
     /* restore hero background image */
-    background-image: url('/assets/images/Bannerbild.png') !important;
+    background-image: url('/assets/images/Bannerbildneu.png') !important;
     background-size: cover !important;
     background-position: 20% center !important;
     background-repeat: no-repeat !important;
@@ -564,7 +564,7 @@ html, body {
   }
 
   .hero {
-    background-image: url('/assets/images/Bannerbild.png') !important;
+    background-image: url('/assets/images/Bannerbildneu.png') !important;
     background-size: cover !important;
     background-position: 10% center !important;
     background-repeat: no-repeat !important;
@@ -643,17 +643,19 @@ html, body {
 
 @media (max-width: 576px) {
   .hero {
-    background-image: url('/assets/images/Bannerbild.png') !important;
+    background-image: url('/assets/images/Bannerbildneu.png') !important;
+    /* scale to cover the entire hero area on small screens */
     background-size: cover !important;
-    background-position: 5% center !important;
+    background-position: center center !important;
     background-repeat: no-repeat !important;
     width: 100%;
     max-width: 100%;
     margin: 0;
-    margin-top: 60px;
+    margin-top: 40px;
     padding: 0;
-    min-height: calc(100vh - 120px);
-    padding-bottom: 60px;
+    /* ensure hero occupies most of the viewport on mobile */
+    min-height: 70vh;
+    padding-bottom: 40px;
   }
   
   /* Noch dunklerer Overlay für sehr kleine Bildschirme */
@@ -775,8 +777,8 @@ html, body {
   }
   
   .hero-with-bg {
-    min-height: 60vh; /* Deutlich kleiner auf mobilen Geräten */
-    padding-top: 60px;
+    min-height: 70vh; /* show larger hero on mobile */
+    padding-top: 40px;
   }
 }
 

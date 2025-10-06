@@ -39,8 +39,16 @@ export default function UnternehmenPage() {
   return (
     <main className="bg-slate-50 text-slate-800">
       {/* Hero */}
-      {/* Increased top padding to avoid overlap with fixed header */}
-      <Section className="pt-36 md:pt-44 lg:pt-52 pb-20" style={{ background: 'linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%)' }}>
+      {/* Larger hero similar to partner-gutachter */}
+      <Section
+        className="pt-32 md:pt-40 lg:pt-52 pb-32"
+        style={{
+          background: 'linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%)',
+          minHeight: '60vh',
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 text-white">
           <h1 className="text-3xl md:text-4xl font-extrabold">Wir sind Rechtly — Ihre Partner im Verkehrsrecht</h1>
           <p className="mt-4 text-lg text-white/90">Digitale, schnelle und sichere Lösungen für Fragen rund um Bußgeld, Punkte und Gutachten.</p>

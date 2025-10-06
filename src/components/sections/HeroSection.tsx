@@ -100,15 +100,14 @@ const HeroSection: React.FC = () => {
           overflow: 'hidden'
         }}>
           <Image 
-            src="/assets/images/Bannerbild.png"
+            src="/assets/images/Bannerbildneu.png"
             alt="Rechtly Hero Background"
             fill
             sizes="100vw"
             style={{ 
-              objectFit: 'cover', 
-              objectPosition: 'center center',
-              width: '100%',
-              height: '100%'
+              // show the whole image on all viewport aspect ratios
+              objectFit: 'contain', 
+              objectPosition: '50% 50%'
             }}
             priority
             className="hero-background-image"
