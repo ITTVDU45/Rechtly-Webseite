@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import RelatedPosts from "@/components/Blog/RelatedPosts";
+import PodcastWidget from '@/components/Blog/PodcastWidget';
 
 export async function generateStaticParams() {
   return blogs.map((blog: Blog) => ({ slug: blog.slug }));
@@ -294,8 +295,15 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 </div>
               </div>
             </div>
+
+            {/* Podcast Widget removed from sidebar - moved above article content */}
           </div>
-          <RenderMdx blog={blog} />
+          <div className="col-span-12 lg:col-span-8">
+            <div className="mb-6">
+              <PodcastWidget />
+            </div>
+            <RenderMdx blog={blog} />
+          </div>
         </div>
       </article>
 
