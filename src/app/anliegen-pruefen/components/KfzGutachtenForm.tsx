@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import './kfz-gutachten-form.css';
+import './emergency-fix.css';
 import ImagePreview from './ImagePreview';
 import UploadHandler from './UploadHandler';
 import ProcessProgress from './ProcessProgress';

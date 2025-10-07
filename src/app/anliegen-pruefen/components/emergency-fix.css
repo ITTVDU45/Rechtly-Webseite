@@ -1,0 +1,111 @@
+/* Notfall-Fix für Formulare */
+
+/* Verkehrsunfall-Formular */
+.step-container .option-button {
+  color: #07222b !important;
+  background: #ffffff !important;
+}
+
+.step-container .option-button .option-title {
+  color: #07222b !important;
+  font-weight: 600 !important;
+}
+
+.step-container .option-button.selected {
+  background: linear-gradient(135deg, #A3E635 0%, #72B626 100%) !important;
+  color: #07222b !important;
+}
+
+.step-container .option-button.selected .option-title {
+  color: #07222b !important;
+  font-weight: 700 !important;
+}
+
+.step-container h3.question-title {
+  color: #ffffff !important;
+}
+
+/* Fix für alle Input-Elemente */
+.step-container input,
+.step-container select,
+.step-container textarea {
+  color: #07222b !important;
+  background-color: #ffffff !important;
+}
+
+/* Fix für Label-Elemente */
+.step-container label {
+  color: #ffffff !important;
+}
+
+/* Fix für Next/Back Buttons */
+.next-button {
+  background: linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%) !important;
+  color: #07222b !important;
+  font-weight: 700 !important;
+}
+
+.back-button {
+  color: #ffffff !important;
+  border: 2px solid rgba(255,255,255,0.95) !important;
+}
+
+/* Fix für Option Cards in allen Formularen */
+.option-button,
+button.option-button {
+  background: rgba(255, 255, 255, 0.98) !important;
+  color: #07222b !important;
+}
+
+.option-button .option-title,
+button.option-button .option-title {
+  color: #07222b !important;
+  font-weight: 600 !important;
+}
+
+.option-button.selected,
+button.option-button.selected {
+  background: linear-gradient(135deg, #A3E635 0%, #72B626 100%) !important;
+  color: #07222b !important;
+}
+
+/* Fix für Datum/Zeit Inputs */
+.date-input {
+  background: #ffffff !important;
+  color: #07222b !important;
+}
+
+input[type="date"],
+input[type="time"] {
+  background: #ffffff !important;
+  color: #07222b !important;
+  padding: 0.75rem !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(2,6,23,0.06) !important;
+}
+
+/* Fix für service-selection Cards */
+.service-card {
+  background: white !important;
+  color: #07222b !important;
+}
+
+.service-card h3 {
+  color: #1B3A4B !important;
+}
+
+.service-card p {
+  color: rgba(27, 58, 75, 0.8) !important;
+}
+
+/* Fix für Stepper-Button */
+.stepper-next {
+  color: #07222b !important;
+  background: linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%) !important;
+}
+
+/* Fix für bussgeld-hero-cta */
+.bussgeld-hero-cta {
+  color: #07222b !important;
+  font-weight: bold !important;
+}

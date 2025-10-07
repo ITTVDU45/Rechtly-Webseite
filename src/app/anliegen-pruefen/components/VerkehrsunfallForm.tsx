@@ -5,6 +5,7 @@ import Stepper, { Step } from '../../../components/ui/Stepper';
 import UploadHandler from './UploadHandler';
 import { useRouter } from 'next/navigation';
 import './verkehrsunfall-form.css';
+import './emergency-fix.css';
 
 type UnfallAllgemein = {
   unfallArt: string;

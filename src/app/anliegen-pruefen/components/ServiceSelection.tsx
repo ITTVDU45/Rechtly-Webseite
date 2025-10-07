@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import '../../partner/partner.css';
 import './service-selection.css';
+import './emergency-fix.css';
 
 export default function ServiceSelection() {
   const [isMounted, setIsMounted] = useState(false);
