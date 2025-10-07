@@ -26,28 +26,28 @@
 
 /* Mobile-First Media Queries für CSS */
 .xs-only {
-  @media (max-width: var(--bp-xs)) { display: block; }
+  @media (max-width: 375px) { display: block; }
   @media (min-width: 376px) { display: none; }
 }
 
 .sm-and-up {
   @media (max-width: 575px) { display: none; }
-  @media (min-width: var(--bp-sm)) { display: block; }
+  @media (min-width: 576px) { display: block; }
 }
 
 .md-and-up {
   @media (max-width: 767px) { display: none; }
-  @media (min-width: var(--bp-md)) { display: block; }
+  @media (min-width: 768px) { display: block; }
 }
 
 .lg-and-up {
   @media (max-width: 991px) { display: none; }
-  @media (min-width: var(--bp-lg)) { display: block; }
+  @media (min-width: 992px) { display: block; }
 }
 
 .xl-and-up {
   @media (max-width: 1199px) { display: none; }
-  @media (min-width: var(--bp-xl)) { display: block; }
+  @media (min-width: 1200px) { display: block; }
 }
 
 /* Utility-Klassen für responsive Abstände */
@@ -55,25 +55,25 @@
   padding: var(--padding-xs);
 }
 
-@media (min-width: var(--bp-sm)) {
+@media (min-width: 576px) {
   .responsive-padding {
     padding: var(--padding-sm);
   }
 }
 
-@media (min-width: var(--bp-md)) {
+@media (min-width: 768px) {
   .responsive-padding {
     padding: var(--padding-md);
   }
 }
 
-@media (min-width: var(--bp-lg)) {
+@media (min-width: 992px) {
   .responsive-padding {
     padding: var(--padding-lg);
   }
 }
 
-@media (min-width: var(--bp-xl)) {
+@media (min-width: 1200px) {
   .responsive-padding {
     padding: var(--padding-xl);
   }
@@ -84,26 +84,59 @@
   gap: var(--gap-xs);
 }
 
-@media (min-width: var(--bp-sm)) {
+@media (min-width: 576px) {
   .responsive-gap {
     gap: var(--gap-sm);
   }
 }
 
-@media (min-width: var(--bp-md)) {
+@media (min-width: 768px) {
   .responsive-gap {
     gap: var(--gap-md);
   }
 }
 
-@media (min-width: var(--bp-lg)) {
+@media (min-width: 992px) {
   .responsive-gap {
     gap: var(--gap-lg);
   }
 }
 
-@media (min-width: var(--bp-xl)) {
+@media (min-width: 1200px) {
   .responsive-gap {
     gap: var(--gap-xl);
+  }
+}
+
+/* Diese Klasse kann verwendet werden, um Elemente auf mobilen Geräten untereinander zu stapeln */
+.mobile-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .mobile-stack {
+    flex-direction: row;
+  }
+}
+
+/* Hilfsmittel für mobile-first Entwicklung */
+.mobile-only {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-only {
+    display: block;
   }
 }
