@@ -377,7 +377,7 @@ code {
   width: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .container { width: calc(100% - 2rem); padding: 0 1rem; }
   .hero, .section { margin: 1rem; padding: 4rem 1.5rem; border-radius: 30px; }
   .hero { margin: 4rem 1rem 1rem; padding: 3rem 1rem; border-radius: 15px; }
@@ -658,7 +658,7 @@ code {
 }
 
 /* Tablet Styles */
-@media (min-width: 768px) {
+@media (min-width: var(--bp-md)) {
   .hero {
     background-image: url('/assets/images/Bannerbildneu.png');
     background-position: center;
@@ -742,7 +742,7 @@ code {
 }
 
 /* Mobile Styles */
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .hero {
     margin: 0;
     margin-top: 60px;
@@ -772,7 +772,7 @@ code {
   /* Hero benefit styles moved to HeroSection.css */
 }
 
-@media (max-width: 576px) {
+@media (max-width: calc(var(--bp-sm) - 1px)) {
   .hero__text h1 {
     font-size: 1.8rem;
   }

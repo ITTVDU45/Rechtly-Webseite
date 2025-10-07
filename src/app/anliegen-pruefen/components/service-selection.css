@@ -118,7 +118,7 @@
 }
 
 /* Small mobile devices */
-@media (max-width: 375px) {
+@media (max-width: var(--bp-xs)) {
   .service-hero {
     padding: 3rem 0.75rem 5rem;
   }

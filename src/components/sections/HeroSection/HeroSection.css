@@ -352,7 +352,7 @@ html, body {
 }
 
 /* Tablet Styles */
-@media (min-width: 768px) {
+@media (min-width: var(--bp-md)) {
   .hero-wrapper {
     width: 100vw;
     margin: 0;
@@ -533,7 +533,7 @@ html, body {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: calc(var(--bp-xl) - 1px)) {
   .hero__text h1 {
     font-size: 3.8rem;
   }
@@ -544,7 +544,7 @@ html, body {
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: calc(var(--bp-lg) - 1px)) {
   .hero__text h1 {
     font-size: 3.2rem;
   }
@@ -558,7 +558,7 @@ html, body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .hero__feature-cards {
     flex-direction: column;
     flex-wrap: wrap;
@@ -653,7 +653,7 @@ html, body {
   /* Removed duplicate rules - using main .hero__benefit-item rules above */
 }
 
-@media (max-width: 576px) {
+@media (max-width: calc(var(--bp-sm) - 1px)) {
   .hero {
     background-image: url('/assets/images/Bannerbildneu.png') !important;
     /* scale to cover the entire hero area on small screens */
@@ -718,13 +718,13 @@ html, body {
 }
 
 /* Explicit subtitle sizing overrides requested */
-@media (max-width: 992px) {
+@media (max-width: calc(var(--bp-lg) - 1px)) {
   .hero__subtitle {
     font-size: 3rem;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--bp-md)) {
   .hero__subtitle {
     text-align: center;
     font-size: 2.2rem;
@@ -775,14 +775,14 @@ html, body {
 }
 
 /* Mittlere Bildschirme - leichte Anpassung */
-@media (min-width: 769px) and (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: calc(var(--bp-xl) - 1px)) {
   .hero-background-image {
     object-position: center center !important;
   }
 }
 
 /* Tablet */
-@media (min-width: 577px) and (max-width: 768px) {
+@media (min-width: 577px) and (max-width: calc(var(--bp-md) - 1px)) {
   .hero-background-image {
     object-position: 40% center !important;
   }
@@ -795,7 +795,7 @@ html, body {
 }
 
 /* Mobile */
-@media (max-width: 576px) {
+@media (max-width: calc(var(--bp-sm) - 1px)) {
   .hero-background-image {
     object-position: 30% center !important;
   }

@@ -8,7 +8,7 @@
   width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--bp-md)) {
   .feature-bento-grid {
     grid-template-columns: repeat(3, 1fr);
   }

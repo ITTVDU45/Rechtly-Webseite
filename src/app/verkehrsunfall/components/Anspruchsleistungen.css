@@ -140,7 +140,7 @@
   background: rgba(163, 230, 53, 0.1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .anspruch__layout {
     grid-template-columns: 1fr;
   }

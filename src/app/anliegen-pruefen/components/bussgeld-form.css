@@ -144,7 +144,7 @@
 .form-group .required { color: #A3E635; margin-left: 0.25rem }
 
 /* responsive: collapse to one column on small screens */
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .form-grid { grid-template-columns: 1fr }
 }
 .navigation-buttons{ display:flex; justify-content:space-between; gap:1rem; margin-top:1rem }

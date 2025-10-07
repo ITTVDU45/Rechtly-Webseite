@@ -51,7 +51,7 @@
   display: inline-block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .tools {
     margin: 1.5rem 1rem;
     padding: 2.5rem 0;
@@ -77,7 +77,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: calc(var(--bp-sm) - 1px)) {
   .tools {
     margin: 1.25rem 0.75rem;
     padding: 2rem 0;

@@ -53,7 +53,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .bussgeld-cases__inner { 
     padding: 0 1rem; 
   }
@@ -73,7 +73,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: calc(var(--bp-sm) - 1px)) {
   .bussgeld-cases__inner { 
     padding: 0 0.75rem; 
   }

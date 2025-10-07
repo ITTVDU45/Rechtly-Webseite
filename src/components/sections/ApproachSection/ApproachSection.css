@@ -149,7 +149,7 @@
   background: rgba(163, 230, 53, 0.1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .approach__layout {
     grid-template-columns: 1fr;
   }
@@ -211,7 +211,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: calc(var(--bp-sm) - 1px)) {
   .approach-section {
     padding: 2rem 1rem;
     margin: 0.5rem auto;

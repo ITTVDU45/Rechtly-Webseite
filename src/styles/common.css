@@ -73,7 +73,7 @@
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .container {
     width: calc(100% - 2rem);
     padding: 0 1rem;

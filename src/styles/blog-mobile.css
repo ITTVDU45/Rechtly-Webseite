@@ -331,7 +331,7 @@
 }
 
 /* Tablet breakpoint */
-@media (min-width: 768px) {
+@media (min-width: var(--bp-md)) {
   .blog-detail-hero {
     height: 60vh;
     max-height: 500px;

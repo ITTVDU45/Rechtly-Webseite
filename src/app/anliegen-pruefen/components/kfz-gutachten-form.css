@@ -86,7 +86,7 @@
 .progress-text { font-size:0.9rem; color:#475569 }
 
 /* Mobile adjustments */
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .kfz-hero { padding: calc(60px + 1rem) 0.5rem 1.5rem; }
   .kfz-hero-inner { padding: 0 1rem }
 

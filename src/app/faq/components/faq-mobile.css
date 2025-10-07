@@ -162,7 +162,7 @@
 }
 
 /* Tablet breakpoint */
-@media (min-width: 768px) {
+@media (min-width: var(--bp-md)) {
   .faq-hero {
     padding: 4rem 2rem 6rem;
     min-height: 70vh;

@@ -75,7 +75,7 @@ export default function Partner() {
             </Link>
           </div>
 
-          <p className="partner-note">Mehr Aufträge – weniger Aufwand. Werden Sie Teil des Rechtly-Partnernetzwerks.</p>
+          
         </div>
 
         <div className="partner-right">

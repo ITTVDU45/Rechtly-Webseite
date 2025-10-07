@@ -157,7 +157,7 @@
   object-fit: contain;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: calc(var(--bp-xl) - 1px)) {
   .banner__text h1 {
     font-size: 3rem;
   }
@@ -167,7 +167,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: calc(var(--bp-lg) - 1px)) {
   .banner__text h1 {
     font-size: 2.5rem;
   }
@@ -181,7 +181,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .banner {
     margin-top: 60px; /* Angepasste Höhe für mobile Navigation */
     height: auto;
@@ -237,7 +237,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: calc(var(--bp-sm) - 1px)) {
   .banner__text h1 {
     font-size: 2rem;
   }

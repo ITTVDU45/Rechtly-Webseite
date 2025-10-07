@@ -73,7 +73,7 @@
 }
 
 /* Mobile Styles */
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .banner {
     min-height: auto;
     padding-top: 100px;
@@ -113,7 +113,7 @@
 }
 
 /* Small Mobile Styles */
-@media (max-width: 576px) {
+@media (max-width: calc(var(--bp-sm) - 1px)) {
   .banner {
     padding-top: 80px;
     padding-bottom: 40px;

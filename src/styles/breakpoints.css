@@ -26,28 +26,28 @@
 
 /* Mobile-First Media Queries für CSS */
 .xs-only {
-  @media (max-width: 375px) { display: block; }
+  @media (max-width: var(--bp-xs)) { display: block; }
   @media (min-width: 376px) { display: none; }
 }
 
 .sm-and-up {
   @media (max-width: 575px) { display: none; }
-  @media (min-width: 576px) { display: block; }
+  @media (min-width: var(--bp-sm)) { display: block; }
 }
 
 .md-and-up {
   @media (max-width: 767px) { display: none; }
-  @media (min-width: 768px) { display: block; }
+  @media (min-width: var(--bp-md)) { display: block; }
 }
 
 .lg-and-up {
   @media (max-width: 991px) { display: none; }
-  @media (min-width: 992px) { display: block; }
+  @media (min-width: var(--bp-lg)) { display: block; }
 }
 
 .xl-and-up {
   @media (max-width: 1199px) { display: none; }
-  @media (min-width: 1200px) { display: block; }
+  @media (min-width: var(--bp-xl)) { display: block; }
 }
 
 /* Utility-Klassen für responsive Abstände */
@@ -55,25 +55,25 @@
   padding: var(--padding-xs);
 }
 
-@media (min-width: 576px) {
+@media (min-width: var(--bp-sm)) {
   .responsive-padding {
     padding: var(--padding-sm);
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--bp-md)) {
   .responsive-padding {
     padding: var(--padding-md);
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: var(--bp-lg)) {
   .responsive-padding {
     padding: var(--padding-lg);
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: var(--bp-xl)) {
   .responsive-padding {
     padding: var(--padding-xl);
   }
@@ -84,25 +84,25 @@
   gap: var(--gap-xs);
 }
 
-@media (min-width: 576px) {
+@media (min-width: var(--bp-sm)) {
   .responsive-gap {
     gap: var(--gap-sm);
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--bp-md)) {
   .responsive-gap {
     gap: var(--gap-md);
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: var(--bp-lg)) {
   .responsive-gap {
     gap: var(--gap-lg);
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: var(--bp-xl)) {
   .responsive-gap {
     gap: var(--gap-xl);
   }

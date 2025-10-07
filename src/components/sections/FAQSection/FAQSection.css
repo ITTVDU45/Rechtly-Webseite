@@ -121,7 +121,7 @@
   .faq__container { padding: 0 1rem; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   .faq__container { 
     padding: 0 0.75rem; 
   }
@@ -159,7 +159,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: calc(var(--bp-sm) - 1px)) {
   .faq__header {
     margin-bottom: 2rem;
   }

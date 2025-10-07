@@ -278,7 +278,7 @@ input[type="radio"] + label {
 }
 
 /* Mobile-specific adjustments */
-@media (max-width: 768px) {
+@media (max-width: calc(var(--bp-md) - 1px)) {
   /* Increase spacing between interactive elements */
   .mobile-touch-spacing > * + * {
     margin-top: 1rem;
