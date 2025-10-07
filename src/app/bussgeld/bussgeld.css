@@ -43,7 +43,7 @@
 /* staggered reveal */
 .partner-features li { opacity:0; transform: translateY(12px); }
 .partner-features li.revealed { opacity:1; transform: translateY(0); transition: opacity .45s ease, transform .45s ease; }
-.partner-ctas { display:flex; gap:0.75rem; margin-top:1rem; }
+.partner-ctas { display:flex; gap:0.75rem; margin-top:1rem; justify-content: center; align-items: center; }
 .partner-right .partner-visual { position:relative; width:480px; max-width:100%; align-self:flex-start; overflow:hidden; margin-top: 0; }
 .partner-right img, .partner-right .partner-visual > span { display:block; }
 .partner-right img { width:100%; height:auto; max-width:100%; border-radius:12px; box-shadow:0 12px 40px rgba(2,6,23,0.08); transform:translateY(0); transition:transform .6s ease; object-fit:cover; }
