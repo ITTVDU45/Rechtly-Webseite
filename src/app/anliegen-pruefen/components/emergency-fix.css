@@ -28,14 +28,37 @@
 /* Fix für alle Input-Elemente */
 .step-container input,
 .step-container select,
-.step-container textarea {
+.step-container textarea,
+.contact-vertical input,
+.contact-vertical select,
+.contact-vertical textarea,
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
   color: #07222b !important;
   background-color: #ffffff !important;
 }
 
 /* Fix für Label-Elemente */
 .step-container label {
-  color: #ffffff !important;
+  color: #07222b !important;
+}
+
+/* Fix für Kontaktdaten-Formular */
+.contact-vertical label,
+.form-grid label,
+.contact-vertical .form-group label,
+.step-container .contact-vertical label,
+.step-container form label,
+.step-container .form-grid label {
+  color: #07222b !important;
+}
+
+/* Fix für Pflichtfeld-Sternchen */
+.required,
+label .required,
+.form-group .required {
+  color: #8BC34A !important;
 }
 
 /* Fix für Next/Back Buttons */
