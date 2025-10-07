@@ -198,6 +198,37 @@
     max-width: 200px;
     height: 120px;
   }
+
+  /* Mobile: make stepper horizontally scrollable and sticky */
+  .process-bar-container {
+    position: sticky;
+    top: 0;
+    z-index: 70;
+    background: linear-gradient(135deg,#1B3A4B 0%,#2C5364 100%);
+    padding: 0.5rem 0.75rem;
+    margin: 0 -1rem 0 -1rem; /* full-bleed feel */
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .process-progress {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    white-space: nowrap;
+  }
+
+  .steps-progress { padding-bottom: 0.25rem; }
+
+  .step { width:44px; height:44px; min-width:44px; border-radius:999px; font-size:1rem; display:inline-flex; align-items:center; justify-content:center; }
+
+  .connector { display: none; }
+
+  /* Reduce top spacing introduced by step container when sticky is visible */
+  .step-content { padding-top: 0.5rem; }
 }
 
 
