@@ -21,8 +21,21 @@
   font-weight: 700 !important;
 }
 
-.step-container h3.question-title {
-  color: #ffffff !important;
+/* Titel in Formularen */
+.step-container h3.question-title,
+.step-container h3,
+.step-container .question-title,
+form h3.question-title,
+.step-container h2,
+.question-title {
+  color: #07222b !important;
+  font-weight: 600 !important;
+}
+
+/* Speziell für dunkle Hintergründe */
+.step-container {
+  background: rgba(255,255,255,0.95) !important;
+  color: #07222b !important;
 }
 
 /* Fix für alle Input-Elemente */
