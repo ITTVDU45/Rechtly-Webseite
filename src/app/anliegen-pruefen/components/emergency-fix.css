@@ -84,17 +84,17 @@ form h3.question-title,
 
 /* Fix für Label-Elemente */
 .step-container label {
-  color: #ffffff !important;
+  color: #07222b !important;
 }
 
-/* Fix für Kontaktdaten-Formular */
+/* Fix für Kontaktdaten-Formular - Labels in schwarz für bessere Lesbarkeit auf weißem Formularhintergrund */
 .contact-vertical label,
 .form-grid label,
 .contact-vertical .form-group label,
 .step-container .contact-vertical label,
 .step-container form label,
 .step-container .form-grid label {
-  color: #ffffff !important;
+  color: #07222b !important;
 }
 
 /* Fix für Pflichtfeld-Sternchen */
