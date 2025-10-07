@@ -28,14 +28,14 @@
 form h3.question-title,
 .step-container h2,
 .question-title {
-  color: #07222b !important;
+  color: #ffffff !important;
   font-weight: 600 !important;
 }
 
 /* Speziell für dunkle Hintergründe */
 .step-container {
-  background: rgba(255,255,255,0.95) !important;
-  color: #07222b !important;
+  background: linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%) !important;
+  color: #ffffff !important;
 }
 
 /* Fix für alle Input-Elemente */
@@ -84,7 +84,7 @@ form h3.question-title,
 
 /* Fix für Label-Elemente */
 .step-container label {
-  color: #07222b !important;
+  color: #ffffff !important;
 }
 
 /* Fix für Kontaktdaten-Formular */
@@ -94,7 +94,7 @@ form h3.question-title,
 .step-container .contact-vertical label,
 .step-container form label,
 .step-container .form-grid label {
-  color: #07222b !important;
+  color: #ffffff !important;
 }
 
 /* Fix für Pflichtfeld-Sternchen */
