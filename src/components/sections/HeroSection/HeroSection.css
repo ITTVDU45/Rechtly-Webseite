@@ -1,4 +1,16 @@
 /* Mobile First Base Styles */
+
+/* Optimized for mobile devices first */
+:root {
+  --hero-padding-xs: 1rem;
+  --hero-padding-sm: 1.5rem;
+  --hero-padding-md: 2rem;
+  --hero-padding-lg: 3rem;
+  --hero-height-mobile: 60vh;
+  --hero-height-tablet: 70vh;
+  --hero-height-desktop: 80vh;
+}
+
 .hero-wrapper {
   width: 100vw;
   margin: 0;
@@ -740,19 +752,25 @@ html, body {
 }
 
 .hero-with-bg {
-  min-height: 70vh; /* Von 100vh auf 70vh reduziert */
+  min-height: var(--hero-height-mobile);
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 80px; /* Abstand vom oberen Rand hinzufügen */
-  padding-bottom: 40px; /* Abstand vom unteren Rand hinzufügen */
+  padding-top: var(--hero-padding-md);
+  padding-bottom: var(--hero-padding-sm);
 }
 
 /* Größere Bildschirme - Standard-Zentrierung */
 @media (min-width: 1201px) {
   .hero-background-image {
     object-position: center center !important;
+  }
+  
+  .hero-with-bg {
+    min-height: var(--hero-height-desktop);
+    padding-top: var(--hero-padding-lg);
+    padding-bottom: var(--hero-padding-md);
   }
 }
 
@@ -767,6 +785,12 @@ html, body {
 @media (min-width: 577px) and (max-width: 768px) {
   .hero-background-image {
     object-position: 40% center !important;
+  }
+  
+  .hero-with-bg {
+    min-height: var(--hero-height-tablet);
+    padding-top: var(--hero-padding-md);
+    padding-bottom: var(--hero-padding-sm);
   }
 }
 

@@ -1,7 +1,7 @@
 "use client";
 import './HeroSection/HeroSection.css';
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
@@ -39,6 +39,9 @@ const HeroSection: React.FC = () => {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   
   // Benefit-Items Daten
   const benefitItems: BenefitItem[] = [
@@ -150,12 +153,32 @@ const HeroSection: React.FC = () => {
               {/* Karussell nur für mobile Geräte */}
               {isMobile && (
                 <div className="hero__carousel">
-                  <div className="hero__carousel-container">
+                  <div 
+                    className="hero__carousel-container swipeable" 
+                    ref={carouselRef}
+                    onTouchStart={(e) => setTouchStart(e.targetTouches[0].clientX)}
+                    onTouchMove={(e) => setTouchEnd(e.targetTouches[0].clientX)}
+                    onTouchEnd={() => {
+                      if (touchStart && touchEnd) {
+                        const distance = touchStart - touchEnd;
+                        const isLeftSwipe = distance > 50;
+                        const isRightSwipe = distance < -50;
+                        
+                        if (isLeftSwipe) {
+                          nextSlide();
+                        } else if (isRightSwipe) {
+                          prevSlide();
+                        }
+                      }
+                      setTouchStart(null);
+                      setTouchEnd(null);
+                    }}
+                  >
                     <div className="hero__carousel-controls">
-                      <button className="hero__carousel-button" onClick={prevSlide}>
+                      <button className="hero__carousel-button touch-target touch-feedback" onClick={prevSlide}>
                         &#10094;
                       </button>
-                      <button className="hero__carousel-button" onClick={nextSlide}>
+                      <button className="hero__carousel-button touch-target touch-feedback" onClick={nextSlide}>
                         &#10095;
                       </button>
                     </div>
@@ -180,7 +203,7 @@ const HeroSection: React.FC = () => {
                     {benefitItems.map((_, index) => (
                       <div 
                         key={index} 
-                        className={`hero__carousel-indicator ${currentSlide === index ? 'active' : ''}`}
+                        className={`hero__carousel-indicator ${currentSlide === index ? 'active' : ''} touch-target`}
                         onClick={() => goToSlide(index)}
                       />
                     ))}
@@ -189,7 +212,7 @@ const HeroSection: React.FC = () => {
               )}
               
               <button 
-                className="hero__cta-button" 
+                className="hero__cta-button touch-target touch-feedback" 
                 onClick={() => router.push('/anliegen-pruefen')}
               >
                 Jetzt kostenlos prüfen

@@ -1,0 +1,109 @@
+/* Mobile-First Breakpoints für konsistente Verwendung im Projekt */
+
+:root {
+  /* Breakpoint-Werte (px) */
+  --bp-xs: 375px;   /* Extra small devices */
+  --bp-sm: 576px;   /* Small devices */
+  --bp-md: 768px;   /* Medium devices */
+  --bp-lg: 992px;   /* Large devices */
+  --bp-xl: 1200px;  /* Extra large devices */
+  --bp-2xl: 1400px; /* Extra extra large devices */
+  
+  /* Standard-Paddings für verschiedene Breakpoints */
+  --padding-xs: 1rem;    /* 16px */
+  --padding-sm: 1.5rem;  /* 24px */
+  --padding-md: 2rem;    /* 32px */
+  --padding-lg: 2.5rem;  /* 40px */
+  --padding-xl: 3rem;    /* 48px */
+  
+  /* Standard-Abstände für Komponenten */
+  --gap-xs: 0.5rem;   /* 8px */
+  --gap-sm: 0.75rem;  /* 12px */
+  --gap-md: 1rem;     /* 16px */
+  --gap-lg: 1.5rem;   /* 24px */
+  --gap-xl: 2rem;     /* 32px */
+}
+
+/* Mobile-First Media Queries für CSS */
+.xs-only {
+  @media (max-width: 375px) { display: block; }
+  @media (min-width: 376px) { display: none; }
+}
+
+.sm-and-up {
+  @media (max-width: 575px) { display: none; }
+  @media (min-width: 576px) { display: block; }
+}
+
+.md-and-up {
+  @media (max-width: 767px) { display: none; }
+  @media (min-width: 768px) { display: block; }
+}
+
+.lg-and-up {
+  @media (max-width: 991px) { display: none; }
+  @media (min-width: 992px) { display: block; }
+}
+
+.xl-and-up {
+  @media (max-width: 1199px) { display: none; }
+  @media (min-width: 1200px) { display: block; }
+}
+
+/* Utility-Klassen für responsive Abstände */
+.responsive-padding {
+  padding: var(--padding-xs);
+}
+
+@media (min-width: 576px) {
+  .responsive-padding {
+    padding: var(--padding-sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-padding {
+    padding: var(--padding-md);
+  }
+}
+
+@media (min-width: 992px) {
+  .responsive-padding {
+    padding: var(--padding-lg);
+  }
+}
+
+@media (min-width: 1200px) {
+  .responsive-padding {
+    padding: var(--padding-xl);
+  }
+}
+
+/* Responsive Gap-Klassen */
+.responsive-gap {
+  gap: var(--gap-xs);
+}
+
+@media (min-width: 576px) {
+  .responsive-gap {
+    gap: var(--gap-sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-gap {
+    gap: var(--gap-md);
+  }
+}
+
+@media (min-width: 992px) {
+  .responsive-gap {
+    gap: var(--gap-lg);
+  }
+}
+
+@media (min-width: 1200px) {
+  .responsive-gap {
+    gap: var(--gap-xl);
+  }
+}

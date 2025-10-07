@@ -1,0 +1,297 @@
+/* Touch Interaction Optimizations */
+
+:root {
+  /* Minimum touch target size (WCAG 2.5.5) */
+  --touch-target-size: 44px;
+  
+  /* Touch feedback colors */
+  --touch-feedback-light: rgba(255, 255, 255, 0.2);
+  --touch-feedback-dark: rgba(0, 0, 0, 0.1);
+  
+  /* Touch transition timing */
+  --touch-transition-duration: 0.15s;
+}
+
+/* 
+ * Touch Target Size Enhancement
+ * Ensures interactive elements are large enough for touch
+ */
+.touch-target {
+  min-width: var(--touch-target-size);
+  min-height: var(--touch-target-size);
+}
+
+/* Apply to common interactive elements */
+button:not(.touch-ignore),
+a[role="button"]:not(.touch-ignore),
+.btn:not(.touch-ignore),
+input[type="checkbox"]:not(.touch-ignore) + label,
+input[type="radio"]:not(.touch-ignore) + label,
+select:not(.touch-ignore),
+.nav-link:not(.touch-ignore),
+.card-link:not(.touch-ignore),
+.accordion-button:not(.touch-ignore),
+.dropdown-item:not(.touch-ignore) {
+  min-width: var(--touch-target-size);
+  min-height: var(--touch-target-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 
+ * Touch Feedback
+ * Visual feedback for touch interactions
+ */
+.touch-feedback {
+  position: relative;
+  overflow: hidden;
+}
+
+.touch-feedback::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--touch-feedback-light);
+  opacity: 0;
+  transform: scale(1.5);
+  transition: opacity var(--touch-transition-duration) ease-out, transform var(--touch-transition-duration) ease-out;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.touch-feedback:active::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Dark variant for light backgrounds */
+.touch-feedback-dark::after {
+  background: var(--touch-feedback-dark);
+}
+
+/* 
+ * Swipeable Elements
+ * For carousel and slider interactions
+ */
+.swipeable {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+
+.swipeable:active {
+  cursor: grabbing;
+}
+
+/* 
+ * Improved Scroll Areas
+ * Better touch scrolling experience
+ */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  overflow-y: auto;
+}
+
+.touch-scroll-x {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+/* 
+ * Touch-friendly spacing
+ * Increased spacing between interactive elements
+ */
+.touch-spacing > * + * {
+  margin-top: 0.75rem;
+}
+
+.touch-spacing-x > * + * {
+  margin-left: 0.75rem;
+}
+
+/* 
+ * Active State Enhancements
+ * Better visual feedback for active states
+ */
+.touch-active {
+  transition: transform var(--touch-transition-duration) ease, 
+              box-shadow var(--touch-transition-duration) ease;
+}
+
+.touch-active:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.3);
+}
+
+/* 
+ * Drag to Scroll Indicators
+ * Visual indicators for horizontally scrollable areas
+ */
+.drag-scroll-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.drag-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+  cursor: grab;
+  padding-bottom: 12px; /* Space for indicator dots */
+}
+
+.drag-scroll::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.drag-scroll:active {
+  cursor: grabbing;
+}
+
+.drag-scroll-indicators {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px 0;
+}
+
+.drag-scroll-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(163, 230, 53, 0.3);
+  transition: background-color 0.2s ease;
+}
+
+.drag-scroll-indicator.active {
+  background-color: rgba(163, 230, 53, 1);
+}
+
+/* 
+ * Accessibility: Reduced Motion
+ */
+@media (prefers-reduced-motion: reduce) {
+  .touch-feedback::after,
+  .touch-active,
+  .drag-scroll,
+  .drag-scroll-indicator {
+    transition: none;
+  }
+  
+  .touch-active:active {
+    transform: none;
+  }
+  
+  .drag-scroll {
+    scroll-behavior: auto;
+  }
+}
+
+/* 
+ * Apply to specific components
+ */
+
+/* Carousel navigation buttons */
+.feature__carousel-button,
+.hero__carousel-button,
+.bussgeld-categories .feature__carousel-button {
+  min-width: var(--touch-target-size);
+  min-height: var(--touch-target-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Audio controls */
+.podcast-player audio {
+  min-height: 44px;
+}
+
+/* Back button in blog */
+.blog-back-button {
+  min-width: var(--touch-target-size);
+  min-height: var(--touch-target-size);
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+/* Mobile navigation */
+.mobile-nav-item {
+  min-height: var(--touch-target-size);
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+/* Accordion headers */
+summary {
+  min-height: var(--touch-target-size);
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+/* Form elements */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  min-height: var(--touch-target-size);
+  padding: 0.5rem;
+}
+
+/* Checkboxes and radio buttons */
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  min-height: var(--touch-target-size);
+  padding-left: var(--touch-target-size);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Cards and tiles */
+.card-link,
+.feature__card,
+.related-post-card {
+  cursor: pointer;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  /* Increase spacing between interactive elements */
+  .mobile-touch-spacing > * + * {
+    margin-top: 1rem;
+  }
+  
+  /* Larger touch targets on mobile */
+  .mobile-touch-target {
+    min-height: 48px;
+  }
+  
+  /* Improved tap targets for navigation */
+  .mobile-nav-item {
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+  }
+}

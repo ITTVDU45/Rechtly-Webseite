@@ -1,4 +1,5 @@
 import "./globals.css";
+import "@/styles/blog-mobile.css";
 import { Inter } from "next/font/google";
 import siteMetadata from "@/utils/siteMetaData";
 import Script from "next/script";
