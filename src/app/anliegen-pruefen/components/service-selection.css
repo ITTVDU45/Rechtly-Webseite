@@ -107,18 +107,18 @@
   font-size: 1.25rem;
   margin: 0 0 0.75rem 0;
   font-weight: 700;
-  color: #1B3A4B;
+  color: #1B3A4B !important;
 }
 
 .service-card p {
   font-size: 0.9rem;
-  color: rgba(27, 58, 75, 0.8);
+  color: rgba(27, 58, 75, 0.8) !important;
   line-height: 1.5;
   margin: 0;
 }
 
 /* Small mobile devices */
-@media (max-width: var(--bp-xs)) {
+@media (max-width: 375px) {
   .service-hero {
     padding: 3rem 0.75rem 5rem;
   }
