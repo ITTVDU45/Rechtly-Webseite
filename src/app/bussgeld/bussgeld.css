@@ -59,17 +59,19 @@
 
 @media (max-width: 900px) {
   .bussgeld-partner.two-col { flex-direction:column; text-align:center; }
+  /* Keep visual overlapping cards but constrain its width so it doesn't break layout */
   .partner-left { order:2; margin-top: 1rem; }
   .partner-right { order:1; }
-  .partner-right .partner-visual { width:90%; }
+  .partner-right .partner-visual { width:100%; max-width:640px; margin:0 auto; transform: translateY(-12px); z-index: 5; }
   .partner-ctas { justify-content: center; }
 }
 
 @media (max-width: 768px) {
   .bussgeld-partner.two-col { flex-direction:column; text-align:center; }
-  .partner-left { order:2; margin-top: -16rem; }
+  /* Keep visual overlapping the top of the feature cards on small mobile devices */
+  .partner-left { order:2; margin-top: 1rem; }
   .partner-right { order:1; }
-  .partner-right .partner-visual { width:90%; }
+  .partner-right .partner-visual { width:100%; max-width:720px; margin:0 auto; transform: translateY(-16px); z-index: 6; }
   .partner-ctas { justify-content: center; }
 }
 
