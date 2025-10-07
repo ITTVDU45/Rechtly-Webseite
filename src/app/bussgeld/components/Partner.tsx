@@ -3,6 +3,7 @@ import React from 'react';
 import Section from '../../../../src/components/ui/Section';
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import '../bussgeld.css';
 import '../../../../src/components/ui/section.css';
 
@@ -42,34 +43,36 @@ export default function Partner() {
   return (
     <Section className="section--lg section--white">
       {/* Heading spans both columns */}
-      <div className="section-heading">
+        <div className="section-heading">
         <h2 className="section-title">Mehr Fälle. Weniger Aufwand. Partner von Rechtly werden.</h2>
-        <p className="section-subtitle">Profitieren Sie von einer digitalen Plattform, die Mandanten, Anwälte und Gutachter zusammenbringt – und erhalten Sie 50 € Provision pro erfolgreicher Vermittlung.</p>
+        <p className="section-subtitle">Profitieren Sie von unserer digitalen Plattform, die Mandanten, Anwälte und Gutachter zusammenbringt. Leiten Sie Interessenkontakte (Leads) an uns weiter – und erhalten Sie 50 € Aufwandsvergütung, wenn aus einem solchen Lead später tatsächlich ein Mandatsverhältnis zustande kommt.</p>
       </div>
 
       <div className="bussgeld-partner two-col">
         <div className="partner-left" ref={leftRef}>
 
           <ul className="partner-features">
-            <li><strong>Automatisierte Fallzuweisung:</strong> Keine Zeit verlieren – wir bringen die passenden Fälle direkt zu Ihnen.</li>
-            <li><strong>Digitale Plattform:</strong> Alle Dokumente, Kommunikation und Statusmeldungen in einer Oberfläche.</li>
-            <li><strong>Transparenz & Kontrolle:</strong> Jeder Schritt nachvollziehbar, jederzeit einsehbar.</li>
-            <li><strong>Fairer Bonus:</strong> 50 € pro erfolgreicher Vermittlung.</li>
+            <li><strong>Automatisierte Leadweiterleitung</strong>
+              <div className="partner-feature-lead">Sie geben uns potenzielle Kundenkontakte – wir leiten sie an unser System weiter und prüfen, ob ein Mandatsinteresse besteht.</div>
+            </li>
+            <li><strong>Zentrale Plattform</strong>
+              <div className="partner-feature-lead">Alle Kommunikation, Dokumente und Statusupdates laufen digital in einer Oberfläche.</div>
+            </li>
+            <li><strong>Transparenz & Kontrolle</strong>
+              <div className="partner-feature-lead">Sie sehen jederzeit, welcher Lead welchen Status hat, und wie es weitergeht.</div>
+            </li>
+            <li><strong>Faire Konditionen</strong>
+              <div className="partner-feature-lead">Die Vergütung ist an den Entstehen des Mandats gekoppelt und beträgt pauschal 50 €. Es gibt keine versteckten Kosten oder regelmäßigen Abgaben.</div>
+            </li>
           </ul>
 
           <div className="partner-ctas">
-            <button 
-              className="btn primary"
-              onClick={() => window.location.href = '/partner-gutachter'}
-            >
+            <Link href="/partner-gutachter" className="btn primary">
               Jetzt Partner werden
-            </button>
-            <button 
-              className="btn secondary"
-              onClick={() => window.location.href = '/partner-gutachter'}
-            >
+            </Link>
+            <Link href="/partner-gutachter" className="btn secondary">
               Mehr erfahren
-            </button>
+            </Link>
           </div>
 
           <p className="partner-note">Mehr Aufträge – weniger Aufwand. Werden Sie Teil des Rechtly-Partnernetzwerks.</p>
