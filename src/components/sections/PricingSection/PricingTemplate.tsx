@@ -36,69 +36,42 @@ export default function PricingTemplate({ title = 'Kostenlose Ersteinschätzung 
           {subtitle && <p className="text-xl text-white/80 max-w-4xl mx-auto">{subtitle}</p>}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-6 xs:gap-4 mb-16 sm:mb-12 xs:mb-8">
-          {plans.map((plan) => (
-            <motion.div key={plan.name} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }}>
-              <Card className={`relative ${plan.badge === 'Empfohlen' ? 'pricing-card--recommended' : plan.badge === 'Premium' ? 'pricing-card--premium' : ''} bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300`}>
-              {plan.badge && (
-                <Badge className={`absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r ${plan.color ?? ''} text-white border-0`}>
-                  {plan.badge}
-                </Badge>
-              )}
+        {/* Single info card — replace 3-column grid with one card containing the provided text */}
+        <div className="max-w-3xl mx-auto mb-16">
+          <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
+            <Card className="bg-white border-0 shadow-lg transition-all duration-300">
+              <CardContent className="p-8 sm:p-6 xs:p-5">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Kostenlose Ersteinschätzung & transparente Kosten</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Lassen Sie Ihren Bußgeldbescheid, Verkehrsunfall oder Ihr Kfz-Gutachten kostenlos prüfen – ohne Risiko für Sie als Geschädigten.
+                </p>
 
-              <CardHeader className="text-center pb-4 pt-8 sm:pt-6 xs:pt-5 sm:pb-3 xs:pb-2">
-                <CardTitle className="text-2xl sm:text-xl xs:text-lg text-gray-900 mb-2 sm:mb-1.5 xs:mb-1">{plan.name}</CardTitle>
-                <CardDescription className="text-gray-600 mb-4 sm:mb-3 xs:mb-2 sm:text-sm xs:text-xs">{plan.description}</CardDescription>
-                <div className="mb-2">
-                  <span className="text-4xl sm:text-3xl xs:text-2xl font-bold text-gray-900">{plan.price}</span>
-                  {plan.period && <span className="text-gray-600 ml-2 sm:text-sm xs:text-xs">{plan.period}</span>}
-                </div>
-                {plan.notes && plan.notes.length > 0 && (
-                  <div className="text-xs sm:text-xs xs:text-[10px] text-gray-500 space-y-1 xs:space-y-0.5">
-                    {plan.notes.map((n, idx) => (<div key={idx}>{n}</div>))}
-                  </div>
-                )}
-              </CardHeader>
-
-              <CardContent className="pt-0">
-                <div className="space-y-4 sm:space-y-3 xs:space-y-2 mb-8 sm:mb-6 xs:mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-3 sm:mb-2 xs:mb-1.5 sm:text-sm">Enthalten:</h4>
-                  {plan.features.map((feature, fi) => (
-                    <div key={fi} className="flex items-center space-x-3 xs:space-x-2">
-                      <Check className="w-5 h-5 sm:w-4 sm:h-4 xs:w-3.5 xs:h-3.5 text-green-500 flex-shrink-0" />
-                      <span className="text-sm sm:text-xs xs:text-xs text-gray-700">{feature}</span>
-                    </div>
-                  ))}
-
-                  {plan.notIncluded.length > 0 && (
-                    <>
-                      <h4 className="font-semibold text-gray-900 mb-3 sm:mb-2 xs:mb-1.5 mt-6 sm:mt-5 xs:mt-4 sm:text-sm">Nicht enthalten:</h4>
-                      {plan.notIncluded.map((feature, ni) => (
-                        <div key={ni} className="flex items-center space-x-3 xs:space-x-2">
-                          <X className="w-5 h-5 sm:w-4 sm:h-4 xs:w-3.5 xs:h-3.5 text-red-500 flex-shrink-0" />
-                          <span className="text-sm sm:text-xs xs:text-xs text-gray-500">{feature}</span>
-                        </div>
-                      ))}
-                    </>
-                  )}
+                <div className="text-gray-700 mb-3 leading-relaxed">
+                  <p className="mb-3">In vielen Fällen entstehen keine Kosten für Sie:</p>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>
+                      Bei Verkehrsunfällen werden Anwalts- und Gutachterkosten in der Regel von der gegnerischen Versicherung übernommen.
+                    </li>
+                    <li>
+                      Mit einer bestehenden Rechtsschutzversicherung ist auch die komplette Fallbearbeitung in Bußgeldsachen oder bei Unfallereignissen meist abgedeckt.
+                    </li>
+                  </ul>
                 </div>
 
-                <Button
-                  variant={plan.buttonVariant}
-                  className="w-full pricing-button-dark"
-                  size="lg"
-                  style={{
-                    background: 'linear-gradient(135deg, #C7E70C 0%, #A3E635 100%)',
-                    color: '#07222b',
-                    border: 'none'
-                  }}
-                >
-                  {plan.buttonText}
-                </Button>
+                <p className="text-gray-700 mb-3 leading-relaxed">
+                  Für weiterführende Leistungen (z. B. mehrere parallele Fälle, Sondergutachten, Unternehmenslösungen o. ä.) informieren wir Sie im Rahmen der kostenlosen Ersteinschätzung transparent über mögliche Selbstzahlerkosten – sofern diese nicht über Ihre Versicherung gedeckt sind.
+                </p>
+
+                <p className="text-gray-700 mb-4 leading-relaxed">✅ Sie erhalten in jedem Fall eine klare Einschätzung der Erfolgschancen und der Kosten – bevor Sie sich entscheiden.</p>
+
+                <div className="mt-4">
+                  <Button size="lg" variant="default" style={{ background: 'linear-gradient(135deg, #C7E70C 0%, #A3E635 100%)', color: '#07222b', border: 'none' }}>
+                    Kostenlose Ersteinschätzung starten
+                  </Button>
+                </div>
               </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+            </Card>
+          </motion.div>
         </div>
 
         <div className="bg-white rounded-2xl sm:rounded-xl xs:rounded-lg p-8 sm:p-6 xs:p-4 shadow-lg border border-gray-100 mb-16 sm:mb-12 xs:mb-8">
