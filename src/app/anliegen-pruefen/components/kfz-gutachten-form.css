@@ -80,6 +80,12 @@
 .contact-form .form-field { margin-bottom: 0.75rem }
 
 .process-bar-container { margin: 0.5rem 0 1rem; width: min(980px,100%); margin-left: auto; margin-right: auto; display:flex; justify-content:center }
+
+/* Rundere Ecken für die Stepper-Leiste */
+.process-bar-container {
+  border-radius: 12px;
+  overflow: hidden;
+}
 .step-content { width: min(980px,100%); }
 .progress-container{ display:flex; justify-content:center; margin-top: 0.75rem }
 .progress-bar{ width: min(980px,100%); background: #eef2f7; height: 8px; border-radius: 999px; overflow:hidden }
