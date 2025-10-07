@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Button from '@/components/ui/button';
+import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Check, X } from 'lucide-react';
 import Section from '@/components/ui/Section';
@@ -65,9 +66,11 @@ export default function PricingTemplate({ title = 'Kostenlose Ersteinschätzung 
                 <p className="text-gray-700 mb-4 leading-relaxed">✅ Sie erhalten in jedem Fall eine klare Einschätzung der Erfolgschancen und der Kosten – bevor Sie sich entscheiden.</p>
 
                 <div className="mt-4">
-                  <Button size="lg" variant="default" style={{ background: 'linear-gradient(135deg, #C7E70C 0%, #A3E635 100%)', color: '#07222b', border: 'none' }}>
-                    Kostenlose Ersteinschätzung starten
-                  </Button>
+                  <Link href="/anliegen-pruefen" className="inline-block w-full">
+                    <Button size="lg" variant="default" className="w-full" style={{ background: 'linear-gradient(135deg, #C7E70C 0%, #A3E635 100%)', color: '#07222b', border: 'none' }}>
+                      Kostenlose Ersteinschätzung starten
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
