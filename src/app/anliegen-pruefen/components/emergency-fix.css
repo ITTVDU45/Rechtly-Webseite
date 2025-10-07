@@ -175,3 +175,62 @@ input[type="time"] {
   color: #07222b !important;
   font-weight: bold !important;
 }
+
+/* Mobile-spezifische Anpassungen: Schritte oben sichtbar machen und Label-Texte schwarz */
+@media (max-width: 767px) {
+  /* Falls die Stepper-Navigation verschiedene Klassennamen hat, versuchen wir gängige Selektoren zu treffen */
+  .stepper,
+  .steps,
+  .step-indicators,
+  .stepper-nav,
+  .stepper-header,
+  .stepper-container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.75rem !important;
+    padding: 0.75rem 1rem !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 60 !important;
+    background: linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%) !important;
+  }
+
+  /* Ensure the step circles don't wrap and remain visible */
+  .stepper .step,
+  .steps .step,
+  .step-indicators .step,
+  .stepper-nav button {
+    flex: 0 0 auto !important;
+    margin: 0 0.35rem !important;
+  }
+
+  /* Make sure the content below has sufficient top padding so the sticky stepper doesn't cover it */
+  .step-container,
+  .form-stepper-wrapper,
+  .form-stepper {
+    padding-top: 5.25rem !important; /* ~84px to account for stepper height */
+  }
+
+  /* Auf Mobilgeräten: Titel/Labels der Input-Felder schwarz darstellen (User-Wunsch) */
+  .step-container label,
+  .contact-vertical label,
+  .form-grid label,
+  .step-container .option-button .option-title,
+  .option-button .option-title,
+  button.option-button .option-title {
+    color: #07222b !important;
+    font-weight: 600 !important;
+  }
+
+  /* Input-Feld-Titel (falls separate Klasse genutzt wird) */
+  .question-title,
+  .input-label,
+  .field-label {
+    color: #07222b !important;
+    font-weight: 600 !important;
+  }
+}
