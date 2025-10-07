@@ -139,7 +139,7 @@ export default function FAQSearch({ categories }: Props) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
+      <div className="faq-search-container">
       <label htmlFor="faq-search" className="sr-only">FAQ suchen</label>
       <div className="relative">
         <input
@@ -151,7 +151,7 @@ export default function FAQSearch({ categories }: Props) {
           onFocus={() => query && query.length >= MIN_QUERY && setOpen(filteredQuestions.length > 0 || filteredCategories.length > 0)}
           onKeyDown={onKeyDown}
           placeholder="Stichwort eingeben (z. B. Punkte, Bußgeld, Unfall)"
-          className="w-full rounded-2xl px-6 py-4 text-slate-900 placeholder:text-slate-400 shadow-inner focus:outline-none text-lg"
+          className="faq-search-input touch-target"
           aria-autocomplete="list"
           aria-expanded={open}
           aria-controls="faq-search-list"
@@ -159,7 +159,7 @@ export default function FAQSearch({ categories }: Props) {
         />
 
         {open && (
-          <ul id="faq-search-list" ref={listRef} role="listbox" className="absolute z-20 left-0 right-0 mt-2 bg-white rounded-xl shadow-lg max-h-64 overflow-auto">
+          <ul id="faq-search-list" ref={listRef} role="listbox" className="absolute z-20 left-0 right-0 mt-2 bg-white rounded-xl shadow-lg faq-search-results">
             {filteredQuestions.length > 0
               ? filteredQuestions.map((q, i) => (
                   <li

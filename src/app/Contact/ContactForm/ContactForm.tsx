@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import './contact-form-mobile.css';
 
 export default function ContactForm(): JSX.Element {
   const [firstName, setFirstName] = useState('');
@@ -110,16 +111,16 @@ export default function ContactForm(): JSX.Element {
   }
 
   return (
-    <div>
-      <form id="form" onSubmit={onSubmit} className="bg-white rounded-xl shadow-md p-6">
-        <h3 className="text-xl font-semibold text-slate-800">Nachricht senden</h3>
+    <div className="contact-form-container">
+      <form id="form" onSubmit={onSubmit} className="contact-form">
+        <h3 className="contact-form-title">Nachricht senden</h3>
 
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="contact-form-grid">
           <input 
             value={firstName} 
             onChange={(e) => setFirstName(e.target.value)} 
             placeholder="Vorname *" 
-            className="w-full border rounded-md px-3 py-2" 
+            className="contact-form-input touch-target" 
             required 
             disabled={status === 'loading'}
           />
@@ -127,7 +128,7 @@ export default function ContactForm(): JSX.Element {
             value={lastName} 
             onChange={(e) => setLastName(e.target.value)} 
             placeholder="Nachname *" 
-            className="w-full border rounded-md px-3 py-2" 
+            className="contact-form-input touch-target" 
             required 
             disabled={status === 'loading'}
           />
@@ -136,7 +137,7 @@ export default function ContactForm(): JSX.Element {
             onChange={(e) => setEmail(e.target.value)} 
             placeholder="E-Mail *" 
             type="email"
-            className="w-full border rounded-md px-3 py-2" 
+            className="contact-form-input touch-target" 
             required 
             disabled={status === 'loading'}
           />
@@ -144,82 +145,69 @@ export default function ContactForm(): JSX.Element {
             value={phone} 
             onChange={(e) => setPhone(e.target.value)} 
             placeholder="Telefonnummer" 
-            className="w-full border rounded-md px-3 py-2" 
+            className="contact-form-input touch-target" 
             disabled={status === 'loading'}
           />
           <input 
             value={address} 
             onChange={(e) => setAddress(e.target.value)} 
             placeholder="Adresse" 
-            className="w-full border rounded-md px-3 py-2 md:col-span-2" 
+            className="contact-form-input touch-target" 
             disabled={status === 'loading'}
           />
           <textarea 
             value={message} 
             onChange={(e) => setMessage(e.target.value)} 
             placeholder="Deine Nachricht *" 
-            className="w-full border rounded-md px-3 py-2 min-h-[140px] md:col-span-2" 
+            className="contact-form-textarea touch-target" 
             required 
             disabled={status === 'loading'}
           />
         </div>
 
-        <div className="mt-6">
-          <div className="flex items-start mb-4">
-            <input
-              type="checkbox"
-              id="dsgvo"
-              checked={acceptDSGVO}
-              onChange={(e) => setAcceptDSGVO(e.target.checked)}
-              className="mt-1 mr-3"
-              disabled={status === 'loading'}
-            />
-            <label htmlFor="dsgvo" className="text-sm text-slate-600">
-              Ich habe die <a href="/datenschutz" className="text-blue-600 hover:underline">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Daten zur Bearbeitung meiner Anfrage verwendet werden. *
-            </label>
-          </div>
-
-          <div className="mb-6">
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Demo-Key für Testzwecke
-              onChange={() => status === 'error' && setStatus(null)}
-            />
-          </div>
+        <div className="contact-form-checkbox-container">
+          <input
+            type="checkbox"
+            id="dsgvo"
+            checked={acceptDSGVO}
+            onChange={(e) => setAcceptDSGVO(e.target.checked)}
+            className="contact-form-checkbox touch-target"
+            disabled={status === 'loading'}
+          />
+          <label htmlFor="dsgvo" className="contact-form-checkbox-label">
+            Ich habe die <a href="/datenschutz">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Daten zur Bearbeitung meiner Anfrage verwendet werden. *
+          </label>
         </div>
 
-        <div className="mt-4 flex flex-col md:flex-row items-start md:items-center gap-4">
+        <div className="contact-form-recaptcha">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Demo-Key für Testzwecke
+            onChange={() => status === 'error' && setStatus(null)}
+          />
+        </div>
+
+        <div className="contact-form-button-container">
           <button
             type="submit"
-            className={`rounded-xl py-3 px-6 transition-all duration-300 shadow-sm ${status === 'loading' ? 'opacity-70 cursor-not-allowed' : ''}`}
-            style={{ background: 'linear-gradient(135deg, #c7e70c 0%, #a3e635 100%)' }}
+            className="contact-form-button touch-target"
             disabled={status === 'loading'}
           >
-            <span
-              style={{
-                background: 'linear-gradient(135deg, #1b3a4b 0%, #2c5364 100%)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                color: 'transparent',
-                display: 'inline-block'
-              }}
-            >
-              {status === 'loading' ? 'Wird gesendet...' : 'Senden'}
-            </span>
+            {status === 'loading' ? 'Wird gesendet...' : 'Senden'}
           </button>
           {status === 'success' && (
-            <div className="text-green-600 bg-green-50 px-4 py-2 rounded-md border border-green-200">
+            <div className="contact-form-message success">
               Deine Nachricht wurde erfolgreich versendet. Wir werden uns zeitnah bei dir melden.
             </div>
           )}
           {status === 'error' && (
-            <div className="text-red-600 bg-red-50 px-4 py-2 rounded-md border border-red-200">
+            <div className="contact-form-message error">
               {errorMessage || 'Bitte überprüfe deine Eingaben.'}
             </div>
           )}
         </div>
         
-        <div className="mt-4 text-xs text-slate-500">
+        <div className="contact-form-required">
           * Pflichtfelder
         </div>
       </form>
