@@ -106,7 +106,7 @@ const HeroSection: React.FC = () => {
       <section className="hero">
         <div className="hero__container">
           <div className="hero__content">
-            <div className="hero__text">
+            <div className="hero__text mobile-text-center">
               <h1 ref={titleRef} className={`hero__title-animate ${isHeroVisible ? 'is-visible' : ''}`}>
                 <span className="hero__title-line">
                   Ihr Experte für <span className="hero__highlight-animated">Verkehrsrecht</span>
@@ -115,7 +115,7 @@ const HeroSection: React.FC = () => {
               <p ref={subtitleRef} className={`hero__subtitle hero__subtitle-animate ${isHeroVisible ? 'is-visible' : ''}`}>Einfach. Digital. Recht bekommen.</p>
 
               {!isMobile && (
-                <div className="hero__feature-cards">
+                <div className="hero__feature-cards mobile-force-column">
                   {benefitItems.map((item, index) => (
                     <div className="feature-card" key={index}>
                       <div className="feature-card__icon">{item.icon}</div>

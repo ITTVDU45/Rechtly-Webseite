@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import url('../styles/breakpoints.css');
 @import url('../styles/touch-interactions.css');
+@import url('../styles/mobile-fixes.css'); /* Neue mobile Fixes */
 
 @tailwind base;
 @tailwind components;
@@ -377,7 +378,7 @@ code {
   width: auto;
 }
 
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .container { width: calc(100% - 2rem); padding: 0 1rem; }
   .hero, .section { margin: 1rem; padding: 4rem 1.5rem; border-radius: 30px; }
   .hero { margin: 4rem 1rem 1rem; padding: 3rem 1rem; border-radius: 15px; }
@@ -658,7 +659,7 @@ code {
 }
 
 /* Tablet Styles */
-@media (min-width: var(--bp-md)) {
+@media (min-width: 768px) {
   .hero {
     background-image: url('/assets/images/Bannerbildneu.png');
     background-position: center;
@@ -742,7 +743,7 @@ code {
 }
 
 /* Mobile Styles */
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .hero {
     margin: 0;
     margin-top: 60px;
@@ -772,7 +773,7 @@ code {
   /* Hero benefit styles moved to HeroSection.css */
 }
 
-@media (max-width: calc(var(--bp-sm) - 1px)) {
+@media (max-width: 575px) {
   .hero__text h1 {
     font-size: 1.8rem;
   }

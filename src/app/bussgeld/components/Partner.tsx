@@ -48,7 +48,7 @@ export default function Partner() {
         <p className="section-subtitle">Profitieren Sie von unserer digitalen Plattform, die Mandanten, Anwälte und Gutachter zusammenbringt. Leiten Sie Interessenkontakte (Leads) an uns weiter – und erhalten Sie 50 € Aufwandsvergütung, wenn aus einem solchen Lead später tatsächlich ein Mandatsverhältnis zustande kommt.</p>
       </div>
 
-      <div className="bussgeld-partner two-col">
+      <div className="bussgeld-partner two-col mobile-force-column">
         <div className="partner-left" ref={leftRef}>
 
           <ul className="partner-features">

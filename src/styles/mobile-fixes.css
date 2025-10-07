@@ -1,0 +1,196 @@
+/* Mobile-First Fixes für Layout-Probleme */
+
+/* Grundlegende mobile Fixes für alle Komponenten */
+@media (max-width: 767px) {
+  /* Force column layout for flex containers on mobile */
+  .mobile-force-column {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  /* Force full width for child elements */
+  .mobile-force-column > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Fix für nebeneinander stehende Elemente */
+  .mobile-stack-items {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .mobile-stack-items > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Fix für Grid-Layouts */
+  .mobile-force-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  /* Fix für Bilder, die zu groß sind */
+  .mobile-image-fix {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 50vh !important;
+    object-fit: contain !important;
+  }
+  
+  /* Fix für Slider/Karussells */
+  .mobile-slider-fix {
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  
+  .mobile-slider-fix > * {
+    width: 100% !important;
+  }
+  
+  /* Fix für Text-Ausrichtung */
+  .mobile-text-center {
+    text-align: center !important;
+  }
+}
+
+/* Spezifische Fixes für Komponenten */
+
+/* HeroSection */
+@media (max-width: 767px) {
+  .hero__content {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 2rem 1rem !important;
+  }
+  
+  .hero__text {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .hero__feature-cards {
+    flex-direction: column !important;
+    width: 100% !important;
+    align-items: center !important;
+  }
+  
+  .hero__feature-card,
+  .hero__benefit-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 1rem 0 !important;
+  }
+}
+
+/* Partner Section */
+@media (max-width: 767px) {
+  .bussgeld-partner.two-col {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  .partner-left,
+  .partner-right {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .partner-features {
+    width: 100% !important;
+  }
+  
+  .partner-right .partner-visual {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Process Section */
+@media (max-width: 767px) {
+  .stepper {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  .step {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+/* Feature Section */
+@media (max-width: 767px) {
+  .feature__content {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  .feature__image-wrapper,
+  .feature__cards {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .feature__card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Service Section */
+@media (max-width: 767px) {
+  .service__grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .service__card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Fix für Anliegen-Prüfen Seite */
+@media (max-width: 767px) {
+  .service-cards {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  .service-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Fix für Blog-Karten */
+@media (max-width: 767px) {
+  .blog-cards-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  .blog-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
