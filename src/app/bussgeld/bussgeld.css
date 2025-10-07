@@ -75,6 +75,13 @@
   .partner-ctas { justify-content: center; }
 }
 
+/* Mobile: stack CTAs and make primary button full-width and centered */
+@media (max-width: 480px) {
+  .partner-ctas { flex-direction: column; gap: 0.75rem; align-items: center; }
+  .partner-ctas .btn.primary { width: calc(100% - 2rem); max-width: 420px; display: block; }
+  .partner-ctas .btn.secondary { width: auto; display: inline-block; }
+}
+
 .bussgeld-tools .tools-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
 .bussgeld-tools .tool-card { background:#fff; padding:1rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.06); text-align:left; }
 
