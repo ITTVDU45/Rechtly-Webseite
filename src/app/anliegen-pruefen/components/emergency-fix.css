@@ -50,6 +50,36 @@ form h3.question-title,
 .form-grid textarea {
   color: #07222b !important;
   background-color: #ffffff !important;
+  border: 1px solid #c0c0c0 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+}
+
+/* Hover und Focus-Status für Eingabefelder */
+.step-container input:hover,
+.step-container select:hover,
+.step-container textarea:hover,
+.contact-vertical input:hover,
+.contact-vertical select:hover,
+.contact-vertical textarea:hover,
+.form-grid input:hover,
+.form-grid select:hover,
+.form-grid textarea:hover {
+  border-color: #a3e635 !important;
+}
+
+.step-container input:focus,
+.step-container select:focus,
+.step-container textarea:focus,
+.contact-vertical input:focus,
+.contact-vertical select:focus,
+.contact-vertical textarea:focus,
+.form-grid input:focus,
+.form-grid select:focus,
+.form-grid textarea:focus {
+  border-color: #a3e635 !important;
+  box-shadow: 0 0 0 2px rgba(163, 230, 53, 0.2) !important;
+  outline: none !important;
 }
 
 /* Fix für Label-Elemente */
