@@ -276,6 +276,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               />
               <h3 className="blog-cta-title">
                 {blog.slug === 'mobile-vs-stationaere-blitzer' ? 'Geblitzt worden?' :
+                 blog.slug === 'geblitzt-innerorts-2025' ? 'Innerorts zu schnell gefahren?' :
                  blog.tags.includes('Blitzer') ? 'Haben Sie einen Bußgeldbescheid erhalten?' :
                  blog.tags.includes('Bußgeld') ? 'Haben Sie ein Bußgeld erhalten?' :
                  blog.tags.includes('Verkehrsunfall') ? 'Unfall gehabt?' :
@@ -285,6 +286,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
               <p className="blog-cta-text">
                 {blog.slug === 'mobile-vs-stationaere-blitzer' 
                   ? 'Lassen Sie Ihren Bußgeldbescheid von Experten prüfen. Wir finden Messfehler und setzen Ihre Rechte durch.'
+                  : blog.slug === 'geblitzt-innerorts-2025'
+                  ? 'Prüfen Sie jetzt Ihren Bußgeldbescheid kostenlos. Viele Bescheide enthalten Fehler - wir helfen Ihnen, Punkte und Fahrverbot zu vermeiden.'
                   : 'Lassen Sie uns Ihr Anliegen prüfen und Ihre Rechte durchsetzen.'}
               </p>
               <a
@@ -294,7 +297,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                {blog.slug === 'mobile-vs-stationaere-blitzer' ? 'Bußgeld jetzt prüfen' : 'Jetzt Anliegen prüfen'}
+                {(blog.slug === 'mobile-vs-stationaere-blitzer' || blog.slug === 'geblitzt-innerorts-2025') ? 'Bußgeld jetzt prüfen' : 'Jetzt Anliegen prüfen'}
               </a>
             </div>
           </div>
@@ -334,6 +337,18 @@ export default async function BlogPage({ params }: BlogPageProps) {
                     },
                   ]}
                   heading={"Podcast Rechtly — Blitzer & Messfehler"}
+                  subheading={"Weiterführende Gespräche zum Thema dieses Artikels - Dieser Artikel wurde mit Unterstützung von NotebookLM (Google) und redaktionell durch das Rechtly-Team überarbeitet."}
+                />
+              ) : blog.slug === 'geblitzt-innerorts-2025' ? (
+                <PodcastWidget
+                  episodes={[
+                    {
+                      src: '/assets/audio/Geblitzt_Innerorts_2025__Bußgeld__Punkte__Fahrverbot_–_Was_wirk.mp3',
+                      title: 'Geblitzt Innerorts 2025: Bußgeld, Punkte & Fahrverbot',
+                      subtitle: 'Der komplette Bußgeldkatalog 2025 - alle Strafen, Punkte und Fahrverbote im Überblick',
+                    },
+                  ]}
+                  heading={"Podcast Rechtly — Bußgeldkatalog 2025"}
                   subheading={"Weiterführende Gespräche zum Thema dieses Artikels - Dieser Artikel wurde mit Unterstützung von NotebookLM (Google) und redaktionell durch das Rechtly-Team überarbeitet."}
                 />
               ) : (
