@@ -57,7 +57,68 @@ export default function CategoriesSection({ blogs }: CategoriesSectionProps) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {/* Mobile: Horizontal Slider */}
+        <div className="md:hidden">
+          <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            {categories.map((category) => (
+              <Link
+                key={category.slug}
+                href={`/blogundratgeber/categories/${category.slug}`}
+                className="group block flex-shrink-0 snap-start"
+                style={{ width: '280px' }}
+              >
+                <div className="category-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 h-full">
+                  <div 
+                    className="h-2 w-full"
+                    style={{ backgroundColor: category.color }}
+                  />
+                  <div className="p-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <div 
+                        className="category-card-icon w-12 h-12 rounded-lg flex items-center justify-center text-white text-xl font-bold"
+                        style={{ backgroundColor: category.color }}
+                      >
+                        {category.icon}
+                      </div>
+                      <span className="category-card-count text-xs text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full whitespace-nowrap">
+                        {category.count} Artikel
+                      </span>
+                    </div>
+                    
+                    <h3 className="category-card-title text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+                      {category.name}
+                    </h3>
+                    
+                    <p className="category-card-description text-gray-600 text-sm leading-relaxed mb-3 line-clamp-2">
+                      {category.description}
+                    </p>
+                    
+                    <div className="flex items-center text-sm font-medium group-hover:text-gray-700 transition-colors">
+                      <span>Artikel entdecken</span>
+                      <svg 
+                        className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          {/* Scroll Indicator */}
+          <div className="flex justify-center mt-2 gap-1">
+            {categories.slice(0, Math.min(5, categories.length)).map((_, idx) => (
+              <div key={idx} className="w-1.5 h-1.5 rounded-full bg-gray-300" />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: Grid Layout */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {categories.map((category) => (
             <Link
               key={category.slug}
