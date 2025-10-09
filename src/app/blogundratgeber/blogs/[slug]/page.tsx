@@ -331,9 +331,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 <PodcastWidget
                   episodes={[
                     {
-                      src: '/assets/audio/Geblitzt_Innerorts_2025__Bußgeld__Punkte__Fahrverbot_–_Was_wirk.mp3',
-                      title: 'Geblitzt Innerorts 2025: Bußgeld, Punkte & Fahrverbot',
-                      subtitle: 'Was wirklich zählt bei Blitzern - Messfehler, Toleranzen und Einspruchsmöglichkeiten',
+                      src: '/assets/audio/Blitzer-Falle__10-20__der_Messungen_sind_angreifbar_–_Kennen_Si.mp3',
+                      title: 'Blitzer-Falle: 10-20% der Messungen sind angreifbar',
+                      subtitle: 'Kennen Sie Ihre Rechte bei Geschwindigkeitsmessungen - Messfehler und Einspruchsmöglichkeiten',
                     },
                   ]}
                   heading={"Podcast Rechtly — Blitzer & Messfehler"}
