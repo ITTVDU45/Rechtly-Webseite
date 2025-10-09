@@ -1,6 +1,9 @@
+'use client';
+
 import Link from "next/link";
 import { Blog } from "../../../.velite/generated";
 import { slug as slugify } from "github-slugger";
+import { useRef, useState, useEffect } from "react";
 
 interface CategoriesSectionProps {
   blogs: Blog[];
@@ -16,6 +19,11 @@ interface CategoryData {
 }
 
 export default function CategoriesSection({ blogs }: CategoriesSectionProps) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
   // Only consider published blogs and extract unique categories from them
   const publishedBlogs = blogs.filter((b) => b.isPublished !== false);
   const categoriesMap = new Map<string, CategoryData>();
@@ -45,6 +53,43 @@ export default function CategoriesSection({ blogs }: CategoriesSectionProps) {
     .filter((c) => c.count > 0)
     .sort((a, b) => b.count - a.count);
 
+  const updateScrollButtons = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+      
+      // Calculate current index based on scroll position
+      const cardWidth = 280 + 16; // card width + gap
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      setCurrentIndex(newIndex);
+    }
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const cardWidth = 280 + 16; // card width + gap
+      const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const scrollToIndex = (index: number) => {
+    if (scrollContainerRef.current) {
+      const cardWidth = 280 + 16; // card width + gap
+      scrollContainerRef.current.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', updateScrollButtons);
+      updateScrollButtons();
+      return () => container.removeEventListener('scroll', updateScrollButtons);
+    }
+  }, []);
+
   return (
     <section className="blog-grid-section w-full mx-auto py-12 sm:py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
@@ -57,9 +102,47 @@ export default function CategoriesSection({ blogs }: CategoriesSectionProps) {
           </p>
         </div>
 
-        {/* Mobile: Horizontal Slider */}
-        <div className="md:hidden">
-          <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        {/* Mobile: Horizontal Slider with Navigation */}
+        <div className="md:hidden relative">
+          {/* Navigation Arrows */}
+          <button
+            onClick={() => scroll('left')}
+            disabled={!canScrollLeft}
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-200 ${
+              canScrollLeft 
+                ? 'opacity-100 hover:scale-110 active:scale-95' 
+                : 'opacity-30 cursor-not-allowed'
+            }`}
+            style={{ marginLeft: '-12px' }}
+            aria-label="Vorherige Kategorie"
+          >
+            <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            onClick={() => scroll('right')}
+            disabled={!canScrollRight}
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-200 ${
+              canScrollRight 
+                ? 'opacity-100 hover:scale-110 active:scale-95' 
+                : 'opacity-30 cursor-not-allowed'
+            }`}
+            style={{ marginRight: '-12px' }}
+            aria-label="Nächste Kategorie"
+          >
+            <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Slider Container */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4" 
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {categories.map((category) => (
               <Link
                 key={category.slug}
@@ -109,10 +192,20 @@ export default function CategoriesSection({ blogs }: CategoriesSectionProps) {
               </Link>
             ))}
           </div>
-          {/* Scroll Indicator */}
-          <div className="flex justify-center mt-2 gap-1">
-            {categories.slice(0, Math.min(5, categories.length)).map((_, idx) => (
-              <div key={idx} className="w-1.5 h-1.5 rounded-full bg-gray-300" />
+          
+          {/* Pagination Dots */}
+          <div className="flex justify-center mt-4 gap-2">
+            {categories.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => scrollToIndex(idx)}
+                className={`transition-all duration-300 rounded-full ${
+                  idx === currentIndex 
+                    ? 'w-6 h-2 bg-gradient-to-r from-[#C7E70C] to-[#8BC34A]' 
+                    : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
+                }`}
+                aria-label={`Gehe zu Kategorie ${idx + 1}`}
+              />
             ))}
           </div>
         </div>
