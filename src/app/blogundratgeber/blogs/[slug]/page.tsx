@@ -75,11 +75,11 @@ function TableOfContentsItem({ item, level = "two" }: TableOfContentsItemProps) 
       <a
         href={item.url}
         data-level={level}
-        className="data-[level=two]:pl-0 data-[level=two]:pt-2
+        className="blog-toc-link data-[level=two]:pl-0 data-[level=two]:pt-2
                   data-[level=two]:border-t border-solid border-dark/40
-                  data-[level=three]:pl-4
+                  data-[level=three]:pl-3
                   sm:data-[level=three]:pl-6
-                  flex items-center justify-start"
+                  flex items-center justify-start py-2 text-sm sm:text-base"
       >
         {level === "three" && (
           <span className="flex w-1 h-1 rounded-full bg-gray-900 mr-2">&nbsp;</span>
@@ -201,20 +201,21 @@ export default async function BlogPage({ params }: BlogPageProps) {
       <article>
         <div className="blog-detail-hero">
           {/* Back Button */}
-          <div className="absolute top-20 left-6 z-20">
+          <div className="absolute top-16 sm:top-20 left-3 sm:left-6 z-20">
             <Link
               href="/blogundratgeber"
-              className="inline-flex items-center text-white hover:text-gray-300 transition-colors duration-200 group bg-black/30 hover:bg-black/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20"
+              className="blog-back-button inline-flex items-center text-white hover:text-gray-300 transition-colors duration-200 group bg-black/30 hover:bg-black/50 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg border border-white/20 text-sm sm:text-base"
             >
               <svg 
-                className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform duration-200" 
+                className="w-4 sm:w-5 h-4 sm:h-5 mr-1.5 sm:mr-2 transform group-hover:-translate-x-1 transition-transform duration-200" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              Zurück zur Blog-Übersicht
+              <span className="hidden sm:inline">Zurück zur Blog-Übersicht</span>
+              <span className="sm:hidden">Zurück</span>
             </Link>
           </div>
 
@@ -284,9 +285,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
               </p>
               <a
                 href="/anliegen-pruefen"
-                className="blog-cta-button"
+                className="blog-cta-button inline-flex items-center justify-center"
               >
-                <svg className="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 Jetzt Anliegen prüfen

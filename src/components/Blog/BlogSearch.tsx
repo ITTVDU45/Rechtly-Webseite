@@ -180,9 +180,9 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
   const hasActiveFilters = searchQuery.trim().length > 0 || selectedTags.length > 0 || selectedCategories.length > 0;
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 mb-8">
+    <div className="blog-search-container w-full max-w-6xl mx-auto px-2 sm:px-4 mb-6 sm:mb-8">
       {/* Search Bar */}
-      <div className="relative mb-6">
+      <div className="relative mb-4 sm:mb-6">
         <label htmlFor="blog-search" className="sr-only">Blog-Artikel suchen</label>
         <div className="relative">
           <input
@@ -194,7 +194,7 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
             onFocus={() => searchQuery.length >= MIN_QUERY && setSearchOpen(searchSuggestions.length > 0)}
             onKeyDown={handleKeyDown}
             placeholder="Artikel, Tags oder Kategorien suchen..."
-            className="w-full rounded-2xl px-6 py-4 text-gray-900 placeholder:text-gray-400 shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500 text-lg border border-gray-200"
+            className="blog-search-input w-full rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-gray-900 placeholder:text-gray-400 shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500 text-base sm:text-lg border border-gray-200"
             aria-autocomplete="list"
             aria-expanded={searchOpen}
             aria-controls="blog-search-list"
@@ -212,7 +212,7 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
               id="blog-search-list" 
               ref={listRef} 
               role="listbox" 
-              className="absolute z-20 left-0 right-0 mt-2 bg-white rounded-xl shadow-lg max-h-64 overflow-auto border border-gray-200"
+              className="absolute z-20 left-0 right-0 mt-2 bg-white rounded-xl shadow-lg max-h-60 sm:max-h-64 overflow-auto border border-gray-200"
             >
               {searchSuggestions.map((suggestion, i) => (
                 <li
@@ -225,14 +225,14 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
                     setSearchOpen(false);
                     setHighlightedIndex(-1);
                   }}
-                  className={`cursor-pointer px-4 py-3 border-b last:border-b-0 flex items-center gap-3 ${
+                  className={`cursor-pointer px-3 sm:px-4 py-2.5 sm:py-3 border-b last:border-b-0 flex items-center gap-2 sm:gap-3 touch-action-manipulation ${
                     highlightedIndex === i ? 'bg-gray-50' : 'hover:bg-gray-50'
                   }`}
                 >
-                  <div className="text-lg">
+                  <div className="text-base sm:text-lg">
                     {suggestion.type === 'title' ? '📄' : suggestion.type === 'tag' ? '🏷️' : '📂'}
                   </div>
-                  <div className="font-medium text-gray-900">{suggestion.text}</div>
+                  <div className="font-medium text-gray-900 text-sm sm:text-base">{suggestion.text}</div>
                 </li>
               ))}
             </ul>
@@ -241,10 +241,10 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
       </div>
 
       {/* Filter Toggle */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-0 mb-4">
         <button
           onClick={() => setShowFilters(!showFilters)}
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+          className="blog-filter-button flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm sm:text-base"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.707A1 1 0 013 7V4z" />
@@ -255,7 +255,7 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
         {hasActiveFilters && (
           <button
             onClick={clearFilters}
-            className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+            className="blog-filter-button flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 text-gray-600 hover:text-gray-800 transition-colors text-sm sm:text-base"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -267,16 +267,16 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
 
       {/* Filter Options */}
       {showFilters && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-gray-50 rounded-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 p-4 sm:p-6 bg-gray-50 rounded-xl">
           {/* Tags Filter */}
           <div>
-            <h3 className="text-lg font-semibold mb-3 text-gray-900">Tags</h3>
+            <h3 className="text-base sm:text-lg font-semibold mb-3 text-gray-900">Tags</h3>
             <div className="flex flex-wrap gap-2">
               {allTags.map((tag: string) => (
                 <button
                   key={tag}
                   onClick={() => handleTagToggle(tag)}
-                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                  className={`blog-filter-button px-3 py-1.5 sm:py-1 rounded-full text-sm font-medium transition-colors ${
                     selectedTags.includes(tag)
                       ? 'bg-green-500 text-white'
                       : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
@@ -290,13 +290,13 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
 
           {/* Categories Filter */}
           <div>
-            <h3 className="text-lg font-semibold mb-3 text-gray-900">Kategorien</h3>
+            <h3 className="text-base sm:text-lg font-semibold mb-3 text-gray-900">Kategorien</h3>
             <div className="flex flex-wrap gap-2">
               {allCategories.map((category: string) => (
                 <button
                   key={category}
                   onClick={() => handleCategoryToggle(category)}
-                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                  className={`blog-filter-button px-3 py-1.5 sm:py-1 rounded-full text-sm font-medium transition-colors ${
                     selectedCategories.includes(category)
                       ? 'bg-green-500 text-white'
                       : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
@@ -314,7 +314,7 @@ export default function BlogSearch({ blogs, onFilteredBlogs }: Props) {
 
       {/* Results Count */}
       {hasActiveFilters && (
-        <div className="text-center text-gray-600 mt-4">
+        <div className="text-center text-gray-600 mt-4 text-sm sm:text-base">
           {filteredBlogs.length} von {blogs.length} Artikeln gefunden
         </div>
       )}

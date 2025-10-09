@@ -78,7 +78,7 @@ export default function HomeCoverSection({ blogs }: HomeCoverSectionProps) {
                 alt={blog.title}
                 width={blog.image.width}
                 height={blog.image.height}
-                className="w-full h-[70vh] object-cover"
+                className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] object-cover"
                 priority={index === 0}
               />
               <div className="absolute inset-0 flex items-center justify-center z-20">
@@ -93,15 +93,15 @@ export default function HomeCoverSection({ blogs }: HomeCoverSectionProps) {
                       </span>
                     ))}
                   </div>
-                  <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 sm:mb-4 leading-tight px-2">
                     {blog.title}
                   </h1>
-                  <p className="text-lg md:text-xl mb-6 opacity-90 max-w-3xl mx-auto">
+                  <p className="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 opacity-90 max-w-3xl mx-auto px-2 line-clamp-3 sm:line-clamp-none">
                     {blog.description}
                   </p>
                   <Link
                     href={`/blogundratgeber/blogs/${blog.slug}`}
-                    className="inline-block px-8 py-3 rounded-lg font-semibold text-white hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="blog-card-link inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold text-white hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                     style={{
                       background: 'linear-gradient(135deg, #C7E70C 0%, #8BC34A 100%)'
                     }}
@@ -117,7 +117,7 @@ export default function HomeCoverSection({ blogs }: HomeCoverSectionProps) {
         {/* Navigation Arrows */}
         <button
           onClick={goToPrevious}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-colors backdrop-blur-sm"
+          className="blog-hero-nav-button absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-colors backdrop-blur-sm"
           aria-label="Vorheriger Artikel"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,7 +127,7 @@ export default function HomeCoverSection({ blogs }: HomeCoverSectionProps) {
         
         <button
           onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-colors backdrop-blur-sm"
+          className="blog-hero-nav-button absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-colors backdrop-blur-sm"
           aria-label="Nächster Artikel"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,12 +136,12 @@ export default function HomeCoverSection({ blogs }: HomeCoverSectionProps) {
         </button>
 
         {/* Dots Navigation */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
+        <div className="blog-hero-dots absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex space-x-1">
           {blogs.slice(0, 5).map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`blog-hero-dot w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentSlide
                   ? "bg-white scale-110"
                   : "bg-white/50 hover:bg-white/70"
