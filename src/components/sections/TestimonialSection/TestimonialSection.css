@@ -155,7 +155,7 @@
   }
 }
 
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .testimonial {
     padding: 3rem 1.5rem;
     border-radius: 24px;
@@ -189,7 +189,7 @@
   }
 }
 
-@media (max-width: calc(var(--bp-sm) - 1px)) {
+@media (max-width: 575px) {
   .testimonial {
     padding: 2rem 1rem;
     border-radius: 20px;
@@ -477,7 +477,7 @@
 }
 
 /* Mobile optimizations */
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .testimonial__carousel-container {
     max-width: 90%;
     border-radius: 14px;
@@ -494,7 +494,7 @@
   }
 }
 
-@media (max-width: calc(var(--bp-sm) - 1px)) {
+@media (max-width: 575px) {
   .testimonial__carousel-container {
     max-width: 90%;
     border-radius: 12px;

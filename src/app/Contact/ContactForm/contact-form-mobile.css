@@ -165,7 +165,7 @@
 }
 
 /* Tablet breakpoint */
-@media (min-width: var(--bp-md)) {
+@media (min-width: 768px) {
   .contact-form-container {
     max-width: 800px;
   }

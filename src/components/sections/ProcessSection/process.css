@@ -291,7 +291,7 @@
   .timeline-dot-label { font-size:1rem !important; }
 }
 
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .process {
     padding: 2rem 1.25rem;
     margin: 1.25rem 0;
@@ -402,7 +402,7 @@
   }
 }
 
-@media (max-width: calc(var(--bp-sm) - 1px)) {
+@media (max-width: 575px) {
   .process {
     padding: 1.75rem 1rem;
     margin: 1rem 0;

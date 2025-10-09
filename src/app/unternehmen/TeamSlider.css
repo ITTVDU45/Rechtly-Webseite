@@ -77,7 +77,7 @@
   border-radius: 4px;
 }
 
-@media (min-width: var(--bp-md)) {
+@media (min-width: 768px) {
   .team-slider-container {
     display: none;
   }

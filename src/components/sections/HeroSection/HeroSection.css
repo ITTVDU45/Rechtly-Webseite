@@ -352,7 +352,7 @@ html, body {
 }
 
 /* Tablet Styles */
-@media (min-width: var(--bp-md)) {
+@media (min-width: 768px) {
   .hero-wrapper {
     width: 100vw;
     margin: 0;
@@ -533,7 +533,7 @@ html, body {
   }
 }
 
-@media (max-width: calc(var(--bp-xl) - 1px)) {
+@media (max-width: 1199px) {
   .hero__text h1 {
     font-size: 3.8rem;
   }
@@ -544,7 +544,7 @@ html, body {
   }
 }
 
-@media (max-width: calc(var(--bp-lg) - 1px)) {
+@media (max-width: 991px) {
   .hero__text h1 {
     font-size: 3.2rem;
   }
@@ -558,11 +558,18 @@ html, body {
   }
 }
 
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .hero__feature-cards {
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
     gap: 1rem;
+    width: 100% !important;
+  }
+  
+  .hero__feature-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 1rem 0 !important;
   }
   .hero-wrapper {
     width: 100vw;
@@ -653,7 +660,7 @@ html, body {
   /* Removed duplicate rules - using main .hero__benefit-item rules above */
 }
 
-@media (max-width: calc(var(--bp-sm) - 1px)) {
+@media (max-width: 575px) {
   .hero {
     background-image: url('/assets/images/Bannerbildneu.png') !important;
     /* scale to cover the entire hero area on small screens */
@@ -718,13 +725,13 @@ html, body {
 }
 
 /* Explicit subtitle sizing overrides requested */
-@media (max-width: calc(var(--bp-lg) - 1px)) {
+@media (max-width: 991px) {
   .hero__subtitle {
     font-size: 3rem;
   }
 }
 
-@media (min-width: var(--bp-md)) {
+@media (min-width: 768px) {
   .hero__subtitle {
     text-align: center;
     font-size: 2.2rem;
@@ -775,14 +782,14 @@ html, body {
 }
 
 /* Mittlere Bildschirme - leichte Anpassung */
-@media (min-width: 769px) and (max-width: calc(var(--bp-xl) - 1px)) {
+@media (min-width: 769px) and (max-width: 1199px) {
   .hero-background-image {
     object-position: center center !important;
   }
 }
 
 /* Tablet */
-@media (min-width: 577px) and (max-width: calc(var(--bp-md) - 1px)) {
+@media (min-width: 577px) and (max-width: 767px) {
   .hero-background-image {
     object-position: 40% center !important;
   }
@@ -795,7 +802,7 @@ html, body {
 }
 
 /* Mobile */
-@media (max-width: calc(var(--bp-sm) - 1px)) {
+@media (max-width: 575px) {
   .hero-background-image {
     object-position: 30% center !important;
   }

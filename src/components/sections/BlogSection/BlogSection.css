@@ -144,7 +144,7 @@
   }
 }
 
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .blog {
     padding: 2rem 1rem;
     border-radius: 20px;
@@ -183,7 +183,7 @@
   }
 }
 
-@media (max-width: calc(var(--bp-sm) - 1px)) {
+@media (max-width: 575px) {
   .blog {
     padding: 1.5rem 0.75rem;
     border-radius: 16px;

@@ -115,14 +115,14 @@
   box-shadow: 0 6px 18px rgba(163, 230, 53, 0.18);
 }
 
-@media (max-width: calc(var(--bp-lg) - 1px)) {
+@media (max-width: 991px) {
   .footer__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
   }
 }
 
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .footer {
     padding: 4rem 0 3rem;
     border-top-left-radius: 30px;
@@ -147,7 +147,7 @@
   }
 }
 
-@media (max-width: calc(var(--bp-sm) - 1px)) {
+@media (max-width: 575px) {
   .footer {
     padding: 3rem 0 2rem;
     border-top-left-radius: 20px;

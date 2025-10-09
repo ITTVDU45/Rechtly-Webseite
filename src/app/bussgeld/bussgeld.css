@@ -29,9 +29,11 @@
 
 /* Mobile-First Approach for Partner Section */
 .bussgeld-partner.two-col { 
-  flex-direction: column; 
+  display: flex;
+  flex-direction: column !important; 
   text-align: center;
   gap: 1rem;
+  width: 100%;
 }
 
 .partner-left { 
@@ -119,7 +121,7 @@
 .partner-features li.revealed { opacity:1; transform: translateY(0); transition: opacity .45s ease, transform .45s ease; }
 
 /* Tablet and up */
-@media (min-width: var(--bp-sm)) {
+@media (min-width: 576px) {
   .partner-ctas {
     flex-direction: row;
     max-width: none;
@@ -171,7 +173,7 @@
 }
 
 /* Very small mobile devices */
-@media (max-width: var(--bp-xs)) {
+@media (max-width: 375px) {
   .partner-features li {
     padding: 0.75rem 0.85rem;
   }
@@ -272,7 +274,7 @@
 .bussgeld-categories .feature__carousel-button.right { right: 0; left: auto; transform: translate(120%, -50%); }
 
 /* enlarge hit area on mobile */
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .bussgeld-categories .feature__carousel-button { width:48px; height:48px; left:8px; right:8px; }
   .bussgeld-categories .feature__carousel-button.left { left: 8px; }
   .bussgeld-categories .feature__carousel-button.right { right: 8px; }
@@ -410,7 +412,7 @@
 .feature__carousel-button:hover { background-color: rgba(27,58,75,0.9); }
 
 @media (min-width:769px) { .feature__carousel { display:none; } }
-@media (max-width: calc(var(--bp-md) - 1px)) { .feature__cards { display:none; } .feature__carousel { display:flex; } .feature__card { width:90%; margin:0 auto; } }
+@media (max-width: 767px) { .feature__cards { display:none; } .feature__carousel { display:flex; } .feature__card { width:90%; margin:0 auto; } }
 
 /* end feature copy */
 
@@ -424,7 +426,7 @@
 }
 
 /* Ensure mobile keeps carousel behavior */
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .bussgeld-categories .feature__cards { display: none !important; }
   .bussgeld-categories .feature__carousel { display: flex !important; }
 }
@@ -530,7 +532,7 @@
   .bussgeld-categories .feature__carousel-button.right { margin-right: 12px; }
 }
 
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .bussgeld-categories .feature__image-wrapper { display: none; }
   .bussgeld-categories .feature__carousel-slide { width: calc(100% - 48px); }
   .bussgeld-categories .feature__carousel-button.left { margin-left: 8px; }

@@ -85,13 +85,13 @@
 }
 
 /* Responsive Design */
-@media (max-width: calc(var(--bp-lg) - 1px)) {
+@media (max-width: 991px) {
   .form__input-container {
     gap: 1.25rem;
   }
 }
 
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .form__input-container {
     grid-template-columns: 1fr;
     gap: 1rem;

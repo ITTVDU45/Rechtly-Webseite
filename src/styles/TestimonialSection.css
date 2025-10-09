@@ -210,7 +210,7 @@
   }
 }
 
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .testimonial {
     padding: 2rem 1rem;
     border-radius: 20px;

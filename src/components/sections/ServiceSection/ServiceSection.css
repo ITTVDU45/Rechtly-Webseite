@@ -225,13 +225,13 @@
   transform: scale(1.05);
 }
 
-@media (max-width: calc(var(--bp-xl) - 1px)) {
+@media (max-width: 1199px) {
   .services__container {
     max-width: 960px;
   }
 }
 
-@media (max-width: calc(var(--bp-lg) - 1px)) {
+@media (max-width: 991px) {
   .services__container {
     max-width: 720px;
   }
@@ -253,7 +253,7 @@
   }
 }
 
-@media (max-width: calc(var(--bp-md) - 1px)) {
+@media (max-width: 767px) {
   .services {
     padding: 3rem 1.5rem;
     border-radius: 24px;
@@ -364,7 +364,7 @@
   }
 }
 
-@media (max-width: calc(var(--bp-sm) - 1px)) {
+@media (max-width: 575px) {
   .services {
     padding: 2rem 1rem;
     border-radius: 16px;
