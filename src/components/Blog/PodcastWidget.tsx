@@ -33,15 +33,15 @@ export default function PodcastWidget({ episodes, heading, subheading }: Podcast
     <aside className="podcast-widget">
       <div className="podcast-widget-header">
         <div className="podcast-widget-icon">
-          <Image src="/assets/images/Rechtly maskottchen bild.png" alt="Podcast" width={56} height={56} />
+          <Image src="/assets/images/Rechtly maskottchen bild.png" alt="Podcast" width={56} height={56} className="w-12 h-12 sm:w-14 sm:h-14" />
         </div>
-        <div>
+        <div className="flex-1 min-w-0">
           <h4 className="podcast-widget-title">{widgetHeading}</h4>
           <p className="podcast-widget-subtitle">{widgetSub}</p>
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         {list.map((ep, idx) => (
           <div key={ep.src} className="podcast-episode">
             <div className="podcast-episode-title">{ep.title}</div>
@@ -52,6 +52,7 @@ export default function PodcastWidget({ episodes, heading, subheading }: Podcast
                 preload="none"
                 className="w-full"
                 src={ep.src}
+                controlsList="nodownload"
               >
                 Ihr Browser unterstützt den Audio-Player nicht.
               </audio>
