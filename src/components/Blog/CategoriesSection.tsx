@@ -130,18 +130,19 @@ export default function CategoriesSection({ blogs }: CategoriesSectionProps) {
 // Helper functions for category data
 function getCategoryDescription(tag: string): string {
   const descriptions: { [key: string]: string } = {
-    "Büßgeld": "Alles rund um Bußgelder, Einspruchsmöglichkeiten und Verkehrsrecht",
+    "Bußgeld": "Alles rund um Bußgelder, Einspruchsmöglichkeiten und Verkehrsrecht",
     "Verkehrsrecht": "Rechtliche Aspekte im Straßenverkehr und Verkehrsverstöße",
-    "Verkehrsunfall": "Sofortmaßnahmen, Schadensregulierung und Ansprüche nach Unfällen",
-    "Schadensregulierung": "Prozesse und Verfahren zur Schadensabwicklung",
-    "KFZ-Gutachten": "Gutachten, Bewertungen und Sachverständige im KFZ-Bereich",
-    "Versicherung": "Versicherungsrecht und Ansprüche gegenüber Versicherungen",
-    "Rechtsberatung": "Allgemeine Rechtsberatung und rechtliche Unterstützung",
-    "KI-Telefonie": "Innovative Technologien in der Kundenbetreuung",
-    "Innovation": "Moderne Lösungen und technische Innovationen",
-    "Kundenbetreuung": "Service und Betreuung von Kunden",
-    "Rechtsschutz": "Rechtsschutzversicherungen und Rechtschutz",
-    "Ratgeber": "Praktische Tipps und Ratgeber für den Alltag"
+    "Blitzer": "Geschwindigkeitsmessungen, Blitzer-Arten und Messfehler",
+    "Messfehler": "Fehlerquellen bei Geschwindigkeitsmessungen und wie Sie sich wehren",
+    "Fahrverbot": "Fahrverbote, Punkte in Flensburg und rechtliche Konsequenzen",
+    "Einspruch": "Einspruchsmöglichkeiten gegen Bußgeldbescheide und Verkehrsverstöße",
+    "Mobile Blitzer": "Mobile Geschwindigkeitsmessungen und deren Fehlerquellen",
+    "Stationäre Blitzer": "Fest installierte Blitzer und typische Messprobleme",
+    "Geschwindigkeitsüberschreitung": "Tempoüberschreitungen, Bußgelder und rechtliche Folgen",
+    "Bußgeldkatalog 2025": "Aktueller Bußgeldkatalog mit allen Strafen und Sanktionen",
+    "Punkte Flensburg": "Punktesystem, Fahreignungsregister und Abbau von Punkten",
+    "innerorts geblitzt": "Geschwindigkeitsüberschreitungen innerorts und deren Folgen",
+    "Rechtly": "Digitale Rechtshilfe und Bußgeldbescheid-Prüfung"
   };
   
   return descriptions[tag] || `Artikel und Informationen zum Thema ${tag}`;
@@ -149,18 +150,19 @@ function getCategoryDescription(tag: string): string {
 
 function getCategoryIcon(tag: string): string {
   const icons: { [key: string]: string } = {
-    "Büßgeld": "€",
-    "Verkehrsrecht": "🚗",
-    "Verkehrsunfall": "⚠️",
-    "Schadensregulierung": "📋",
-    "KFZ-Gutachten": "🔧",
-    "Versicherung": "🛡️",
-    "Rechtsberatung": "⚖️",
-    "KI-Telefonie": "🤖",
-    "Innovation": "💡",
-    "Kundenbetreuung": "👥",
-    "Rechtsschutz": "🔒",
-    "Ratgeber": "📚"
+    "Bußgeld": "€",
+    "Verkehrsrecht": "⚖️",
+    "Blitzer": "📸",
+    "Messfehler": "⚠️",
+    "Fahrverbot": "🚫",
+    "Einspruch": "✋",
+    "Mobile Blitzer": "📱",
+    "Stationäre Blitzer": "🚦",
+    "Geschwindigkeitsüberschreitung": "⚡",
+    "Bußgeldkatalog 2025": "📋",
+    "Punkte Flensburg": "📍",
+    "innerorts geblitzt": "🏙️",
+    "Rechtly": "🛡️"
   };
   
   return icons[tag] || "📄";
@@ -168,18 +170,19 @@ function getCategoryIcon(tag: string): string {
 
 function getCategoryColor(tag: string): string {
   const colors: { [key: string]: string } = {
-    "Büßgeld": "#EF4444",
+    "Bußgeld": "#EF4444",
     "Verkehrsrecht": "#3B82F6",
-    "Verkehrsunfall": "#F59E0B",
-    "Schadensregulierung": "#8B5CF6",
-    "KFZ-Gutachten": "#10B981",
-    "Versicherung": "#06B6D4",
-    "Rechtsberatung": "#6366F1",
-    "KI-Telefonie": "#EC4899",
-    "Innovation": "#84CC16",
-    "Kundenbetreuung": "#F97316",
-    "Rechtsschutz": "#14B8A6",
-    "Ratgeber": "#8B5CF6"
+    "Blitzer": "#F59E0B",
+    "Messfehler": "#EF4444",
+    "Fahrverbot": "#DC2626",
+    "Einspruch": "#8B5CF6",
+    "Mobile Blitzer": "#F97316",
+    "Stationäre Blitzer": "#EA580C",
+    "Geschwindigkeitsüberschreitung": "#EAB308",
+    "Bußgeldkatalog 2025": "#10B981",
+    "Punkte Flensburg": "#06B6D4",
+    "innerorts geblitzt": "#6366F1",
+    "Rechtly": "#84CC16"
   };
   
   return colors[tag] || "#6B7280";
