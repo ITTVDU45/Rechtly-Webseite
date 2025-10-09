@@ -275,13 +275,17 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 className="blog-cta-image"
               />
               <h3 className="blog-cta-title">
-                {blog.tags.includes('Bußgeld') ? 'Haben Sie ein Bußgeld erhalten?' :
+                {blog.slug === 'mobile-vs-stationaere-blitzer' ? 'Geblitzt worden?' :
+                 blog.tags.includes('Blitzer') ? 'Haben Sie einen Bußgeldbescheid erhalten?' :
+                 blog.tags.includes('Bußgeld') ? 'Haben Sie ein Bußgeld erhalten?' :
                  blog.tags.includes('Verkehrsunfall') ? 'Unfall gehabt?' :
                  blog.tags.includes('KFZ-Gutachten') ? 'KFZ GUTACHTEN GESUCHT?' :
                  'Haben Sie ein Anliegen?'}
               </h3>
               <p className="blog-cta-text">
-                Lassen Sie uns Ihr Anliegen prüfen und Ihre Rechte durchsetzen.
+                {blog.slug === 'mobile-vs-stationaere-blitzer' 
+                  ? 'Lassen Sie Ihren Bußgeldbescheid von Experten prüfen. Wir finden Messfehler und setzen Ihre Rechte durch.'
+                  : 'Lassen Sie uns Ihr Anliegen prüfen und Ihre Rechte durchsetzen.'}
               </p>
               <a
                 href="/anliegen-pruefen"
@@ -290,7 +294,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Jetzt Anliegen prüfen
+                {blog.slug === 'mobile-vs-stationaere-blitzer' ? 'Bußgeld jetzt prüfen' : 'Jetzt Anliegen prüfen'}
               </a>
             </div>
           </div>
@@ -306,7 +310,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                     },
                   ]}
                   heading={"Podcast Rechtly — Verkehrsunfall"}
-                  subheading={"Weiterführende Gespräche und Experten-Interviews zum Thema Verkehrsunfall"}
+                  subheading={"Weiterführende Gespräche zum Thema dieses Artikels - Dieser Artikel wurde mit Unterstützung von NotebookLM (Google) und redaktionell durch das Rechtly-Team überarbeitet."}
                 />
               ) : blog.slug === 'bussgeld-rotlichtverstoss' || blog.slug === 'bussgeld-bei-rotlichtverstossen-was-sie-wissen-mussen' ? (
                 <PodcastWidget
@@ -318,7 +322,19 @@ export default async function BlogPage({ params }: BlogPageProps) {
                     },
                   ]}
                   heading={"Podcast Rechtly — Bußgeld & Rotlicht"}
-                  subheading={"Experten sprechen über Bußgelder, Messfehler und Einspruchsmöglichkeiten"}
+                  subheading={"Weiterführende Gespräche zum Thema dieses Artikels - Dieser Artikel wurde mit Unterstützung von NotebookLM (Google) und redaktionell durch das Rechtly-Team überarbeitet."}
+                />
+              ) : blog.slug === 'mobile-vs-stationaere-blitzer' ? (
+                <PodcastWidget
+                  episodes={[
+                    {
+                      src: '/assets/audio/Geblitzt_Innerorts_2025__Bußgeld__Punkte__Fahrverbot_–_Was_wirk.mp3',
+                      title: 'Geblitzt Innerorts 2025: Bußgeld, Punkte & Fahrverbot',
+                      subtitle: 'Was wirklich zählt bei Blitzern - Messfehler, Toleranzen und Einspruchsmöglichkeiten',
+                    },
+                  ]}
+                  heading={"Podcast Rechtly — Blitzer & Messfehler"}
+                  subheading={"Weiterführende Gespräche zum Thema dieses Artikels - Dieser Artikel wurde mit Unterstützung von NotebookLM (Google) und redaktionell durch das Rechtly-Team überarbeitet."}
                 />
               ) : (
                 <PodcastWidget />
